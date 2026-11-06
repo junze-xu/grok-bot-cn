@@ -17,7 +17,7 @@
 
 > **粘贴一个链接。获得一个可用的 Bot。**
 
-[Grok Bot](https://x.ai/bot) 的操作契约 —— xAI 持久化的 AI 队友。每份契约包含：任务、永不做、首个任务、Bot 就绪评分。粘贴一个 URL，点击一个团队，就能得到一个能用的 Bot。
+[Grok Bot](https://x.ai/bot) 是 xAI 的持久化 AI 队友。这个仓库提供现成的 Bot 配置，每个都写清楚了：做什么、不做什么、从哪开始、就绪评分多少。
 
 这是 Grok Bot 的 **任务 → 边界 → 技能 → 例行程序 → 团队** 工具包，与 [loop-engineering](https://github.com/junze-xu/loop-engineering)（内循环）和 [outerloop](https://github.com/junze-xu/outerloop)（证据 → 判定）理念互补。
 

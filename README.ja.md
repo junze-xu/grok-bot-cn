@@ -17,7 +17,7 @@
 
 > **リンクを貼り付け。使える Bot を手に入れよう。**
 
-[Grok Bot](https://x.ai/bot) —— xAI の永続的 AI チームメイトの運用契約。各契約は、タスク、禁止事項、最初のタスク、Bot 準備スコアを含む。URL を貼ってチームを選べば、使える Bot が手に入ります。
+[Grok Bot](https://x.ai/bot) は xAI の永続的 AI チームメイトです。このリポジトリは既製の Bot 設定を提供します —— 何をやり、何をせず、どこから始め、準備スコアがいくつかを明記しています。
 
 Grok Bot の **タスク → 境界 → スキル → ルーチン → チーム** ツールキット。[loop-engineering](https://github.com/junze-xu/loop-engineering)（内側ループ）と [outerloop](https://github.com/junze-xu/outerloop)（証拠 → 判定）と理念を補完。
 

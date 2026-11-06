@@ -17,7 +17,7 @@
 
 > **링크를 붙여넣으세요. 실행 가능한 Bot을 얻으세요.**
 
-[Grok Bot](https://x.ai/bot) —— xAI의 지속적 AI 팀원을 위한 운영 계약. 각 계약은 작업, 하지 않을 것, 첫 작업, Bot 준비 점수를 포함합니다. URL을 붙여넣고 팀을 고륾면 실행 가능한 Bot을 얻을 수 있습니다.
+[Grok Bot](https://x.ai/bot)은 xAI의 지속적 AI 팀원입니다. 이 저장소는 준비된 Bot 설정을 제공합니다 —— 무엇을 하고, 무엇을 하지 않으며, 어디서 시작하고, 준비 점수가 얼마인지 명시합니다.
 
 Grok Bot의 **작업 → 경계 → 스킬 → 루틴 → 팀** 툴킷. [loop-engineering](https://github.com/junze-xu/loop-engineering)(내부 루프)과 [outerloop](https://github.com/junze-xu/outerloop)(증거 → 판정)과 이념상 보완 관계.
 

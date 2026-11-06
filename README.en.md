@@ -17,7 +17,7 @@
 
 > **Paste a link. Get a working Bot.**
 
-Operating contracts for [Grok Bot](https://x.ai/bot) — xAI's persistent AI teammates. Every contract defines the job, a never-do list, a first task, and a Bot-Ready score. Paste a URL, pick a team, and get a working Bot.
+[Grok Bot](https://x.ai/bot) is xAI's persistent AI teammate. This repo provides ready-made Bot configs, each spelling out what it does, what it never does, where to start, and its Bot-Ready score.
 
 This is the Grok Bot **task → boundary → skill → routine → team** toolkit, conceptually complementary to [loop-engineering](https://github.com/junze-xu/loop-engineering) (inner loop) and [outerloop](https://github.com/junze-xu/outerloop) (evidence → verdict).
 
