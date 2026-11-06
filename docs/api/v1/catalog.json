@@ -3,9 +3,74 @@
   "api_version": "v1",
   "schema_revision": "2026-08-29",
   "status_url": "https://junze-xu.github.io/grok-bot-cn/api/v1/status.json",
-  "count": 33,
+  "count": 36,
   "start_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md",
   "items": [
+    {
+      "id": "post-draft",
+      "name": "内容成稿",
+      "title": "把选题写成多平台初稿",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "一个选题，多平台初稿——全部标注草稿，一键不发布。",
+      "why": "跨平台改写最费时间，也最容易跑调。把事实、语气和平台规则分开处理，让你审阅的是「对不对」，而不是从零写起。\n",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/post-draft",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/post-draft/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/post-draft",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "content",
+        "l1"
+      ]
+    },
+    {
+      "id": "post-review",
+      "name": "发布审稿",
+      "title": "发布前审稿与放行清单",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "发布前的一道关：事实、语气、平台规则——只出意见，不点发布。",
+      "why": "最后一公里最容易翻车：一个没核对的数字、一句过界的承诺。把审查交给独立的机器人，让作者和裁判分开。\n",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/post-review",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/post-review/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/post-review",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "review",
+        "l1"
+      ]
+    },
+    {
+      "id": "trend-scout",
+      "name": "选题雷达",
+      "title": "公开热点采集与选题清单",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "追踪公开热点，输出带链接的选题清单——不发布，不评论。",
+      "why": "凭感觉追热点容易写成流水账，也容易踩进授权之外的页面。这个机器人只呈现公开可见的事实和链接，写不写由你决定。\n",
+      "plugins": [
+        "X"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/trend-scout",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/trend-scout/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/trend-scout",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "research",
+        "l1"
+      ]
+    },
     {
       "id": "bug-reproduction",
       "name": "Bug 复现",
@@ -796,6 +861,19 @@
   ],
   "teams": [
     {
+      "id": "creator",
+      "name": "自媒体团队",
+      "lead": "trend-scout",
+      "bots": [
+        "trend-scout",
+        "post-draft",
+        "post-review"
+      ],
+      "why": "追公开热点、把选题写成多平台初稿、发布前审事实与语气——全程停在草稿与意见，发布键在你手里。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/creator/team.yaml"
+    },
+    {
       "id": "eng",
       "name": "工程团队",
       "lead": "pr-reviewer",
@@ -834,14 +912,14 @@
     },
     {
       "id": "ops",
-      "name": "运营团队",
+      "name": "行政采购团队",
       "lead": "chief-of-staff",
       "bots": [
         "chief-of-staff",
         "expense-manager",
         "vendor-inbox"
       ],
-      "why": "把 Slack、收据和供应商邮件映射到你的优先事项：只摘要要决策的、对账已签政策、发票列待审——不付款、不发催收。\n",
+      "why": "把内部运转收在一处：日程与消息摘要、花销对账、供应商发票与续约——只出摘要和待审清单，不付款、不发催收、不代批费用。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml"
     },

@@ -1,0 +1,16 @@
+id: creator
+name: 自媒体团队
+lead: trend-scout
+bots:
+  - trend-scout
+  - post-draft
+  - post-review
+why: >
+  追公开热点、把选题写成多平台初稿、发布前审事实与语气——全程停在草稿与意见，发布键在你手里。
+group_kickoff: >
+  @选题雷达 扫一遍今天的公开热点，给出与主人定位相关的选题清单。@内容成稿 把选中的选题写成各平台初稿。
+  @发布审稿 审初稿，输出「可发 / 需改 / 不可发」清单。不发布、不排期、不评论任何内容。
+plugins:
+  - X
+max_bots: 3
+autonomy: L1

@@ -30,9 +30,9 @@ approval_never:
 approval_ask:
   - 创建超出团队 yaml 的额外 Bot
 first_task: >
-  如果主人已指定团队或发送目标链接，使用它。否则展示 9 个可选团队供选择——工程团队 (eng)、发布团队 (release)、
-  市场团队 (marketing)、运营团队 (ops)、个人团队 (personal)、产品团队 (product)、研究团队 (research)、
-  销售团队 (sales)、客户服务 (service)——然后从目录安装该团队。
+  如果主人已指定团队或发送目标链接，使用它。否则展示 10 个可选团队供选择——工程团队 (eng)、发布团队 (release)、
+  市场团队 (marketing)、自媒体团队 (creator)、行政采购团队 (ops)、个人团队 (personal)、产品团队 (product)、
+  研究团队 (research)、销售团队 (sales)、客户服务 (service)——然后从目录安装该团队。
   选项文字与 START.md 第 1 步的清单一致，不要缩写或改写。组件最多显示 6 个选项；显示不全时，
   把未显示的选项也照抄出来，并说明可直接输入英文 key。
 no_data: |

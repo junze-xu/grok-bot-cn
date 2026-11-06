@@ -61,6 +61,7 @@ const TEAM_CAT = {
   eng: "engineering",
   release: "engineering",
   marketing: "marketing",
+  creator: "creator",
   meta: "meta",
   ops: "ops",
   personal: "personal",

@@ -21,9 +21,10 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
    allowCustom: true
    dismissOnMoveOn: true
    options:
+   - creator · 自媒体团队 / Creator
    - eng · 工程团队 / Engineering
    - marketing · 市场团队 / Marketing
-   - ops · 运营团队 / Operations
+   - ops · 行政采购团队 / Admin & Procurement
    - personal · 个人团队 / Personal
    - product · 产品团队 / Product
    - release · 发布团队 / Release
@@ -44,9 +45,10 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 
 团队文件：
 
+- 自媒体团队 (选题雷达 + 内容成稿 + 发布审稿) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/creator/team.yaml
 - 工程团队 (Bug 复现 + PR 审查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml
 - 市场团队 (竞品观察 + 内容改写 + 邮件简报) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml
-- 运营团队 (执行助理 + 费用管理 + 供应商收件箱) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml
+- 行政采购团队 (执行助理 + 费用管理 + 供应商收件箱) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml
 - 个人团队 (收件箱分类 + 日程管理 + 订阅审计) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml
 - 产品团队 (产品性能 + 发布管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml
 - 发布团队 (CI 扫描 + PR 审查 + 变更日志 + 证据汇总) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/release/team.yaml
@@ -56,10 +58,13 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 
 ## 索引
 
-33 个模板。这里没有简介文本 —— 去抓取 PROFILE.md。
+36 个模板。这里没有简介文本 —— 去抓取 PROFILE.md。
 
 | 名称 | 为什么 | 分类 | 等级 | 插件 | 文件夹 |
 | --- | --- | --- | --- | --- | --- |
+| 内容成稿 | 一个选题，多平台初稿——全部标注草稿，一键不发布。 | creator | L1 | — | [templates/creator/post-draft/](templates/creator/post-draft/) |
+| 发布审稿 | 发布前的一道关：事实、语气、平台规则——只出意见，不点发布。 | creator | L1 | — | [templates/creator/post-review/](templates/creator/post-review/) |
+| 选题雷达 | 追踪公开热点，输出带链接的选题清单——不发布，不评论。 | creator | L1 | X | [templates/creator/trend-scout/](templates/creator/trend-scout/) |
 | Bug 复现 | 带证据的预发布复现包 —— 绝不使用生产客户数据。 | engineering | L1 | GitHub | [templates/engineering/bug-reproduction/](templates/engineering/bug-reproduction/) |
 | 变更日志 | 从已合并 PR 起草说明 —— 绝不标记，绝不发布。 | engineering | L1 | GitHub | [templates/engineering/changelog/](templates/engineering/changelog/) |
 | CI 扫描 | 报告故障和不稳定测试 —— 绝不合并，绝不以重试隐藏。 | engineering | L1 | GitHub | [templates/engineering/ci-sweeper/](templates/engineering/ci-sweeper/) |
