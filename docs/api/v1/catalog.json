@@ -3,7 +3,7 @@
   "api_version": "v1",
   "schema_revision": "2026-08-29",
   "status_url": "https://junze-xu.github.io/grok-bot-cn/api/v1/status.json",
-  "count": 36,
+  "count": 37,
   "start_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md",
   "items": [
     {
@@ -309,6 +309,27 @@
         "marketing",
         "paid",
         "official",
+        "l1"
+      ]
+    },
+    {
+      "id": "chief-of-ai",
+      "name": "AI 总管",
+      "title": "规则登记与任务路由中枢",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "一个入口、一本名册——任务先对表再传话，规则写文件不写对话。",
+      "why": "群聊上下文会被压缩，规则活在里面就会随对话腐化。把名册与任务状态写成文件，中枢只传指针，组织才活得比一次会话更久。\n",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/chief-of-ai",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/chief-of-ai/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/chief-of-ai",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "router",
         "l1"
       ]
     },
@@ -860,6 +881,19 @@
     }
   ],
   "teams": [
+    {
+      "id": "ceo-office",
+      "name": "总裁办",
+      "lead": "chief-of-ai",
+      "bots": [
+        "chief-of-ai",
+        "installer",
+        "roster"
+      ],
+      "why": "一个人的公司也是一个公司：先把规则、名册和路由立起来，再让经理们干活——AI 总管只登记和传话，规则写文件不靠记忆。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ceo-office/team.yaml"
+    },
     {
       "id": "creator",
       "name": "自媒体团队",

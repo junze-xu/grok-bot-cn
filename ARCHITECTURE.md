@@ -4,7 +4,7 @@
 
 ## 一句话定位
 
-这是 Grok Bot 的**操作契约目录工程**：把 36 个模板、11 个团队、13 个技能、8 个例行程序写成带校验的 YAML 契约，经一套构建管线发布为 GitHub Pages 站点与机器 API；终端用户**粘贴 START.md** 即可安装，不需要 Node。
+这是 Grok Bot 的**操作契约目录工程**：把 37 个模板、12 个团队、14 个技能、8 个例行程序写成带校验的 YAML 契约，经一套构建管线发布为 GitHub Pages 站点与机器 API；终端用户**粘贴 START.md** 即可安装，不需要 Node。
 
 ## 核心理念
 
@@ -18,27 +18,27 @@
 
 | 层 | 位置 | 数量 | 单位文件 | 作用 | 消费者 |
 |---|---|---|---|---|---|
-| 模板 | `templates/<category>/<id>/` | 36（12 分类） | `template.yaml` | 单个 Bot 的完整操作契约 | 站点卡片、CLI、PROFILE/SETUP/README |
-| 团队 | `teams/<id>/team.yaml` | 11 | `team.yaml` | 2–4 个 Bot + 群组启动 + 交接 | START.md 选项、站点团队卡、API |
-| 技能 | `skills/<id>/skill.yaml` | 13 | `skill.yaml` | 可复用方法（官方六字段） | 模板按 id 引用、Bot 保存技能 |
+| 模板 | `templates/<category>/<id>/` | 37（12 分类） | `template.yaml` | 单个 Bot 的完整操作契约 | 站点卡片、CLI、PROFILE/SETUP/README |
+| 团队 | `teams/<id>/team.yaml` | 12 | `team.yaml` | 2–4 个 Bot + 群组启动 + 交接 | START.md 选项、站点团队卡、API |
+| 技能 | `skills/<id>/skill.yaml` | 14 | `skill.yaml` | 可复用方法（官方六字段） | 模板按 id 引用、Bot 保存技能 |
 | 例行程序 | `routines/<id>/routine.yaml` | 8 | `routine.yaml` | 何时自动运行（L3 才启用） | 模板 routine 字段、站点 |
 | 原则 | `patterns/<id>/pattern.yaml` | 12 | `pattern.yaml` | 设计准则与反模式 | 写作与评审时的对照检查 |
 
-> 「10 个业务团队」指 START.md 单选列表里可点的团队；「管家团队」（meta）是管理 Bot 自身的工具集，不在选项里，走目录卡片或 `teams/meta/team.yaml` 链接单独安装。
+> 「11 个业务团队」指 START.md 单选列表里可点的团队；「管家团队」（meta）是管理 Bot 自身的工具集，不在选项里，走目录卡片或 `teams/meta/team.yaml` 链接单独安装。
 
 ## 目录总览
 
 ```
 grok-bot-cn/
-├── templates/                 # 36 个模板，12 分类
+├── templates/                 # 37 个模板，12 分类
 │   └── <category>/<id>/
 │       ├── template.yaml      # 唯一事实源（人工维护）
 │       ├── PROFILE.md         # 生成 → 粘贴到 Bot 描述
 │       ├── SETUP.md           # 生成 → 安装步骤卡
 │       ├── README.md          # 生成 → 目录页
 │       └── examples/first-run.md   # 生成 → 真实产出示例
-├── teams/<id>/team.yaml       # 11 个团队定义
-├── skills/<id>/skill.yaml     # 13 个技能（+ 生成 SKILL.md）
+├── teams/<id>/team.yaml       # 12 个团队定义
+├── skills/<id>/skill.yaml     # 14 个技能（+ 生成 SKILL.md）
 ├── routines/<id>/routine.yaml # 8 个例行程序（+ 生成 ROUTINE.md）
 ├── patterns/<id>/pattern.yaml # 12 条设计原则
 ├── schema/template.schema.json# 模板契约（JSON Schema）
@@ -118,8 +118,8 @@ template.yaml ──npm run render──▶ PROFILE.md / SETUP.md / README.md / 
 
 ## 分发与安装路径
 
-1. **START.md（无 Node，主路径）**：粘贴到名为 Setup 的 Bot → 确认语言 → 点选 10 个业务团队之一 → 装 2–4 个 Bot 进群组 → 连接插件 → L1 起步。
-2. **GitHub Pages 站点**（`docs/index.html`）：按分类浏览 36 张卡片，复制 PROFILE 正文、团队名或 START.md 链接；四语切换（`i18n/site.json`）。
+1. **START.md（无 Node，主路径）**：粘贴到名为 Setup 的 Bot → 确认语言 → 点选 11 个业务团队之一 → 装 2–4 个 Bot 进群组 → 连接插件 → L1 起步。
+2. **GitHub Pages 站点**（`docs/index.html`）：按分类浏览 37 张卡片，复制 PROFILE 正文、团队名或 START.md 链接；四语切换（`i18n/site.json`）。
 3. **机器 API**（`docs/api/v1/`）：`status.json` / `catalog.json` / `teams.json` / `index.json`，另有 `llms.txt` 与 `profiles.json`。
 4. **npm CLI**：`npx --yes github:junze-xu/grok-bot-cn <command>`（包名 `@junze-xu/grokbot` 随 tag 发布）。
 5. **官方分享链接**：登记在 `catalog/share-links.json`，接收方通过 Add-to-Grok 一键添加。

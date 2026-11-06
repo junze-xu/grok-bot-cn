@@ -72,13 +72,15 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## カタログ
 
-**33 テンプレート · 10 チーム · 13 スキル · 8 ルーチン**。すべてのテンプレートはスキーマと安全チェックに合格。
+**37 テンプレート · 12 チーム · 14 スキル · 8 ルーチン**。すべてのテンプレートはスキーマと安全チェックに合格。
 
 | Bot | 用途 |
 |-----|------|
 | [PR レビュー](templates/engineering/pr-reviewer/) | 気になる差分をレビュー |
 | [バグ再現](templates/engineering/bug-reproduction/) | リリース前再現パック、本番データは使わない |
 | [CEO 補佐](templates/ops/chief-of-staff/) | 優先リストと一致するものだけ |
+| [トレンドスカウト](templates/creator/trend-scout/) | 公開トレンド → リンク付きの選題リスト |
+| [AI チーフ](templates/meta/chief-of-ai/) | ルール台帳とタスク振り分け、伝言のみ |
 | [受信トレイ仕分け](templates/personal/inbox-triage/) | 仕分けと下書き、送信しない |
 | [リサーチデスク](templates/research/research-desk/) | 主張、証拠、相違点、未発見 |
 

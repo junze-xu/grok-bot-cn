@@ -72,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 目录
 
-**36 个模板 · 11 个团队 · 13 个技能 · 8 个例行程序**。所有模板均通过 schema 与安全校验。
+**37 个模板 · 12 个团队 · 14 个技能 · 8 个例行程序**。所有模板均通过 schema 与安全校验。
 
 | Bot | 用途 |
 |-----|------|
@@ -80,6 +80,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 | [Bug 复现](templates/engineering/bug-reproduction/) | 预发布复现包，绝不用生产数据 |
 | [执行助理](templates/ops/chief-of-staff/) | 仅包含与优先列表匹配的事项 |
 | [选题雷达](templates/creator/trend-scout/) | 公开热点 → 带链接的选题清单 |
+| [AI 总管](templates/meta/chief-of-ai/) | 规则名册 + 任务路由，只传话不干活 |
 | [收件箱分类](templates/personal/inbox-triage/) | 分类与起草，绝不发送 |
 | [研究助手](templates/research/research-desk/) | 主张、证据、分歧、未找到 |
 

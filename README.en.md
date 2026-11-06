@@ -72,13 +72,15 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## Catalog
 
-**33 templates · 10 teams · 13 skills · 8 routines.** Every template passes schema and safety checks.
+**37 templates · 12 teams · 14 skills · 8 routines.** Every template passes schema and safety checks.
 
 | Bot | Purpose |
 |-----|---------|
 | [PR Review](templates/engineering/pr-reviewer/) | Reviews the worrying diff |
 | [Bug Reproduction](templates/engineering/bug-reproduction/) | Pre-release repro packs, never production data |
 | [Chief of Staff](templates/ops/chief-of-staff/) | Only what matches the priority list |
+| [Trend Scout](templates/creator/trend-scout/) | Public trends → a source list with links |
+| [Chief of AI](templates/meta/chief-of-ai/) | Rules registry + task routing, relays only |
 | [Inbox Triage](templates/personal/inbox-triage/) | Triage and draft, never send |
 | [Research Desk](templates/research/research-desk/) | Claim, evidence, disagreement, not found |
 

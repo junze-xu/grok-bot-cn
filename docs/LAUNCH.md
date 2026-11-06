@@ -37,4 +37,4 @@ https://github.com/junze-xu/grok-bot-cn
 
 - 以 YAML、SPEC.md 或 `npx` 开头。
 - 声称与 xAI 有隶属关系。
-- 在第一篇帖子里倾倒 36 个模板。Eng 才是演示。
+- 在第一篇帖子里倾倒 37 个模板。Eng 才是演示。

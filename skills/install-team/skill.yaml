@@ -3,7 +3,7 @@ name: 安装团队
 when_to_use: >
   主人要把本目录里指定的入门团队变成真实的 Grok Bot 加一个群组，而不是把整个目录倒出来。
 inputs:
-  - 团队 id（eng、release、marketing、ops、personal、product、research、sales、service——共 9 个）
+  - 团队 id（ceo-office、creator、eng、marketing、ops、personal、product、release、research、sales、service——共 11 个）
   - 「第一周是 L1」的确认
 sequence:
   - 解析团队 yaml；绝不编造额外 Bot。

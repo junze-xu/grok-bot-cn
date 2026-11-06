@@ -1,7 +1,20 @@
 {
   "api_version": "v1",
-  "count": 11,
+  "count": 12,
   "items": [
+    {
+      "id": "ceo-office",
+      "name": "总裁办",
+      "lead": "chief-of-ai",
+      "bots": [
+        "chief-of-ai",
+        "installer",
+        "roster"
+      ],
+      "why": "一个人的公司也是一个公司：先把规则、名册和路由立起来，再让经理们干活——AI 总管只登记和传话，规则写文件不靠记忆。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ceo-office/team.yaml"
+    },
     {
       "id": "creator",
       "name": "自媒体团队",

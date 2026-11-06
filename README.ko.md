@@ -72,13 +72,15 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 카탈로그
 
-**33개 템플릿 · 10개 팀 · 13개 스킬 · 8개 루틴**. 모든 템플릿은 스키마 및 안전 검사를 통과합니다.
+**37개 템플릿 · 12개 팀 · 14개 스킬 · 8개 루틴**. 모든 템플릿은 스키마 및 안전 검사를 통과합니다.
 
 | Bot | 용도 |
 |-----|------|
 | [PR 리뷰](templates/engineering/pr-reviewer/) | 걱정되는 diff 리뷰 |
 | [버그 재현](templates/engineering/bug-reproduction/) | 출시 전 재현 팩, 프로덕션 데이터 사용 안 함 |
 | [CEO 보좌](templates/ops/chief-of-staff/) | 우선순위 목록과 일치하는 것만 |
+| [트렌드 스카우트](templates/creator/trend-scout/) | 공개 트렌드 → 링크 포함 소재 목록 |
+| [AI 치프](templates/meta/chief-of-ai/) | 규칙 명부 + 작업 라우팅, 전달만 수행 |
 | [받은편지함 분류](templates/personal/inbox-triage/) | 분류 및 초안, 전송 안 함 |
 | [리서치 데스크](templates/research/research-desk/) | 주장, 증거, 이견, 미발견 |
 

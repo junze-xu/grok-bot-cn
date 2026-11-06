@@ -21,6 +21,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
    allowCustom: true
    dismissOnMoveOn: true
    options:
+   - ceo-office · 总裁办 / CEO Office
    - creator · 自媒体团队 / Creator
    - eng · 工程团队 / Engineering
    - marketing · 市场团队 / Marketing
@@ -45,6 +46,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 
 团队文件：
 
+- 总裁办 (AI 总管 + 安装器 + Bot 管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ceo-office/team.yaml
 - 自媒体团队 (选题雷达 + 内容成稿 + 发布审稿) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/creator/team.yaml
 - 工程团队 (Bug 复现 + PR 审查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml
 - 市场团队 (竞品观察 + 内容改写 + 邮件简报) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml
@@ -58,7 +60,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 
 ## 索引
 
-36 个模板。这里没有简介文本 —— 去抓取 PROFILE.md。
+37 个模板。这里没有简介文本 —— 去抓取 PROFILE.md。
 
 | 名称 | 为什么 | 分类 | 等级 | 插件 | 文件夹 |
 | --- | --- | --- | --- | --- | --- |
@@ -75,6 +77,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 | 内容改写 | 一份草稿输入。一组变体输出。不发任何东西。 | marketing | L1 | Notion | [templates/marketing/content-remix/](templates/marketing/content-remix/) |
 | 邮件简报 | 刊物已撰写。发送按钮留给主人。 | marketing | L1 | Gmail, Google Docs | [templates/marketing/newsletter-desk/](templates/marketing/newsletter-desk/) |
 | 付费媒体 | 数据和一份 Slack 草稿。预算不会自己动。 | marketing | L1 | Slack, Google Drive | [templates/marketing/paid-media/](templates/marketing/paid-media/) |
+| AI 总管 | 一个入口、一本名册——任务先对表再传话，规则写文件不写对话。 | meta | L1 | — | [templates/meta/chief-of-ai/](templates/meta/chief-of-ai/) |
 | 记忆维护 | 对标来源修正过期记忆——不抹除角色。 | meta | L1 | — | [templates/meta/gardener/](templates/meta/gardener/) |
 | 安装器 | 粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。 | meta | L1 | — | [templates/meta/installer/](templates/meta/installer/) |
 | Bot 管理 | 先裁撤和合并——绝不将舰队扩展到主人要求之外。 | meta | L1 | — | [templates/meta/roster/](templates/meta/roster/) |

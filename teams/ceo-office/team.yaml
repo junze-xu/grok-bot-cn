@@ -1,0 +1,16 @@
+id: ceo-office
+name: 总裁办
+lead: chief-of-ai
+bots:
+  - chief-of-ai
+  - installer
+  - roster
+why: >
+  一个人的公司也是一个公司：先把规则、名册和路由立起来，再让经理们干活——AI 总管只登记和传话，规则写文件不靠记忆。
+group_kickoff: >
+  @AI 总管 建立名册：登记每位经理与员工的任务、来源、边界和交接，写下第一份分派单。
+  @安装器 只在名册需要新席位时，从目录安装经理。@Bot 管理 对照名册提议裁撤与合并。
+  不亲自干活，不凭聊天记忆传话。
+plugins: []
+max_bots: 3
+autonomy: L1

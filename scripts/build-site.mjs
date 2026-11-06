@@ -58,6 +58,7 @@ const JOBS = [
 ];
 
 const TEAM_CAT = {
+  "ceo-office": "meta",
   eng: "engineering",
   release: "engineering",
   marketing: "marketing",
