@@ -2,7 +2,7 @@
 
 > 带政策引用的草稿回复——发送按钮仍属主人。
 
-**support** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**support** · 自主性 **L1** · 精选
 
 负责起草进站支持讨论串的首条回复，使用内部口吻， 附真实政策引用，仍保持未发送状态。绝不发送，绝不退款， 绝不修改客户账户。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init support-replies --print
-npx --yes github:junze-xu/grok-bot-cn score support-replies
 ```

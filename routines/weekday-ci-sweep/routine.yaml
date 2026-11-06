@@ -1,5 +1,5 @@
 id: weekday-ci-sweep
-name: 工作日 CI 扫描
+name: 工作日 CI 巡检
 owner: ci-sweeper
 cadence: 每周工作日 09:00（机器人时区）
 skill: sweep-ci

@@ -5,8 +5,6 @@ import { stringify as stringifyYaml } from "yaml";
 import { resolveRoot, packageRoot } from "../lib/paths.mjs";
 import { loadAll, findTemplate } from "../lib/load.mjs";
 import { validateLoaded } from "../lib/validate.mjs";
-import { scoreTemplate, scoreAll } from "../lib/score.mjs";
-import { badgeSvg, badgeMarkdown, catalogScore } from "../lib/badge.mjs";
 import { START_URL, GH, PAGES, NPX, profileUrl } from "../lib/urls.mjs";
 import { renderProfile, writeTemplateDocs } from "../lib/render.mjs";
 import { writeSkillDocs } from "../lib/render-skill.mjs";
@@ -51,7 +49,6 @@ function help() {
   grokbot init --team <id> [--out DIR]
   grokbot teams [--json]
   grokbot search <query>
-  grokbot score [id|--all] [--badge] [--md] [--out FILE]
   grokbot validate [path]
   grokbot doctor
   grokbot start
@@ -139,10 +136,9 @@ function cmdShow(a, loaded) {
     console.log(JSON.stringify(copy, null, 2));
     return 0;
   }
-  const s = scoreTemplate(t);
   console.log(`# ${t.name}  (${t.category}/${t.id})`);
   console.log(`${t.tagline}\n`);
-  console.log(`自主性：${t.autonomy}   Bot 就绪：${s.earned}/${s.max} ${s.grade}`);
+  console.log(`自主性：${t.autonomy}`);
   console.log(`插件：${(t.plugins || []).join(", ") || "无"}`);
   console.log(`PROFILE：${profileUrl(t)}`);
   if (t.share_url) console.log(`分享：${t.share_url}`);
@@ -284,62 +280,6 @@ function cmdSearch(a, loaded) {
   return 0;
 }
 
-function emitBadge(payload, a) {
-  if (a.flags.md || a.flags.markdown) {
-    console.log(badgeMarkdown(payload));
-    return payload.ready ? 0 : 1;
-  }
-  const svg = badgeSvg(payload);
-  if (a.flags.out) {
-    const dest = path.resolve(a.flags.out);
-    fs.writeFileSync(dest, svg);
-    console.error(`已写入 ${dest}`);
-    return payload.ready ? 0 : 1;
-  }
-  process.stdout.write(svg);
-  return payload.ready ? 0 : 1;
-}
-
-function cmdScore(a, loaded) {
-  const wantAll = a.flags.all || a._[1] === "--all" || (a.flags.badge && !a._[1]);
-  if (wantAll) {
-    const rows = scoreAll(loaded.templates);
-    if (a.flags.badge) return emitBadge(catalogScore(rows), a);
-    if (a.flags.json) {
-      console.log(JSON.stringify(rows, null, 2));
-      return 0;
-    }
-    printTable(
-      rows.map((s) => [s.id, s.autonomy, `${s.earned}/${s.max}`, s.grade, s.ready ? "就绪" : ""]),
-      ["ID", "等级", "评分", "级别", ""]
-    );
-    const avg = Math.round(rows.reduce((n, s) => n + s.earned, 0) / (rows.length || 1));
-    console.log(`\n${rows.length} 个模板。平均 ${avg}/100`);
-    return rows.every((s) => s.ready) ? 0 : 1;
-  }
-  const id = a._[1];
-  if (!id) {
-    console.error("用法：grokbot score <id> | grokbot score --all | grokbot score --badge");
-    return 1;
-  }
-  const t = findTemplate(loaded, id);
-  if (!t) {
-    console.error(`未找到：${id}`);
-    return 1;
-  }
-  const s = scoreTemplate(t);
-  if (a.flags.badge) return emitBadge(s, a);
-  if (a.flags.json) {
-    console.log(JSON.stringify(s, null, 2));
-    return 0;
-  }
-  console.log(`${t.name}  ${s.earned}/${s.max}  ${s.grade}  ${s.ready ? "就绪" : "不就绪"}`);
-  for (const c of s.checks) {
-    console.log(`  ${c.ok ? "✓" : "✗"} ${String(c.earned).padStart(2)}/${c.points}  ${c.id} — ${c.detail}`);
-  }
-  return s.ready ? 0 : 1;
-}
-
 function cmdValidate(a, loaded) {
   const result = validateLoaded(loaded);
   if (a.flags.json) {
@@ -362,8 +302,6 @@ function cmdValidate(a, loaded) {
 
 function cmdDoctor(a, loaded) {
   const result = validateLoaded(loaded);
-  const scores = scoreAll(loaded.templates);
-  const weak = scores.filter((s) => !s.ready);
   const start = path.join(loaded.dirs.root, "START.md");
   const startOk = fs.existsSync(start);
   const header = path.join(loaded.dirs.root, "assets", "header.jpg");
@@ -371,18 +309,13 @@ function cmdDoctor(a, loaded) {
   console.log(`  目录       ${result.errors.length ? "失败" : "通过"}  (${result.counts.templates} 个模板)`);
   console.log(`  start.md   ${startOk ? "通过" : "缺失"}`);
   console.log(`  头图       ${fs.existsSync(header) ? "通过" : "缺失"}`);
-  console.log(`  bot就绪    ${weak.length ? `${weak.length} 个低于 80 分` : "通过"}`);
   console.log(`  分享安全   ${loaded.templates.every((t) => t.share_safe) ? "通过" : "失败"}`);
-  if (weak.length) {
-    console.log("\n低于 80 分：");
-    for (const s of weak) console.log(`  ${s.id} ${s.earned}/${s.max}`);
-  }
   if (result.errors.length) {
     console.log("\n错误：");
     for (const e of result.errors.slice(0, 20)) console.log(`  ${e.msg}  (${e.file})`);
   }
-  const fail = result.errors.length > 0 || !startOk || weak.length > 0;
-  console.log(fail ? "\n失败" : "\n通过 —— 目录已 Bot 就绪");
+  const fail = result.errors.length > 0 || !startOk;
+  console.log(fail ? "\n失败" : "\n通过 —— 目录校验全部通过");
   return fail ? 1 : 0;
 }
 
@@ -424,7 +357,7 @@ function cmdNew(a) {
     status: "draft",
     featured: false,
     official_use_case: false,
-    job: "用一句话描述一个可重复的产出，让陌生人也能评分。在提交 PR 前替换此存根 —— 必须至少六十个字符的操作性语言。",
+    job: "用一句话描述一个可重复的产出，让陌生人也能看懂。在提交 PR 前替换此存根 —— 必须至少六十个字符的操作性语言。",
     tagline: "替换为不少于十二个字符的简介。",
     why: "说明这个 Bot 旨在预防的失败场景。",
     soul: "可选的身份段落。写 Bot 如何思考，而非人格装扮。",
@@ -466,7 +399,7 @@ function cmdNew(a) {
   };
   fs.writeFileSync(path.join(dest, "template.yaml"), stringifyYaml(stub));
   console.log(`已写入存根：${dest}/template.yaml`);
-  console.log("填写所有字段，然后：grokbot validate && grokbot score " + slug);
+  console.log("填写所有字段，然后：grokbot validate && grokbot doctor");
   return 0;
 }
 
@@ -487,7 +420,6 @@ function cmdCatalog(loaded) {
       path: t._rel,
       profile_url: profileUrl(t),
       share_url: t.share_url || null,
-      score: scoreTemplate(t).earned,
     })),
     teams: loaded.teams.map((t) => ({ id: t.id, name: t.name, bots: t.bots })),
   };
@@ -518,8 +450,6 @@ function main(argv) {
       return cmdTeams(a, loaded);
     case "search":
       return cmdSearch(a, loaded);
-    case "score":
-      return cmdScore(a, loaded);
     case "validate":
       return cmdValidate(a, loaded);
     case "doctor":
@@ -531,8 +461,7 @@ function main(argv) {
     case "catalog":
       return cmdCatalog(loaded);
     case "render": {
-      const scores = new Map(scoreAll(loaded.templates).map((s) => [s.id, s]));
-      for (const t of loaded.templates) writeTemplateDocs(t, scores.get(t.id));
+      for (const t of loaded.templates) writeTemplateDocs(t);
       for (const s of loaded.skills) writeSkillDocs(s);
       for (const r of loaded.routines) writeRoutineDocs(r);
       console.log(

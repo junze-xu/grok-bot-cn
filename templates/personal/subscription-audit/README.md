@@ -2,7 +2,7 @@
 
 > 上次使用证据，然后列清单 —— 你来点击取消。
 
-**personal** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**personal** · 自主性 **L1**
 
 负责从邮件里发现订阅，整理保留或取消清单，附带上次扣费金额与上次使用证据，以及尚未发送的取消草稿。第一周绝不退订任何服务。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init subscription-audit --print
-npx --yes github:junze-xu/grok-bot-cn score subscription-audit
 ```

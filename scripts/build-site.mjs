@@ -3,7 +3,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadAll } from "../lib/load.mjs";
-import { scoreTemplate } from "../lib/score.mjs";
 import { PAGES, GH, START_URL, profileUrl, treeUrl, teamUrl } from "../lib/urls.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -117,7 +116,7 @@ function searchBlob(t) {
     .toLowerCase();
 }
 
-function cardHtml(t, s, opts = {}) {
+function cardHtml(t, opts = {}) {
   const raw = profileUrl(t);
   const share = shareFor(t);
   const add = share ? `<a class="add" href="${esc(share)}">添加到 Grok</a>` : "";
@@ -139,7 +138,6 @@ function cardHtml(t, s, opts = {}) {
     <span class="cat">${esc(t.category)}</span>
     <span class="lvl">${esc(t.autonomy)}</span>
     ${featured}
-    <span class="score" title="Bot 就绪评分">${s.earned}</span>
   </div>
   <h3>${esc(t.name)}</h3>
   <p>${esc(t.tagline)}</p>
@@ -176,16 +174,13 @@ function cardHtml(t, s, opts = {}) {
 }
 
 const byId = Object.fromEntries(loaded.templates.map((t) => [t.id, t]));
-const scores = Object.fromEntries(
-  loaded.templates.map((t) => [t.id, scoreTemplate(t)])
-);
 
 const featuredCards = START_HERE.filter((id) => byId[id])
-  .map((id) => cardHtml(byId[id], scores[id]))
+  .map((id) => cardHtml(byId[id]))
   .join("\n");
 
 const cards = loaded.templates
-  .map((t) => cardHtml(t, scores[t.id], { id: `bot-${t.id}` }))
+  .map((t) => cardHtml(t, { id: `bot-${t.id}` }))
   .join("\n");
 
 const plugins = [
@@ -210,7 +205,7 @@ const teamCards = loaded.teams
     )}" data-q="${esc(q)}">
   <div class="row"><span class="cat">${esc(cat)}</span><span class="lvl">${esc(
       t.autonomy || "L1"
-    )}</span><span class="score">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span></div>
+    )}</span><span class="bots-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>${esc(t.name)}</h3>
   <p>${esc(flat(t.why))}</p>
   <p class="bots">${esc(botNames)}</p>
@@ -497,12 +492,12 @@ const CSS = `
     .card[data-cat="finance"] { --cat: var(--c-finance); }
     .card[data-cat="creator"] { --cat: var(--c-creator); }
     .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--mute); flex-wrap: wrap; }
-    .cat, .lvl, .feat, .score, .pill {
+    .cat, .lvl, .feat, .pill, .bots-count {
       border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px;
     }
     .cat { color: var(--cat); border-color: color-mix(in srgb, var(--cat) 45%, var(--line)); }
     .feat { color: #07080f; background: var(--ok); border-color: transparent; font-weight: 700; }
-    .score { margin-left: auto; color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, var(--line)); }
+    .bots-count { margin-left: auto; }
     h3 { margin: 0 0 6px; font-size: 1.08rem; letter-spacing: -0.02em; }
     .card p { margin: 0; color: var(--mute); font-size: 0.92rem; flex: 1; }
     .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -757,18 +752,18 @@ const html = `<!DOCTYPE html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grok Bot 模板库</title>
-  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。${loaded.templates.length} 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
+  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。${loaded.templates.length} 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
   <link rel="canonical" href="${PAGES}/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Grok Bot 模板库" />
-  <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
+  <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
   <meta property="og:url" content="${PAGES}/" />
   <meta property="og:image" content="${PAGES}/header.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Grok Bot 模板库" />
   <meta name="twitter:description" content="粘贴 START.md。点击一个团队。或复制一个 PROFILE。停留在 L1。" />
   <meta name="twitter:image" content="${PAGES}/header.jpg" />
-  <link rel="icon" href="badge.svg" type="image/svg+xml" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2307080f'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='%235ce1e6'%3EG%3C/text%3E%3C/svg%3E" />
   <style>${CSS}
   </style>
 </head>
@@ -792,13 +787,12 @@ const html = `<!DOCTYPE html>
   </header>
   <div class="wrap">
     <h1 data-i18n="hero.title">粘贴一个链接。获得一个可用的 Bot。</h1>
-    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v${esc(pkg.version)}</span></p>
+    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v${esc(pkg.version)}</span></p>
     <ul class="stats">
       <li><strong>${loaded.templates.length}</strong> <span data-i18n="stats.templates">个模板</span></li>
       <li><strong>${loaded.teams.length}</strong> <span data-i18n="stats.teams">个团队</span></li>
       <li><strong>${loaded.skills.length}</strong> <span data-i18n="stats.skills">个技能</span></li>
       <li><strong>${loaded.routines.length}</strong> <span data-i18n="stats.routines">个例行程序</span></li>
-      <li><strong>100/100</strong> <span data-i18n="stats.ready">Bot 就绪</span></li>
     </ul>
 
     <div class="doors">
@@ -823,8 +817,7 @@ const html = `<!DOCTYPE html>
           <summary data-i18n="door1.cli_summary">更习惯用 CLI？</summary>
           <pre>npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
-npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
+npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
           <p data-i18n="door1.npm_note">限定包 <code>@junze-xu/grokbot</code> 将在下次 npm 发布。GitHub npx 今天就可使用。</p>
         </details>
       </section>
@@ -886,7 +879,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <div class="grid" id="teams">${teamCards}</div>
     <footer>
       <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_contract">Bot 契约</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
-      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="badge.svg" data-i18n="footer.bot_badge">Bot 就绪徽章</a> · <a href="profiles.json">profiles.json</a></p>
+      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a></p>
     </footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -914,7 +907,7 @@ const agentHtml = `<!DOCTYPE html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bot 契约 · grok-bot-cn</title>
-  <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的评分模板。" />
+  <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的模板。" />
   <link rel="canonical" href="${PAGES}/agent.html" />
   <style>
     :root { --bg:#07080f; --ink:#f6f7fb; --mute:#9aa3b8; --line:#2a3150; --card:#12162a; --accent:#5ce1e6; }
@@ -935,14 +928,14 @@ const agentHtml = `<!DOCTYPE html>
   <div class="wrap">
     <p class="mute"><a href="./">← 返回目录</a></p>
     <h1>让你的 Grok Bot 使用这个目录</h1>
-    <p>将下面的契约粘贴到一个 Bot 中。它将列出评分模板，获取 PROFILE.md，不会凭空编造提示词。</p>
+    <p>将下面的契约粘贴到一个 Bot 中。它将列出模板，获取 PROFILE.md，不会凭空编造提示词。</p>
     <div class="copyrow">
       <button type="button" id="copy">复制契约</button>
       <a href="${START_URL}">START.md（安装器）</a>
     </div>
     <pre id="contract">${esc(`# grok-bot-cn — Bot 契约 v1
 
-你是一个 Grok Bot。grok-bot-cn 是一个评分契约目录
+你是一个 Grok Bot。grok-bot-cn 是一个契约目录
 用于 Grok Bot（任务、永不做、L1 默认、CI）。公开，无需认证。
 
 首先阅读：${PAGES}/api/v1/status.json
@@ -954,8 +947,8 @@ const agentHtml = `<!DOCTYPE html>
 1. 从 profile_url 获取 PROFILE.md。不要编造提示词。
 2. 第一周自主性是 L1：仅起草。不发送、不发布、不支付、不合并、不改动生产。
 3. 绝不代表所有者安装第三方 x.ai/bot 分享 URL。显示链接即可。
-4. 最多报告 5 个模板：名称、简介、评分、profile_url、share_url（如有）。
-5. 按精选排序，然后按评分。当所有者指定类别时，留在他请求的类别中。
+4. 最多报告 5 个模板：名称、简介、profile_url、share_url（如有）。
+5. 按精选排序。当所有者指定类别时，留在他请求的类别中。
 6. 共享计算机不是安全边界。如果他要求"隔离" Bot，要说明这一点。
 
 要组建团队：遵循 START.md。从获取的 PROFILE.md 文件创建 2–4 个 Bot。

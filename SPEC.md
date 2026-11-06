@@ -99,26 +99,9 @@ Grok Bot 可以使用浏览器、连接器、文件和共享云计算机。共�
 
 主导 Bot 列在 `bots` 中。群组启动使用 `@Name` 提及并命名共享产出。交接在群组中可见；不要将额外的 Bot 作为安全边界。所有 Bot 共享一台计算机。
 
-## Bot 就绪评分
+## 校验
 
-`grokbot score` 满分为 100 分：
-
-| 检查项 | 分值 |
-|--------|------|
-| 任务（非概括性描述） | 10 |
-| 命名数据源 | 10 |
-| 审批永不做列表 | 15 |
-| 可审查的交付物 | 10 |
-| 首个任务 | 10 |
-| 命名技能 | 10 |
-| 无数据策略 | 5 |
-| 自主性已声明 | 5 |
-| 首个运行示例 | 5 |
-| 例行程序纪律 | 5 |
-| 分享安全 | 10 |
-| 工作风格 | 5 |
-
-**就绪**指 ≥80 且声明了自主性等级。目录 CI 会在任何稳定模板不就绪时失败。
+每个模板必须通过 JSON Schema 校验（`schema/template.schema.json`）：字段齐全、长度下限、永不清单至少三条、技能引用存在。分享安全检查不得包含密钥形状或内部 URL，且 `share_safe` 必须为 `true`。目录 CI 会在任何模板校验失败时失败。
 
 ## 描述 vs 消息
 
@@ -153,7 +136,6 @@ Grok Bot 可以使用浏览器、连接器、文件和共享云计算机。共�
 ```bash
 npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer
 npx --yes github:junze-xu/grok-bot-cn validate
 npx --yes github:junze-xu/grok-bot-cn doctor
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots

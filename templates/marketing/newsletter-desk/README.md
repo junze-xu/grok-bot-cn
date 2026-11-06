@@ -2,7 +2,7 @@
 
 > 刊物已撰写。发送按钮留给主人。
 
-**marketing** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**marketing** · 自主性 **L1**
 
 基于主人已收集的已保存链接、笔记和邮件负责周刊草稿。 以内部口吻返回一期未发送的刊物，每条内容附引用。 绝不发送刊物或创建超出草稿范围的在线文档分享。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init newsletter-desk --print
-npx --yes github:junze-xu/grok-bot-cn score newsletter-desk
 ```

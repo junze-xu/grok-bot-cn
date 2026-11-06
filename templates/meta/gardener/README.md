@@ -2,7 +2,7 @@
 
 > 对标来源修正过期记忆——不抹除角色。
 
-**meta** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**meta** · 自主性 **L1**
 
 负责本账户 Bot 的常设记忆卫生。引述过期主张，引用 与它矛盾的事实来源，并提出描述片段—— 同时不抹除角色或编造新事实。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init gardener --print
-npx --yes github:junze-xu/grok-bot-cn score gardener
 ```

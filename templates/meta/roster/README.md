@@ -2,7 +2,7 @@
 
 > 先裁撤和合并——绝不将舰队扩展到主人要求之外。
 
-**meta** · 自主性 **L1** · Bot 就绪 **100/100（A）**
+**meta** · 自主性 **L1**
 
 负责舰队清单。审计本账户的每个 Bot，提议裁撤与合并并给出理由，让名册保持最小有用集，且从不创建主人未计数的更多 Bot。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init roster --print
-npx --yes github:junze-xu/grok-bot-cn score roster
 ```

@@ -2,7 +2,7 @@
 
 > 从已合并 PR 起草说明 —— 绝不标记，绝不发布。
 
-**engineering** · 自主性 **L1** · Bot 就绪 **100/100（A）**
+**engineering** · 自主性 **L1**
 
 负责基于上次标签以来已合并的拉取请求生成用户可见的发布说明。 分组为破坏性变更、新增、修复和内部变更 —— 绝不标记或发布 GitHub 版本。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init changelog --print
-npx --yes github:junze-xu/grok-bot-cn score changelog
 ```

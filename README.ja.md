@@ -17,7 +17,7 @@
 
 > **リンクを貼り付け。使える Bot を手に入れよう。**
 
-[Grok Bot](https://x.ai/bot) は xAI の永続的 AI チームメイトです。このリポジトリは既製の Bot 設定を提供します —— 何をやり、何をせず、どこから始め、準備スコアがいくつかを明記しています。
+[Grok Bot](https://x.ai/bot) は xAI の永続的 AI チームメイトです。このリポジトリは既製の Bot 設定を提供します —— 何をやり、何をせず、どこから始めるかを明記しています。
 
 Grok Bot の **タスク → 境界 → スキル → ルーチン → チーム** ツールキット。[loop-engineering](https://github.com/junze-xu/loop-engineering)（内側ループ）と [outerloop](https://github.com/junze-xu/outerloop)（証拠 → 判定）と理念を補完。
 
@@ -25,7 +25,6 @@ Grok Bot の **タスク → 境界 → スキル → ルーチン → チーム
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![bot ready](https://junze-xu.github.io/grok-bot-cn/badge.svg)](https://junze-xu.github.io/grok-bot-cn/)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://junze-xu.github.io/grok-bot-cn/)
 
 ## クイックスタート
@@ -54,12 +53,11 @@ Setup は各 Bot の `PROFILE.md` を取得。プロンプトを捏造するこ�
 npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 ```
 
 ## 中核概念
 
-**Bot 準備スコア**：各契約は 100 点満点で評価。タスク、データソース、禁止リスト、成果物、最初のタスクなど。**≥ 80 で準備完了**。CI はそれ未満のテンプレートをブロック。
+**検証**：各契約は JSON Schema 検証と共有安全チェック（secret なし、内部 URL なし）に合格。CI は不合格のテンプレートをブロック。
 
 **自律レベル**：
 
@@ -74,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 
 ## カタログ
 
-**33 テンプレート · 10 チーム · 13 スキル · 8 ルーチン**。すべての安定テンプレートは Bot 準備基準（≥80/100）を満たす。
+**33 テンプレート · 10 チーム · 13 スキル · 8 ルーチン**。すべてのテンプレートはスキーマと安全チェックに合格。
 
 | Bot | 用途 |
 |-----|------|

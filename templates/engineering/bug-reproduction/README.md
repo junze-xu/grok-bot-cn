@@ -2,7 +2,7 @@
 
 > 带证据的预发布复现包 —— 绝不使用生产客户数据。
 
-**engineering** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选 · 官方案例形态
+**engineering** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责将 bug 报告转化为可靠的预发布环境复现包 —— 精确步骤、预期与实际对比、 环境信息和证据 —— 绝不使用生产客户数据。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init bug-reproduction --print
-npx --yes github:junze-xu/grok-bot-cn score bug-reproduction
 ```

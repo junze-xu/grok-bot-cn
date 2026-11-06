@@ -17,7 +17,7 @@
 
 > **Paste a link. Get a working Bot.**
 
-[Grok Bot](https://x.ai/bot) is xAI's persistent AI teammate. This repo provides ready-made Bot configs, each spelling out what it does, what it never does, where to start, and its Bot-Ready score.
+[Grok Bot](https://x.ai/bot) is xAI's persistent AI teammate. This repo provides ready-made Bot configs, each spelling out what it does, what it never does, and where to start.
 
 This is the Grok Bot **task → boundary → skill → routine → team** toolkit, conceptually complementary to [loop-engineering](https://github.com/junze-xu/loop-engineering) (inner loop) and [outerloop](https://github.com/junze-xu/outerloop) (evidence → verdict).
 
@@ -25,7 +25,6 @@ This is the Grok Bot **task → boundary → skill → routine → team** toolki
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![bot ready](https://junze-xu.github.io/grok-bot-cn/badge.svg)](https://junze-xu.github.io/grok-bot-cn/)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://junze-xu.github.io/grok-bot-cn/)
 
 ## Quick Start
@@ -54,12 +53,11 @@ Pick a card in the [Pages catalog](https://junze-xu.github.io/grok-bot-cn/), cli
 npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 ```
 
 ## Core Concepts
 
-**Bot-Ready score**: every contract is scored out of 100 across job, data sources, never-do list, deliverable, first task, and more. **≥ 80 means ready.** CI blocks templates below that threshold.
+**Validation**: every contract passes JSON Schema validation and share-safety checks (no secrets, no internal URLs). CI blocks any template that fails.
 
 **Autonomy levels**:
 
@@ -74,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 
 ## Catalog
 
-**33 templates · 10 teams · 13 skills · 8 routines.** All stable templates meet the Bot-Ready standard (≥80/100).
+**33 templates · 10 teams · 13 skills · 8 routines.** Every template passes schema and safety checks.
 
 | Bot | Purpose |
 |-----|---------|

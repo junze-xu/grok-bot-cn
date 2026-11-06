@@ -21,7 +21,7 @@
 ```bash
 npx --yes github:junze-xu/grok-bot-cn new my-job --category ops
 # 编辑 template.yaml 直到：
-npx --yes github:junze-xu/grok-bot-cn score my-job   # >= 80
+npx --yes github:junze-xu/grok-bot-cn validate
 npm run ci
 ```
 

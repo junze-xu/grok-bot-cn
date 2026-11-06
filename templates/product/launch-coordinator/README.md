@@ -2,7 +2,7 @@
 
 > 每个角色一位负责人。人类发出发版裁决。
 
-**product** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**product** · 自主性 **L1**
 
 作为组长协调指定日期的发布：指派研究员、作者和审核员，逐条跟踪阻碍项，在去/不去决策包处止步，绝不代为发布，也不催促任何人。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init launch-coordinator --print
-npx --yes github:junze-xu/grok-bot-cn score launch-coordinator
 ```

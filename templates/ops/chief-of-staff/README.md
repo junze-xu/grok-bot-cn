@@ -2,7 +2,7 @@
 
 > 仅映射到优先列表的事项 —— 附带决策标记。
 
-**ops** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选 · 官方案例形态
+**ops** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责基于来源链接汇总本周变更与待办事项，生成摘要，仅映射到主人指定的优先事项。一个正门，替代人人汇报的状态会议税——会前无会，只有清单。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init chief-of-staff --print
-npx --yes github:junze-xu/grok-bot-cn score chief-of-staff
 ```

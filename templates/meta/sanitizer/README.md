@@ -2,7 +2,7 @@
 
 > 先脱敏——分享链接不得携带机密或客户。
 
-**meta** · 自主性 **L1** · Bot 就绪 **100/100（A）**
+**meta** · 自主性 **L1**
 
 负责 Bot 公开前的分享安全审查。从描述、技能 和例行程序中剥离机密、客户数据和内部 URL， 让分享链接复制的是契约而非事故。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init sanitizer --print
-npx --yes github:junze-xu/grok-bot-cn score sanitizer
 ```

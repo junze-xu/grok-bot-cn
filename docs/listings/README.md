@@ -4,7 +4,7 @@
 
 ## 一句话简介
 
-> 可评分的 Grok Bot 操作契约（任务、永不清单、默认 L1、CI）。粘贴 START.md，点击一个团队。
+> 经校验的 Grok Bot 操作契约（任务、永不清单、默认 L1、CI）。粘贴 START.md，点击一个团队。
 
 ## RongleCat/awesome-grok-bot
 
@@ -12,15 +12,15 @@
 
 English:
 
-- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - Scored operating contracts for Grok Bot (job, never-list, L1 default, CI). Paste START.md, tap a team.
+- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - Validated operating contracts for Grok Bot (job, never-list, L1 default, CI). Paste START.md, tap a team.
 
 Chinese:
 
-- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - 可打分的 Grok Bot 操作契约（岗位、永不清单、默认 L1、CI）。把 START.md 贴进 Setup，点一个团队。
+- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - 经校验的 Grok Bot 操作契约（岗位、永不清单、默认 L1、CI）。把 START.md 贴进 Setup，点一个团队。
 
 Japanese:
 
-- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - Grok Bot の採点付き運用契約（職務、never リスト、既定 L1、CI）。START.md を貼り、チームをタップする。
+- [junze-xu/grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) - Grok Bot の検証済み運用契約（職務、never リスト、既定 L1、CI）。START.md を貼り、チームをタップする。
 
 编辑那个仓库的 `data/catalog.json`，然后运行 `python3 scripts/generate_readme.py`。
 
@@ -28,7 +28,7 @@ Japanese:
 
 在 **Grok Bot skills** 或 **Grok Bot guides** 下：
 
-- [grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) by [junze-xu](https://github.com/junze-xu) — 可评分的操作契约（任务、永不清单、默认 L1、CI）。粘贴 START.md，点击一个团队。**[beta]**
+- [grok-bot-cn](https://github.com/junze-xu/grok-bot-cn) by [junze-xu](https://github.com/junze-xu) — 经校验的操作契约（任务、永不清单、默认 L1、CI）。粘贴 START.md，点击一个团队。**[beta]**
 
 ## grokbot.dev
 

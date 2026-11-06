@@ -2,7 +2,7 @@
 
 > 听起来不像序列工具的大量触达——而且不发送。
 
-**sales** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选 · 官方案例形态
+**sales** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责指定客户列表的客户研究、联系人优先级排序，以及审稿就绪的触达草稿。停在审稿列表，绝不发送，也绝不加入任何序列——发送永远由人按下。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init sales-outbound --print
-npx --yes github:junze-xu/grok-bot-cn score sales-outbound
 ```

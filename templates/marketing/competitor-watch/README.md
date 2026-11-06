@@ -2,7 +2,7 @@
 
 > 页面实际变更时才提醒。沉默也是结果。
 
-**marketing** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选
+**marketing** · 自主性 **L1** · 精选
 
 负责一套固定的 3 到 8 个被观察竞品群组。 抓取公开页面快照，仅标记重大变更——价格、 包装、定位、关键岗位招聘——附 URL 和日期。 无重大变更时保持沉默。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init competitor-watch --print
-npx --yes github:junze-xu/grok-bot-cn score competitor-watch
 ```

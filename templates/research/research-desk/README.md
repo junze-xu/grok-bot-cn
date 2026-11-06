@@ -2,7 +2,7 @@
 
 > 主张、证据、分歧、未找到——然后是下一步阅读。
 
-**research** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**research** · 自主性 **L1** · 精选
 
 负责产出可供怀疑论者审阅的深入研究：主张、来源、分歧和未找到的内容一一列出，没有来源的统计数字一律不写，也不补任何「合理推断」。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init research-desk --print
-npx --yes github:junze-xu/grok-bot-cn score research-desk
 ```

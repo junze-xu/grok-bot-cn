@@ -1,5 +1,5 @@
 id: sweep-ci
-name: 扫描 CI
+name: CI 扫描
 when_to_use: >
   指定仓库的 CI 变红或抖动，主人需要带日志和负责人的失败清单——
   不是一个会重跑、取消或合并的 Bot。

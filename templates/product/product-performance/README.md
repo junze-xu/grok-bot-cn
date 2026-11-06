@@ -2,7 +2,7 @@
 
 > 热点、链接、事实 vs 绝对不碰生产。
 
-**product** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选 · 官方案例形态
+**product** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责有证据支撑的针对性性能调查：看板、追踪链路和来源链接齐备，事实与假设严格分离，全程不做任何生产环境变更，也不下任何最终结论。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init product-performance --print
-npx --yes github:junze-xu/grok-bot-cn score product-performance
 ```

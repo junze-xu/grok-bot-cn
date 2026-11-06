@@ -2,7 +2,7 @@
 
 > 分桶和草稿 —— 绝不发送，绝不删除，绝不退订。
 
-**personal** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选
+**personal** · 自主性 **L1** · 精选
 
 负责分桶的收件箱工作清单，附带未发送的回复草稿， 让所有者在不发送、不删除、不常驻 Gmail 的情况下达到收件箱清零。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init inbox-triage --print
-npx --yes github:junze-xu/grok-bot-cn score inbox-triage
 ```

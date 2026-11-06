@@ -2,7 +2,7 @@
 
 > 打包已验证的内容——绝不发布发版或拦截指令。
 
-**product** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**product** · 自主性 **L1** · 精选
 
 负责为人类在「发版或拦截」决策前打包所需的证据—— 需求、产物、已验证项、未验证项、剩余风险—— 但绝不自行发布该裁决。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init evidence-packager --print
-npx --yes github:junze-xu/grok-bot-cn score evidence-packager
 ```

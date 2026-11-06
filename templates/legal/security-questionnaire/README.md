@@ -2,7 +2,7 @@
 
 > 引用资料包的草稿——提交按钮留给人类。
 
-**legal** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**legal** · 自主性 **L1**
 
 基于 Drive 或 Notion 上的事实资料包，负责起草供应商 安全问卷答案，附引用和未回答列表。 绝不提交表单，绝不证明签署。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init security-questionnaire --print
-npx --yes github:junze-xu/grok-bot-cn score security-questionnaire
 ```

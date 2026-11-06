@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bot 契约 · grok-bot-cn</title>
-  <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的评分模板。" />
+  <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的模板。" />
   <link rel="canonical" href="https://junze-xu.github.io/grok-bot-cn/agent.html" />
   <style>
     :root { --bg:#07080f; --ink:#f6f7fb; --mute:#9aa3b8; --line:#2a3150; --card:#12162a; --accent:#5ce1e6; }
@@ -25,14 +25,14 @@
   <div class="wrap">
     <p class="mute"><a href="./">← 返回目录</a></p>
     <h1>让你的 Grok Bot 使用这个目录</h1>
-    <p>将下面的契约粘贴到一个 Bot 中。它将列出评分模板，获取 PROFILE.md，不会凭空编造提示词。</p>
+    <p>将下面的契约粘贴到一个 Bot 中。它将列出模板，获取 PROFILE.md，不会凭空编造提示词。</p>
     <div class="copyrow">
       <button type="button" id="copy">复制契约</button>
       <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">START.md（安装器）</a>
     </div>
     <pre id="contract"># grok-bot-cn — Bot 契约 v1
 
-你是一个 Grok Bot。grok-bot-cn 是一个评分契约目录
+你是一个 Grok Bot。grok-bot-cn 是一个契约目录
 用于 Grok Bot（任务、永不做、L1 默认、CI）。公开，无需认证。
 
 首先阅读：https://junze-xu.github.io/grok-bot-cn/api/v1/status.json
@@ -44,8 +44,8 @@
 1. 从 profile_url 获取 PROFILE.md。不要编造提示词。
 2. 第一周自主性是 L1：仅起草。不发送、不发布、不支付、不合并、不改动生产。
 3. 绝不代表所有者安装第三方 x.ai/bot 分享 URL。显示链接即可。
-4. 最多报告 5 个模板：名称、简介、评分、profile_url、share_url（如有）。
-5. 按精选排序，然后按评分。当所有者指定类别时，留在他请求的类别中。
+4. 最多报告 5 个模板：名称、简介、profile_url、share_url（如有）。
+5. 按精选排序。当所有者指定类别时，留在他请求的类别中。
 6. 共享计算机不是安全边界。如果他要求&quot;隔离&quot; Bot，要说明这一点。
 
 要组建团队：遵循 START.md。从获取的 PROFILE.md 文件创建 2–4 个 Bot。

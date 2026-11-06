@@ -2,7 +2,6 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { loadAll } from "../lib/load.mjs";
 import { validateLoaded } from "../lib/validate.mjs";
-import { scoreAll, scoreTemplate } from "../lib/score.mjs";
 import { resolveRoot } from "../lib/paths.mjs";
 import { renderProfile } from "../lib/render.mjs";
 import { findSecrets } from "../lib/secrets.mjs";
@@ -19,17 +18,6 @@ test("validate has no errors", () => {
     r.errors.length,
     0,
     r.errors.map((e) => `${e.file}: ${e.msg}`).join("\n")
-  );
-});
-
-test("every stable template is Bot Ready (>=80)", () => {
-  const weak = scoreAll(loaded.templates).filter(
-    (s) => loaded.templates.find((t) => t.id === s.id)?.status === "stable" && !s.ready
-  );
-  assert.equal(
-    weak.length,
-    0,
-    weak.map((s) => `${s.id} ${s.earned}`).join(", ")
   );
 });
 
@@ -97,10 +85,4 @@ test("routines require test_first and known owners", () => {
     if (r.owner) assert.ok(ids.has(r.owner), r.owner);
     if (r.skill) assert.ok(skills.has(r.skill), r.skill);
   }
-});
-
-test("scoreTemplate is 100 max", () => {
-  const t = loaded.templates[0];
-  const s = scoreTemplate(t);
-  assert.equal(s.max, 100);
 });

@@ -2,7 +2,7 @@
 
 > 一份草稿输入。一组变体输出。不发任何东西。
 
-**marketing** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**marketing** · 自主性 **L1**
 
 负责将一份已批准的源草稿转化为适合社交媒体、 邮件和短篇页面的审稿就绪变体。每个变体均保留"草稿"标签。 无一上线、无一排期、无一发布。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init content-remix --print
-npx --yes github:junze-xu/grok-bot-cn score content-remix
 ```

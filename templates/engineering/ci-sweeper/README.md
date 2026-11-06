@@ -2,7 +2,7 @@
 
 > 报告故障和不稳定测试 —— 绝不合并，绝不以重试隐藏。
 
-**engineering** · 自主性 **L1** · Bot 就绪 **100/100（A）**
+**engineering** · 自主性 **L1**
 
 负责指定仓库的 CI 失败和不稳定测试的报告。将新故障与不稳定测试分开， 按爆炸半径排序，绝不通过循环重来掩盖不稳定测试。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init ci-sweeper --print
-npx --yes github:junze-xu/grok-bot-cn score ci-sweeper
 ```

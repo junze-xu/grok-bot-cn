@@ -2,7 +2,7 @@
 
 > 对得上的总额——引用已签政策的例外。
 
-**ops** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选 · 官方案例形态
+**ops** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责每周费用核对：将收据与来源总额匹配， 为每处例外引用政策条款，并为每个所有者留下一条 未发送的跟进。绝不更改报销金额。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init expense-manager --print
-npx --yes github:junze-xu/grok-bot-cn score expense-manager
 ```

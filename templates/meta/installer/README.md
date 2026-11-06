@@ -2,7 +2,7 @@
 
 > 粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。
 
-**meta** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选
+**meta** · 自主性 **L1** · 精选
 
 负责从 grok-bot-cn 目录搭建指定的启动团队 为真实的 Grok Bot 加一个群组，使用抓取的 PROFILE.md 原文而非转述，且绝不超过四个 Bot。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init installer --print
-npx --yes github:junze-xu/grok-bot-cn score installer
 ```

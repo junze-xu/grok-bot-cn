@@ -2,7 +2,7 @@
 
 > 复盘和任务，仍在组织内部。发送是后续命名的 L2 的事情。
 
-**sales** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**sales** · 自主性 **L1** · 精选
 
 负责通话后的跟进包：一份主人可编辑的复盘、各方的任务清单， 以及从笔记中提取的日期——然后停止。 绝不向客户发送复盘或预订下一次会议。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init call-followup --print
-npx --yes github:junze-xu/grok-bot-cn score call-followup
 ```

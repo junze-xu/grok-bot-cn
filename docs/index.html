@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grok Bot 模板库</title>
-  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。33 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
+  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。33 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
   <link rel="canonical" href="https://junze-xu.github.io/grok-bot-cn/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Grok Bot 模板库" />
-  <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
+  <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
   <meta property="og:url" content="https://junze-xu.github.io/grok-bot-cn/" />
   <meta property="og:image" content="https://junze-xu.github.io/grok-bot-cn/header.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Grok Bot 模板库" />
   <meta name="twitter:description" content="粘贴 START.md。点击一个团队。或复制一个 PROFILE。停留在 L1。" />
   <meta name="twitter:image" content="https://junze-xu.github.io/grok-bot-cn/header.jpg" />
-  <link rel="icon" href="badge.svg" type="image/svg+xml" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2307080f'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='%235ce1e6'%3EG%3C/text%3E%3C/svg%3E" />
   <style>
     :root {
       --bg: #07080f;
@@ -284,12 +284,12 @@
     .card[data-cat="finance"] { --cat: var(--c-finance); }
     .card[data-cat="creator"] { --cat: var(--c-creator); }
     .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--mute); flex-wrap: wrap; }
-    .cat, .lvl, .feat, .score, .pill {
+    .cat, .lvl, .feat, .pill, .bots-count {
       border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px;
     }
     .cat { color: var(--cat); border-color: color-mix(in srgb, var(--cat) 45%, var(--line)); }
     .feat { color: #07080f; background: var(--ok); border-color: transparent; font-weight: 700; }
-    .score { margin-left: auto; color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, var(--line)); }
+    .bots-count { margin-left: auto; }
     h3 { margin: 0 0 6px; font-size: 1.08rem; letter-spacing: -0.02em; }
     .card p { margin: 0; color: var(--mute); font-size: 0.92rem; flex: 1; }
     .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -360,13 +360,12 @@
   </header>
   <div class="wrap">
     <h1 data-i18n="hero.title">粘贴一个链接。获得一个可用的 Bot。</h1>
-    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v1.1.0</span></p>
+    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v1.1.0</span></p>
     <ul class="stats">
       <li><strong>33</strong> <span data-i18n="stats.templates">个模板</span></li>
       <li><strong>10</strong> <span data-i18n="stats.teams">个团队</span></li>
       <li><strong>13</strong> <span data-i18n="stats.skills">个技能</span></li>
       <li><strong>8</strong> <span data-i18n="stats.routines">个例行程序</span></li>
-      <li><strong>100/100</strong> <span data-i18n="stats.ready">Bot 就绪</span></li>
     </ul>
 
     <div class="doors">
@@ -389,8 +388,7 @@
           <summary data-i18n="door1.cli_summary">更习惯用 CLI？</summary>
           <pre>npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
-npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
+npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
           <p data-i18n="door1.npm_note">限定包 <code>@junze-xu/grokbot</code> 将在下次 npm 发布。GitHub npx 今天就可使用。</p>
         </details>
       </section>
@@ -431,7 +429,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>PR 审查</h3>
   <p>审查从可怕的 diff 开始，而非标题。</p>
@@ -465,7 +462,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">personal</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>收件箱分类</h3>
   <p>分桶和草稿 —— 绝不发送，绝不删除，绝不退订。</p>
@@ -499,7 +495,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>执行助理</h3>
   <p>仅映射到优先列表的事项 —— 附带决策标记。</p>
@@ -533,7 +528,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">research</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>研究助手</h3>
   <p>主张、证据、分歧、未找到——然后是下一步阅读。</p>
@@ -567,7 +561,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">sales</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>外部拓展</h3>
   <p>听起来不像序列工具的大量触达——而且不发送。</p>
@@ -601,7 +594,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>Bug 复现</h3>
   <p>带证据的预发布复现包 —— 绝不使用生产客户数据。</p>
@@ -635,7 +627,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">marketing</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>竞品观察</h3>
   <p>页面实际变更时才提醒。沉默也是结果。</p>
@@ -669,7 +660,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">meta</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>安装器</h3>
   <p>粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。</p>
@@ -742,7 +732,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>Bug 复现</h3>
   <p>带证据的预发布复现包 —— 绝不使用生产客户数据。</p>
@@ -776,7 +765,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>变更日志</h3>
   <p>从已合并 PR 起草说明 —— 绝不标记，绝不发布。</p>
@@ -810,7 +798,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>CI 扫描</h3>
   <p>报告故障和不稳定测试 —— 绝不合并，绝不以重试隐藏。</p>
@@ -844,7 +831,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>PR 审查</h3>
   <p>审查从可怕的 diff 开始，而非标题。</p>
@@ -878,7 +864,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">engineering</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>查询助手</h3>
   <p>从 Schema 起草 SQL —— 绝不在实时数据库上运行写入。</p>
@@ -912,7 +897,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">legal</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>安全问卷</h3>
   <p>引用资料包的草稿——提交按钮留给人类。</p>
@@ -946,7 +930,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">marketing</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>竞品观察</h3>
   <p>页面实际变更时才提醒。沉默也是结果。</p>
@@ -980,7 +963,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">marketing</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>内容改写</h3>
   <p>一份草稿输入。一组变体输出。不发任何东西。</p>
@@ -1014,7 +996,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">marketing</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>邮件简报</h3>
   <p>刊物已撰写。发送按钮留给主人。</p>
@@ -1048,7 +1029,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">marketing</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>付费媒体</h3>
   <p>数据和一份 Slack 草稿。预算不会自己动。</p>
@@ -1082,7 +1062,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">meta</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>记忆维护</h3>
   <p>对标来源修正过期记忆——不抹除角色。</p>
@@ -1116,7 +1095,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">meta</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>安装器</h3>
   <p>粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。</p>
@@ -1150,7 +1128,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">meta</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>Bot 管理</h3>
   <p>先裁撤和合并——绝不将舰队扩展到主人要求之外。</p>
@@ -1184,7 +1161,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">meta</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>分享脱敏</h3>
   <p>先脱敏——分享链接不得携带机密或客户。</p>
@@ -1218,7 +1194,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>执行助理</h3>
   <p>仅映射到优先列表的事项 —— 附带决策标记。</p>
@@ -1252,7 +1227,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>费用管理</h3>
   <p>对得上的总额——引用已签政策的例外。</p>
@@ -1286,7 +1260,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>故障追踪</h3>
   <p>一条怀疑论者可审阅的时间线——不是生产控制台。</p>
@@ -1320,7 +1293,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>入职引导</h3>
   <p>管理者可编辑的第一周计划——邀请保留草稿。</p>
@@ -1354,7 +1326,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">ops</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>供应商收件箱</h3>
   <p>供应商工作列表，而非催收机器人。</p>
@@ -1388,7 +1359,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">personal</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>日程管理</h3>
   <p>起草拒绝。绝不自己移动会议。</p>
@@ -1422,7 +1392,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">personal</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>收件箱分类</h3>
   <p>分桶和草稿 —— 绝不发送，绝不删除，绝不退订。</p>
@@ -1456,7 +1425,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">personal</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>订阅审计</h3>
   <p>上次使用证据，然后列清单 —— 你来点击取消。</p>
@@ -1490,7 +1458,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">personal</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>差旅审核</h3>
   <p>检查行程合理性。绝不预订。绝不支付。</p>
@@ -1524,7 +1491,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">product</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>证据汇总</h3>
   <p>打包已验证的内容——绝不发布发版或拦截指令。</p>
@@ -1558,7 +1524,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">product</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>发布管理</h3>
   <p>每个角色一位负责人。人类发出发版裁决。</p>
@@ -1592,7 +1557,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">product</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>产品性能</h3>
   <p>热点、链接、事实 vs 绝对不碰生产。</p>
@@ -1626,7 +1590,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">research</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>研究助手</h3>
   <p>主张、证据、分歧、未找到——然后是下一步阅读。</p>
@@ -1660,7 +1623,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">research</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>来源核查</h3>
   <p>找到那个承重主张——从未有过来源的。</p>
@@ -1694,7 +1656,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">sales</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>通话跟进</h3>
   <p>复盘和任务，仍在组织内部。发送是后续命名的 L2 的事情。</p>
@@ -1728,7 +1689,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">sales</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>外部拓展</h3>
   <p>听起来不像序列工具的大量触达——而且不发送。</p>
@@ -1762,7 +1722,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">sales</span>
     <span class="lvl">L1</span>
     
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>成交分析</h3>
   <p>有证据的模式。不是「他们只是还没准备好」。</p>
@@ -1796,7 +1755,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">support</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">100</span>
   </div>
   <h3>客户健康</h3>
   <p>证据排名的观察列表——不发客户邮件，不改 CRM。</p>
@@ -1830,7 +1788,6 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <span class="cat">support</span>
     <span class="lvl">L1</span>
     <span class="feat" data-i18n="card.featured">精选</span>
-    <span class="score" title="Bot 就绪评分">90</span>
   </div>
   <h3>客服回复</h3>
   <p>带政策引用的草稿回复——发送按钮仍属主人。</p>
@@ -1859,7 +1816,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     <h2 id="teams" data-i18n="teams.title">团队</h2>
     <p class="lede" data-i18n="teams.lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
     <div class="grid" id="teams"><article class="card team" id="team-eng" data-cat="engineering" data-q="eng 工程团队 预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。 bug 复现 · pr 审查 github slack bug-reproduction pr-reviewer">
-  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>工程团队</h3>
   <p>预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。</p>
   <p class="bots">Bug 复现 · PR 审查</p>
@@ -1873,7 +1830,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
 </article>
 <article class="card team" id="team-loop" data-cat="engineering" data-q="loop 发布循环 在有人合并、打标签或写下发布理由之前，内环编码 agent 仍需要外环的证据与结论把关。
  ci 扫描 · pr 审查 · 变更日志 · 证据汇总 github ci-sweeper pr-reviewer changelog evidence-packager">
-  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="score">4 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="bots-count">4 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>发布循环</h3>
   <p>在有人合并、打标签或写下发布理由之前，内环编码 Agent 仍需要外环的证据与结论把关。</p>
   <p class="bots">CI 扫描 · PR 审查 · 变更日志 · 证据汇总</p>
@@ -1887,7 +1844,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
 </article>
 <article class="card team" id="team-marketing" data-cat="marketing" data-q="marketing 市场团队 竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。
  竞品观察 · 内容改写 · 邮件简报 slack notion competitor-watch content-remix newsletter-desk">
-  <div class="row"><span class="cat">marketing</span><span class="lvl">L1</span><span class="score">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">marketing</span><span class="lvl">L1</span><span class="bots-count">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>市场团队</h3>
   <p>竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。</p>
   <p class="bots">竞品观察 · 内容改写 · 邮件简报</p>
@@ -1900,7 +1857,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
   </div>
 </article>
 <article class="card team" id="team-meta" data-cat="meta" data-q="meta 基础团队 搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 setup 大倾倒。 安装器 · bot 管理 installer roster">
-  <div class="row"><span class="cat">meta</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">meta</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>基础团队</h3>
   <p>搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 Setup 大倾倒。</p>
   <p class="bots">安装器 · Bot 管理</p>
@@ -1914,7 +1871,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
 </article>
 <article class="card team" id="team-ops" data-cat="ops" data-q="ops 运营团队 一周的实情藏在 slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。
  执行助理 · 费用管理 · 供应商收件箱 slack gmail google calendar google drive chief-of-staff expense-manager vendor-inbox">
-  <div class="row"><span class="cat">ops</span><span class="lvl">L1</span><span class="score">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">ops</span><span class="lvl">L1</span><span class="bots-count">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>运营团队</h3>
   <p>一周的实情藏在 Slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。</p>
   <p class="bots">执行助理 · 费用管理 · 供应商收件箱</p>
@@ -1928,7 +1885,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
 </article>
 <article class="card team" id="team-personal" data-cat="personal" data-q="personal 个人团队 当邮件、会议和闲置订阅挤在同一个 bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。
  收件箱分类 · 日程管理 · 订阅审计 gmail google calendar slack inbox-triage calendar-defender subscription-audit">
-  <div class="row"><span class="cat">personal</span><span class="lvl">L1</span><span class="score">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">personal</span><span class="lvl">L1</span><span class="bots-count">3 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>个人团队</h3>
   <p>当邮件、会议和闲置订阅挤在同一个 Bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。</p>
   <p class="bots">收件箱分类 · 日程管理 · 订阅审计</p>
@@ -1941,7 +1898,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
   </div>
 </article>
 <article class="card team" id="team-product" data-cat="product" data-q="product 产品团队 延迟、产品证据和发布日互相撞击，除非一个 bot 管性能数据、一个管发布清单。 产品性能 · 发布管理 github slack notion product-performance launch-coordinator">
-  <div class="row"><span class="cat">product</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">product</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>产品团队</h3>
   <p>延迟、产品证据和发布日互相撞击，除非一个 Bot 管性能数据、一个管发布清单。</p>
   <p class="bots">产品性能 · 发布管理</p>
@@ -1954,7 +1911,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
   </div>
 </article>
 <article class="card team" id="team-research" data-cat="research" data-q="research 研究团队 深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。 研究助手 · 来源核查 research-desk source-interrogator">
-  <div class="row"><span class="cat">research</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">research</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>研究团队</h3>
   <p>深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。</p>
   <p class="bots">研究助手 · 来源核查</p>
@@ -1967,7 +1924,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
   </div>
 </article>
 <article class="card team" id="team-sales" data-cat="sales" data-q="sales 销售团队 如果复盘没在发出前写下来，外拓再多量也只是噪音。 外部拓展 · 通话跟进 gmail linkedin google calendar sales-outbound call-followup">
-  <div class="row"><span class="cat">sales</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">sales</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>销售团队</h3>
   <p>如果复盘没在发出前写下来，外拓再多量也只是噪音。</p>
   <p class="bots">外部拓展 · 通话跟进</p>
@@ -1980,7 +1937,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
   </div>
 </article>
 <article class="card team" id="team-success" data-cat="support" data-q="success 客户成功 当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。 客户健康 · 客服回复 slack gmail account-health support-replies">
-  <div class="row"><span class="cat">support</span><span class="lvl">L1</span><span class="score">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
+  <div class="row"><span class="cat">support</span><span class="lvl">L1</span><span class="bots-count">2 <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>客户成功</h3>
   <p>当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。</p>
   <p class="bots">客户健康 · 客服回复</p>
@@ -1994,12 +1951,12 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
 </article></div>
     <footer>
       <p>MIT · <a href="https://github.com/junze-xu/grok-bot-cn" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_contract">Bot 契约</a> · <a href="https://github.com/junze-xu/grok-bot-cn/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
-      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="badge.svg" data-i18n="footer.bot_badge">Bot 就绪徽章</a> · <a href="profiles.json">profiles.json</a></p>
+      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a></p>
     </footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script>
-    const I18N = {"zh":{"lang.name":"中文","title":"Grok Bot 模板库","nav.install":"获取团队","nav.start":"从这里开始","nav.catalog":"目录","nav.teams":"团队","nav.github":"GitHub","skip":"跳转到目录","hero.title":"粘贴一个链接。获得一个可用的 Bot。","hero.lede":"告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。","stats.templates":"个模板","stats.teams":"个团队","stats.skills":"个技能","stats.routines":"个例行程序","stats.ready":"Bot 就绪","door1.kicker":"路径 1 · 整个团队 · 无需 Node","door1.title":"60 秒获取团队","door1.step1":"在 Grok Bot 中：新建 → 创建新智能体。命名为 Setup。","door1.step2":"粘贴这个 URL 并发送","door1.step3":"点击一个团队。试试 Eng（Bug 复现 + PR 审查）。","door1.step4":"连接所需的插件。第一周停留在 L1 — 只起草，不发送。","door1.hint":"Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。","door1.cli_summary":"更习惯用 CLI？","door1.npm_note":"限定包 @junze-xu/grokbot 将在下次 npm 发布。GitHub npx 今天就可使用。","door2.kicker":"路径 2 · 单个 Bot","door2.title":"复制一个 PROFILE","door2.step1":"选一张卡片。彩色条是类别；药丸标签是你必须连接的插件。","door2.step2":"点击「复制 PROFILE」。在 Grok Bot 中：新建 → 创建新智能体，用卡片名称命名。","door2.step3":"Bot 操作 → 编辑个人资料。粘贴。连接卡片上的插件。","door2.step4":"展开「如何安装此 Bot」并发送首个任务。停留在 L1。","door2.hint":"「复制链接」是原始 PROFILE.md 链接 — 如果你已有 Setup，可粘贴到那里。","jobs.title":"我想……","jobs.lede":"跳转到目录中的任务。然后复制 PROFILE。","start.title":"从这里开始","start.lede":"八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。","start.copy":"复制 START.md","catalog.search_placeholder":"搜索任务、插件、简介……（按 / 聚焦）","catalog.all":"全部","catalog.any_plugin":"任意插件","catalog.title":"目录","catalog.lede":"每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。","catalog.empty":"没有匹配的模板。清空搜索，选择「全部」，或试试 GitHub / Gmail。","catalog.showing":"显示","teams.title":"团队","teams.lede":"2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。","card.bots_count":"个 Bot","card.copy_profile":"复制 PROFILE","card.copy_link":"复制链接","card.raw":"原始文件","card.contract":"契约","card.how":"如何安装此 Bot","card.copy_first_task":"复制首个任务","card.never":"永不","card.no_plugins":"无需额外插件 — 浏览器即可","card.browser":"浏览器","card.featured":"精选","card.add":"添加到 Grok","card.install_step1":"在 Grok Bot 中：新建 → 创建新智能体。命名为","card.install_step2":"Bot 操作 → 编辑个人资料。粘贴 PROFILE（上方按钮可复制）。","card.install_step3":"连接插件","card.install_step4":"停留在 L1。发送首个任务","team.copy_name":"复制团队名称","team.copy_start":"复制 START.md","team.hint":"将 START.md 粘贴到 Setup，然后点击","footer.disclaimer":"与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。","footer.api":"机器 API：","footer.bot_contract":"Bot 契约","footer.bot_badge":"Bot 就绪徽章","toast.profile_copied":"PROFILE 已复制 — 粘贴到 Bot 操作 → 编辑个人资料","toast.copied":"已复制","toast.copied_to_clipboard":"已复制到剪贴板","toast.copied_link":"已复制链接 — 粘贴到 Setup 或打开原始文件","toast.copy_failed":"复制失败"},"en":{"lang.name":"English","title":"Grok Bot Templates","nav.install":"Get a Team","nav.start":"Start Here","nav.catalog":"Catalog","nav.teams":"Teams","nav.github":"GitHub","skip":"Skip to catalog","hero.title":"Paste a link. Get a working Bot.","hero.lede":"No more guesswork. Every card is an L1 operating contract — job, never-do, first task, Bot-Ready score. Copy a PROFILE into Edit Profile, or paste a URL into Setup and pick a team.","stats.templates":" templates","stats.teams":" teams","stats.skills":" skills","stats.routines":" routines","stats.ready":"Bot Ready","door1.kicker":"Path 1 · Full team · No Node needed","door1.title":"Get a Team in 60 Seconds","door1.step1":"In Grok Bot: New → Create new agent. Name it Setup.","door1.step2":"Paste this URL and send it","door1.step3":"Pick a team. Try Eng (Bug Reproduction + PR Review).","door1.step4":"Connect the plugins it asks for. Stay on L1 for week one — draft only, never send.","door1.hint":"Setup fetches each Bot's PROFILE.md. It never invents prompts.","door1.cli_summary":"Prefer the CLI?","door1.npm_note":"The scoped package @junze-xu/grokbot arrives with the next npm release. GitHub npx works today.","door2.kicker":"Path 2 · Single Bot","door2.title":"Copy a PROFILE","door2.step1":"Pick a card. The color bar is the category; the pills are the plugins you must connect.","door2.step2":"Click \"Copy PROFILE\". In Grok Bot: New → Create new agent, name it after the card.","door2.step3":"Bot actions → Edit profile. Paste. Connect the plugins shown on the card.","door2.step4":"Expand \"How to install this Bot\" and send the first task. Stay on L1.","door2.hint":"\"Copy link\" is the raw PROFILE.md URL — paste it into Setup if you already have one.","jobs.title":"I want to…","jobs.lede":"Jump to a task in the catalog. Then copy a PROFILE.","start.title":"Start Here","start.lede":"Eight starter templates that actually run in week one. Same copy buttons as the full catalog.","start.copy":"Copy START.md","catalog.search_placeholder":"Search tasks, plugins, profiles… (press / to focus)","catalog.all":"All","catalog.any_plugin":"Any plugin","catalog.title":"Catalog","catalog.lede":"Each card copies the PROFILE body for Edit Profile, or the raw link for Setup. Expand a card to see the first task and never-do list.","catalog.empty":"No matching templates. Clear the search, select \"All\", or try GitHub / Gmail.","catalog.showing":"Showing","teams.title":"Teams","teams.lede":"2–4 Bots, one group, visible handoffs. Copy the team name, paste START.md into Setup, click the name.","card.bots_count":" Bots","card.copy_profile":"Copy PROFILE","card.copy_link":"Copy link","card.raw":"Raw","card.contract":"Contract","card.how":"How to install this Bot","card.copy_first_task":"Copy first task","card.never":"Never","card.no_plugins":"No extra plugins — browser works","card.browser":"Browser","card.featured":"Featured","card.add":"Add to Grok","card.install_step1":"In Grok Bot: New → Create new agent. Name it","card.install_step2":"Bot actions → Edit profile. Paste the PROFILE (use the button above to copy).","card.install_step3":"Connect plugins","card.install_step4":"Stay on L1. Send the first task","team.copy_name":"Copy team name","team.copy_start":"Copy START.md","team.hint":"Paste START.md into Setup, then click","footer.disclaimer":"Not affiliated with xAI. Grok Bot is a product of xAI / Cursor. Templates are operating contracts you paste into your own account.","footer.api":"Machine API:","footer.bot_contract":"Bot Contract","footer.bot_badge":"Bot-Ready badge","toast.profile_copied":"PROFILE copied — paste into Bot actions → Edit profile","toast.copied":"Copied","toast.copied_to_clipboard":"Copied to clipboard","toast.copied_link":"Link copied — paste into Setup or open the raw file","toast.copy_failed":"Copy failed"},"ja":{"lang.name":"日本語","title":"Grok Bot テンプレート集","nav.install":"チームを取得","nav.start":"ここから始める","nav.catalog":"カタログ","nav.teams":"チーム","nav.github":"GitHub","skip":"カタログへスキップ","hero.title":"リンクを貼り付け。使える Bot を手に入れよう。","hero.lede":"もう勘任せは終わり。カードひとつひとつが L1 運用契約 — 仕事、禁止事項、最初のタスク、Bot 準備スコア。PROFILE を「プロフィール編集」にコピーするか、URL を Setup に貼ってチームを選択。","stats.templates":" テンプレート","stats.teams":" チーム","stats.skills":" スキル","stats.routines":" ルーチン","stats.ready":"Bot 準備完了","door1.kicker":"経路 1 · チーム全体 · Node 不要","door1.title":"60 秒でチームを取得","door1.step1":"Grok Bot で：新規 → エージェントを作成。Setup と名付け。","door1.step2":"この URL を貼り付けて送信","door1.step3":"チームを選択。Eng（バグ再現 + PR レビュー）から試す。","door1.step4":"求められるプラグインを接続。最初の 1 週間は L1 — 下書きのみ、送信なし。","door1.hint":"Setup は各 Bot の PROFILE.md を取得。プロンプトを捏造することはありません。","door1.cli_summary":"CLI がお好みですか？","door1.npm_note":"スコープパッケージ @junze-xu/grokbot は次回の npm リリース時に利用可能。GitHub npx は今日から使えます。","door2.kicker":"経路 2 · 単一 Bot","door2.title":"PROFILE をコピー","door2.step1":"カードを選ぶ。色バーはカテゴリ、ピルは接続必須のプラグイン。","door2.step2":"「PROFILE をコピー」をクリック。Grok Bot で：新規 → エージェントを作成し、カード名を付ける。","door2.step3":"Bot 操作 → プロフィール編集。貼り付け。カードのプラグインを接続。","door2.step4":"「この Bot のインストール方法」を展開し、最初のタスクを送信。L1 に留まる。","door2.hint":"「リンクをコピー」は生の PROFILE.md URL — Setup をお持ちならそこに貼れます。","jobs.title":"やりたいことは…","jobs.lede":"カタログ内のタスクへジャンプ。その後 PROFILE をコピー。","start.title":"ここから始める","start.lede":"最初の 1 週間で実際に動く 8 つの開始テンプレート。全カタログと同じコピーボタン。","start.copy":"START.md をコピー","catalog.search_placeholder":"タスク・プラグイン・プロフィールを検索…（/ でフォーカス）","catalog.all":"すべて","catalog.any_plugin":"任意のプラグイン","catalog.title":"カタログ","catalog.lede":"各カードは PROFILE 本文をプロフィール編集用に、生リンクを Setup 用にコピー。卡片を展開すると最初のタスクと禁止事項を表示。","catalog.empty":"一致するテンプレートなし。検索をクリア、「すべて」を選択、GitHub / Gmail を試してください。","catalog.showing":"表示中","teams.title":"チーム","teams.lede":"2–4 個の Bot、1 つのグループ、見える引き継ぎ。チーム名をコピーし、START.md を Setup に貼って名前をクリック。","card.bots_count":" Bot","card.copy_profile":"PROFILE をコピー","card.copy_link":"リンクをコピー","card.raw":"生ファイル","card.contract":"契約","card.how":"この Bot のインストール方法","card.copy_first_task":"最初のタスクをコピー","card.never":"禁止事項","card.no_plugins":"追加プラグイン不要 — ブラウザで可","card.browser":"ブラウザ","card.featured":"注目","card.add":"Grok に追加","card.install_step1":"Grok Bot で：新規 → エージェントを作成。名前を","card.install_step2":"Bot 操作 → プロフィール編集。PROFILE を貼り付け（上のボタンでコピー可）。","card.install_step3":"プラグインを接続","card.install_step4":"L1 に留まる。最初のタスクを送信","team.copy_name":"チーム名をコピー","team.copy_start":"START.md をコピー","team.hint":"START.md を Setup に貼り付け、クリック","footer.disclaimer":"xAI とは無関係。Grok Bot は xAI / Cursor の製品。テンプレートはあなたのアカウントに貼る運用契約です。","footer.api":"マシン API：","footer.bot_contract":"Bot 契約","footer.bot_badge":"Bot 準備バッジ","toast.profile_copied":"PROFILE をコピー — Bot 操作 → プロフィール編集に貼り付け","toast.copied":"コピーしました","toast.copied_to_clipboard":"クリップボードにコピー","toast.copied_link":"リンクをコピー — Setup に貼るか生ファイルを開く","toast.copy_failed":"コピーに失敗"},"ko":{"lang.name":"한국어","title":"Grok Bot 템플릿","nav.install":"팀 가져오기","nav.start":"여기서 시작","nav.catalog":"카탈로그","nav.teams":"팀","nav.github":"GitHub","skip":"카탈로그로 건너뛰기","hero.title":"링크를 붙여넣으세요. 실행 가능한 Bot을 얻으세요.","hero.lede":"더 이상 추측하지 마세요. 모든 카드는 L1 운영 계약입니다 — 업무, 하지 않을 것, 첫 작업, Bot 준비 점수. PROFILE을 프로필 편집에 복사하거나, URL을 Setup에 붙여넣고 팀을 선택하세요.","stats.templates":"개 템플릿","stats.teams":"개 팀","stats.skills":"개 스킬","stats.routines":"개 루틴","stats.ready":"Bot 준비 완료","door1.kicker":"경로 1 · 전체 팀 · Node 불필요","door1.title":"60초 만에 팀 가져오기","door1.step1":"Grok Bot에서: 새로 만들기 → 새 에이전트 만들기. Setup으로 이름 지정.","door1.step2":"이 URL을 붙여넣고 보내기","door1.step3":"팀 선택. Eng(버그 재현 + PR 리뷰)부터 시도해 보세요.","door1.step4":"요청한 플러그인 연결. 첫 주에는 L1 유지 — 초안만, 전송 안 함.","door1.hint":"Setup은 각 Bot의 PROFILE.md를 가져옵니다. 프롬프트를 만들어내지 않습니다.","door1.cli_summary":"CLI를 선호하시나요?","door1.npm_note":"범위 패키지 @junze-xu/grokbot은 다음 npm 릴리스에서 제공됩니다. GitHub npx는 오늘부터 사용 가능합니다.","door2.kicker":"경로 2 · 단일 Bot","door2.title":"PROFILE 복사","door2.step1":"카드 선택. 색 막대는 카테고리, 필은 연결해야 하는 플러그인.","door2.step2":"\"PROFILE 복사\" 클릭. Grok Bot에서: 새로 만들기 → 새 에이전트 만들기, 카드 이름으로 지정.","door2.step3":"Bot 작업 → 프로필 편집. 붙여넣기. 카드의 플러그인 연결.","door2.step4":"\"이 Bot 설치 방법\" 펼치고 첫 작업 보내기. L1 유지.","door2.hint":"\"링크 복사\"는 원시 PROFILE.md URL — Setup이 있다면 거기에 붙여넣으세요.","jobs.title":"무엇을 하고 싶나요…","jobs.lede":"카탈로그의 작업으로 이동. 그런 다음 PROFILE 복사.","start.title":"여기서 시작","start.lede":"첫 주에 실제로 작동하는 8개의 시작 템플릿. 전체 카탈로그와 동일한 복사 버튼.","start.copy":"START.md 복사","catalog.search_placeholder":"작업, 플러그인, 프로필 검색…(/ 키로 포커스)","catalog.all":"전체","catalog.any_plugin":"모든 플러그인","catalog.title":"카탈로그","catalog.lede":"각 카드는 PROFILE 본문을 프로필 편집용으로, 원시 링크를 Setup용으로 복사. 카드를 펼치면 첫 작업과 하지 않을 목록 표시.","catalog.empty":"일치하는 템플릿 없음. 검색 지우기, \"전체\" 선택, 또는 GitHub / Gmail 시도.","catalog.showing":"표시 중","teams.title":"팀","teams.lede":"2–4개 Bot, 하나의 그룹, 가시적 핸드오프. 팀 이름 복사, START.md를 Setup에 붙여넣고 이름 클릭.","card.bots_count":"개 Bot","card.copy_profile":"PROFILE 복사","card.copy_link":"링크 복사","card.raw":"원시 파일","card.contract":"계약","card.how":"이 Bot 설치 방법","card.copy_first_task":"첫 작업 복사","card.never":"하지 않을 것","card.no_plugins":"추가 플러그인 불필요 — 브라우저로 가능","card.browser":"브라우저","card.featured":"추천","card.add":"Grok에 추가","card.install_step1":"Grok Bot에서: 새로 만들기 → 새 에이전트 만들기. 이름을","card.install_step2":"Bot 작업 → 프로필 편집. PROFILE 붙여넣기 (위 버튼으로 복사 가능).","card.install_step3":"플러그인 연결","card.install_step4":"L1 유지. 첫 작업 보내기","team.copy_name":"팀 이름 복사","team.copy_start":"START.md 복사","team.hint":"START.md를 Setup에 붙여넣고 클릭","footer.disclaimer":"xAI와 제휴 관계 아님. Grok Bot은 xAI / Cursor의 제품. 템플릿은 당신의 계정에 붙여넣는 운영 계약입니다.","footer.api":"머신 API:","footer.bot_contract":"Bot 계약","footer.bot_badge":"Bot 준비 배지","toast.profile_copied":"PROFILE 복사됨 — Bot 작업 → 프로필 편집에 붙여넣기","toast.copied":"복사됨","toast.copied_to_clipboard":"클립보드에 복사됨","toast.copied_link":"링크 복사됨 — Setup에 붙여넣거나 원시 파일 열기","toast.copy_failed":"복사 실패"}};
+    const I18N = {"zh":{"lang.name":"中文","title":"Grok Bot 模板库","nav.install":"获取团队","nav.start":"从这里开始","nav.catalog":"目录","nav.teams":"团队","nav.github":"GitHub","skip":"跳转到目录","hero.title":"粘贴一个链接。获得一个可用的 Bot。","hero.lede":"告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。","stats.templates":"个模板","stats.teams":"个团队","stats.skills":"个技能","stats.routines":"个例行程序","door1.kicker":"路径 1 · 整个团队 · 无需 Node","door1.title":"60 秒获取团队","door1.step1":"在 Grok Bot 中：新建 → 创建新智能体。命名为 Setup。","door1.step2":"粘贴这个 URL 并发送","door1.step3":"点击一个团队。试试 Eng（Bug 复现 + PR 审查）。","door1.step4":"连接所需的插件。第一周停留在 L1 — 只起草，不发送。","door1.hint":"Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。","door1.cli_summary":"更习惯用 CLI？","door1.npm_note":"限定包 @junze-xu/grokbot 将在下次 npm 发布。GitHub npx 今天就可使用。","door2.kicker":"路径 2 · 单个 Bot","door2.title":"复制一个 PROFILE","door2.step1":"选一张卡片。彩色条是类别；药丸标签是你必须连接的插件。","door2.step2":"点击「复制 PROFILE」。在 Grok Bot 中：新建 → 创建新智能体，用卡片名称命名。","door2.step3":"Bot 操作 → 编辑个人资料。粘贴。连接卡片上的插件。","door2.step4":"展开「如何安装此 Bot」并发送首个任务。停留在 L1。","door2.hint":"「复制链接」是原始 PROFILE.md 链接 — 如果你已有 Setup，可粘贴到那里。","jobs.title":"我想……","jobs.lede":"跳转到目录中的任务。然后复制 PROFILE。","start.title":"从这里开始","start.lede":"八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。","start.copy":"复制 START.md","catalog.search_placeholder":"搜索任务、插件、简介……（按 / 聚焦）","catalog.all":"全部","catalog.any_plugin":"任意插件","catalog.title":"目录","catalog.lede":"每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。","catalog.empty":"没有匹配的模板。清空搜索，选择「全部」，或试试 GitHub / Gmail。","catalog.showing":"显示","teams.title":"团队","teams.lede":"2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。","card.bots_count":"个 Bot","card.copy_profile":"复制 PROFILE","card.copy_link":"复制链接","card.raw":"原始文件","card.contract":"契约","card.how":"如何安装此 Bot","card.copy_first_task":"复制首个任务","card.never":"永不","card.no_plugins":"无需额外插件 — 浏览器即可","card.browser":"浏览器","card.featured":"精选","card.add":"添加到 Grok","card.install_step1":"在 Grok Bot 中：新建 → 创建新智能体。命名为","card.install_step2":"Bot 操作 → 编辑个人资料。粘贴 PROFILE（上方按钮可复制）。","card.install_step3":"连接插件","card.install_step4":"停留在 L1。发送首个任务","team.copy_name":"复制团队名称","team.copy_start":"复制 START.md","team.hint":"将 START.md 粘贴到 Setup，然后点击","footer.disclaimer":"与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。","footer.api":"机器 API：","footer.bot_contract":"Bot 契约","toast.profile_copied":"PROFILE 已复制 — 粘贴到 Bot 操作 → 编辑个人资料","toast.copied":"已复制","toast.copied_to_clipboard":"已复制到剪贴板","toast.copied_link":"已复制链接 — 粘贴到 Setup 或打开原始文件","toast.copy_failed":"复制失败"},"en":{"lang.name":"English","title":"Grok Bot Templates","nav.install":"Get a Team","nav.start":"Start Here","nav.catalog":"Catalog","nav.teams":"Teams","nav.github":"GitHub","skip":"Skip to catalog","hero.title":"Paste a link. Get a working Bot.","hero.lede":"No more guesswork. Every card is an L1 operating contract — job, never-do, first task. Copy a PROFILE into Edit Profile, or paste a URL into Setup and pick a team.","stats.templates":" templates","stats.teams":" teams","stats.skills":" skills","stats.routines":" routines","door1.kicker":"Path 1 · Full team · No Node needed","door1.title":"Get a Team in 60 Seconds","door1.step1":"In Grok Bot: New → Create new agent. Name it Setup.","door1.step2":"Paste this URL and send it","door1.step3":"Pick a team. Try Eng (Bug Reproduction + PR Review).","door1.step4":"Connect the plugins it asks for. Stay on L1 for week one — draft only, never send.","door1.hint":"Setup fetches each Bot's PROFILE.md. It never invents prompts.","door1.cli_summary":"Prefer the CLI?","door1.npm_note":"The scoped package @junze-xu/grokbot arrives with the next npm release. GitHub npx works today.","door2.kicker":"Path 2 · Single Bot","door2.title":"Copy a PROFILE","door2.step1":"Pick a card. The color bar is the category; the pills are the plugins you must connect.","door2.step2":"Click \"Copy PROFILE\". In Grok Bot: New → Create new agent, name it after the card.","door2.step3":"Bot actions → Edit profile. Paste. Connect the plugins shown on the card.","door2.step4":"Expand \"How to install this Bot\" and send the first task. Stay on L1.","door2.hint":"\"Copy link\" is the raw PROFILE.md URL — paste it into Setup if you already have one.","jobs.title":"I want to…","jobs.lede":"Jump to a task in the catalog. Then copy a PROFILE.","start.title":"Start Here","start.lede":"Eight starter templates that actually run in week one. Same copy buttons as the full catalog.","start.copy":"Copy START.md","catalog.search_placeholder":"Search tasks, plugins, profiles… (press / to focus)","catalog.all":"All","catalog.any_plugin":"Any plugin","catalog.title":"Catalog","catalog.lede":"Each card copies the PROFILE body for Edit Profile, or the raw link for Setup. Expand a card to see the first task and never-do list.","catalog.empty":"No matching templates. Clear the search, select \"All\", or try GitHub / Gmail.","catalog.showing":"Showing","teams.title":"Teams","teams.lede":"2–4 Bots, one group, visible handoffs. Copy the team name, paste START.md into Setup, click the name.","card.bots_count":" Bots","card.copy_profile":"Copy PROFILE","card.copy_link":"Copy link","card.raw":"Raw","card.contract":"Contract","card.how":"How to install this Bot","card.copy_first_task":"Copy first task","card.never":"Never","card.no_plugins":"No extra plugins — browser works","card.browser":"Browser","card.featured":"Featured","card.add":"Add to Grok","card.install_step1":"In Grok Bot: New → Create new agent. Name it","card.install_step2":"Bot actions → Edit profile. Paste the PROFILE (use the button above to copy).","card.install_step3":"Connect plugins","card.install_step4":"Stay on L1. Send the first task","team.copy_name":"Copy team name","team.copy_start":"Copy START.md","team.hint":"Paste START.md into Setup, then click","footer.disclaimer":"Not affiliated with xAI. Grok Bot is a product of xAI / Cursor. Templates are operating contracts you paste into your own account.","footer.api":"Machine API:","footer.bot_contract":"Bot Contract","toast.profile_copied":"PROFILE copied — paste into Bot actions → Edit profile","toast.copied":"Copied","toast.copied_to_clipboard":"Copied to clipboard","toast.copied_link":"Link copied — paste into Setup or open the raw file","toast.copy_failed":"Copy failed"},"ja":{"lang.name":"日本語","title":"Grok Bot テンプレート集","nav.install":"チームを取得","nav.start":"ここから始める","nav.catalog":"カタログ","nav.teams":"チーム","nav.github":"GitHub","skip":"カタログへスキップ","hero.title":"リンクを貼り付け。使える Bot を手に入れよう。","hero.lede":"もう勘任せは終わり。カードひとつひとつが L1 運用契約 — 仕事、禁止事項、最初のタスク。PROFILE を「プロフィール編集」にコピーするか、URL を Setup に貼ってチームを選択。","stats.templates":" テンプレート","stats.teams":" チーム","stats.skills":" スキル","stats.routines":" ルーチン","door1.kicker":"経路 1 · チーム全体 · Node 不要","door1.title":"60 秒でチームを取得","door1.step1":"Grok Bot で：新規 → エージェントを作成。Setup と名付け。","door1.step2":"この URL を貼り付けて送信","door1.step3":"チームを選択。Eng（バグ再現 + PR レビュー）から試す。","door1.step4":"求められるプラグインを接続。最初の 1 週間は L1 — 下書きのみ、送信なし。","door1.hint":"Setup は各 Bot の PROFILE.md を取得。プロンプトを捏造することはありません。","door1.cli_summary":"CLI がお好みですか？","door1.npm_note":"スコープパッケージ @junze-xu/grokbot は次回の npm リリース時に利用可能。GitHub npx は今日から使えます。","door2.kicker":"経路 2 · 単一 Bot","door2.title":"PROFILE をコピー","door2.step1":"カードを選ぶ。色バーはカテゴリ、ピルは接続必須のプラグイン。","door2.step2":"「PROFILE をコピー」をクリック。Grok Bot で：新規 → エージェントを作成し、カード名を付ける。","door2.step3":"Bot 操作 → プロフィール編集。貼り付け。カードのプラグインを接続。","door2.step4":"「この Bot のインストール方法」を展開し、最初のタスクを送信。L1 に留まる。","door2.hint":"「リンクをコピー」は生の PROFILE.md URL — Setup をお持ちならそこに貼れます。","jobs.title":"やりたいことは…","jobs.lede":"カタログ内のタスクへジャンプ。その後 PROFILE をコピー。","start.title":"ここから始める","start.lede":"最初の 1 週間で実際に動く 8 つの開始テンプレート。全カタログと同じコピーボタン。","start.copy":"START.md をコピー","catalog.search_placeholder":"タスク・プラグイン・プロフィールを検索…（/ でフォーカス）","catalog.all":"すべて","catalog.any_plugin":"任意のプラグイン","catalog.title":"カタログ","catalog.lede":"各カードは PROFILE 本文をプロフィール編集用に、生リンクを Setup 用にコピー。卡片を展開すると最初のタスクと禁止事項を表示。","catalog.empty":"一致するテンプレートなし。検索をクリア、「すべて」を選択、GitHub / Gmail を試してください。","catalog.showing":"表示中","teams.title":"チーム","teams.lede":"2–4 個の Bot、1 つのグループ、見える引き継ぎ。チーム名をコピーし、START.md を Setup に貼って名前をクリック。","card.bots_count":" Bot","card.copy_profile":"PROFILE をコピー","card.copy_link":"リンクをコピー","card.raw":"生ファイル","card.contract":"契約","card.how":"この Bot のインストール方法","card.copy_first_task":"最初のタスクをコピー","card.never":"禁止事項","card.no_plugins":"追加プラグイン不要 — ブラウザで可","card.browser":"ブラウザ","card.featured":"注目","card.add":"Grok に追加","card.install_step1":"Grok Bot で：新規 → エージェントを作成。名前を","card.install_step2":"Bot 操作 → プロフィール編集。PROFILE を貼り付け（上のボタンでコピー可）。","card.install_step3":"プラグインを接続","card.install_step4":"L1 に留まる。最初のタスクを送信","team.copy_name":"チーム名をコピー","team.copy_start":"START.md をコピー","team.hint":"START.md を Setup に貼り付け、クリック","footer.disclaimer":"xAI とは無関係。Grok Bot は xAI / Cursor の製品。テンプレートはあなたのアカウントに貼る運用契約です。","footer.api":"マシン API：","footer.bot_contract":"Bot 契約","toast.profile_copied":"PROFILE をコピー — Bot 操作 → プロフィール編集に貼り付け","toast.copied":"コピーしました","toast.copied_to_clipboard":"クリップボードにコピー","toast.copied_link":"リンクをコピー — Setup に貼るか生ファイルを開く","toast.copy_failed":"コピーに失敗"},"ko":{"lang.name":"한국어","title":"Grok Bot 템플릿","nav.install":"팀 가져오기","nav.start":"여기서 시작","nav.catalog":"카탈로그","nav.teams":"팀","nav.github":"GitHub","skip":"카탈로그로 건너뛰기","hero.title":"링크를 붙여넣으세요. 실행 가능한 Bot을 얻으세요.","hero.lede":"더 이상 추측하지 마세요. 모든 카드는 L1 운영 계약입니다 — 업무, 하지 않을 것, 첫 작업. PROFILE을 프로필 편집에 복사하거나, URL을 Setup에 붙여넣고 팀을 선택하세요.","stats.templates":"개 템플릿","stats.teams":"개 팀","stats.skills":"개 스킬","stats.routines":"개 루틴","door1.kicker":"경로 1 · 전체 팀 · Node 불필요","door1.title":"60초 만에 팀 가져오기","door1.step1":"Grok Bot에서: 새로 만들기 → 새 에이전트 만들기. Setup으로 이름 지정.","door1.step2":"이 URL을 붙여넣고 보내기","door1.step3":"팀 선택. Eng(버그 재현 + PR 리뷰)부터 시도해 보세요.","door1.step4":"요청한 플러그인 연결. 첫 주에는 L1 유지 — 초안만, 전송 안 함.","door1.hint":"Setup은 각 Bot의 PROFILE.md를 가져옵니다. 프롬프트를 만들어내지 않습니다.","door1.cli_summary":"CLI를 선호하시나요?","door1.npm_note":"범위 패키지 @junze-xu/grokbot은 다음 npm 릴리스에서 제공됩니다. GitHub npx는 오늘부터 사용 가능합니다.","door2.kicker":"경로 2 · 단일 Bot","door2.title":"PROFILE 복사","door2.step1":"카드 선택. 색 막대는 카테고리, 필은 연결해야 하는 플러그인.","door2.step2":"\"PROFILE 복사\" 클릭. Grok Bot에서: 새로 만들기 → 새 에이전트 만들기, 카드 이름으로 지정.","door2.step3":"Bot 작업 → 프로필 편집. 붙여넣기. 카드의 플러그인 연결.","door2.step4":"\"이 Bot 설치 방법\" 펼치고 첫 작업 보내기. L1 유지.","door2.hint":"\"링크 복사\"는 원시 PROFILE.md URL — Setup이 있다면 거기에 붙여넣으세요.","jobs.title":"무엇을 하고 싶나요…","jobs.lede":"카탈로그의 작업으로 이동. 그런 다음 PROFILE 복사.","start.title":"여기서 시작","start.lede":"첫 주에 실제로 작동하는 8개의 시작 템플릿. 전체 카탈로그와 동일한 복사 버튼.","start.copy":"START.md 복사","catalog.search_placeholder":"작업, 플러그인, 프로필 검색…(/ 키로 포커스)","catalog.all":"전체","catalog.any_plugin":"모든 플러그인","catalog.title":"카탈로그","catalog.lede":"각 카드는 PROFILE 본문을 프로필 편집용으로, 원시 링크를 Setup용으로 복사. 카드를 펼치면 첫 작업과 하지 않을 목록 표시.","catalog.empty":"일치하는 템플릿 없음. 검색 지우기, \"전체\" 선택, 또는 GitHub / Gmail 시도.","catalog.showing":"표시 중","teams.title":"팀","teams.lede":"2–4개 Bot, 하나의 그룹, 가시적 핸드오프. 팀 이름 복사, START.md를 Setup에 붙여넣고 이름 클릭.","card.bots_count":"개 Bot","card.copy_profile":"PROFILE 복사","card.copy_link":"링크 복사","card.raw":"원시 파일","card.contract":"계약","card.how":"이 Bot 설치 방법","card.copy_first_task":"첫 작업 복사","card.never":"하지 않을 것","card.no_plugins":"추가 플러그인 불필요 — 브라우저로 가능","card.browser":"브라우저","card.featured":"추천","card.add":"Grok에 추가","card.install_step1":"Grok Bot에서: 새로 만들기 → 새 에이전트 만들기. 이름을","card.install_step2":"Bot 작업 → 프로필 편집. PROFILE 붙여넣기 (위 버튼으로 복사 가능).","card.install_step3":"플러그인 연결","card.install_step4":"L1 유지. 첫 작업 보내기","team.copy_name":"팀 이름 복사","team.copy_start":"START.md 복사","team.hint":"START.md를 Setup에 붙여넣고 클릭","footer.disclaimer":"xAI와 제휴 관계 아님. Grok Bot은 xAI / Cursor의 제품. 템플릿은 당신의 계정에 붙여넣는 운영 계약입니다.","footer.api":"머신 API:","footer.bot_contract":"Bot 계약","toast.profile_copied":"PROFILE 복사됨 — Bot 작업 → 프로필 편집에 붙여넣기","toast.copied":"복사됨","toast.copied_to_clipboard":"클립보드에 복사됨","toast.copied_link":"링크 복사됨 — Setup에 붙여넣거나 원시 파일 열기","toast.copy_failed":"복사 실패"}};
     const LANGS = ["zh","en","ja","ko"];
     let lang = localStorage.getItem("gbt-lang") || "zh";
 

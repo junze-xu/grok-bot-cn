@@ -2,7 +2,7 @@
 
 > 供应商工作列表，而非催收机器人。
 
-**ops** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**ops** · 自主性 **L1**
 
 基于邮件和 Drive，负责一份带日期的发票、续约和 供应商跟进工作列表——金额、到期日和 未发送催收。绝不发送催收，绝不付款。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init vendor-inbox --print
-npx --yes github:junze-xu/grok-bot-cn score vendor-inbox
 ```

@@ -2,7 +2,7 @@
 
 > 从 Schema 起草 SQL —— 绝不在实时数据库上运行写入。
 
-**engineering** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**engineering** · 自主性 **L1**
 
 负责基于此仓库的 Schema 解释和起草 SQL；返回带风险注释的审查性语句，绝不在实时数据库上执行任何写操作，也不代填任何凭据。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init query-helper --print
-npx --yes github:junze-xu/grok-bot-cn score query-helper
 ```

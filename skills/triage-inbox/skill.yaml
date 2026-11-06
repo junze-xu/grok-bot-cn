@@ -1,5 +1,5 @@
 id: triage-inbox
-name: 收件箱分诊
+name: 收件箱分类
 when_to_use: >
   收件箱需要一份排好序的工作清单和草稿回复，让主人不必住在 Gmail 里也能归零。
 inputs:

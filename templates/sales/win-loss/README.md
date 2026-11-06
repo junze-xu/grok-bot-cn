@@ -2,7 +2,7 @@
 
 > 有证据的模式。不是「他们只是还没准备好」。
 
-**sales** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**sales** · 自主性 **L1**
 
 基于 CRM 字段、通话笔记、Slack 和 Notion，负责成交/丢单备忘录。 提取一个怀疑论者可复用的模式——竞争对手、差距、 时机——而非感觉。绝不邮件联系丢单客户。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init win-loss --print
-npx --yes github:junze-xu/grok-bot-cn score win-loss
 ```

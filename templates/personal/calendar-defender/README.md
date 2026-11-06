@@ -2,7 +2,7 @@
 
 > 起草拒绝。绝不自己移动会议。
 
-**personal** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**personal** · 自主性 **L1**
 
 负责保护主人固定的深度工作时间块：先映射冲突、起草拒绝话术，在所有者亲自操作前，保持日历原样不动；未经许可，任何会议都不挪入这块时间。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init calendar-defender --print
-npx --yes github:junze-xu/grok-bot-cn score calendar-defender
 ```

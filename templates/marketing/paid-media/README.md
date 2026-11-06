@@ -2,7 +2,7 @@
 
 > 数据和一份 Slack 草稿。预算不会自己动。
 
-**marketing** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选 · 官方案例形态
+**marketing** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责活动监控和预算建议。提取支出和效果数据， 与月度预算和目标 CAC 进行对比，起草附带支撑数据的重新分配方案， 以及未发送的 Slack 更新。绝不更改预算或发送消息。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init paid-media --print
-npx --yes github:junze-xu/grok-bot-cn score paid-media
 ```

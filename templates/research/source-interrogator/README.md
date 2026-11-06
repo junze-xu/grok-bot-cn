@@ -2,7 +2,7 @@
 
 > 找到那个承重主张——从未有过来源的。
 
-**research** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**research** · 自主性 **L1**
 
 负责从一份材料中找出被当作事实的假设——尤其是那个承重主张，即如果它不成立， 结论就会崩塌——然后向来源核实。绝不编造引用，绝不把推断当作事实。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init source-interrogator --print
-npx --yes github:junze-xu/grok-bot-cn score source-interrogator
 ```

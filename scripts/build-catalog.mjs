@@ -3,9 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadAll } from "../lib/load.mjs";
-import { scoreTemplate, scoreAll } from "../lib/score.mjs";
 import { validateLoaded } from "../lib/validate.mjs";
-import { badgeSvg, catalogScore } from "../lib/badge.mjs";
 import { PAGES, GH, START_URL, profileUrl, treeUrl, teamUrl } from "../lib/urls.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -26,7 +24,6 @@ function shareFor(t) {
 }
 
 const templates = loaded.templates.map((t) => {
-  const s = scoreTemplate(t);
   const share = shareFor(t);
   return {
     id: t.id,
@@ -43,9 +40,6 @@ const templates = loaded.templates.map((t) => {
     profile_url: profileUrl(t),
     tree_url: treeUrl(t),
     share_url: share,
-    score: s.earned,
-    grade: s.grade,
-    ready: s.ready,
     tags: t.tags || [],
   };
 });
@@ -101,7 +95,7 @@ const status = {
   catalog_url: `${PAGES}/catalog.json`,
   pages_url: `${PAGES}/`,
   repo_url: GH,
-  capabilities: ["list", "teams", "profiles", "score", "start"],
+  capabilities: ["list", "teams", "profiles", "start"],
   install: "创建一个名为 Setup 的 Bot。粘贴 START.md。点击一个团队。停留在 L1。",
   notices: [],
   deprecations: [],
@@ -121,7 +115,7 @@ const index = {
 
 const llms = `# grok-bot-cn
 
-> Grok Bot 的操作契约。规格、Bot 就绪评分、团队、技能、例行程序。
+> Grok Bot 的操作契约。规格、团队、技能、例行程序。
 
 把它粘贴到名为 Setup 的 Bot 中（无需 Node）：
 ${START_URL}
@@ -149,9 +143,5 @@ fs.writeFileSync(
 fs.writeFileSync(path.join(docs, "api", "v1", "status.json"), JSON.stringify(status, null, 2) + "\n");
 fs.writeFileSync(path.join(docs, "api", "v1", "index.json"), JSON.stringify(index, null, 2) + "\n");
 fs.writeFileSync(path.join(docs, "llms.txt"), llms);
-
-const scores = scoreAll(loaded.templates);
-const agg = catalogScore(scores);
-fs.writeFileSync(path.join(docs, "badge.svg"), badgeSvg(agg));
 
 console.log(`catalog.json  ${catalog.templates.length} templates`);

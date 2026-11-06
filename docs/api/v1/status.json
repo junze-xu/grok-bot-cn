@@ -11,7 +11,6 @@
     "list",
     "teams",
     "profiles",
-    "score",
     "start"
   ],
   "install": "创建一个名为 Setup 的 Bot。粘贴 START.md。点击一个团队。停留在 L1。",

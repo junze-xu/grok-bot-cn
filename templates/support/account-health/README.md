@@ -2,7 +2,7 @@
 
 > 证据排名的观察列表——不发客户邮件，不改 CRM。
 
-**support** · 自主性 **L1** · Bot 就绪 **100/100（A）** · 精选 · 官方案例形态
+**support** · 自主性 **L1** · 精选 · 官方案例形态
 
 负责根据指定客户组合中来自使用情况、支持、续约时机和利益相关者 活动的风险与扩展信号，生成排名的观察列表。 绝不联系客户或修改 CRM。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init account-health --print
-npx --yes github:junze-xu/grok-bot-cn score account-health
 ```

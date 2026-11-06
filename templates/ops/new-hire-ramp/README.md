@@ -2,7 +2,7 @@
 
 > 管理者可编辑的第一周计划——邀请保留草稿。
 
-**ops** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**ops** · 自主性 **L1**
 
 为指定的新员工负责第一周入门计划：会议、负责人和日历占位草稿。绝不发送邀请，绝不给新人发任何消息，也绝不创建任何账户——一切等到主人点头。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init new-hire-ramp --print
-npx --yes github:junze-xu/grok-bot-cn score new-hire-ramp
 ```

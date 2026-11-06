@@ -2,7 +2,7 @@
 
 > 一条怀疑论者可审阅的时间线——不是生产控制台。
 
-**ops** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**ops** · 自主性 **L1** · 精选
 
 负责从 Slack 和 GitHub 生成附来源链接的故障时间线， 让人类能凭事实而非聊天考古写复盘。 绝不切换生产、合并或呼叫值班。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init incident-desk --print
-npx --yes github:junze-xu/grok-bot-cn score incident-desk
 ```

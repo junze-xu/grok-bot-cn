@@ -1,8 +1,8 @@
 ---
 type: use-case
-slug: scored-grok-bot-cn
-headline: 粘贴一个 URL，点击 Eng，得到一个可评分的 Grok Bot 团队
-summary: "junze-xu/grok-bot-cn 是一个可评分的 Grok Bot 操作契约目录 —— 任务、永不清单、默认 L1、CI。把 START.md 粘贴到名为 Setup 的 Bot，点击一个团队，它会抓取 PROFILE.md 而不是编造提示词。"
+slug: validated-grok-bot-cn
+headline: 粘贴一个 URL，点击 Eng，得到一个经校验的 Grok Bot 团队
+summary: "junze-xu/grok-bot-cn 是一个经校验的 Grok Bot 操作契约目录 —— 任务、永不清单、默认 L1、CI。把 START.md 粘贴到名为 Setup 的 Bot，点击一个团队，它会抓取 PROFILE.md 而不是编造提示词。"
 categories: [engineering, work]
 format: use-case
 source_tweets:

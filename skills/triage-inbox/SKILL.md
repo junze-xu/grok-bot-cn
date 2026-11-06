@@ -1,8 +1,8 @@
-# 收件箱分诊
+# 收件箱分类
 
 成功运行后，把本文件粘贴到 Grok Bot 中：
 
-> 把刚才的流程保存为名为“收件箱分诊”的技能。
+> 把刚才的流程保存为名为“收件箱分类”的技能。
 
 一个有用的技能要说明来自 [Skills and routines](https://docs.x.ai/grok-bot/skills-routines-and-automations) 的六个字段：
 

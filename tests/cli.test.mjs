@@ -43,31 +43,11 @@ test("search review finds pr-reviewer", () => {
   assert.match(r.stdout, /pr-reviewer/);
 });
 
-test("score pr-reviewer ready", () => {
-  const r = run(["score", "pr-reviewer"]);
-  assert.equal(r.status, 0);
-  assert.match(r.stdout, /就绪/);
-});
-
 test("help leads with START.md paste", () => {
   const r = run(["help"]);
   assert.equal(r.status, 0);
   assert.match(r.stdout, /START\.md/);
   assert.match(r.stdout, /创建一个名为 Setup 的 Bot/);
-});
-
-test("score --badge emits svg", () => {
-  const r = run(["score", "pr-reviewer", "--badge"]);
-  assert.equal(r.status, 0);
-  assert.match(r.stdout, /<svg /);
-  assert.match(r.stdout, /Bot 就绪/);
-  assert.match(r.stdout, /\d+\/100/);
-});
-
-test("score --badge --md emits shields markdown", () => {
-  const r = run(["score", "--badge", "--md"]);
-  assert.equal(r.status, 0);
-  assert.match(r.stdout, /img\.shields\.io\/badge\/Bot%20%E5%B0%B1%E7%BB%AA/);
 });
 
 test("catalog json includes start_url", () => {

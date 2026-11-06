@@ -1,6 +1,6 @@
 # grok-bot-cn
 
-> Grok Bot 的操作契约。规格、Bot 就绪评分、团队、技能、例行程序。
+> Grok Bot 的操作契约。规格、团队、技能、例行程序。
 
 把它粘贴到名为 Setup 的 Bot 中（无需 Node）：
 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md

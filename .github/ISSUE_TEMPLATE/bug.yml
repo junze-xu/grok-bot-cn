@@ -1,5 +1,5 @@
 name: Catalog / CLI bug
-description: Validation, score, or generated profile is wrong
+description: Validation or generated profile is wrong
 title: "bug: "
 labels: ["bug"]
 body:
@@ -13,7 +13,7 @@ body:
     id: cmd
     attributes:
       label: Command
-      placeholder: npx --yes github:junze-xu/grok-bot-cn score pr-reviewer
+      placeholder: npx --yes github:junze-xu/grok-bot-cn validate
   - type: textarea
     id: expect
     attributes:

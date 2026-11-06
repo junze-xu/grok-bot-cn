@@ -17,7 +17,7 @@
 
 > **粘贴一个链接。获得一个可用的 Bot。**
 
-[Grok Bot](https://x.ai/bot) 是 xAI 的持久化 AI 队友。这个仓库提供现成的 Bot 配置，每个都写清楚了：做什么、不做什么、从哪开始、就绪评分多少。
+[Grok Bot](https://x.ai/bot) 是 xAI 的持久化 AI 队友。这个仓库提供现成的 Bot 配置，每个都写清楚了：做什么、不做什么、从哪开始。
 
 这是 Grok Bot 的 **任务 → 边界 → 技能 → 例行程序 → 团队** 工具包，与 [loop-engineering](https://github.com/junze-xu/loop-engineering)（内循环）和 [outerloop](https://github.com/junze-xu/outerloop)（证据 → 判定）理念互补。
 
@@ -25,7 +25,6 @@
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![bot ready](https://junze-xu.github.io/grok-bot-cn/badge.svg)](https://junze-xu.github.io/grok-bot-cn/)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://junze-xu.github.io/grok-bot-cn/)
 
 ## 快速开始
@@ -54,12 +53,11 @@ Setup 会获取每个 Bot 的 `PROFILE.md`，不会凭空编造提示词。
 npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 ```
 
 ## 核心概念
 
-**Bot 就绪评分**：每个契约按 100 分制打分，覆盖任务、数据源、永不行为、交付物、首个任务等维度。**≥ 80 分视为就绪**。CI 会拦截低于该分数的模板。
+**校验**：每个契约通过 JSON Schema 校验与分享安全检查（无密钥、无内部 URL），CI 会拦截任何不通过的模板。
 
 **自主性等级**：
 
@@ -74,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 
 ## 目录
 
-**33 个模板 · 10 个团队 · 13 个技能 · 8 个例行程序**。所有稳定模板均达到 Bot 就绪标准（≥80/100）。
+**33 个模板 · 10 个团队 · 13 个技能 · 8 个例行程序**。所有模板均通过 schema 与安全校验。
 
 | Bot | 用途 |
 |-----|------|

@@ -2,7 +2,7 @@
 
 > 检查行程合理性。绝不预订。绝不支付。
 
-**personal** · 自主性 **L1** · Bot 就绪 **90/100（A）**
+**personal** · 自主性 **L1**
 
 负责指定行程的航班、住宿与行程检查：列出冲突、空档和带时间戳的选项表格，全程不预订、不支付、不下单，也不代发任何确认邮件，订单号一律留空。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init travel-desk --print
-npx --yes github:junze-xu/grok-bot-cn score travel-desk
 ```

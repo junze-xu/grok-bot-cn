@@ -1,8 +1,8 @@
-# 扫描 CI
+# CI 扫描
 
 成功运行后，把本文件粘贴到 Grok Bot 中：
 
-> 把刚才的流程保存为名为“扫描 CI”的技能。
+> 把刚才的流程保存为名为“CI 扫描”的技能。
 
 一个有用的技能要说明来自 [Skills and routines](https://docs.x.ai/grok-bot/skills-routines-and-automations) 的六个字段：
 

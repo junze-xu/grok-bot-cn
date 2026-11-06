@@ -17,7 +17,7 @@
 
 > **링크를 붙여넣으세요. 실행 가능한 Bot을 얻으세요.**
 
-[Grok Bot](https://x.ai/bot)은 xAI의 지속적 AI 팀원입니다. 이 저장소는 준비된 Bot 설정을 제공합니다 —— 무엇을 하고, 무엇을 하지 않으며, 어디서 시작하고, 준비 점수가 얼마인지 명시합니다.
+[Grok Bot](https://x.ai/bot)은 xAI의 지속적 AI 팀원입니다. 이 저장소는 준비된 Bot 설정을 제공합니다 —— 무엇을 하고, 무엇을 하지 않으며, 어디서 시작하는지 명시합니다.
 
 Grok Bot의 **작업 → 경계 → 스킬 → 루틴 → 팀** 툴킷. [loop-engineering](https://github.com/junze-xu/loop-engineering)(내부 루프)과 [outerloop](https://github.com/junze-xu/outerloop)(증거 → 판정)과 이념상 보완 관계.
 
@@ -25,7 +25,6 @@ Grok Bot의 **작업 → 경계 → 스킬 → 루틴 → 팀** 툴킷. [loop-en
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![bot ready](https://junze-xu.github.io/grok-bot-cn/badge.svg)](https://junze-xu.github.io/grok-bot-cn/)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://junze-xu.github.io/grok-bot-cn/)
 
 ## 빠른 시작
@@ -54,12 +53,11 @@ Setup은 각 Bot의 `PROFILE.md`를 가져옵니다. 프롬프트를 만들어�
 npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 ```
 
 ## 핵심 개념
 
-**Bot 준비 점수**: 각 계약은 100점 만점으로 평가. 작업, 데이터 소스, 하지 않을 것, 산출물, 첫 작업 등. **≥ 80이면 준비 완료**. CI는 그 미만의 템플릿을 차단합니다.
+**검증**: 각 계약은 JSON Schema 검증과 공유 안전 검사(secret 없음, 내부 URL 없음)를 통과. CI는 불합격 템플릿을 차단합니다.
 
 **자율 수준**:
 
@@ -74,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 
 ## 카탈로그
 
-**33개 템플릿 · 10개 팀 · 13개 스킬 · 8개 루틴**. 모든 안정 템플릿은 Bot 준비 기준(≥80/100) 충족.
+**33개 템플릿 · 10개 팀 · 13개 스킬 · 8개 루틴**. 모든 템플릿은 스키마 및 안전 검사를 통과합니다.
 
 | Bot | 용도 |
 |-----|------|

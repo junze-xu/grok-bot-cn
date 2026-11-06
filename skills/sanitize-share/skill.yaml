@@ -1,5 +1,5 @@
 id: sanitize-share
-name: 分享消毒
+name: 分享脱敏
 when_to_use: >
   主人想把 Bot 作为公开模板分享，链接发出前需要把描述、技能和例行程序里的
   密钥、客户数据和内部 URL 清掉。

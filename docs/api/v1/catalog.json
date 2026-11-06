@@ -23,9 +23,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/bug-reproduction",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "github",
         "staging",
@@ -51,9 +48,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/changelog/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/changelog",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "github",
         "release",
@@ -78,9 +72,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/ci-sweeper/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/ci-sweeper",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "github",
         "ci",
@@ -105,9 +96,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/pr-reviewer",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "github",
         "review",
@@ -132,9 +120,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/query-helper/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/query-helper",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "github",
         "sql",
@@ -160,9 +145,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/legal/security-questionnaire/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/legal/security-questionnaire",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "legal",
         "security",
@@ -187,9 +169,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/competitor-watch",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "marketing",
         "competitors",
@@ -213,9 +192,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/content-remix/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/content-remix",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "marketing",
         "content",
@@ -240,9 +216,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/newsletter-desk/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/newsletter-desk",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "marketing",
         "newsletter",
@@ -267,9 +240,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/paid-media/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/paid-media",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "marketing",
         "paid",
@@ -292,9 +262,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/gardener/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/gardener",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "meta",
         "memory",
@@ -317,9 +284,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/installer",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "meta",
         "install",
@@ -341,9 +305,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/roster/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/roster",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "meta",
         "fleet",
@@ -366,9 +327,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/sanitizer/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/sanitizer",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "meta",
         "share",
@@ -395,9 +353,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/chief-of-staff",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "ops",
         "digest",
@@ -423,9 +378,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/expense-manager/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/expense-manager",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "ops",
         "expenses",
@@ -451,9 +403,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/incident-desk/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/incident-desk",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "ops",
         "incidents",
@@ -480,9 +429,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/new-hire-ramp/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/new-hire-ramp",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "ops",
         "onboarding",
@@ -508,9 +454,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/vendor-inbox/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/vendor-inbox",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "ops",
         "vendors",
@@ -536,9 +479,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/calendar-defender/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/calendar-defender",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "personal",
         "calendar",
@@ -562,9 +502,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/inbox-triage",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "personal",
         "gmail",
@@ -588,9 +525,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/subscription-audit/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/subscription-audit",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "personal",
         "gmail",
@@ -616,9 +550,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/travel-desk/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/travel-desk",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "personal",
         "travel",
@@ -642,9 +573,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/evidence-packager/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/evidence-packager",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "product",
         "evidence",
@@ -670,9 +598,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/launch-coordinator/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/launch-coordinator",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "product",
         "launch",
@@ -697,9 +622,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/product-performance/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/product-performance",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "product",
         "performance",
@@ -722,9 +644,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/research/research-desk",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "research",
         "citations",
@@ -746,9 +665,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/source-interrogator/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/research/source-interrogator",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "research",
         "fact-check",
@@ -773,9 +689,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/call-followup/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/call-followup",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "sales",
         "follow-up",
@@ -800,9 +713,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/sales-outbound",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "sales",
         "outbound",
@@ -828,9 +738,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/win-loss/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/win-loss",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "sales",
         "win-loss",
@@ -855,9 +762,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/account-health/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/support/account-health",
       "share_url": null,
-      "score": 100,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "support",
         "accounts",
@@ -882,9 +786,6 @@
       "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/support-replies/PROFILE.md",
       "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/support/support-replies",
       "share_url": null,
-      "score": 90,
-      "grade": "A",
-      "ready": true,
       "tags": [
         "support",
         "replies",

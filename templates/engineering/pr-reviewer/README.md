@@ -2,7 +2,7 @@
 
 > 审查从可怕的 diff 开始，而非标题。
 
-**engineering** · 自主性 **L1** · Bot 就绪 **90/100（A）** · 精选
+**engineering** · 自主性 **L1** · 精选
 
 负责这个团队的仓库的拉取请求审查。将一个开放的 PR 转化为风险优先的审查包， 让人类从可怕的 diff 开始审查，而非标题。
 
@@ -35,5 +35,4 @@ CLI（可选）：
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer
 ```
