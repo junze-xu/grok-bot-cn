@@ -14,6 +14,13 @@ const shareLinks = fs.existsSync(shareFile)
   ? JSON.parse(fs.readFileSync(shareFile, "utf8")).links || {}
   : {};
 
+// i18n
+const i18n = JSON.parse(
+  fs.readFileSync(path.join(root, "i18n", "site.json"), "utf8")
+);
+const LANGS = ["zh", "en", "ja", "ko"];
+const langName = (l) => i18n[l]?.["lang.name"] || l;
+
 const cats = [
   "meta",
   "engineering",
@@ -88,7 +95,7 @@ function shareFor(t) {
 
 function pluginPills(plugins) {
   if (!plugins || !plugins.length) {
-    return '<span class="pill plugin">浏览器</span>';
+    return '<span class="pill plugin" data-i18n="card.browser">浏览器</span>';
   }
   return plugins.map((p) => `<span class="pill plugin">${esc(p)}</span>`).join("");
 }
@@ -118,7 +125,7 @@ function cardHtml(t, s, opts = {}) {
   const pluginAttr = plugins.join(", ") || "浏览器";
   const never = (t.approval_never || []).slice(0, 3).join(" · ");
   const featured = t.featured
-    ? '<span class="feat" title="精选推荐">精选</span>'
+    ? '<span class="feat" data-i18n="card.featured">精选</span>'
     : "";
   const idAttr = opts.id ? ` id="${esc(opts.id)}"` : "";
   return `<article class="card"${idAttr} data-cat="${esc(t.category)}" data-id="${esc(
@@ -140,30 +147,30 @@ function cardHtml(t, s, opts = {}) {
   <div class="actions">
     <button type="button" class="copy primary" data-profile="${esc(
       t.id
-    )}" data-copy="${esc(raw)}">复制 PROFILE</button>
-    <button type="button" class="copy" data-copy="${esc(raw)}">复制链接</button>
-    <a href="${esc(raw)}">原始文件</a>
-    <a href="${esc(treeUrl(t))}">契约</a>
+    )}" data-copy="${esc(raw)}" data-i18n="card.copy_profile">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="${esc(raw)}" data-i18n="card.copy_link">复制链接</button>
+    <a href="${esc(raw)}" data-i18n="card.raw">原始文件</a>
+    <a href="${esc(treeUrl(t))}" data-i18n="card.contract">契约</a>
     ${add}
   </div>
   <details class="how">
-    <summary>如何安装此 Bot</summary>
+    <summary data-i18n="card.how">如何安装此 Bot</summary>
     <ol>
-      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>${esc(
+      <li><span data-i18n="card.install_step1">在 Grok Bot 中：新建 → 创建新智能体。命名为</span> <strong>${esc(
         t.name
       )}</strong>。</li>
-      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
-      <li>连接插件：<strong>${esc(
+      <li data-i18n="card.install_step2">Bot 操作 → 编辑个人资料。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li><span data-i18n="card.install_step3">连接插件</span>：<strong>${esc(
         plugins.join(", ") || "无需额外插件 — 浏览器即可"
       )}</strong>。</li>
-      <li>停留在 <strong>L1</strong>。发送首个任务：
-        <blockquote>${esc(flat(t.first_task))}</blockquote>
+      <li><span data-i18n="card.install_step4">停留在 L1。发送首个任务</span>：
+        <blockquote data-copy-text="${escAttr(t.first_task)}">${esc(flat(t.first_task))}</blockquote>
         <button type="button" class="copy" data-copy="${escAttr(
           t.first_task
-        )}">复制首个任务</button>
+        )}" data-i18n="card.copy_first_task">复制首个任务</button>
       </li>
     </ol>
-    <p class="never"><strong>永不</strong> ${esc(never)}</p>
+    <p class="never"><strong data-i18n="card.never">永不</strong> ${esc(never)}</p>
   </details>
 </article>`;
 }
@@ -203,21 +210,19 @@ const teamCards = loaded.teams
     )}" data-q="${esc(q)}">
   <div class="row"><span class="cat">${esc(cat)}</span><span class="lvl">${esc(
       t.autonomy || "L1"
-    )}</span><span class="score">${(t.bots || []).length} 个 Bot</span></div>
+    )}</span><span class="score">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span></div>
   <h3>${esc(t.name)}</h3>
   <p>${esc(flat(t.why))}</p>
   <p class="bots">${esc(botNames)}</p>
   <div class="pills">${pluginPills(t.plugins)}</div>
-  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>${esc(
-    t.name
-  )}</strong>。</p>
+  <p class="hint">${esc(`将 START.md 粘贴到 Setup，然后点击 ${t.name}。`)}</p>
   <div class="actions">
     <button type="button" class="copy primary" data-copy="${esc(
       t.name
-    )}">复制团队名称</button>
+    )}" data-i18n="team.copy_name">复制团队名称</button>
     <button type="button" class="copy" data-copy="${esc(
       START_URL
-    )}">复制 START.md</button>
+    )}" data-i18n="team.copy_start">复制 START.md</button>
     <a href="${esc(teamUrl(t))}">yaml</a>
   </div>
 </article>`;
@@ -295,6 +300,22 @@ const CSS = `
     .nav-links { flex: 1; min-width: 0; justify-content: flex-end; }
     .nav a { color: var(--mute); text-decoration: none; font-size: 0.92rem; }
     .nav a:hover { color: var(--ink); }
+    .lang {
+      display: flex; gap: 4px; align-items: center; flex-shrink: 0;
+      margin-left: 6px;
+    }
+    .lang button {
+      background: transparent; color: var(--mute);
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 4px 10px; font-size: 0.8rem; cursor: pointer;
+      font-family: inherit; line-height: 1.2;
+    }
+    .lang button.on {
+      background: var(--accent); color: #07080f;
+      border-color: var(--accent); font-weight: 700;
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button.on:hover { color: #07080f; }
     header.banner {
       position: relative;
       display: grid;
@@ -324,6 +345,7 @@ const CSS = `
     h1 { font-size: clamp(1.45rem, 3vw, 2.2rem); font-weight: 750; letter-spacing: -0.03em; margin: 8px 0 8px; overflow-wrap: anywhere; }
     h2 { font-size: 1.28rem; margin: 40px 0 10px; letter-spacing: -0.02em; }
     .lede { color: var(--mute); max-width: 46rem; margin: 0 0 18px; overflow-wrap: anywhere; }
+.ver { color: var(--accent); font-weight: 700; margin-left: 6px; }
     .stats {
       display: flex; gap: 10px; flex-wrap: wrap;
       list-style: none; padding: 0; margin: 18px 0 22px;
@@ -531,6 +553,42 @@ const CSS = `
 `;
 
 const CLIENT = `
+    const I18N = ${JSON.stringify(i18n)};
+    const LANGS = ${JSON.stringify(LANGS)};
+    let lang = localStorage.getItem("gbt-lang") || "zh";
+
+    function t(key) {
+      var v = (I18N[lang] && I18N[lang][key]) || (I18N.zh && I18N.zh[key]) || key;
+      return v;
+    }
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem("gbt-lang", l);
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var k = el.getAttribute("data-i18n");
+        el.textContent = t(k);
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+        var k = el.getAttribute("data-i18n-placeholder");
+        el.setAttribute("placeholder", t(k));
+      });
+      document.querySelectorAll("#lang button").forEach(function (b) {
+        b.classList.toggle("on", b.getAttribute("data-lang") === l);
+      });
+      document.documentElement.lang = l === "zh" ? "zh-CN" : l;
+      if (I18N[l] && I18N[l]["title"]) document.title = I18N[l]["title"];
+    }
+
+    var langBox = document.getElementById("lang");
+    if (langBox) {
+      langBox.addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (b) setLang(b.getAttribute("data-lang"));
+      });
+      setLang(lang);
+    }
+
     const q = document.getElementById('q');
     const chips = document.getElementById('chips');
     const plugChips = document.getElementById('plugins');
@@ -592,7 +650,7 @@ const CLIENT = `
         var okPlug = !plugin || plugs.indexOf(plugin.toLowerCase()) !== -1;
         el.classList.toggle('hidden', !(okCat && okQ && okPlug));
       });
-      countEl.textContent = '显示 ' + shown + ' / ' + n;
+      countEl.textContent = t('catalog.showing') + ' ' + shown + ' / ' + n;
       emptyEl.classList.toggle('show', shown === 0);
       syncUrl();
     }
@@ -659,21 +717,21 @@ const CLIENT = `
           var body = map[id];
           if (!body) throw new Error('missing');
           await copyText(body);
-          btn.textContent = '已复制 PROFILE';
-          toast('PROFILE 已复制 — 粘贴到 Bot 操作 → 编辑个人资料');
+          btn.textContent = t('toast.profile_copied');
+          toast(t('toast.profile_copied'));
         } else {
           var text = btn.getAttribute('data-copy') || '';
           await copyText(text);
-          btn.textContent = '已复制';
-          toast('已复制到剪贴板');
+          btn.textContent = t('toast.copied');
+          toast(t('toast.copied_to_clipboard'));
         }
       } catch (err) {
         var fallback = btn.getAttribute('data-copy') || '';
         if (fallback) {
           await copyText(fallback);
-          toast('已复制链接 — 粘贴到 Setup 或打开原始文件');
+          toast(t('toast.copied_link'));
         } else {
-          toast('复制失败');
+          toast(t('toast.copy_failed'));
         }
       }
       setTimeout(function () { btn.textContent = prev; }, 1400);
@@ -715,75 +773,76 @@ const html = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <a class="skip" href="#catalog">跳转到目录</a>
+  <a class="skip" href="#catalog" data-i18n="skip">跳转到目录</a>
   <nav class="nav">
     <a class="wordmark" href="./">Templates <span>for Grok Bot</span></a>
     <div class="nav-links">
-      <a href="#install">获取团队</a>
-      <a href="#start-here">从这里开始</a>
-      <a href="#catalog">目录</a>
-      <a href="#teams">团队</a>
-      <a href="${GH}">GitHub</a>
+      <a href="#install" data-i18n="nav.install">获取团队</a>
+      <a href="#start-here" data-i18n="nav.start">从这里开始</a>
+      <a href="#catalog" data-i18n="nav.catalog">目录</a>
+      <a href="#teams" data-i18n="nav.teams">团队</a>
+      <a href="${GH}" data-i18n="nav.github">GitHub</a>
+      <div class="lang" id="lang">
+        ${LANGS.map((l) => `<button type="button" data-lang="${l}">${esc(langName(l))}</button>`).join("")}
+      </div>
     </div>
   </nav>
   <header class="banner">
     <img src="header.jpg" alt="Grok Bot 模板库" />
   </header>
   <div class="wrap">
-    <h1>粘贴一个链接。获得一个可用的 Bot。</h1>
-    <p class="lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。v${esc(
-      pkg.version
-    )}。</p>
+    <h1 data-i18n="hero.title">粘贴一个链接。获得一个可用的 Bot。</h1>
+    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v${esc(pkg.version)}</span></p>
     <ul class="stats">
-      <li><strong>${loaded.templates.length}</strong> 个模板</li>
-      <li><strong>${loaded.teams.length}</strong> 个团队</li>
-      <li><strong>${loaded.skills.length}</strong> 个技能</li>
-      <li><strong>${loaded.routines.length}</strong> 个例行程序</li>
-      <li><strong>100/100</strong> Bot 就绪</li>
+      <li><strong>${loaded.templates.length}</strong> <span data-i18n="stats.templates">个模板</span></li>
+      <li><strong>${loaded.teams.length}</strong> <span data-i18n="stats.teams">个团队</span></li>
+      <li><strong>${loaded.skills.length}</strong> <span data-i18n="stats.skills">个技能</span></li>
+      <li><strong>${loaded.routines.length}</strong> <span data-i18n="stats.routines">个例行程序</span></li>
+      <li><strong>100/100</strong> <span data-i18n="stats.ready">Bot 就绪</span></li>
     </ul>
 
     <div class="doors">
       <section class="door" id="install">
-        <p class="kicker">路径 1 · 整个团队 · 无需 Node</p>
-        <h2>60 秒获取团队</h2>
+        <p class="kicker" data-i18n="door1.kicker">路径 1 · 整个团队 · 无需 Node</p>
+        <h2 data-i18n="door1.title">60 秒获取团队</h2>
         <ol>
-          <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>Setup</strong>。</li>
-          <li>粘贴这个 URL 并发送：
+          <li data-i18n="door1.step1">在 Grok Bot 中：新建 → 创建新智能体。命名为 Setup。</li>
+          <li><span data-i18n="door1.step2">粘贴这个 URL 并发送</span>
             <div class="copyrow">
               <code id="start-url">${esc(START_URL)}</code>
               <button type="button" class="copy primary" data-copy="${esc(
                 START_URL
-              )}">复制 START.md</button>
+              )}" data-i18n="start.copy">复制 START.md</button>
             </div>
           </li>
-          <li>点击一个团队。试试 <strong>Eng</strong>（Bug 复现 + Issue 起草 + PR 审查）。</li>
-          <li>连接所需的插件。第一周停留在 <strong>L1</strong> — 只起草，不发送。</li>
+          <li data-i18n="door1.step3">点击一个团队。试试 Eng（Bug 复现 + PR 审查）。</li>
+          <li data-i18n="door1.step4">连接所需的插件。第一周停留在 L1 — 只起草，不发送。</li>
         </ol>
-        <p class="hint">Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。</p>
+        <p class="hint" data-i18n="door1.hint">Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。</p>
         <details class="cli">
-          <summary>更习惯用 CLI？</summary>
+          <summary data-i18n="door1.cli_summary">更习惯用 CLI？</summary>
           <pre>npx --yes github:junze-xu/grok-bot-cn list
 npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
-          <p>限定包 <code>@junze-xu/grokbot</code> 将在下次 npm 发布。GitHub npx 今天就可使用。</p>
+          <p data-i18n="door1.npm_note">限定包 <code>@junze-xu/grokbot</code> 将在下次 npm 发布。GitHub npx 今天就可使用。</p>
         </details>
       </section>
       <section class="door" id="one-bot">
-        <p class="kicker">路径 2 · 单个 Bot</p>
-        <h2>复制一个 PROFILE</h2>
+        <p class="kicker" data-i18n="door2.kicker">路径 2 · 单个 Bot</p>
+        <h2 data-i18n="door2.title">复制一个 PROFILE</h2>
         <ol>
-          <li>选一张卡片。彩色条是类别；药丸标签是你必须连接的插件。</li>
-          <li>点击 <strong>复制 PROFILE</strong>。在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>，用卡片名称命名。</li>
-          <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴。连接卡片上的插件。</li>
-          <li>展开 <strong>如何安装此 Bot</strong> 并发送首个任务。停留在 L1。</li>
+          <li data-i18n="door2.step1">选一张卡片。彩色条是类别；药丸标签是你必须连接的插件。</li>
+          <li data-i18n="door2.step2">点击「复制 PROFILE」。在 Grok Bot 中：新建 → 创建新智能体，用卡片名称命名。</li>
+          <li data-i18n="door2.step3">Bot 操作 → 编辑个人资料。粘贴。连接卡片上的插件。</li>
+          <li data-i18n="door2.step4">展开「如何安装此 Bot」并发送首个任务。停留在 L1。</li>
         </ol>
-        <p class="hint"><strong>复制链接</strong> 是原始 PROFILE.md 链接 — 如果你已有 Setup，可粘贴到那里。</p>
+        <p class="hint" data-i18n="door2.hint">「复制链接」是原始 PROFILE.md 链接 — 如果你已有 Setup，可粘贴到那里。</p>
       </section>
     </div>
 
-    <h2>我想……</h2>
-    <p class="lede">跳转到目录中的任务。然后复制 PROFILE。</p>
+    <h2 data-i18n="jobs.title">我想……</h2>
+    <p class="lede" data-i18n="jobs.lede">跳转到目录中的任务。然后复制 PROFILE。</p>
     <div class="jobs" id="jobs">
       ${JOBS.map(
         (j) =>
@@ -792,24 +851,24 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
     </div>
 
     <section id="start-here">
-      <h2>从这里开始</h2>
-      <p class="lede">八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。</p>
+      <h2 data-i18n="start.title">从这里开始</h2>
+      <p class="lede" data-i18n="start.lede">八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。</p>
       <div class="grid" id="featured">${featuredCards}</div>
     </section>
 
     <div class="filters" id="catalog">
       <div class="bar">
-        <input id="q" type="search" placeholder="搜索任务、插件、简介……（按 / 聚焦）" />
+        <input id="q" type="search" placeholder="搜索任务、插件、简介……（按 / 聚焦）" data-i18n-placeholder="catalog.search_placeholder" />
         <span class="count" id="count"></span>
       </div>
       <div class="chips" id="chips">
-        <button type="button" data-cat="" class="on">全部</button>
+        <button type="button" data-cat="" class="on" data-i18n="catalog.all">全部</button>
         ${cats
           .map((c) => `<button type="button" data-cat="${c}">${c}</button>`)
           .join("\n        ")}
       </div>
       <div class="chips" data-kind="plugin" id="plugins">
-        <button type="button" data-plugin="" class="on">任意插件</button>
+        <button type="button" data-plugin="" class="on" data-i18n="catalog.any_plugin">任意插件</button>
         ${plugins
           .map(
             (p) =>
@@ -818,16 +877,16 @@ npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
           .join("\n        ")}
       </div>
     </div>
-    <h2>目录</h2>
-    <p class="lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
-    <p class="empty" id="empty">没有匹配的模板。清空搜索，选择<strong>全部</strong>，或试试 GitHub / Gmail。</p>
+    <h2 data-i18n="catalog.title">目录</h2>
+    <p class="lede" data-i18n="catalog.lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
+    <p class="empty" id="empty" data-i18n="catalog.empty">没有匹配的模板。清空搜索，选择「全部」，或试试 GitHub / Gmail。</p>
     <div class="grid" id="grid">${cards}</div>
-    <h2 id="teams">团队</h2>
-    <p class="lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
+    <h2 id="teams" data-i18n="teams.title">团队</h2>
+    <p class="lede" data-i18n="teams.lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
     <div class="grid" id="teams">${teamCards}</div>
     <footer>
-      <p>MIT · <a href="${GH}">GitHub</a> · <a href="agent.html">Bot 契约</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · 与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</p>
-      <p class="api">机器 API：<a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="badge.svg">Bot 就绪徽章</a> · <a href="profiles.json">profiles.json</a></p>
+      <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_contract">Bot 契约</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
+      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="badge.svg" data-i18n="footer.bot_badge">Bot 就绪徽章</a> · <a href="profiles.json">profiles.json</a></p>
     </footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
