@@ -1,0 +1,12 @@
+id: evidence-bearing-results
+name: 结果必须带证据
+summary: >
+  重要的工作要把事实、推断、已完成动作、待批准动作和未决问题分开，链接原样保留。
+rule: >
+  强结果可被独立复核：来源链接、时间戳、文件名、操作日志、明确的未验证清单。
+  单靠截图不足以支撑快速变化的数据。
+anti_pattern: 一段自信满满却没有任何 URL 的结论。
+source: https://docs.x.ai/grok-bot/files-and-results
+applies_to:
+  - templates
+  - skills

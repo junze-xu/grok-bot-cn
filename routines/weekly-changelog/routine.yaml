@@ -1,0 +1,18 @@
+id: weekly-changelog
+name: 每周变更日志
+owner: changelog
+cadence: 每周五 14:00（机器人时区）
+skill: draft-changelog
+input_source: >
+  指定仓库自上次标签或上次变更日志小节以来的、已合并到 GitHub 的 PR。
+expected_result: >
+  按 破坏性/新增/修复/内部 分组的变更日志 Markdown 草稿，附 PR 链接，外加被当作内部而省略的 PR 清单。
+  不发布，不创建标签。
+approval_boundary: >
+  不要发布 GitHub Release，不要给仓库打标签。未经批准不要在主分支改 CHANGELOG.md。
+missing_source: >
+  如果 GitHub 未连接，或既没有标签也没有上次小节，报告失败后停止。不要编造 PR，也不要用「各类改进」凑数。
+test_first: true
+prompt: >
+  对上次标签以来已合并的 PR 运行 draft-changelog。按 破坏性、新增、修复、内部 分组。
+  把标题改写成用户语言，PR 编号保留为链接。不要打标签或发布。

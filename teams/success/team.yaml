@@ -1,0 +1,13 @@
+id: success
+name: 客户成功
+lead: account-health
+bots:
+  - account-health
+  - support-replies
+why: 当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。
+group_kickoff: "@客户健康 按保存的阈值给组合排名。@客服回复 起草引用政策的未发送首轮回复。 不要联系客户，不要改 CRM，不要退款。"
+plugins:
+  - Slack
+  - Gmail
+max_bots: 4
+autonomy: L1

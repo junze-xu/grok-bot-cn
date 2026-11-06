@@ -1,0 +1,18 @@
+id: weekday-inbox
+name: 工作日收件箱
+owner: inbox-triage
+cadence: 每周工作日 08:30（机器人时区）
+skill: triage-inbox
+input_source: >
+  自上次运行以来的 Gmail，外加保存在本 Bot 上的 VIP 名单和忽略名单。
+expected_result: >
+  分桶列表（需回复、仅供参考、通讯刊物、收据、忽略），需回复桶附未发送草稿，
+  以及今日待办的 Top 5。不发送、不删除、不退订。
+approval_boundary: >
+  不要发送、删除、归档或退订。看起来涉及安全的邮件绝不自动忽略。
+missing_source: >
+  如果 Gmail 未连接或抓取失败，报告失败后停止。不要凭记忆或共享电脑上另一个邮箱编造邮件。
+test_first: true
+prompt: >
+  以 Bot 时区为准，对昨天 08:30 以来的邮件运行 triage-inbox。分为需回复、仅供参考、通讯刊物、收据、忽略。
+  只对需回复起草回复。标记账单、法务截止和安全警报。不要发送、删除或退订。

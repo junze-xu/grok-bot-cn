@@ -1,0 +1,10 @@
+id: description-vs-message
+name: 描述与消息的分工
+summary: >
+  常驻规则写在 Bot 描述里，本次任务指令写在对话里。描述能撑过新线程，消息撑不过。
+rule: >
+  把「未经批准绝不外发消息」写进描述；把「为这十二个账户起草跟进」写进消息。
+anti_pattern: 一个 4k 词的提示词倒进一个聊天，描述级的 never 清单却空着。
+source: https://docs.x.ai/grok-bot/bots
+applies_to:
+  - templates

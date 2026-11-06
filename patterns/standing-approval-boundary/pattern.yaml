@@ -1,0 +1,13 @@
+id: standing-approval-boundary
+name: 常设审批边界
+summary: >
+  告诉 Bot 哪些动作能做、在哪里必须停下。发送、发布、支付、删除、权限、
+  生产和法务条款，都写成显式边界。
+rule: >
+  approval_never 写在描述层。别因为谁赶时间就削弱它。
+  Auto Review 的 Require Approval 胜过 Always Allow。
+anti_pattern: 「浏览器里全部允许。」发送永远放行。
+source: https://docs.x.ai/grok-bot/approvals-security-and-privacy
+applies_to:
+  - templates
+  - routines

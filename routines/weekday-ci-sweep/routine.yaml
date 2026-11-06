@@ -1,0 +1,18 @@
+id: weekday-ci-sweep
+name: 工作日 CI 扫描
+owner: ci-sweeper
+cadence: 每周工作日 09:00（机器人时区）
+skill: sweep-ci
+input_source: >
+  指定仓库的 GitHub Actions（或已链接的 CI）：默认分支和自上次扫描以来开放的 PR。
+expected_result: >
+  扫描报告：新失败、flake、基础设施/超时、建议挂起的检查，附检查名和运行 URL。
+  不合并，不为变绿反复重跑。
+approval_boundary: >
+  不要在 GitHub 上合并、推送或评论。不要取消工作流或更改分支保护。至多重跑一次，且仅在日志被截断时。
+missing_source: >
+  如果 GitHub 未连接，或某指定仓库打不开，针对该仓库报告失败后停止。不要编造 job，也不要把缺失的日志当作绿色。
+test_first: true
+prompt: >
+  对指定仓库运行 sweep-ci，扫描范围是昨天 09:00 以来。把新故障与 flake 分开，引用日志行，建议负责人，
+  列出挂起项。不要合并，不要为变绿反复重跑。

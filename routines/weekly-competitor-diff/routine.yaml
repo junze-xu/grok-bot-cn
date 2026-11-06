@@ -1,0 +1,19 @@
+id: weekly-competitor-diff
+name: 每周竞品差异
+owner: competitor-watch
+cadence: 每周一 09:00（机器人时区）
+skill: diff-competitors
+input_source: >
+  指定竞品集合（3–8 个），以及 /workspace 中上次快照（如果存在）。
+expected_result: >
+  首次运行出基线；之后出带前后对比、URL 和日期的实质变化备忘。无变化的竞品合并成一行。
+  Slack 草稿标注 DRAFT 且不发送。
+approval_boundary: >
+  不要把备忘发到 Slack 或 X。不要抓取主人未授权的登录后才能看的页面。不要给竞品发邮件。
+missing_source: >
+  如果竞品名单缺失，报告失败后停止。如果某页面不可用，写「页面未找到」，不要悄悄复用上周的数字。
+  如果没有快照，先取基线，写完即停。
+test_first: true
+prompt: >
+  对指定集合运行 diff-competitors。加载上次快照，没有就取基线。抓取当前公开页面，引用数字。
+  只报告带 URL 和日期的实质变化。不要发布备忘。

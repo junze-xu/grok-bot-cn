@@ -1,0 +1,13 @@
+# grok-bot-cn
+
+> Grok Bot 的操作契约。规格、Bot 就绪评分、团队、技能、例行程序。
+
+把它粘贴到名为 Setup 的 Bot 中（无需 Node）：
+https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
+
+目录 JSON：https://junze-xu.github.io/grok-bot-cn/catalog.json
+API：https://junze-xu.github.io/grok-bot-cn/api/v1/index.json
+规格：https://github.com/junze-xu/grok-bot-cn/blob/main/SPEC.md
+网站：https://junze-xu.github.io/grok-bot-cn/
+
+第一周是 L1 草稿 —— 可审查的产出物，不发送/发布/支付/合并/碰生产环境。

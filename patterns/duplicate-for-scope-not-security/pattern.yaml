@@ -1,0 +1,12 @@
+id: duplicate-for-scope-not-security
+name: 为范围复制，不为安全复制
+summary: >
+  同一个角色想覆盖不同范围时复制 Bot——比如每个地区一个账户健康 Bot。
+  副本只带资料、技能、例行程序和头像，不带历史与记忆。
+rule: >
+  派活前先改名并给出新范围。别指望凭证不跨副本泄漏——它们共用一台电脑。
+anti_pattern: 「我把财务复制一份，它就看不到 Gmail 了。」
+source: https://docs.x.ai/grok-bot/bots
+applies_to:
+  - teams
+  - safety

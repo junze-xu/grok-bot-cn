@@ -1,0 +1,19 @@
+id: ops
+name: 运营团队
+lead: chief-of-staff
+bots:
+  - chief-of-staff
+  - expense-manager
+  - vendor-inbox
+why: >
+  一周的实情藏在 Slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。
+group_kickoff: >
+  @执行助理 只摘要能映射到钉住的优先事项的内容。@费用管理 把本周花销对到已签署的报销政策。
+  @供应商收件箱 把发票和续约整理成待审清单。不要发消息，不要付款，不要改动会议。
+plugins:
+  - Slack
+  - Gmail
+  - Google Calendar
+  - Google Drive
+max_bots: 4
+autonomy: L1

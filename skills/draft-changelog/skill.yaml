@@ -1,0 +1,21 @@
+id: draft-changelog
+name: 起草变更日志
+when_to_use: >
+  自上次标签以来合并的 PR 要变成面向用户的 release notes，而不是周五考古。
+inputs:
+  - GitHub 仓库
+  - 上次标签或变更日志小节
+  - 受众（用户 vs 运维）
+sequence:
+  - 列出上次标签以来合并的 PR；不要编造 PR。
+  - 按 破坏性 / 新增 / 修复 / 内部 分组。
+  - 把标题改写成用户语言；PR 编号保留为链接。
+  - 点出需要迁移说明的条目。
+validate: >
+  每条都对应一个已合并 PR 或提交；没有「各类改进」凑数；未发布。
+returns: >
+  变更日志 Markdown 草稿，外加作为内部省略的 PR 清单，方便主人按需恢复。
+approval: >
+  不要发布 GitHub Release 或打标签；未经批准不要在主分支改 CHANGELOG.md。
+owners:
+  - changelog

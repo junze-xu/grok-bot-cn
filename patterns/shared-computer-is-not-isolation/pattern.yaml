@@ -1,0 +1,14 @@
+id: shared-computer-is-not-isolation
+name: 共享电脑不等于隔离
+summary: >
+  同一账户下的每个 Bot 共用同一台云电脑——cookies、文件、CLI 凭证。
+  把 Bot 分开不是安全边界。
+rule: >
+  别的 Bot 不该用的凭证，就不要放在电脑上。整个名册都要与某个服务脱钩时，
+  就退出登录。
+anti_pattern: 「财务 Bot 是隔离的，因为它是另一个 Bot。」
+source: https://docs.x.ai/grok-bot/computer-and-apps
+applies_to:
+  - templates
+  - teams
+  - safety

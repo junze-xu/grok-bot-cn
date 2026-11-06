@@ -1,0 +1,18 @@
+id: personal
+name: 个人团队
+lead: inbox-triage
+bots:
+  - inbox-triage
+  - calendar-defender
+  - subscription-audit
+why: >
+  当邮件、会议和闲置订阅挤在同一个 Bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。
+group_kickoff: >
+  @收件箱分类 把昨天的邮件分桶并起草未发送回复。@日程管理 用拒绝草稿保护深度工作块。
+  @订阅审计 列出闲置订阅等待批准。不要发送，不要删除，不要改动会议，不要退订。
+plugins:
+  - Gmail
+  - Google Calendar
+  - Slack
+max_bots: 4
+autonomy: L1

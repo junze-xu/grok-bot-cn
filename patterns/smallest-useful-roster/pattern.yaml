@@ -1,0 +1,13 @@
+id: smallest-useful-roster
+name: 最小有用名册
+summary: >
+  让一个 Bot 负责一个端到端的结果；等工作有了稳定的专家角色，再加第二个。
+  安装型团队上限四个。
+rule: >
+  一个账户的 Bot 和群聊加起来最多 50 个——那是天花板，不是目标。
+  为范围复制（地区、产品），不为安全复制。
+anti_pattern: 看心情就造 Bot——弄出 20 个没人记得住的 Bot。
+source: https://docs.x.ai/grok-bot/bots
+applies_to:
+  - teams
+  - meta

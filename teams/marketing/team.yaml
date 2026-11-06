@@ -1,0 +1,18 @@
+id: marketing
+name: 市场团队
+lead: competitor-watch
+bots:
+  - competitor-watch
+  - content-remix
+  - newsletter-desk
+why: >
+  竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。
+group_kickoff: >
+  @竞品观察 对指定名单做自上次快照以来的差异对比，没变的页面保持安静。@内容改写
+  把已认可的简报变成草稿变体。@邮件简报 把下一期通讯组装成未发送状态。
+  不要发布，不要发到 Slack 或 X，不要发送这期刊物。
+plugins:
+  - Slack
+  - Notion
+max_bots: 4
+autonomy: L1

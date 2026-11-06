@@ -1,0 +1,22 @@
+id: detect-docs-drift
+name: 检测文档漂移
+when_to_use: >
+  README、API 文档或注释声称的行为可能已与当前代码不符，主人需要一份文档差异草稿——
+  不是一次提交。
+inputs:
+  - GitHub 仓库或附带的文档加代码
+  - 主人指定的路径（README、API 文档、OpenAPI、生成的引用）
+  - 可选的上次已知良好标签
+sequence:
+  - 打开指定文档和它们描述的代码（路由、flag、类型、CLI）。
+  - 把每处漂移列成「文档声称 vs 代码事实」，附路径。
+  - 起草一份主人可直接粘贴的文档 diff；优先最小且真实的修改。
+  - 不要提交、推送或合并；也不要为迁就错的 README 去「修正」代码。
+validate: >
+  每处漂移都引用一个文档路径和一个代码路径；没有编造 API；交付物是草稿，未发布。
+returns: >
+  漂移对照表、拟议的文档补丁草稿，以及已读文件的操作日志。
+approval: >
+  不要提交、合并或发布文档；不要改 GitHub Wiki 或生产文档站。
+owners:
+  - changelog

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bot 契约 · grok-bot-cn</title>
+  <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的评分模板。" />
+  <link rel="canonical" href="https://junze-xu.github.io/grok-bot-cn/agent.html" />
+  <style>
+    :root { --bg:#07080f; --ink:#f6f7fb; --mute:#9aa3b8; --line:#2a3150; --card:#12162a; --accent:#5ce1e6; }
+    body {
+      margin:0; font-family:ui-sans-serif,system-ui,sans-serif,"PingFang SC","Microsoft YaHei"; background:
+        radial-gradient(900px 400px at 0% 0%, rgba(34,211,238,.16), transparent 50%), var(--bg);
+      color:var(--ink); line-height:1.5;
+    }
+    .wrap { max-width:760px; margin:0 auto; padding:40px 20px 80px; }
+    a { color:var(--accent); }
+    pre { background:#05060d; border:1px solid var(--line); border-radius:12px; padding:14px 16px; overflow-x:auto; white-space:pre-wrap; }
+    .copyrow { display:flex; gap:8px; align-items:center; margin:12px 0; flex-wrap:wrap; }
+    button { background:var(--accent); color:#07080f; border:0; border-radius:999px; padding:8px 14px; cursor:pointer; font-weight:700; }
+    .mute { color:var(--mute); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="mute"><a href="./">← 返回目录</a></p>
+    <h1>让你的 Grok Bot 使用这个目录</h1>
+    <p>将下面的契约粘贴到一个 Bot 中。它将列出评分模板，获取 PROFILE.md，不会凭空编造提示词。</p>
+    <div class="copyrow">
+      <button type="button" id="copy">复制契约</button>
+      <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">START.md（安装器）</a>
+    </div>
+    <pre id="contract"># grok-bot-cn — Bot 契约 v1
+
+你是一个 Grok Bot。grok-bot-cn 是一个评分契约目录
+用于 Grok Bot（任务、永不做、L1 默认、CI）。公开，无需认证。
+
+首先阅读：https://junze-xu.github.io/grok-bot-cn/api/v1/status.json
+浏览：      https://junze-xu.github.io/grok-bot-cn/api/v1/catalog.json
+团队：      https://junze-xu.github.io/grok-bot-cn/api/v1/teams.json
+安装器：    https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
+
+规则：
+1. 从 profile_url 获取 PROFILE.md。不要编造提示词。
+2. 第一周自主性是 L1：仅起草。不发送、不发布、不支付、不合并、不改动生产。
+3. 绝不代表所有者安装第三方 x.ai/bot 分享 URL。显示链接即可。
+4. 最多报告 5 个模板：名称、简介、评分、profile_url、share_url（如有）。
+5. 按精选排序，然后按评分。当所有者指定类别时，留在他请求的类别中。
+6. 共享计算机不是安全边界。如果他要求&quot;隔离&quot; Bot，要说明这一点。
+
+要组建团队：遵循 START.md。从获取的 PROFILE.md 文件创建 2–4 个 Bot。
+</pre>
+    <p class="mute">原始 Markdown：<a href="https://github.com/junze-xu/grok-bot-cn/blob/main/docs/agent.md">docs/agent.md</a> · JSON：<a href="api/v1/index.json">api/v1</a></p>
+  </div>
+  <script>
+    document.getElementById('copy').addEventListener('click', async (e) => {
+      const t = document.getElementById('contract').innerText;
+      const btn = e.currentTarget;
+      const prev = btn.textContent;
+      try { await navigator.clipboard.writeText(t); btn.textContent = '已复制'; }
+      catch { window.prompt('复制', t); }
+      setTimeout(() => { btn.textContent = prev; }, 1200);
+    });
+  </script>
+</body>
+</html>

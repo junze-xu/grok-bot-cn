@@ -1,0 +1,21 @@
+id: install-team
+name: 安装团队
+when_to_use: >
+  主人要把本目录里指定的入门团队变成真实的 Grok Bot 加一个群组，而不是把整个目录倒出来。
+inputs:
+  - 团队 id（eng、sales、success、ops、marketing、product、loop、research、personal、meta）
+  - 「第一周是 L1」的确认
+sequence:
+  - 解析团队 yaml；绝不编造额外 Bot。
+  - 最多创建四个 Bot；名称=资料名，描述=从本仓库取的 PROFILE.md 正文，不改写。
+  - 在 Settings → Plugins 里报告需要连接的插件合集。
+  - 把新 Bot 放进一个群组。
+  - 把群组的 kickoff 文本粘为群首条消息草稿——不发外部消息。
+validate: >
+  Bot 数为 2–4；每个描述都是目录 PROFILE 原文而非摘要；没有 Bot 启用例行程序；没有冒充主人去认证连接器。
+returns: >
+  名册表（名称、job、插件）、群名、kickoff 文本、主 Bot 的首个任务。
+approval: >
+  不要发送、发布、付款或联系任何人。如果需要浏览器登录或 2FA，不要自己接连接器——请主人接管。
+owners:
+  - installer

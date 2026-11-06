@@ -1,0 +1,13 @@
+id: share-sanitizer-before-link
+name: 先净化，再分享
+summary: >
+  公开分享链接会复制身份、描述、技能和例行程序，不会复制你的电脑。
+  但还是要先清掉密钥，再去分享。
+rule: >
+  复制 x.ai/bot/<id> 前先跑一次 Share Sanitizer（或做一遍同样的审查）。
+  接受者要同意第三方 Bot 条款；不要替主人添加来路不明的分享链接。
+anti_pattern: 模板描述里带着 API 密钥就发出去了。
+source: https://docs.x.ai/grok-bot/bots
+applies_to:
+  - templates
+  - sharing

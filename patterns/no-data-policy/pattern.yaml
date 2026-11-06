@@ -1,0 +1,13 @@
+id: no-data-policy
+name: 无数据与过期数据策略
+summary: >
+  来源不可用时，报告失败，而不是拿旧数据凑数。CI 缺失要写「CI 未找到」，
+  而不是「测试看起来没问题」。
+rule: >
+  每个模板都要有 no_data，每个例行程序都要有 missing_source。
+  昨天的数字不是今天的数字。
+anti_pattern: 悄悄回退到上周那张过期的电子表格。
+source: https://docs.x.ai/grok-bot/skills-routines-and-automations
+applies_to:
+  - templates
+  - routines

@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grok Bot 模板库</title>
+  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。33 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
+  <link rel="canonical" href="https://junze-xu.github.io/grok-bot-cn/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Grok Bot 模板库" />
+  <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。获取评分。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
+  <meta property="og:url" content="https://junze-xu.github.io/grok-bot-cn/" />
+  <meta property="og:image" content="https://junze-xu.github.io/grok-bot-cn/header.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grok Bot 模板库" />
+  <meta name="twitter:description" content="粘贴 START.md。点击一个团队。或复制一个 PROFILE。停留在 L1。" />
+  <meta name="twitter:image" content="https://junze-xu.github.io/grok-bot-cn/header.jpg" />
+  <link rel="icon" href="badge.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #07080f;
+      --bg2: #0d1020;
+      --card: #12162a;
+      --ink: #f6f7fb;
+      --mute: #9aa3b8;
+      --line: #2a3150;
+      --accent: #5ce1e6;
+      --ok: #b6ff3d;
+      --c-meta: #c084fc;
+      --c-engineering: #22d3ee;
+      --c-product: #60a5fa;
+      --c-sales: #fbbf24;
+      --c-marketing: #f472b6;
+      --c-ops: #2dd4bf;
+      --c-support: #fb923c;
+      --c-research: #a3e635;
+      --c-personal: #38bdf8;
+      --c-legal: #818cf8;
+      --c-finance: #facc15;
+      --c-creator: #fb7185;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    img { max-width: 100%; height: auto; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(34, 211, 238, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(244, 114, 182, 0.16), transparent 50%),
+        radial-gradient(800px 500px at 50% 110%, rgba(163, 230, 53, 0.10), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      min-height: 100%;
+      max-width: 100%;
+    }
+    a { color: var(--accent); }
+    .skip {
+      position: absolute; left: -999px; top: 0;
+    }
+    .skip:focus {
+      left: 12px; top: 12px; z-index: 20;
+      background: var(--accent); color: #07080f;
+      padding: 8px 12px; border-radius: 999px;
+    }
+    html, body { overflow-x: hidden; }
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; gap: 14px; align-items: center; flex-wrap: nowrap;
+      padding: 10px 20px;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-links {
+      display: flex; gap: 14px; align-items: center;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .nav-links a { white-space: nowrap; }
+    .wordmark {
+      font-weight: 750; letter-spacing: -0.03em; text-decoration: none;
+      color: var(--ink); margin-right: auto; flex-shrink: 0;
+    }
+    .wordmark span { color: var(--accent); }
+    .nav-links { flex: 1; min-width: 0; justify-content: flex-end; }
+    .nav a { color: var(--mute); text-decoration: none; font-size: 0.92rem; }
+    .nav a:hover { color: var(--ink); }
+    header.banner {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      background: #05060d;
+      padding: 0 16px;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    header.banner img {
+      display: block;
+      width: 100%;
+      max-width: 1160px;
+      min-width: 0;
+      height: auto;
+      margin: 0;
+    }
+    header.banner::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 72px;
+      background: linear-gradient(transparent, var(--bg));
+      pointer-events: none;
+    }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 8px 20px 96px; min-width: 0; }
+    h1 { font-size: clamp(1.45rem, 3vw, 2.2rem); font-weight: 750; letter-spacing: -0.03em; margin: 8px 0 8px; overflow-wrap: anywhere; }
+    h2 { font-size: 1.28rem; margin: 40px 0 10px; letter-spacing: -0.02em; }
+    .lede { color: var(--mute); max-width: 46rem; margin: 0 0 18px; overflow-wrap: anywhere; }
+    .stats {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      list-style: none; padding: 0; margin: 18px 0 22px;
+    }
+    .stats li {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.88rem;
+      color: var(--mute);
+    }
+    .stats strong { color: var(--ink); font-weight: 700; }
+    .stats li:nth-child(1) strong { color: var(--c-engineering); }
+    .stats li:nth-child(2) strong { color: var(--c-marketing); }
+    .stats li:nth-child(3) strong { color: var(--c-research); }
+    .stats li:nth-child(4) strong { color: var(--c-sales); }
+    .stats li:nth-child(5) strong { color: var(--ok); }
+    .doors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 8px 0 28px;
+    }
+    .door {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%), var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px 22px 18px;
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .door:first-child { box-shadow: inset 3px 0 0 var(--c-engineering); }
+    .door:last-child { box-shadow: inset 3px 0 0 var(--c-marketing); }
+    .kicker {
+      margin: 0 0 6px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .door h2 { margin: 0 0 10px; }
+    .door ol { margin: 0; padding-left: 1.2rem; }
+    .door li { margin: 8px 0; }
+    .copyrow {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      margin-top: 6px; background: #07080f; border: 1px solid var(--line);
+      border-radius: 10px; padding: 8px 10px;
+      max-width: 100%;
+    }
+    .copyrow code {
+      font-size: 12.5px; color: var(--accent);
+      overflow-wrap: anywhere; word-break: break-all;
+      min-width: 0; flex: 1 1 12rem;
+    }
+    button.copy, .actions a, a.add, .btn {
+      background: transparent; color: var(--ink); border: 1px solid var(--line);
+      border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      min-height: 36px; font-family: inherit;
+    }
+    button.copy:hover, .actions a:hover, .btn:hover { border-color: var(--accent); color: var(--ink); }
+    button.copy.primary, .btn.primary {
+      background: var(--accent); color: #07080f; border-color: transparent; font-weight: 700;
+    }
+    button.copy.primary:hover, .btn.primary:hover { filter: brightness(1.08); }
+    .card button.copy.primary {
+      background: var(--cat, var(--accent));
+    }
+    a.add { border-color: var(--ok); color: var(--ok); }
+    details.cli { margin: 12px 0 0; color: var(--mute); }
+    details.cli pre, details.how blockquote {
+      background: #07080f; border: 1px solid var(--line); border-radius: 8px;
+      padding: 10px 12px; overflow-x: auto; color: var(--ink);
+    }
+    .jobs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
+    .jobs button {
+      background: color-mix(in srgb, var(--c-sales) 12%, transparent);
+      color: var(--ink); border: 1px solid color-mix(in srgb, var(--c-sales) 40%, var(--line));
+      border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px;
+      font-family: inherit;
+    }
+    .jobs button:hover { border-color: var(--c-sales); }
+    .filters {
+      position: sticky; top: 48px; z-index: 8;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(12px);
+      padding: 10px 0 8px;
+      margin: 0 0 8px;
+    }
+    .bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 0 0 10px; }
+    input[type=search] {
+      flex: 1; min-width: 200px; background: var(--card); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 15px;
+    }
+    input[type=search]:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .count { color: var(--mute); font-size: 0.9rem; white-space: nowrap; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .chips button {
+      background: transparent; color: var(--mute); border: 1px solid var(--line);
+      border-radius: 999px; padding: 5px 11px; cursor: pointer; font-family: inherit;
+      --chip: var(--accent);
+    }
+    .chips button.on, .chips button:hover { color: #07080f; background: var(--chip); border-color: transparent; }
+    .chips[data-kind="plugin"] button {
+      --chip: var(--c-ops);
+      font-size: 12px;
+    }
+    .chips button[data-cat="meta"] { --chip: var(--c-meta); }
+    .chips button[data-cat="engineering"] { --chip: var(--c-engineering); }
+    .chips button[data-cat="product"] { --chip: var(--c-product); }
+    .chips button[data-cat="sales"] { --chip: var(--c-sales); }
+    .chips button[data-cat="marketing"] { --chip: var(--c-marketing); }
+    .chips button[data-cat="ops"] { --chip: var(--c-ops); }
+    .chips button[data-cat="support"] { --chip: var(--c-support); }
+    .chips button[data-cat="research"] { --chip: var(--c-research); }
+    .chips button[data-cat="personal"] { --chip: var(--c-personal); }
+    .chips button[data-cat="legal"] { --chip: var(--c-legal); }
+    .chips button[data-cat="finance"] { --chip: var(--c-finance); }
+    .chips button[data-cat="creator"] { --chip: var(--c-creator); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card {
+      --cat: var(--accent);
+      display: flex; flex-direction: column;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)), var(--card);
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 16px;
+      color: inherit; position: relative; overflow: hidden; min-height: 100%;
+    }
+    .card::before {
+      content: ""; position: absolute; left: 0; top: 0; right: 0; height: 3px;
+      background: var(--cat);
+    }
+    .card:hover {
+      border-color: color-mix(in srgb, var(--cat) 55%, var(--line));
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .card:target { outline: 2px solid var(--cat); }
+    .card[data-cat="meta"] { --cat: var(--c-meta); }
+    .card[data-cat="engineering"] { --cat: var(--c-engineering); }
+    .card[data-cat="product"] { --cat: var(--c-product); }
+    .card[data-cat="sales"] { --cat: var(--c-sales); }
+    .card[data-cat="marketing"] { --cat: var(--c-marketing); }
+    .card[data-cat="ops"] { --cat: var(--c-ops); }
+    .card[data-cat="support"] { --cat: var(--c-support); }
+    .card[data-cat="research"] { --cat: var(--c-research); }
+    .card[data-cat="personal"] { --cat: var(--c-personal); }
+    .card[data-cat="legal"] { --cat: var(--c-legal); }
+    .card[data-cat="finance"] { --cat: var(--c-finance); }
+    .card[data-cat="creator"] { --cat: var(--c-creator); }
+    .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--mute); flex-wrap: wrap; }
+    .cat, .lvl, .feat, .score, .pill {
+      border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px;
+    }
+    .cat { color: var(--cat); border-color: color-mix(in srgb, var(--cat) 45%, var(--line)); }
+    .feat { color: #07080f; background: var(--ok); border-color: transparent; font-weight: 700; }
+    .score { margin-left: auto; color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, var(--line)); }
+    h3 { margin: 0 0 6px; font-size: 1.08rem; letter-spacing: -0.02em; }
+    .card p { margin: 0; color: var(--mute); font-size: 0.92rem; flex: 1; }
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .pill.plugin { font-size: 11px; color: var(--ink); background: rgba(255,255,255,0.04); }
+    .bots { margin-top: 8px !important; font-size: 0.8rem !important; color: var(--ink) !important; }
+    .hint { margin-top: 8px !important; font-size: 0.8rem !important; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .how { margin-top: 12px; color: var(--mute); font-size: 0.86rem; }
+    .how summary { cursor: pointer; color: var(--ink); }
+    .how ol { padding-left: 1.15rem; }
+    .how blockquote { margin: 8px 0; font-size: 0.84rem; }
+    .never { margin: 8px 0 0; }
+    .hidden { display: none !important; }
+    .empty {
+      display: none; margin: 12px 0 24px; padding: 18px; border: 1px dashed var(--line);
+      border-radius: 12px; color: var(--mute);
+    }
+    .empty.show { display: block; }
+    .toast {
+      position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--ok); color: #07080f; padding: 10px 16px; border-radius: 999px;
+      font-weight: 700; font-size: 0.9rem; opacity: 0; pointer-events: none;
+      transition: transform .2s ease, opacity .2s ease; z-index: 30; max-width: 90vw;
+      text-align: center;
+    }
+    .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+    footer { margin-top: 56px; color: var(--mute); font-size: 0.9rem; }
+    footer a { color: var(--accent); }
+    .api { font-size: 0.85rem; }
+    @media (max-width: 800px) {
+      .doors { grid-template-columns: 1fr; }
+      .nav { gap: 8px; padding: 10px 12px; }
+      .nav-links { gap: 10px; }
+      .wordmark span { display: none; }
+      .nav a { font-size: 0.82rem; }
+      .filters { position: static; }
+      .copyrow { flex-direction: column; align-items: stretch; }
+      .copyrow code { font-size: 11.5px; flex: 0 1 auto; }
+      .copyrow .copy { align-self: flex-start; }
+      button.copy, .actions a { width: auto; }
+      .card .actions .primary { width: 100%; justify-content: center; }
+      header.banner { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .toast { transition: none; }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#catalog">跳转到目录</a>
+  <nav class="nav">
+    <a class="wordmark" href="./">Templates <span>for Grok Bot</span></a>
+    <div class="nav-links">
+      <a href="#install">获取团队</a>
+      <a href="#start-here">从这里开始</a>
+      <a href="#catalog">目录</a>
+      <a href="#teams">团队</a>
+      <a href="https://github.com/junze-xu/grok-bot-cn">GitHub</a>
+    </div>
+  </nav>
+  <header class="banner">
+    <img src="header.jpg" alt="Grok Bot 模板库" />
+  </header>
+  <div class="wrap">
+    <h1>粘贴一个契约。获得一个可用的 Bot。</h1>
+    <p class="lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。v1.1.0。</p>
+    <ul class="stats">
+      <li><strong>33</strong> 个模板</li>
+      <li><strong>10</strong> 个团队</li>
+      <li><strong>13</strong> 个技能</li>
+      <li><strong>8</strong> 个例行程序</li>
+      <li><strong>100/100</strong> Bot 就绪</li>
+    </ul>
+
+    <div class="doors">
+      <section class="door" id="install">
+        <p class="kicker">路径 1 · 整个团队 · 无需 Node</p>
+        <h2>60 秒获取团队</h2>
+        <ol>
+          <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>Setup</strong>。</li>
+          <li>粘贴这个 URL 并发送：
+            <div class="copyrow">
+              <code id="start-url">https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md</code>
+              <button type="button" class="copy primary" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+            </div>
+          </li>
+          <li>点击一个团队。试试 <strong>Eng</strong>（Bug 复现 + Issue 起草 + PR 审查）。</li>
+          <li>连接所需的插件。第一周停留在 <strong>L1</strong> — 只起草，不发送。</li>
+        </ol>
+        <p class="hint">Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。</p>
+        <details class="cli">
+          <summary>更习惯用 CLI？</summary>
+          <pre>npx --yes github:junze-xu/grok-bot-cn list
+npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
+npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
+npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge</pre>
+          <p>限定包 <code>@junze-xu/grokbot</code> 将在下次 npm 发布。GitHub npx 今天就可使用。</p>
+        </details>
+      </section>
+      <section class="door" id="one-bot">
+        <p class="kicker">路径 2 · 单个 Bot</p>
+        <h2>复制一个 PROFILE</h2>
+        <ol>
+          <li>选一张卡片。彩色条是类别；药丸标签是你必须连接的插件。</li>
+          <li>点击 <strong>复制 PROFILE</strong>。在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>，用卡片名称命名。</li>
+          <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴。连接卡片上的插件。</li>
+          <li>展开 <strong>如何安装此 Bot</strong> 并发送首个任务。停留在 L1。</li>
+        </ol>
+        <p class="hint"><strong>复制链接</strong> 是原始 PROFILE.md 链接 — 如果你已有 Setup，可粘贴到那里。</p>
+      </section>
+    </div>
+
+    <h2>我想……</h2>
+    <p class="lede">跳转到目录中的任务。然后复制 PROFILE。</p>
+    <div class="jobs" id="jobs">
+      <button type="button" data-q="pr reviewer github">审查 PR</button>
+      <button type="button" data-q="inbox gmail">邮件分类</button>
+      <button type="button" data-q="chief of staff">每周摘要</button>
+      <button type="button" data-q="research desk">带引用的研究</button>
+      <button type="button" data-q="outbound">销售外联</button>
+      <button type="button" data-q="bug reproduction">复现 Bug</button>
+      <button type="button" data-q="competitor">监控竞品</button>
+      <button type="button" data-q="setup installer">组建团队</button>
+    </div>
+
+    <section id="start-here">
+      <h2>从这里开始</h2>
+      <p class="lede">八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。</p>
+      <div class="grid" id="featured"><article class="card" data-cat="engineering" data-id="pr-reviewer" data-name="PR 审查" data-plugins="GitHub" data-task="审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。" data-featured="1" data-q="pr-reviewer pr 审查 风险优先的拉取请求审查者 审查从可怕的 diff 开始，而非标题。 负责这个团队的仓库的拉取请求审查。将一个开放的 pr 转化为风险优先的审查包， 让人类从可怕的 diff 开始审查，而非标题。
+ 标题优先的审查只是走过场。这个 bot 以破坏性、缺失测试和描述与 diff 之间的差距作为审查起点。
+ github github review engineering l1 审查我最新开放的 pr。从风险、缺失测试和缺失的上下文开始。 如果 github 未连接，请求连接然后停止。
+ 精选">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>PR 审查</h3>
+  <p>审查从可怕的 diff 开始，而非标题。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="pr-reviewer" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/pr-reviewer">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>PR 审查</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。</blockquote>
+        <button type="button" class="copy" data-copy="审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 合并 PR · 推送代码 · 未经明确批准就在 GitHub 上评论</p>
+  </details>
+</article>
+<article class="card" data-cat="personal" data-id="inbox-triage" data-name="收件箱分类" data-plugins="Gmail" data-task="分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。" data-featured="1" data-q="inbox-triage 收件箱分类 无需常驻 gmail 的收件箱清零 分桶和草稿 —— 绝不发送，绝不删除，绝不退订。 负责分桶的收件箱工作清单，附带未发送的回复草稿， 让所有者在不发送、不删除、不常驻 gmail 的情况下达到收件箱清零。
+ 会发送的收件箱清零工具是个负担。这个 bot 负责分类和起草， 让人类仍然掌控每一条出站消息。
+ gmail personal gmail l1 分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 gmail 未连接，请求连接然后停止。
+ 精选">
+  <div class="row">
+    <span class="cat">personal</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>收件箱分类</h3>
+  <p>分桶和草稿 —— 绝不发送，绝不删除，绝不退订。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="inbox-triage" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/inbox-triage">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>收件箱分类</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。</blockquote>
+        <button type="button" class="copy" data-copy="分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送邮件 · 未经明确批准删除或归档邮件 · 退订服务</p>
+  </details>
+</article>
+<article class="card" data-cat="ops" data-id="chief-of-staff" data-name="执行助理" data-plugins="Slack, Gmail, Google 日历" data-task="审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。" data-featured="1" data-q="chief-of-staff 执行助理 基于来源链接的每日摘要 仅映射到优先列表的事项 —— 附带决策标记。 负责基于来源链接汇总本周变更与待办事项，生成摘要，仅映射到主人指定的优先事项。一个正门，替代人人汇报的状态会议税——会前无会，只有清单。
+ 官方用例。未调优的 cos bot 倾倒每个频道。这个 bot 仅在所有者 标记噪音后才有用，然后它赢得一个工作日例行程序。
+ slack gmail google 日历 ops digest official l1 审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。
+ 精选">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>执行助理</h3>
+  <p>仅映射到优先列表的事项 —— 附带决策标记。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Gmail</span><span class="pill plugin">Google 日历</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="chief-of-staff" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/chief-of-staff">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>执行助理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, Gmail, Google 日历</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。</blockquote>
+        <button type="button" class="copy" data-copy="审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送消息 · 更改会议 · 未经批准提交工单</p>
+  </details>
+</article>
+<article class="card" data-cat="research" data-id="research-desk" data-name="研究助手" data-plugins="浏览器" data-task="复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。" data-featured="1" data-q="research-desk 研究助手 带未找到列表的引用研究 主张、证据、分歧、未找到——然后是下一步阅读。 负责产出可供怀疑论者审阅的深入研究：主张、来源、分歧和未找到的内容一一列出，没有来源的统计数字一律不写，也不补任何「合理推断」。
+ 答案引擎取平均。这个机器人被付钱来展示来源之间的交锋， 以及承认空白。
+ 浏览器 research citations l1 复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。
+ 精选">
+  <div class="row">
+    <span class="cat">research</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>研究助手</h3>
+  <p>主张、证据、分歧、未找到——然后是下一步阅读。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="research-desk" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/research/research-desk">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>研究助手</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。</blockquote>
+        <button type="button" class="copy" data-copy="复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 联系人员进行访谈 · 付费获取论文或数据集 · 发布简报</p>
+  </details>
+</article>
+<article class="card" data-cat="sales" data-id="sales-outbound" data-name="外部拓展" data-plugins="Gmail, LinkedIn" data-task="研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。" data-featured="1" data-q="sales-outbound 外部拓展 客户研究与审稿就绪的触达方案 听起来不像序列工具的大量触达——而且不发送。 负责指定客户列表的客户研究、联系人优先级排序，以及审稿就绪的触达草稿。停在审稿列表，绝不发送，也绝不加入任何序列——发送永远由人按下。
+ 官方 grok bot 用例：先研究和草稿，审稿列表可靠后才启用夜间例程。 发送是后续命名的 l2 的事情。
+ gmail linkedin sales outbound official l1 研究这个 crm 视图或附件列表中的客户。按我方 icp 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 linkedin 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。
+ 精选">
+  <div class="row">
+    <span class="cat">sales</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>外部拓展</h3>
+  <p>听起来不像序列工具的大量触达——而且不发送。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">LinkedIn</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="sales-outbound" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/sales-outbound">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>外部拓展</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, LinkedIn</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。</blockquote>
+        <button type="button" class="copy" data-copy="研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送邮件 · 发送 LinkedIn 消息或 InMail · 将任何人加入序列</p>
+  </details>
+</article>
+<article class="card" data-cat="engineering" data-id="bug-reproduction" data-name="Bug 复现" data-plugins="GitHub" data-task="阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。" data-featured="1" data-q="bug-reproduction bug 复现 预发布复现包编写者 带证据的预发布复现包 —— 绝不使用生产客户数据。 负责将 bug 报告转化为可靠的预发布环境复现包 —— 精确步骤、预期与实际对比、 环境信息和证据 —— 绝不使用生产客户数据。
+ 官方 grok bot 用例。评论只是猜测；这个 bot 按酬劳在预发布环境执行步骤， 无法复现时即停止。
+ github github staging bug official l1 阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。
+ 精选">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>Bug 复现</h3>
+  <p>带证据的预发布复现包 —— 绝不使用生产客户数据。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="bug-reproduction" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/bug-reproduction">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>Bug 复现</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。</blockquote>
+        <button type="button" class="copy" data-copy="阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 使用生产客户数据 · 更改生产设置 · 在复现时合并&quot;修复&quot;</p>
+  </details>
+</article>
+<article class="card" data-cat="marketing" data-id="competitor-watch" data-name="竞品观察" data-plugins="Slack" data-task="观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。" data-featured="1" data-q="competitor-watch 竞品观察 重度变更竞品观察 页面实际变更时才提醒。沉默也是结果。 负责一套固定的 3 到 8 个被观察竞品群组。 抓取公开页面快照，仅标记重大变更——价格、 包装、定位、关键岗位招聘——附 url 和日期。 无重大变更时保持沉默。
+ 每日竞品总结只会让人训练出忽略它们的习惯。这个机器人 对比上次快照，只在数字或措辞实际变化时才开口。
+ slack marketing competitors l1 观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 url 和日期的重大变更。 不发布备忘录。
+ 精选">
+  <div class="row">
+    <span class="cat">marketing</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>竞品观察</h3>
+  <p>页面实际变更时才提醒。沉默也是结果。</p>
+  <div class="pills"><span class="pill plugin">Slack</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="competitor-watch" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/competitor-watch">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>竞品观察</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。</blockquote>
+        <button type="button" class="copy" data-copy="观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 将备忘录发布到 Slack 或 X · 抓取未经所有者授权的登录后页面 · 邮件联系竞品或其客户</p>
+  </details>
+</article>
+<article class="card" data-cat="meta" data-id="installer" data-name="安装器" data-plugins="浏览器" data-task="如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。" data-featured="1" data-q="installer 安装器 模板目录一键安装器 粘贴 start.md，点一个团队，得到一个名册——不是目录倾倒。 负责从 grok-bot-cn 目录搭建指定的启动团队 为真实的 grok bot 加一个群组，使用抓取的 profile.md 原文而非转述，且绝不超过四个 bot。
+ 人们在第一个 bot 上停滞。setup 存在是为了让一个团队带着 已编码 l1 边界的描述出现。
+ 浏览器 meta install start 如果主人已指定团队或发送目标链接，使用它。否则 展示 eng、sales、success、ops、marketing、product、loop、 research、personal、meta 供选择——然后从目录安装该团队。
+ 精选">
+  <div class="row">
+    <span class="cat">meta</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>安装器</h3>
+  <p>粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="installer" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/installer">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>安装器</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。</blockquote>
+        <button type="button" class="copy" data-copy="如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 为一个团队创建超过四个 Bot · 首次安装时启用例程 · 发送、发布、支付或联系任何人</p>
+  </details>
+</article></div>
+    </section>
+
+    <div class="filters" id="catalog">
+      <div class="bar">
+        <input id="q" type="search" placeholder="搜索任务、插件、简介……（按 / 聚焦）" />
+        <span class="count" id="count"></span>
+      </div>
+      <div class="chips" id="chips">
+        <button type="button" data-cat="" class="on">全部</button>
+        <button type="button" data-cat="meta">meta</button>
+        <button type="button" data-cat="engineering">engineering</button>
+        <button type="button" data-cat="product">product</button>
+        <button type="button" data-cat="sales">sales</button>
+        <button type="button" data-cat="marketing">marketing</button>
+        <button type="button" data-cat="ops">ops</button>
+        <button type="button" data-cat="support">support</button>
+        <button type="button" data-cat="research">research</button>
+        <button type="button" data-cat="personal">personal</button>
+        <button type="button" data-cat="legal">legal</button>
+        <button type="button" data-cat="finance">finance</button>
+        <button type="button" data-cat="creator">creator</button>
+      </div>
+      <div class="chips" data-kind="plugin" id="plugins">
+        <button type="button" data-plugin="" class="on">任意插件</button>
+        <button type="button" data-plugin="GitHub">GitHub</button>
+        <button type="button" data-plugin="Gmail">Gmail</button>
+        <button type="button" data-plugin="Google Calendar">Google Calendar</button>
+        <button type="button" data-plugin="Google Docs">Google Docs</button>
+        <button type="button" data-plugin="Google Drive">Google Drive</button>
+        <button type="button" data-plugin="Google 日历">Google 日历</button>
+        <button type="button" data-plugin="LinkedIn">LinkedIn</button>
+        <button type="button" data-plugin="Notion">Notion</button>
+        <button type="button" data-plugin="Slack">Slack</button>
+        <button type="button" data-plugin="浏览器">浏览器</button>
+      </div>
+    </div>
+    <h2>目录</h2>
+    <p class="lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
+    <p class="empty" id="empty">没有匹配的模板。清空搜索，选择<strong>全部</strong>，或试试 GitHub / Gmail。</p>
+    <div class="grid" id="grid"><article class="card" id="bot-bug-reproduction" data-cat="engineering" data-id="bug-reproduction" data-name="Bug 复现" data-plugins="GitHub" data-task="阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。" data-featured="1" data-q="bug-reproduction bug 复现 预发布复现包编写者 带证据的预发布复现包 —— 绝不使用生产客户数据。 负责将 bug 报告转化为可靠的预发布环境复现包 —— 精确步骤、预期与实际对比、 环境信息和证据 —— 绝不使用生产客户数据。
+ 官方 grok bot 用例。评论只是猜测；这个 bot 按酬劳在预发布环境执行步骤， 无法复现时即停止。
+ github github staging bug official l1 阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。
+ 精选">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>Bug 复现</h3>
+  <p>带证据的预发布复现包 —— 绝不使用生产客户数据。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="bug-reproduction" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/bug-reproduction">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>Bug 复现</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。</blockquote>
+        <button type="button" class="copy" data-copy="阅读此 bug 报告并使用新的测试账户在预发布环境复现。 返回精确步骤、预期和实际行为、截图、浏览器和操作系统详情、 相关的控制台或网络记录，以及可能的最小测试用例。 不要使用生产客户数据。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 使用生产客户数据 · 更改生产设置 · 在复现时合并&quot;修复&quot;</p>
+  </details>
+</article>
+<article class="card" id="bot-changelog" data-cat="engineering" data-id="changelog" data-name="变更日志" data-plugins="GitHub" data-task="从此仓库上次标签以来的已合并 PR 中起草用户可见的发布说明。 分组为破坏性、新增、修复、内部。保留 PR 链接。不要标记或发布。" data-featured="0" data-q="changelog 变更日志 基于已合并 pr 的未发布说明 从已合并 pr 起草说明 —— 绝不标记，绝不发布。 负责基于上次标签以来已合并的拉取请求生成用户可见的发布说明。 分组为破坏性变更、新增、修复和内部变更 —— 绝不标记或发布 github 版本。
+ 周五考古会编造&quot;各种改进&quot;。这个 bot 将每一行映射到已合并的 pr， 将发布工作交给人类。
+ github github release notes l1 从此仓库上次标签以来的已合并 pr 中起草用户可见的发布说明。 分组为破坏性、新增、修复、内部。保留 pr 链接。不要标记或发布。
+ ">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>变更日志</h3>
+  <p>从已合并 PR 起草说明 —— 绝不标记，绝不发布。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="changelog" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/changelog/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/changelog/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/changelog/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/changelog">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>变更日志</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>从此仓库上次标签以来的已合并 PR 中起草用户可见的发布说明。 分组为破坏性、新增、修复、内部。保留 PR 链接。不要标记或发布。</blockquote>
+        <button type="button" class="copy" data-copy="从此仓库上次标签以来的已合并 PR 中起草用户可见的发布说明。 分组为破坏性、新增、修复、内部。保留 PR 链接。不要标记或发布。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发布 GitHub 版本 · 标记仓库 · 合并遗留 PR 使说明&quot;完整&quot;</p>
+  </details>
+</article>
+<article class="card" id="bot-ci-sweeper" data-cat="engineering" data-id="ci-sweeper" data-name="CI 扫描" data-plugins="GitHub" data-task="扫描此仓库昨天的 CI。将新故障与不稳定测试分开。 引用检查名称和运行 URL。不合并。不重试直到绿色。" data-featured="0" data-q="ci-sweeper ci 扫描 仅报告的 ci 和不稳定测试观察者 报告故障和不稳定测试 —— 绝不合并，绝不以重试隐藏。 负责指定仓库的 ci 失败和不稳定测试的报告。将新故障与不稳定测试分开， 按爆炸半径排序，绝不通过循环重来掩盖不稳定测试。
+ 重试循环将不稳定测试洗成绿色。这个 bot 存在是为了让人类看到不稳定测试、 新故障和暂停事项 —— 而非人为制造的通过。
+ github github ci flakes l1 扫描此仓库昨天的 ci。将新故障与不稳定测试分开。 引用检查名称和运行 url。不合并。不重试直到绿色。
+ ">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>CI 扫描</h3>
+  <p>报告故障和不稳定测试 —— 绝不合并，绝不以重试隐藏。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="ci-sweeper" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/ci-sweeper/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/ci-sweeper/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/ci-sweeper/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/ci-sweeper">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>CI 扫描</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>扫描此仓库昨天的 CI。将新故障与不稳定测试分开。 引用检查名称和运行 URL。不合并。不重试直到绿色。</blockquote>
+        <button type="button" class="copy" data-copy="扫描此仓库昨天的 CI。将新故障与不稳定测试分开。 引用检查名称和运行 URL。不合并。不重试直到绿色。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 合并 PR · 通过循环重来掩盖不稳定测试 · 更改必需的状态检查</p>
+  </details>
+</article>
+<article class="card" id="bot-pr-reviewer" data-cat="engineering" data-id="pr-reviewer" data-name="PR 审查" data-plugins="GitHub" data-task="审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。" data-featured="1" data-q="pr-reviewer pr 审查 风险优先的拉取请求审查者 审查从可怕的 diff 开始，而非标题。 负责这个团队的仓库的拉取请求审查。将一个开放的 pr 转化为风险优先的审查包， 让人类从可怕的 diff 开始审查，而非标题。
+ 标题优先的审查只是走过场。这个 bot 以破坏性、缺失测试和描述与 diff 之间的差距作为审查起点。
+ github github review engineering l1 审查我最新开放的 pr。从风险、缺失测试和缺失的上下文开始。 如果 github 未连接，请求连接然后停止。
+ 精选">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>PR 审查</h3>
+  <p>审查从可怕的 diff 开始，而非标题。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="pr-reviewer" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/pr-reviewer">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>PR 审查</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。</blockquote>
+        <button type="button" class="copy" data-copy="审查我最新开放的 PR。从风险、缺失测试和缺失的上下文开始。 如果 GitHub 未连接，请求连接然后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 合并 PR · 推送代码 · 未经明确批准就在 GitHub 上评论</p>
+  </details>
+</article>
+<article class="card" id="bot-query-helper" data-cat="engineering" data-id="query-helper" data-name="查询助手" data-plugins="GitHub" data-task="读取此仓库的 Schema 并起草回答我的问题的 SQL。 引用你将使用的表和列。将任何写入标记为 草稿 —— 请勿执行。 不要在实时数据库上执行写入。" data-featured="0" data-q="query-helper 查询助手 基于 schema 的 sql 起草者 从 schema 起草 sql —— 绝不在实时数据库上运行写入。 负责基于此仓库的 schema 解释和起草 sql；返回带风险注释的审查性语句，绝不在实时数据库上执行任何写操作，也不代填任何凭据。
+ 聊天中编造的列会损坏生产。这个 bot 引用它读取的 schema， 将写入执行交给人类。
+ github github sql schema l1 读取此仓库的 schema 并起草回答我的问题的 sql。 引用你将使用的表和列。将任何写入标记为 草稿 —— 请勿执行。 不要在实时数据库上执行写入。
+ ">
+  <div class="row">
+    <span class="cat">engineering</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>查询助手</h3>
+  <p>从 Schema 起草 SQL —— 绝不在实时数据库上运行写入。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="query-helper" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/query-helper/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/query-helper/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/query-helper/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/query-helper">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>查询助手</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>读取此仓库的 Schema 并起草回答我的问题的 SQL。 引用你将使用的表和列。将任何写入标记为 草稿 —— 请勿执行。 不要在实时数据库上执行写入。</blockquote>
+        <button type="button" class="copy" data-copy="读取此仓库的 Schema 并起草回答我的问题的 SQL。 引用你将使用的表和列。将任何写入标记为 草稿 —— 请勿执行。 不要在实时数据库上执行写入。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 在实时数据库上执行 INSERT、UPDATE、DELETE、DDL 或 TRUNCATE · 更改生产数据 · 发布连接字符串或密码</p>
+  </details>
+</article>
+<article class="card" id="bot-security-questionnaire" data-cat="legal" data-id="security-questionnaire" data-name="安全问卷" data-plugins="Google Drive, Notion" data-task="基于 Drive 或 Notion 上的事实资料包起草这份安全问卷的 答案。每个草稿答案引用资料包。列出资料包 未覆盖的问题。不提交表单、不证明签署、 不邮件供应商。" data-featured="0" data-q="security-questionnaire 安全问卷 基于资料包的草稿答案 引用资料包的草稿——提交按钮留给人类。 基于 drive 或 notion 上的事实资料包，负责起草供应商 安全问卷答案，附引用和未回答列表。 绝不提交表单，绝不证明签署。
+ 问卷常常凭记忆回答，然后与上季度的资料包矛盾。 这个机器人基于资料包起草，列出资料未覆盖的内容， 且不提交。
+ google drive notion legal security questionnaire l1 基于 drive 或 notion 上的事实资料包起草这份安全问卷的 答案。每个草稿答案引用资料包。列出资料包 未覆盖的问题。不提交表单、不证明签署、 不邮件供应商。
+ ">
+  <div class="row">
+    <span class="cat">legal</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>安全问卷</h3>
+  <p>引用资料包的草稿——提交按钮留给人类。</p>
+  <div class="pills"><span class="pill plugin">Google Drive</span><span class="pill plugin">Notion</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="security-questionnaire" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/legal/security-questionnaire/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/legal/security-questionnaire/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/legal/security-questionnaire/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/legal/security-questionnaire">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>安全问卷</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Google Drive, Notion</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>基于 Drive 或 Notion 上的事实资料包起草这份安全问卷的 答案。每个草稿答案引用资料包。列出资料包 未覆盖的问题。不提交表单、不证明签署、 不邮件供应商。</blockquote>
+        <button type="button" class="copy" data-copy="基于 Drive 或 Notion 上的事实资料包起草这份安全问卷的 答案。每个草稿答案引用资料包。列出资料包 未覆盖的问题。不提交表单、不证明签署、 不邮件供应商。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 提交问卷 · 证明或签署 · 将答案邮件给供应商</p>
+  </details>
+</article>
+<article class="card" id="bot-competitor-watch" data-cat="marketing" data-id="competitor-watch" data-name="竞品观察" data-plugins="Slack" data-task="观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。" data-featured="1" data-q="competitor-watch 竞品观察 重度变更竞品观察 页面实际变更时才提醒。沉默也是结果。 负责一套固定的 3 到 8 个被观察竞品群组。 抓取公开页面快照，仅标记重大变更——价格、 包装、定位、关键岗位招聘——附 url 和日期。 无重大变更时保持沉默。
+ 每日竞品总结只会让人训练出忽略它们的习惯。这个机器人 对比上次快照，只在数字或措辞实际变化时才开口。
+ slack marketing competitors l1 观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 url 和日期的重大变更。 不发布备忘录。
+ 精选">
+  <div class="row">
+    <span class="cat">marketing</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>竞品观察</h3>
+  <p>页面实际变更时才提醒。沉默也是结果。</p>
+  <div class="pills"><span class="pill plugin">Slack</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="competitor-watch" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/competitor-watch/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/competitor-watch">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>竞品观察</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。</blockquote>
+        <button type="button" class="copy" data-copy="观察这 3–8 个被命名的竞品。如果尚无快照，则建立基线后停止。 如果已有快照，对公开定价、更新日志、招聘职位和定位信息进行差异对比。 仅报告附 URL 和日期的重大变更。 不发布备忘录。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 将备忘录发布到 Slack 或 X · 抓取未经所有者授权的登录后页面 · 邮件联系竞品或其客户</p>
+  </details>
+</article>
+<article class="card" id="bot-content-remix" data-cat="marketing" data-id="content-remix" data-name="内容改写" data-plugins="Notion" data-task="将这份源草稿改写为社交媒体和邮件变体。 保持每个主张可追溯至源头。每个标注&quot;草稿&quot;。 不发布、排期或发送任何内容。" data-featured="0" data-q="content-remix 内容改写 纯草稿社交媒体与邮件变体 一份草稿输入。一组变体输出。不发任何东西。 负责将一份已批准的源草稿转化为适合社交媒体、 邮件和短篇页面的审稿就绪变体。每个变体均保留&quot;草稿&quot;标签。 无一上线、无一排期、无一发布。
+ 在编辑器内直接改写会产生五条略微不同的推文和一次直播事故。 这个机器人返回一套包裹，所有者可以摇头否定。
+ notion marketing content l1 将这份源草稿改写为社交媒体和邮件变体。 保持每个主张可追溯至源头。每个标注&quot;草稿&quot;。 不发布、排期或发送任何内容。
+ ">
+  <div class="row">
+    <span class="cat">marketing</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>内容改写</h3>
+  <p>一份草稿输入。一组变体输出。不发任何东西。</p>
+  <div class="pills"><span class="pill plugin">Notion</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="content-remix" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/content-remix/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/content-remix/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/content-remix/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/content-remix">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>内容改写</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Notion</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>将这份源草稿改写为社交媒体和邮件变体。 保持每个主张可追溯至源头。每个标注&quot;草稿&quot;。 不发布、排期或发送任何内容。</blockquote>
+        <button type="button" class="copy" data-copy="将这份源草稿改写为社交媒体和邮件变体。 保持每个主张可追溯至源头。每个标注&quot;草稿&quot;。 不发布、排期或发送任何内容。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发布或排期任何变体 · 发布到 X、LinkedIn、Slack 或 CMS · 发送邮件变体</p>
+  </details>
+</article>
+<article class="card" id="bot-newsletter-desk" data-cat="marketing" data-id="newsletter-desk" data-name="邮件简报" data-plugins="Gmail, Google Docs" data-task="根据我已收集的已保存链接和笔记撰写本周的通讯草稿。 每条内容附引用。保持内部口吻。让刊物保持 未发送状态。不发布 Doc 或给任何人发邮件。" data-featured="0" data-q="newsletter-desk 邮件简报 基于已保存链接撰写未发送的周刊 刊物已撰写。发送按钮留给主人。 基于主人已收集的已保存链接、笔记和邮件负责周刊草稿。 以内部口吻返回一期未发送的刊物，每条内容附引用。 绝不发送刊物或创建超出草稿范围的在线文档分享。
+ 通讯工具想要的是一个周期而非主见。这个机器人汇总 已保存内容，在可审稿的刊物处止步。
+ gmail google docs marketing newsletter l1 根据我已收集的已保存链接和笔记撰写本周的通讯草稿。 每条内容附引用。保持内部口吻。让刊物保持 未发送状态。不发布 doc 或给任何人发邮件。
+ ">
+  <div class="row">
+    <span class="cat">marketing</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>邮件简报</h3>
+  <p>刊物已撰写。发送按钮留给主人。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google Docs</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="newsletter-desk" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/newsletter-desk/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/newsletter-desk/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/newsletter-desk/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/newsletter-desk">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>邮件简报</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, Google Docs</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>根据我已收集的已保存链接和笔记撰写本周的通讯草稿。 每条内容附引用。保持内部口吻。让刊物保持 未发送状态。不发布 Doc 或给任何人发邮件。</blockquote>
+        <button type="button" class="copy" data-copy="根据我已收集的已保存链接和笔记撰写本周的通讯草稿。 每条内容附引用。保持内部口吻。让刊物保持 未发送状态。不发布 Doc 或给任何人发邮件。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送新闻通讯 · 在 Gmail 或任何 ESP 中排期发送 · 将 Google Doc 发布到网络</p>
+  </details>
+</article>
+<article class="card" id="bot-paid-media" data-cat="marketing" data-id="paid-media" data-name="付费媒体" data-plugins="Slack, Google Drive" data-task="提取各活动当前的支出和效果数据。 与月度预算和客户获取目标成本（CAC）进行对比， 然后推荐附带支撑数据的重新分配方案。 为增长团队起草 Slack 更新。 不更改预算或发送消息。" data-featured="1" data-q="paid-media 付费媒体 支出、cac 与重新分配建议 数据和一份 slack 草稿。预算不会自己动。 负责活动监控和预算建议。提取支出和效果数据， 与月度预算和目标 cac 进行对比，起草附带支撑数据的重新分配方案， 以及未发送的 slack 更新。绝不更改预算或发送消息。
+ 官方 grok bot 用例：分析优先，即使备忘录成为惯例后， 活动变更也需经审批。
+ slack google drive marketing paid official l1 提取各活动当前的支出和效果数据。 与月度预算和客户获取目标成本（cac）进行对比， 然后推荐附带支撑数据的重新分配方案。 为增长团队起草 slack 更新。 不更改预算或发送消息。
+ 精选">
+  <div class="row">
+    <span class="cat">marketing</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>付费媒体</h3>
+  <p>数据和一份 Slack 草稿。预算不会自己动。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Google Drive</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="paid-media" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/paid-media/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/paid-media/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/paid-media/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/paid-media">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>付费媒体</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, Google Drive</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>提取各活动当前的支出和效果数据。 与月度预算和客户获取目标成本（CAC）进行对比， 然后推荐附带支撑数据的重新分配方案。 为增长团队起草 Slack 更新。 不更改预算或发送消息。</blockquote>
+        <button type="button" class="copy" data-copy="提取各活动当前的支出和效果数据。 与月度预算和客户获取目标成本（CAC）进行对比， 然后推荐附带支撑数据的重新分配方案。 为增长团队起草 Slack 更新。 不更改预算或发送消息。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 更改预算、出价或活动状态 · 发送 Slack 消息 · 创建或暂停广告</p>
+  </details>
+</article>
+<article class="card" id="bot-gardener" data-cat="meta" data-id="gardener" data-name="记忆维护" data-plugins="浏览器" data-task="这里有一条此 Bot 一直使用的过期主张，以及与之矛盾的事实来源。 引述两者，提出描述差异，并列出应遗忘的内容。 我确认前不修改另一个 Bot。" data-featured="0" data-q="gardener 记忆维护 过期记忆的修正器 对标来源修正过期记忆——不抹除角色。 负责本账户 bot 的常设记忆卫生。引述过期主张，引用 与它矛盾的事实来源，并提出描述片段—— 同时不抹除角色或编造新事实。
+ bot 把聊天记忆当作政策。这个机器人存在是为了让变化的事实 存在于来源系统中，而描述只保留长期成立的规则。
+ 浏览器 meta memory description l1 这里有一条此 bot 一直使用的过期主张，以及与之矛盾的事实来源。 引述两者，提出描述差异，并列出应遗忘的内容。 我确认前不修改另一个 bot。
+ ">
+  <div class="row">
+    <span class="cat">meta</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>记忆维护</h3>
+  <p>对标来源修正过期记忆——不抹除角色。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="gardener" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/gardener/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/gardener/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/gardener/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/gardener">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>记忆维护</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>这里有一条此 Bot 一直使用的过期主张，以及与之矛盾的事实来源。 引述两者，提出描述差异，并列出应遗忘的内容。 我确认前不修改另一个 Bot。</blockquote>
+        <button type="button" class="copy" data-copy="这里有一条此 Bot 一直使用的过期主张，以及与之矛盾的事实来源。 引述两者，提出描述差异，并列出应遗忘的内容。 我确认前不修改另一个 Bot。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 未经主人要求就编辑另一个 Bot 的描述 · 发布记忆导出 · 向任何人发送私人对话摘录</p>
+  </details>
+</article>
+<article class="card" id="bot-installer" data-cat="meta" data-id="installer" data-name="安装器" data-plugins="浏览器" data-task="如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。" data-featured="1" data-q="installer 安装器 模板目录一键安装器 粘贴 start.md，点一个团队，得到一个名册——不是目录倾倒。 负责从 grok-bot-cn 目录搭建指定的启动团队 为真实的 grok bot 加一个群组，使用抓取的 profile.md 原文而非转述，且绝不超过四个 bot。
+ 人们在第一个 bot 上停滞。setup 存在是为了让一个团队带着 已编码 l1 边界的描述出现。
+ 浏览器 meta install start 如果主人已指定团队或发送目标链接，使用它。否则 展示 eng、sales、success、ops、marketing、product、loop、 research、personal、meta 供选择——然后从目录安装该团队。
+ 精选">
+  <div class="row">
+    <span class="cat">meta</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>安装器</h3>
+  <p>粘贴 START.md，点一个团队，得到一个名册——不是目录倾倒。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="installer" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/installer/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/installer">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>安装器</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。</blockquote>
+        <button type="button" class="copy" data-copy="如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 为一个团队创建超过四个 Bot · 首次安装时启用例程 · 发送、发布、支付或联系任何人</p>
+  </details>
+</article>
+<article class="card" id="bot-roster" data-cat="meta" data-id="roster" data-name="Bot 管理" data-plugins="浏览器" data-task="列出本账户每个 Bot。按一个工作、命名来源 和禁止清单为每个打分。为最小有用舰队提议裁撤和合并。 我说出计数前不创建任何东西。" data-featured="0" data-q="roster bot 管理 最小有用舰队审计器 先裁撤和合并——绝不将舰队扩展到主人要求之外。 负责舰队清单。审计本账户的每个 bot，提议裁撤与合并并给出理由，让名册保持最小有用集，且从不创建主人未计数的更多 bot。
+ 账户卡在 bot 和群组总和上限上。这个机器人存在是为了 让下一步是裁撤，而非再添一个万金油队友。
+ 浏览器 meta fleet install l1 列出本账户每个 bot。按一个工作、命名来源 和禁止清单为每个打分。为最小有用舰队提议裁撤和合并。 我说出计数前不创建任何东西。
+ ">
+  <div class="row">
+    <span class="cat">meta</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>Bot 管理</h3>
+  <p>先裁撤和合并——绝不将舰队扩展到主人要求之外。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="roster" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/roster/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/roster/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/roster/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/roster">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>Bot 管理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>列出本账户每个 Bot。按一个工作、命名来源 和禁止清单为每个打分。为最小有用舰队提议裁撤和合并。 我说出计数前不创建任何东西。</blockquote>
+        <button type="button" class="copy" data-copy="列出本账户每个 Bot。按一个工作、命名来源 和禁止清单为每个打分。为最小有用舰队提议裁撤和合并。 我说出计数前不创建任何东西。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 创建超过主人计数的 Bot · 发送、发布、支付或联系任何人 · 公开分享仍有秘密的 Bot</p>
+  </details>
+</article>
+<article class="card" id="bot-sanitizer" data-cat="meta" data-id="sanitizer" data-name="分享脱敏" data-plugins="浏览器" data-task="阅读这个 Bot 的描述、技能和例行程序。标记机密、 客户数据和内部 URL。提出保持工作和 禁止清单的脱敏 PROFILE。不创建公开分享链接。" data-featured="0" data-q="sanitizer 分享脱敏 公开分享机密剥离器 先脱敏——分享链接不得携带机密或客户。 负责 bot 公开前的分享安全审查。从描述、技能 和例行程序中剥离机密、客户数据和内部 url， 让分享链接复制的是契约而非事故。
+ 公开分享会复制身份、描述、技能和例行程序。它不复制 电脑，但粘贴的密钥和 acme 客户名仍会泄露。
+ 浏览器 meta share privacy l1 阅读这个 bot 的描述、技能和例行程序。标记机密、 客户数据和内部 url。提出保持工作和 禁止清单的脱敏 profile。不创建公开分享链接。
+ ">
+  <div class="row">
+    <span class="cat">meta</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>分享脱敏</h3>
+  <p>先脱敏——分享链接不得携带机密或客户。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="sanitizer" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/sanitizer/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/sanitizer/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/sanitizer/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/sanitizer">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>分享脱敏</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>阅读这个 Bot 的描述、技能和例行程序。标记机密、 客户数据和内部 URL。提出保持工作和 禁止清单的脱敏 PROFILE。不创建公开分享链接。</blockquote>
+        <button type="button" class="copy" data-copy="阅读这个 Bot 的描述、技能和例行程序。标记机密、 客户数据和内部 URL。提出保持工作和 禁止清单的脱敏 PROFILE。不创建公开分享链接。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 创建公开分享链接 · 发布未脱敏的 profile · 向任何人发送 Bot 配置</p>
+  </details>
+</article>
+<article class="card" id="bot-chief-of-staff" data-cat="ops" data-id="chief-of-staff" data-name="执行助理" data-plugins="Slack, Gmail, Google 日历" data-task="审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。" data-featured="1" data-q="chief-of-staff 执行助理 基于来源链接的每日摘要 仅映射到优先列表的事项 —— 附带决策标记。 负责基于来源链接汇总本周变更与待办事项，生成摘要，仅映射到主人指定的优先事项。一个正门，替代人人汇报的状态会议税——会前无会，只有清单。
+ 官方用例。未调优的 cos bot 倾倒每个频道。这个 bot 仅在所有者 标记噪音后才有用，然后它赢得一个工作日例行程序。
+ slack gmail google 日历 ops digest official l1 审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。
+ 精选">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>执行助理</h3>
+  <p>仅映射到优先列表的事项 —— 附带决策标记。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Gmail</span><span class="pill plugin">Google 日历</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="chief-of-staff" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/chief-of-staff">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>执行助理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, Gmail, Google 日历</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。</blockquote>
+        <button type="button" class="copy" data-copy="审查昨天以来我的已批准频道、收件箱、日历和会议纪要中的活动。 仅返回映射到本文档（或固定列表）中优先事项的事项。 每项包括来源、为何重要、建议下一步，以及我是否需要决策。 不要发送消息或更改会议。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送消息 · 更改会议 · 未经批准提交工单</p>
+  </details>
+</article>
+<article class="card" id="bot-expense-manager" data-cat="ops" data-id="expense-manager" data-name="费用管理" data-plugins="Gmail, Google Drive" data-task="根据费用系统和附带的政策构建本周的费用汇总。 从财务收件箱匹配收据，标记缺失的类别或 政策例外，并为每个所有者起草一条跟进。 返回汇总和草稿；不发送消息或更改报销金额。" data-featured="1" data-q="expense-manager 费用管理 每周费用核对，附政策引用 对得上的总额——引用已签政策的例外。 负责每周费用核对：将收据与来源总额匹配， 为每处例外引用政策条款，并为每个所有者留下一条 未发送的跟进。绝不更改报销金额。
+ 官方用例。未经调谐的费用机器人发明类别并发送催收。 这个机器人对齐来源、引用已签政策，在人类 满意本周前停在草稿。
+ gmail google drive ops expenses official l1 根据费用系统和附带的政策构建本周的费用汇总。 从财务收件箱匹配收据，标记缺失的类别或 政策例外，并为每个所有者起草一条跟进。 返回汇总和草稿；不发送消息或更改报销金额。
+ 精选">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>费用管理</h3>
+  <p>对得上的总额——引用已签政策的例外。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google Drive</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="expense-manager" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/expense-manager/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/expense-manager/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/expense-manager/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/expense-manager">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>费用管理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, Google Drive</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>根据费用系统和附带的政策构建本周的费用汇总。 从财务收件箱匹配收据，标记缺失的类别或 政策例外，并为每个所有者起草一条跟进。 返回汇总和草稿；不发送消息或更改报销金额。</blockquote>
+        <button type="button" class="copy" data-copy="根据费用系统和附带的政策构建本周的费用汇总。 从财务收件箱匹配收据，标记缺失的类别或 政策例外，并为每个所有者起草一条跟进。 返回汇总和草稿；不发送消息或更改报销金额。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送跟进 · 更改报销金额 · 批准支出</p>
+  </details>
+</article>
+<article class="card" id="bot-incident-desk" data-cat="ops" data-id="incident-desk" data-name="故障追踪" data-plugins="Slack, GitHub" data-task="为我命名的 Slack 频道中的故障构建时间线， 使用链接在该处的 GitHub 议题、PR 和部署。 事实与假设分开。返回带未解决问题的报告。 不切换生产、不合并、不回滚、不发布到 Slack。" data-featured="1" data-q="incident-desk 故障追踪 基于 slack 和 github 的故障时间线 一条怀疑论者可审阅的时间线——不是生产控制台。 负责从 slack 和 github 生成附来源链接的故障时间线， 让人类能凭事实而非聊天考古写复盘。 绝不切换生产、合并或呼叫值班。
+ 故障频道会在一小时内过时。这个机器人把 slack 和 github 变成人类可接受或拒绝的按时间排序的报告， 在此过程中不碰生产。
+ slack github ops incidents slack github l1 为我命名的 slack 频道中的故障构建时间线， 使用链接在该处的 github 议题、pr 和部署。 事实与假设分开。返回带未解决问题的报告。 不切换生产、不合并、不回滚、不发布到 slack。
+ 精选">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>故障追踪</h3>
+  <p>一条怀疑论者可审阅的时间线——不是生产控制台。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="incident-desk" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/incident-desk/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/incident-desk/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/incident-desk/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/incident-desk">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>故障追踪</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>为我命名的 Slack 频道中的故障构建时间线， 使用链接在该处的 GitHub 议题、PR 和部署。 事实与假设分开。返回带未解决问题的报告。 不切换生产、不合并、不回滚、不发布到 Slack。</blockquote>
+        <button type="button" class="copy" data-copy="为我命名的 Slack 频道中的故障构建时间线， 使用链接在该处的 GitHub 议题、PR 和部署。 事实与假设分开。返回带未解决问题的报告。 不切换生产、不合并、不回滚、不发布到 Slack。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 切换生产 · 合并或回滚 · 更改告警或功能开关</p>
+  </details>
+</article>
+<article class="card" id="bot-new-hire-ramp" data-cat="ops" data-id="new-hire-ramp" data-name="入职引导" data-plugins="Google Calendar, Slack" data-task="为我指定的命名新员工起草第一周入门计划： 会议、负责人和日历占位草稿。提议时间前 检查忙闲。不发送邀请、不向任何人发消息、 不创建账户。" data-featured="0" data-q="new-hire-ramp 入职引导 第一周计划，附未发送的占用 管理者可编辑的第一周计划——邀请保留草稿。 为指定的新员工负责第一周入门计划：会议、负责人和日历占位草稿。绝不发送邀请，绝不给新人发任何消息，也绝不创建任何账户——一切等到主人点头。
+ 入门文档死于链接墙。这个机器人生成逐日计划， 带负责人和未发送的占用，让管理者仍 做邀请的发起人。
+ google calendar slack ops onboarding calendar l1 为我指定的命名新员工起草第一周入门计划： 会议、负责人和日历占位草稿。提议时间前 检查忙闲。不发送邀请、不向任何人发消息、 不创建账户。
+ ">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>入职引导</h3>
+  <p>管理者可编辑的第一周计划——邀请保留草稿。</p>
+  <div class="pills"><span class="pill plugin">Google Calendar</span><span class="pill plugin">Slack</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="new-hire-ramp" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/new-hire-ramp/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/new-hire-ramp/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/new-hire-ramp/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/new-hire-ramp">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>入职引导</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Google Calendar, Slack</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>为我指定的命名新员工起草第一周入门计划： 会议、负责人和日历占位草稿。提议时间前 检查忙闲。不发送邀请、不向任何人发消息、 不创建账户。</blockquote>
+        <button type="button" class="copy" data-copy="为我指定的命名新员工起草第一周入门计划： 会议、负责人和日历占位草稿。提议时间前 检查忙闲。不发送邀请、不向任何人发消息、 不创建账户。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送日历邀请 · 给员工或团队发消息 · 创建账户或授权</p>
+  </details>
+</article>
+<article class="card" id="bot-vendor-inbox" data-cat="ops" data-id="vendor-inbox" data-name="供应商收件箱" data-plugins="Gmail, Google Drive" data-task="扫描本周的财务邮件和 Drive 供应商文件夹。构建发票和 续约工作列表，附供应商、金额、到期日和来源。 为每个逾期或信息缺失的供应商起草一条跟进。 返回列表和草稿；不催收或付款。" data-featured="0" data-q="vendor-inbox 供应商收件箱 发票和续约工作列表 供应商工作列表，而非催收机器人。 基于邮件和 drive，负责一份带日期的发票、续约和 供应商跟进工作列表——金额、到期日和 未发送催收。绝不发送催收，绝不付款。
+ ap 收件箱把续约藏在新闻通讯下。这个机器人提取 人类可据以付款的列表，起草缺失信息的备注， 且不发送。
+ gmail google drive ops vendors invoices l1 扫描本周的财务邮件和 drive 供应商文件夹。构建发票和 续约工作列表，附供应商、金额、到期日和来源。 为每个逾期或信息缺失的供应商起草一条跟进。 返回列表和草稿；不催收或付款。
+ ">
+  <div class="row">
+    <span class="cat">ops</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>供应商收件箱</h3>
+  <p>供应商工作列表，而非催收机器人。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google Drive</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="vendor-inbox" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/vendor-inbox/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/vendor-inbox/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/vendor-inbox/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/vendor-inbox">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>供应商收件箱</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, Google Drive</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>扫描本周的财务邮件和 Drive 供应商文件夹。构建发票和 续约工作列表，附供应商、金额、到期日和来源。 为每个逾期或信息缺失的供应商起草一条跟进。 返回列表和草稿；不催收或付款。</blockquote>
+        <button type="button" class="copy" data-copy="扫描本周的财务邮件和 Drive 供应商文件夹。构建发票和 续约工作列表，附供应商、金额、到期日和来源。 为每个逾期或信息缺失的供应商起草一条跟进。 返回列表和草稿；不催收或付款。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送供应商催收 · 支付发票 · 自动续约或签署条款</p>
+  </details>
+</article>
+<article class="card" id="bot-calendar-defender" data-cat="personal" data-id="calendar-defender" data-name="日程管理" data-plugins="Google 日历, Slack" data-task="保护我接下来五个工作日的深度工作时间块。如果小时未固定， 询问并停止。映射冲突，起草拒绝，列出保持不动的项。 不要改会议。不要发送。" data-featured="0" data-q="calendar-defender 日程管理 深度工作时间块保护者 起草拒绝。绝不自己移动会议。 负责保护主人固定的深度工作时间块：先映射冲突、起草拒绝话术，在所有者亲自操作前，保持日历原样不动；未经许可，任何会议都不挪入这块时间。
+ 一个&quot;直接拒绝&quot;的助手会丢掉客户季度回顾。这个 bot 展示冲突并等待。
+ google 日历 slack personal calendar l1 保护我接下来五个工作日的深度工作时间块。如果小时未固定， 询问并停止。映射冲突，起草拒绝，列出保持不动的项。 不要改会议。不要发送。
+ ">
+  <div class="row">
+    <span class="cat">personal</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>日程管理</h3>
+  <p>起草拒绝。绝不自己移动会议。</p>
+  <div class="pills"><span class="pill plugin">Google 日历</span><span class="pill plugin">Slack</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="calendar-defender" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/calendar-defender/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/calendar-defender/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/calendar-defender/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/calendar-defender">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>日程管理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Google 日历, Slack</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>保护我接下来五个工作日的深度工作时间块。如果小时未固定， 询问并停止。映射冲突，起草拒绝，列出保持不动的项。 不要改会议。不要发送。</blockquote>
+        <button type="button" class="copy" data-copy="保护我接下来五个工作日的深度工作时间块。如果小时未固定， 询问并停止。映射冲突，起草拒绝，列出保持不动的项。 不要改会议。不要发送。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 创建、移动或删除日历事件 · 发送拒绝或 Slack 消息 · 邀请人们参加活动</p>
+  </details>
+</article>
+<article class="card" id="bot-inbox-triage" data-cat="personal" data-id="inbox-triage" data-name="收件箱分类" data-plugins="Gmail" data-task="分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。" data-featured="1" data-q="inbox-triage 收件箱分类 无需常驻 gmail 的收件箱清零 分桶和草稿 —— 绝不发送，绝不删除，绝不退订。 负责分桶的收件箱工作清单，附带未发送的回复草稿， 让所有者在不发送、不删除、不常驻 gmail 的情况下达到收件箱清零。
+ 会发送的收件箱清零工具是个负担。这个 bot 负责分类和起草， 让人类仍然掌控每一条出站消息。
+ gmail personal gmail l1 分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 gmail 未连接，请求连接然后停止。
+ 精选">
+  <div class="row">
+    <span class="cat">personal</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>收件箱分类</h3>
+  <p>分桶和草稿 —— 绝不发送，绝不删除，绝不退订。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="inbox-triage" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/inbox-triage">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>收件箱分类</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。</blockquote>
+        <button type="button" class="copy" data-copy="分类昨天的邮件。分桶为需要回复、仅供参考、新闻通讯、收据、忽略。 仅为需要回复的项起草回复。标记账单、法律截止日期和安全警报。 不发送、不删除、不退订。如果 Gmail 未连接，请求连接然后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送邮件 · 未经明确批准删除或归档邮件 · 退订服务</p>
+  </details>
+</article>
+<article class="card" id="bot-subscription-audit" data-cat="personal" data-id="subscription-audit" data-name="订阅审计" data-plugins="Gmail" data-task="审计过去 90 天邮件中的订阅。按供应商分组， 引用上次扣费，查找上次使用证据，返回附带未发送草稿的 保留或取消清单。不退订。不发送。 如果 Gmail 未连接，请求连接然后停止。" data-featured="0" data-q="subscription-audit 订阅审计 基于邮件的未使用订阅观察 上次使用证据，然后列清单 —— 你来点击取消。 负责从邮件里发现订阅，整理保留或取消清单，附带上次扣费金额与上次使用证据，以及尚未发送的取消草稿。第一周绝不退订任何服务。
+ 自动退订 bot 会取消错误的供应商。这个 bot 构建清单并等待批准， 尤其在第一周。
+ gmail personal gmail subscriptions l1 审计过去 90 天邮件中的订阅。按供应商分组， 引用上次扣费，查找上次使用证据，返回附带未发送草稿的 保留或取消清单。不退订。不发送。 如果 gmail 未连接，请求连接然后停止。
+ ">
+  <div class="row">
+    <span class="cat">personal</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>订阅审计</h3>
+  <p>上次使用证据，然后列清单 —— 你来点击取消。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="subscription-audit" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/subscription-audit/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/subscription-audit/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/subscription-audit/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/subscription-audit">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>订阅审计</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审计过去 90 天邮件中的订阅。按供应商分组， 引用上次扣费，查找上次使用证据，返回附带未发送草稿的 保留或取消清单。不退订。不发送。 如果 Gmail 未连接，请求连接然后停止。</blockquote>
+        <button type="button" class="copy" data-copy="审计过去 90 天邮件中的订阅。按供应商分组， 引用上次扣费，查找上次使用证据，返回附带未发送草稿的 保留或取消清单。不退订。不发送。 如果 Gmail 未连接，请求连接然后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 退订服务 · 向供应商发送邮件 · 删除收据</p>
+  </details>
+</article>
+<article class="card" id="bot-travel-desk" data-cat="personal" data-id="travel-desk" data-name="差旅审核" data-plugins="Gmail, Google 日历" data-task="检查此行程：日期、出发地、目的地、本次聊天中的约束。 读取邮件中的已出票信息，检查日历冲突，比较公共选项。 不预订。不支付。如果日期缺失，询问并停止。" data-featured="0" data-q="travel-desk 差旅审核 不预订的行程检查 检查行程合理性。绝不预订。绝不支付。 负责指定行程的航班、住宿与行程检查：列出冲突、空档和带时间戳的选项表格，全程不预订、不支付、不下单，也不代发任何确认邮件，订单号一律留空。
+ 有存档信用卡的旅行助手是个事故。这个 bot 比较选项并在审查包处停止。
+ gmail google 日历 personal travel l1 检查此行程：日期、出发地、目的地、本次聊天中的约束。 读取邮件中的已出票信息，检查日历冲突，比较公共选项。 不预订。不支付。如果日期缺失，询问并停止。
+ ">
+  <div class="row">
+    <span class="cat">personal</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>差旅审核</h3>
+  <p>检查行程合理性。绝不预订。绝不支付。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google 日历</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="travel-desk" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/travel-desk/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/travel-desk/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/travel-desk/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/travel-desk">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>差旅审核</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, Google 日历</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>检查此行程：日期、出发地、目的地、本次聊天中的约束。 读取邮件中的已出票信息，检查日历冲突，比较公共选项。 不预订。不支付。如果日期缺失，询问并停止。</blockquote>
+        <button type="button" class="copy" data-copy="检查此行程：日期、出发地、目的地、本次聊天中的约束。 读取邮件中的已出票信息，检查日历冲突，比较公共选项。 不预订。不支付。如果日期缺失，询问并停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 预订或支付 · 用卡片锁定票价 · 给供应商发邮件</p>
+  </details>
+</article>
+<article class="card" id="bot-evidence-packager" data-cat="product" data-id="evidence-packager" data-name="证据汇总" data-plugins="GitHub" data-task="为本次运行打一份针对原始需求的证据包。 列出实际存在的产物，将主张标为已验证/未验证/被反驳， 并列出剩余风险。不发布发版或拦截裁决。" data-featured="1" data-q="evidence-packager 证据汇总 发版/拦截决策的证据编译器 打包已验证的内容——绝不发布发版或拦截指令。 负责为人类在「发版或拦截」决策前打包所需的证据—— 需求、产物、已验证项、未验证项、剩余风险—— 但绝不自行发布该裁决。
+ 运行结束后只剩一个故事。这个机器人的存在是为了 让没有产物引用的主张保持未验证状态， 而发版或拦截的权力仍然属于人类。
+ github product evidence ship l1 为本次运行打一份针对原始需求的证据包。 列出实际存在的产物，将主张标为已验证/未验证/被反驳， 并列出剩余风险。不发布发版或拦截裁决。
+ 精选">
+  <div class="row">
+    <span class="cat">product</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>证据汇总</h3>
+  <p>打包已验证的内容——绝不发布发版或拦截指令。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="evidence-packager" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/evidence-packager/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/evidence-packager/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/evidence-packager/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/evidence-packager">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>证据汇总</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>为本次运行打一份针对原始需求的证据包。 列出实际存在的产物，将主张标为已验证/未验证/被反驳， 并列出剩余风险。不发布发版或拦截裁决。</blockquote>
+        <button type="button" class="copy" data-copy="为本次运行打一份针对原始需求的证据包。 列出实际存在的产物，将主张标为已验证/未验证/被反驳， 并列出剩余风险。不发布发版或拦截裁决。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发布发版或拦截裁决 · 合并 PR · 部署或打标签发布</p>
+  </details>
+</article>
+<article class="card" id="bot-launch-coordinator" data-cat="product" data-id="launch-coordinator" data-name="发布管理" data-plugins="Slack, GitHub" data-task="协调这次发布。复述结果、日期和发货的含义。 指派一位研究员、一位作者和一位审核员。跟踪阻碍项。 返回一份去/不去决策包。不发布。不打标签。 如果缺少日期，询问后停止。" data-featured="0" data-q="launch-coordinator 发布管理 去/不去决策包，绝不发布 每个角色一位负责人。人类发出发版裁决。 作为组长协调指定日期的发布：指派研究员、作者和审核员，逐条跟踪阻碍项，在去/不去决策包处止步，绝不代为发布，也不催促任何人。
+ 发布聊天会产生重复帖子。这个机器人指派、跟踪， 拒绝按发布按钮。
+ slack github product launch l1 协调这次发布。复述结果、日期和发货的含义。 指派一位研究员、一位作者和一位审核员。跟踪阻碍项。 返回一份去/不去决策包。不发布。不打标签。 如果缺少日期，询问后停止。
+ ">
+  <div class="row">
+    <span class="cat">product</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>发布管理</h3>
+  <p>每个角色一位负责人。人类发出发版裁决。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">GitHub</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="launch-coordinator" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/launch-coordinator/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/launch-coordinator/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/launch-coordinator/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/launch-coordinator">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>发布管理</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, GitHub</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>协调这次发布。复述结果、日期和发货的含义。 指派一位研究员、一位作者和一位审核员。跟踪阻碍项。 返回一份去/不去决策包。不发布。不打标签。 如果缺少日期，询问后停止。</blockquote>
+        <button type="button" class="copy" data-copy="协调这次发布。复述结果、日期和发货的含义。 指派一位研究员、一位作者和一位审核员。跟踪阻碍项。 返回一份去/不去决策包。不发布。不打标签。 如果缺少日期，询问后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发布发版说明 · 打发布标签 · 合并到主分支</p>
+  </details>
+</article>
+<article class="card" id="bot-product-performance" data-cat="product" data-id="product-performance" data-name="产品性能" data-plugins="GitHub, Slack" data-task="调查昨日发布以来的结账延迟增加。 查看看板、追踪链路和火焰图；识别最具置信度的 热点；并返回一份附截图和直链的简短报告。 事实与假设分离。不修改告警或生产设置。" data-featured="1" data-q="product-performance 产品性能 有证据支撑的性能调查 热点、链接、事实 vs 绝对不碰生产。 负责有证据支撑的针对性性能调查：看板、追踪链路和来源链接齐备，事实与假设严格分离，全程不做任何生产环境变更，也不下任何最终结论。
+ 官方用例。延迟讨论爱靠猜。这个机器人打开图表， 命名热点，在任何人呼叫值班或翻转开关之前停下。
+ github slack product performance official l1 调查昨日发布以来的结账延迟增加。 查看看板、追踪链路和火焰图；识别最具置信度的 热点；并返回一份附截图和直链的简短报告。 事实与假设分离。不修改告警或生产设置。
+ 精选">
+  <div class="row">
+    <span class="cat">product</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>产品性能</h3>
+  <p>热点、链接、事实 vs 绝对不碰生产。</p>
+  <div class="pills"><span class="pill plugin">GitHub</span><span class="pill plugin">Slack</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="product-performance" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/product-performance/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/product-performance/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/product/product-performance/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/product/product-performance">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>产品性能</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>GitHub, Slack</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>调查昨日发布以来的结账延迟增加。 查看看板、追踪链路和火焰图；识别最具置信度的 热点；并返回一份附截图和直链的简短报告。 事实与假设分离。不修改告警或生产设置。</blockquote>
+        <button type="button" class="copy" data-copy="调查昨日发布以来的结账延迟增加。 查看看板、追踪链路和火焰图；识别最具置信度的 热点；并返回一份附截图和直链的简短报告。 事实与假设分离。不修改告警或生产设置。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 修改告警或监控 · 修改功能开关或生产设置 · 合并修复</p>
+  </details>
+</article>
+<article class="card" id="bot-research-desk" data-cat="research" data-id="research-desk" data-name="研究助手" data-plugins="浏览器" data-task="复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。" data-featured="1" data-q="research-desk 研究助手 带未找到列表的引用研究 主张、证据、分歧、未找到——然后是下一步阅读。 负责产出可供怀疑论者审阅的深入研究：主张、来源、分歧和未找到的内容一一列出，没有来源的统计数字一律不写，也不补任何「合理推断」。
+ 答案引擎取平均。这个机器人被付钱来展示来源之间的交锋， 以及承认空白。
+ 浏览器 research citations l1 复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。
+ 精选">
+  <div class="row">
+    <span class="cat">research</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>研究助手</h3>
+  <p>主张、证据、分歧、未找到——然后是下一步阅读。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="research-desk" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/research/research-desk">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>研究助手</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。</blockquote>
+        <button type="button" class="copy" data-copy="复述我的问题和范围，然后产出引用简报。 对有争议的主张找两个独立来源，否则标为未验证。 包含未找到部分。不发布。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 联系人员进行访谈 · 付费获取论文或数据集 · 发布简报</p>
+  </details>
+</article>
+<article class="card" id="bot-source-interrogator" data-cat="research" data-id="source-interrogator" data-name="来源核查" data-plugins="浏览器" data-task="审问我这份文档中的承重主张。标出没有来源的那个。 如果文档未附，请求提供后停止。" data-featured="0" data-q="source-interrogator 来源核查 承重主张的事实核查者 找到那个承重主张——从未有过来源的。 负责从一份材料中找出被当作事实的假设——尤其是那个承重主张，即如果它不成立， 结论就会崩塌——然后向来源核实。绝不编造引用，绝不把推断当作事实。
+ 研究简报把每一个主张都包装成事实，读者无法区分哪些有来源、哪些只是看起来合理。 这个 bot 专门拆解承重主张，标出从未有过来源的那个。
+ 浏览器 research fact-check l1 审问我这份文档中的承重主张。标出没有来源的那个。 如果文档未附，请求提供后停止。
+ ">
+  <div class="row">
+    <span class="cat">research</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>来源核查</h3>
+  <p>找到那个承重主张——从未有过来源的。</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="source-interrogator" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/source-interrogator/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/source-interrogator/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/source-interrogator/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/research/source-interrogator">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>来源核查</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>无需额外插件 — 浏览器即可</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审问我这份文档中的承重主张。标出没有来源的那个。 如果文档未附，请求提供后停止。</blockquote>
+        <button type="button" class="copy" data-copy="审问我这份文档中的承重主张。标出没有来源的那个。 如果文档未附，请求提供后停止。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 编造引用或 URL · 将推断当作事实呈现 · 联系任何人员做访谈</p>
+  </details>
+</article>
+<article class="card" id="bot-call-followup" data-cat="sales" data-id="call-followup" data-name="通话跟进" data-plugins="Gmail, Google Calendar" data-task="本次通话后，起草复盘和各方的任务清单。 从日历活动和先前的邮件对话串中提取与会者。 以未发送状态返回包裹。不给客户发邮件或预订下次会议。" data-featured="1" data-q="call-followup 通话跟进 通话后的未发送复盘与任务清单 复盘和任务，仍在组织内部。发送是后续命名的 l2 的事情。 负责通话后的跟进包：一份主人可编辑的复盘、各方的任务清单， 以及从笔记中提取的日期——然后停止。 绝不向客户发送复盘或预订下一次会议。
+ 官方 grok bot 形态：先读取和准备。即时发送的跟进邮件 容易忘记谁承诺了什么。这个机器人写好包裹后等待。
+ gmail google calendar sales follow-up l1 本次通话后，起草复盘和各方的任务清单。 从日历活动和先前的邮件对话串中提取与会者。 以未发送状态返回包裹。不给客户发邮件或预订下次会议。
+ 精选">
+  <div class="row">
+    <span class="cat">sales</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>通话跟进</h3>
+  <p>复盘和任务，仍在组织内部。发送是后续命名的 L2 的事情。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google Calendar</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="call-followup" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/call-followup/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/call-followup/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/call-followup/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/call-followup">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>通话跟进</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, Google Calendar</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>本次通话后，起草复盘和各方的任务清单。 从日历活动和先前的邮件对话串中提取与会者。 以未发送状态返回包裹。不给客户发邮件或预订下次会议。</blockquote>
+        <button type="button" class="copy" data-copy="本次通话后，起草复盘和各方的任务清单。 从日历活动和先前的邮件对话串中提取与会者。 以未发送状态返回包裹。不给客户发邮件或预订下次会议。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送复盘或任何跟进邮件 · 预订或移动日历活动 · 创建 CRM 记录（除非后续有命名机器人接管）</p>
+  </details>
+</article>
+<article class="card" id="bot-sales-outbound" data-cat="sales" data-id="sales-outbound" data-name="外部拓展" data-plugins="Gmail, LinkedIn" data-task="研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。" data-featured="1" data-q="sales-outbound 外部拓展 客户研究与审稿就绪的触达方案 听起来不像序列工具的大量触达——而且不发送。 负责指定客户列表的客户研究、联系人优先级排序，以及审稿就绪的触达草稿。停在审稿列表，绝不发送，也绝不加入任何序列——发送永远由人按下。
+ 官方 grok bot 用例：先研究和草稿，审稿列表可靠后才启用夜间例程。 发送是后续命名的 l2 的事情。
+ gmail linkedin sales outbound official l1 研究这个 crm 视图或附件列表中的客户。按我方 icp 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 linkedin 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。
+ 精选">
+  <div class="row">
+    <span class="cat">sales</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>外部拓展</h3>
+  <p>听起来不像序列工具的大量触达——而且不发送。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">LinkedIn</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="sales-outbound" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/sales-outbound/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/sales-outbound">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>外部拓展</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail, LinkedIn</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。</blockquote>
+        <button type="button" class="copy" data-copy="研究这个 CRM 视图或附件列表中的客户。按我方 ICP 和近期意图打分， 识别每个客户最多三个联系人，按附带的风格示例起草邮件和 LinkedIn 触达。 跳过已在活跃序列中的人。返回审稿列表；不发送、不加序列。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送邮件 · 发送 LinkedIn 消息或 InMail · 将任何人加入序列</p>
+  </details>
+</article>
+<article class="card" id="bot-win-loss" data-cat="sales" data-id="win-loss" data-name="成交分析" data-plugins="Slack, Notion" data-task="基于 CRM、笔记、Slack 和 Notion，为这笔成交交易写一份输赢备忘录。 用证据命名模式，而非感觉。如有可比备忘录， 进行对比。不邮件联系客户。" data-featured="0" data-q="win-loss 成交分析 基于笔记和 crm 的输赢备忘录 有证据的模式。不是「他们只是还没准备好」。 基于 crm 字段、通话笔记、slack 和 notion，负责成交/丢单备忘录。 提取一个怀疑论者可复用的模式——竞争对手、差距、 时机——而非感觉。绝不邮件联系丢单客户。
+ 丢单原因容易朽落成形容词。这个机器人写备忘录让其他销售 可以据此行动，同时让丢单客户安安静静。
+ slack notion sales win-loss l1 基于 crm、笔记、slack 和 notion，为这笔成交交易写一份输赢备忘录。 用证据命名模式，而非感觉。如有可比备忘录， 进行对比。不邮件联系客户。
+ ">
+  <div class="row">
+    <span class="cat">sales</span>
+    <span class="lvl">L1</span>
+    
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>成交分析</h3>
+  <p>有证据的模式。不是「他们只是还没准备好」。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Notion</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="win-loss" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/win-loss/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/win-loss/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/sales/win-loss/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/sales/win-loss">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>成交分析</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, Notion</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>基于 CRM、笔记、Slack 和 Notion，为这笔成交交易写一份输赢备忘录。 用证据命名模式，而非感觉。如有可比备忘录， 进行对比。不邮件联系客户。</blockquote>
+        <button type="button" class="copy" data-copy="基于 CRM、笔记、Slack 和 Notion，为这笔成交交易写一份输赢备忘录。 用证据命名模式，而非感觉。如有可比备忘录， 进行对比。不邮件联系客户。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 邮件联系丢单或赢单客户 · 将备忘录发布到客户 Slack · 修改 CRM 阶段或金额</p>
+  </details>
+</article>
+<article class="card" id="bot-account-health" data-cat="support" data-id="account-health" data-name="客户健康" data-plugins="Slack, Gmail" data-task="审查该投资组合中的客户。将近期使用情况、支持升级、 续约时机和利益相关者活动组合成一份排名的观察列表。 为每个客户标注证据、原因和建议下一步。 不联系客户或修改 CRM。" data-featured="1" data-q="account-health 客户健康 排名的投资组合观察列表 证据排名的观察列表——不发客户邮件，不改 crm。 负责根据指定客户组合中来自使用情况、支持、续约时机和利益相关者 活动的风险与扩展信号，生成排名的观察列表。 绝不联系客户或修改 crm。
+ 官方用例。未经调谐的健康机器人会邮件客户并把氛围写进 crm。这个机器人对标保存的阈值排名， 停在人类可操作的列表处。
+ slack gmail support accounts official l1 审查该投资组合中的客户。将近期使用情况、支持升级、 续约时机和利益相关者活动组合成一份排名的观察列表。 为每个客户标注证据、原因和建议下一步。 不联系客户或修改 crm。
+ 精选">
+  <div class="row">
+    <span class="cat">support</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">100</span>
+  </div>
+  <h3>客户健康</h3>
+  <p>证据排名的观察列表——不发客户邮件，不改 CRM。</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Gmail</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="account-health" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/account-health/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/account-health/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/account-health/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/support/account-health">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>客户健康</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Slack, Gmail</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>审查该投资组合中的客户。将近期使用情况、支持升级、 续约时机和利益相关者活动组合成一份排名的观察列表。 为每个客户标注证据、原因和建议下一步。 不联系客户或修改 CRM。</blockquote>
+        <button type="button" class="copy" data-copy="审查该投资组合中的客户。将近期使用情况、支持升级、 续约时机和利益相关者活动组合成一份排名的观察列表。 为每个客户标注证据、原因和建议下一步。 不联系客户或修改 CRM。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 联系客户 · 修改 CRM · 发放退款或额度</p>
+  </details>
+</article>
+<article class="card" id="bot-support-replies" data-cat="support" data-id="support-replies" data-name="客服回复" data-plugins="Gmail" data-task="阅读我指向的入站讨论串，起草引用帮助中心或 政策页面的首条回复。建议严重级别和下一个内部负责人。 将回复标注草稿。不发送、不退款、 不修改客户账户。" data-featured="1" data-q="support-replies 客服回复 附政策引用的首条回复草稿 带政策引用的草稿回复——发送按钮仍属主人。 负责起草进站支持讨论串的首条回复，使用内部口吻， 附真实政策引用，仍保持未发送状态。绝不发送，绝不退款， 绝不修改客户账户。
+ 首条回复在队列中腐烂，而人们到处找帮助中心。 这个机器人对标政策的事实来源起草， 绝不发送、退款或自行「补偿客户」。
+ gmail support replies policy l1 阅读我指向的入站讨论串，起草引用帮助中心或 政策页面的首条回复。建议严重级别和下一个内部负责人。 将回复标注草稿。不发送、不退款、 不修改客户账户。
+ 精选">
+  <div class="row">
+    <span class="cat">support</span>
+    <span class="lvl">L1</span>
+    <span class="feat" title="精选推荐">精选</span>
+    <span class="score" title="Bot 就绪评分">90</span>
+  </div>
+  <h3>客服回复</h3>
+  <p>带政策引用的草稿回复——发送按钮仍属主人。</p>
+  <div class="pills"><span class="pill plugin">Gmail</span></div>
+  <div class="actions">
+    <button type="button" class="copy primary" data-profile="support-replies" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/support-replies/PROFILE.md">复制 PROFILE</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/support-replies/PROFILE.md">复制链接</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/support/support-replies/PROFILE.md">原始文件</a>
+    <a href="https://github.com/junze-xu/grok-bot-cn/tree/main/templates/support/support-replies">契约</a>
+    
+  </div>
+  <details class="how">
+    <summary>如何安装此 Bot</summary>
+    <ol>
+      <li>在 Grok Bot 中：<strong>新建 → 创建新智能体</strong>。命名为 <strong>客服回复</strong>。</li>
+      <li><strong>Bot 操作 → 编辑个人资料</strong>。粘贴 PROFILE（上方按钮可复制）。</li>
+      <li>连接插件：<strong>Gmail</strong>。</li>
+      <li>停留在 <strong>L1</strong>。发送首个任务：
+        <blockquote>阅读我指向的入站讨论串，起草引用帮助中心或 政策页面的首条回复。建议严重级别和下一个内部负责人。 将回复标注草稿。不发送、不退款、 不修改客户账户。</blockquote>
+        <button type="button" class="copy" data-copy="阅读我指向的入站讨论串，起草引用帮助中心或 政策页面的首条回复。建议严重级别和下一个内部负责人。 将回复标注草稿。不发送、不退款、 不修改客户账户。">复制首个任务</button>
+      </li>
+    </ol>
+    <p class="never"><strong>永不</strong> 发送回复 · 发放退款或额度 · 修改客户账户</p>
+  </details>
+</article></div>
+    <h2 id="teams">团队</h2>
+    <p class="lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
+    <div class="grid" id="teams"><article class="card team" id="team-eng" data-cat="engineering" data-q="eng 工程团队 预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。 bug 复现 · pr 审查 github slack bug-reproduction pr-reviewer">
+  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>工程团队</h3>
+  <p>预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。</p>
+  <p class="bots">Bug 复现 · PR 审查</p>
+  <div class="pills"><span class="pill plugin">GitHub</span><span class="pill plugin">Slack</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>工程团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="工程团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-loop" data-cat="engineering" data-q="loop 发布循环 在有人合并、打标签或写下发布理由之前，内环编码 agent 仍需要外环的证据与结论把关。
+ ci 扫描 · pr 审查 · 变更日志 · 证据汇总 github ci-sweeper pr-reviewer changelog evidence-packager">
+  <div class="row"><span class="cat">engineering</span><span class="lvl">L1</span><span class="score">4 个 Bot</span></div>
+  <h3>发布循环</h3>
+  <p>在有人合并、打标签或写下发布理由之前，内环编码 Agent 仍需要外环的证据与结论把关。</p>
+  <p class="bots">CI 扫描 · PR 审查 · 变更日志 · 证据汇总</p>
+  <div class="pills"><span class="pill plugin">GitHub</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>发布循环</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="发布循环">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/loop/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-marketing" data-cat="marketing" data-q="marketing 市场团队 竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。
+ 竞品观察 · 内容改写 · 邮件简报 slack notion competitor-watch content-remix newsletter-desk">
+  <div class="row"><span class="cat">marketing</span><span class="lvl">L1</span><span class="score">3 个 Bot</span></div>
+  <h3>市场团队</h3>
+  <p>竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。</p>
+  <p class="bots">竞品观察 · 内容改写 · 邮件简报</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Notion</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>市场团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="市场团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-meta" data-cat="meta" data-q="meta 元团队 搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 setup 大倾倒。 安装器 · bot 管理 installer roster">
+  <div class="row"><span class="cat">meta</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>元团队</h3>
+  <p>搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 Setup 大倾倒。</p>
+  <p class="bots">安装器 · Bot 管理</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>元团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="元团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-ops" data-cat="ops" data-q="ops 运营团队 一周的实情藏在 slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。
+ 执行助理 · 费用管理 · 供应商收件箱 slack gmail google calendar google drive chief-of-staff expense-manager vendor-inbox">
+  <div class="row"><span class="cat">ops</span><span class="lvl">L1</span><span class="score">3 个 Bot</span></div>
+  <h3>运营团队</h3>
+  <p>一周的实情藏在 Slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。</p>
+  <p class="bots">执行助理 · 费用管理 · 供应商收件箱</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Gmail</span><span class="pill plugin">Google Calendar</span><span class="pill plugin">Google Drive</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>运营团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="运营团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-personal" data-cat="personal" data-q="personal 个人团队 当邮件、会议和闲置订阅挤在同一个 bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。
+ 收件箱分类 · 日程管理 · 订阅审计 gmail google calendar slack inbox-triage calendar-defender subscription-audit">
+  <div class="row"><span class="cat">personal</span><span class="lvl">L1</span><span class="score">3 个 Bot</span></div>
+  <h3>个人团队</h3>
+  <p>当邮件、会议和闲置订阅挤在同一个 Bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。</p>
+  <p class="bots">收件箱分类 · 日程管理 · 订阅审计</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">Google Calendar</span><span class="pill plugin">Slack</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>个人团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="个人团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-product" data-cat="product" data-q="product 产品团队 延迟、产品证据和发布日互相撞击，除非一个 bot 管性能数据、一个管发布清单。 产品性能 · 发布管理 github slack notion product-performance launch-coordinator">
+  <div class="row"><span class="cat">product</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>产品团队</h3>
+  <p>延迟、产品证据和发布日互相撞击，除非一个 Bot 管性能数据、一个管发布清单。</p>
+  <p class="bots">产品性能 · 发布管理</p>
+  <div class="pills"><span class="pill plugin">GitHub</span><span class="pill plugin">Slack</span><span class="pill plugin">Notion</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>产品团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="产品团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-research" data-cat="research" data-q="research 研究团队 深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。 研究助手 · 来源核查 research-desk source-interrogator">
+  <div class="row"><span class="cat">research</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>研究团队</h3>
+  <p>深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。</p>
+  <p class="bots">研究助手 · 来源核查</p>
+  <div class="pills"><span class="pill plugin">浏览器</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>研究团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="研究团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/research/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-sales" data-cat="sales" data-q="sales 销售团队 如果复盘没在发出前写下来，外拓再多量也只是噪音。 外部拓展 · 通话跟进 gmail linkedin google calendar sales-outbound call-followup">
+  <div class="row"><span class="cat">sales</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>销售团队</h3>
+  <p>如果复盘没在发出前写下来，外拓再多量也只是噪音。</p>
+  <p class="bots">外部拓展 · 通话跟进</p>
+  <div class="pills"><span class="pill plugin">Gmail</span><span class="pill plugin">LinkedIn</span><span class="pill plugin">Google Calendar</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>销售团队</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="销售团队">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/sales/team.yaml">yaml</a>
+  </div>
+</article>
+<article class="card team" id="team-success" data-cat="support" data-q="success 客户成功 当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。 客户健康 · 客服回复 slack gmail account-health support-replies">
+  <div class="row"><span class="cat">support</span><span class="lvl">L1</span><span class="score">2 个 Bot</span></div>
+  <h3>客户成功</h3>
+  <p>当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。</p>
+  <p class="bots">客户健康 · 客服回复</p>
+  <div class="pills"><span class="pill plugin">Slack</span><span class="pill plugin">Gmail</span></div>
+  <p class="hint">将 START.md 粘贴到 <strong>Setup</strong>，然后点击 <strong>客户成功</strong>。</p>
+  <div class="actions">
+    <button type="button" class="copy primary" data-copy="客户成功">复制团队名称</button>
+    <button type="button" class="copy" data-copy="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md">复制 START.md</button>
+    <a href="https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/success/team.yaml">yaml</a>
+  </div>
+</article></div>
+    <footer>
+      <p>MIT · <a href="https://github.com/junze-xu/grok-bot-cn">GitHub</a> · <a href="agent.html">Bot 契约</a> · <a href="https://github.com/junze-xu/grok-bot-cn/blob/main/SPEC.md">SPEC</a> · 与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</p>
+      <p class="api">机器 API：<a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="badge.svg">Bot 就绪徽章</a> · <a href="profiles.json">profiles.json</a></p>
+    </footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const q = document.getElementById('q');
+    const chips = document.getElementById('chips');
+    const plugChips = document.getElementById('plugins');
+    const countEl = document.getElementById('count');
+    const emptyEl = document.getElementById('empty');
+    const toastEl = document.getElementById('toast');
+    const featuredSec = document.getElementById('start-here');
+    const jobs = document.getElementById('jobs');
+    const usp = new URLSearchParams(location.search);
+    let cat = usp.get('cat') || '';
+    let plugin = usp.get('plugin') || '';
+    let profiles = null;
+    if (usp.get('q')) q.value = usp.get('q');
+
+    function markChips(root, attr, value) {
+      root.querySelectorAll('button').forEach(function (x) {
+        var on = (x.getAttribute(attr) || '') === value;
+        x.classList.toggle('on', on);
+      });
+    }
+    markChips(chips, 'data-cat', cat);
+    markChips(plugChips, 'data-plugin', plugin);
+
+    function syncUrl() {
+      var p = new URLSearchParams();
+      if (cat) p.set('cat', cat);
+      if (plugin) p.set('plugin', plugin);
+      if (q.value) p.set('q', q.value);
+      var qs = p.toString();
+      history.replaceState(null, '', (qs ? '?' + qs : location.pathname) + location.hash);
+    }
+
+    function apply() {
+      var needle = (q.value || '').toLowerCase().trim();
+      var n = 0, shown = 0;
+      document.querySelectorAll('#grid .card').forEach(function (el) {
+        n += 1;
+        var okCat = !cat || el.dataset.cat === cat;
+        var plugs = (el.dataset.plugins || '').toLowerCase();
+        var okPlug = !plugin || plugs.split(',').map(function (s) { return s.trim(); }).indexOf(plugin.toLowerCase()) !== -1;
+        var okQ = !needle || (el.dataset.q || '').indexOf(needle) !== -1;
+        var vis = okCat && okPlug && okQ;
+        el.classList.toggle('hidden', !vis);
+        if (vis) shown += 1;
+      });
+      document.querySelectorAll('#featured .card').forEach(function (el) {
+        var okCat = !cat || el.dataset.cat === cat;
+        var plugs = (el.dataset.plugins || '').toLowerCase();
+        var okPlug = !plugin || plugs.split(',').map(function (s) { return s.trim(); }).indexOf(plugin.toLowerCase()) !== -1;
+        var okQ = !needle || (el.dataset.q || '').indexOf(needle) !== -1;
+        el.classList.toggle('hidden', !(okCat && okPlug && okQ));
+      });
+      var featVisible = featuredSec.querySelectorAll('#featured .card:not(.hidden)').length;
+      featuredSec.classList.toggle('hidden', featVisible === 0);
+      document.querySelectorAll('#teams .card').forEach(function (el) {
+        var okCat = !cat || el.dataset.cat === cat;
+        var okQ = !needle || (el.dataset.q || '').indexOf(needle) !== -1;
+        var plugs = (el.dataset.q || '');
+        var okPlug = !plugin || plugs.indexOf(plugin.toLowerCase()) !== -1;
+        el.classList.toggle('hidden', !(okCat && okQ && okPlug));
+      });
+      countEl.textContent = '显示 ' + shown + ' / ' + n;
+      emptyEl.classList.toggle('show', shown === 0);
+      syncUrl();
+    }
+
+    function toast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add('on');
+      clearTimeout(toast.t);
+      toast.t = setTimeout(function () { toastEl.classList.remove('on'); }, 1800);
+    }
+
+    async function loadProfiles() {
+      if (profiles) return profiles;
+      var r = await fetch('profiles.json');
+      if (!r.ok) throw new Error('profiles');
+      profiles = await r.json();
+      return profiles;
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        window.prompt('复制', text);
+        return true;
+      }
+    }
+
+    q.addEventListener('input', apply);
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      cat = b.getAttribute('data-cat') || '';
+      markChips(chips, 'data-cat', cat);
+      apply();
+    });
+    plugChips.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      plugin = b.getAttribute('data-plugin') || '';
+      markChips(plugChips, 'data-plugin', plugin);
+      apply();
+    });
+    jobs.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      q.value = b.getAttribute('data-q') || '';
+      cat = '';
+      plugin = '';
+      markChips(chips, 'data-cat', '');
+      markChips(plugChips, 'data-plugin', '');
+      apply();
+      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.addEventListener('click', async function (e) {
+      var btn = e.target.closest('button.copy');
+      if (!btn) return;
+      var prev = btn.textContent;
+      var id = btn.getAttribute('data-profile');
+      try {
+        if (id) {
+          var map = await loadProfiles();
+          var body = map[id];
+          if (!body) throw new Error('missing');
+          await copyText(body);
+          btn.textContent = '已复制 PROFILE';
+          toast('PROFILE 已复制 — 粘贴到 Bot 操作 → 编辑个人资料');
+        } else {
+          var text = btn.getAttribute('data-copy') || '';
+          await copyText(text);
+          btn.textContent = '已复制';
+          toast('已复制到剪贴板');
+        }
+      } catch (err) {
+        var fallback = btn.getAttribute('data-copy') || '';
+        if (fallback) {
+          await copyText(fallback);
+          toast('已复制链接 — 粘贴到 Setup 或打开原始文件');
+        } else {
+          toast('复制失败');
+        }
+      }
+      setTimeout(function () { btn.textContent = prev; }, 1400);
+    });
+    document.addEventListener('keydown', function (e) {
+      var tag = (e.target && e.target.tagName) || '';
+      if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        e.preventDefault();
+        q.focus();
+        q.select();
+      }
+      if (e.key === 'Escape' && q.value) {
+        q.value = '';
+        apply();
+      }
+    });
+    apply();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+id: weekly-account-health
+name: 每周客户健康
+owner: account-health
+cadence: 每周一 08:30（机器人时区）
+skill: rank-account-health
+input_source: >
+  指定客户名单或 CRM 客群、保存的风险阈值，以及已批准的支持、账单和成功团队记录。
+expected_result: >
+  带证据链接的排名观察清单，含为什么重要、建议下一步和「需要人工」标记。扩张与流失分开。
+  不联系客户，CRM 不动。
+approval_boundary: >
+  不要联系客户，不要改 CRM，不要退款或发放额度。内部 Slack 发布要等聊天里批准。
+missing_source: >
+  如果客户名单缺失，报告失败后停止。如果某个来源不可用，点名说明并用现有材料继续——绝不悄悄用上周的文件替代。
+test_first: true
+prompt: >
+  对指定客户组合运行 rank-account-health。把当前用量、支持记录、续约时间点和干系人活跃度对照保存的阈值，
+  返回排名的观察清单。不要联系客户，不要改 CRM。

@@ -1,0 +1,12 @@
+id: draft-then-routine
+name: 先草稿，后例行
+summary: >
+  从一次性任务起步，做可靠，存成技能，用第二个输入测试；等重试与失败情形都定义好，再建例行程序。
+rule: >
+  第一周是 L1。例行程序必须有 test_first 和缺失来源策略。试跑会干真活——用安全的输入。
+anti_pattern: 创建 Bot 当天就启用夜间发送。
+source: https://docs.x.ai/grok-bot/use-cases
+applies_to:
+  - templates
+  - routines
+  - skills

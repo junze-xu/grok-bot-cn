@@ -1,0 +1,11 @@
+id: research
+name: 研究团队
+lead: research-desk
+bots:
+  - research-desk
+  - source-interrogator
+why: 深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。
+group_kickoff: "@研究助手 针对聊天里的问题产出带引用的简报。@来源核查 列出被当成事实的假设。不要发布，不要编造引用，不要联系人员做访谈。"
+plugins: []
+max_bots: 4
+autonomy: L1

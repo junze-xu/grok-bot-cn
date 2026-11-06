@@ -1,0 +1,18 @@
+id: weekday-cos-digest
+name: 工作日参谋长摘要
+owner: chief-of-staff
+cadence: 每周工作日 08:00（机器人时区）
+skill: daily-digest
+input_source: >
+  已批准的 Slack 频道、收件箱、日历、会议纪要，以及钉住的优先事项文档。
+expected_result: >
+  只含映射到既定优先事项、且带来源链接的摘要，外加「需要决策」小节。不发送，不改会议。
+approval_boundary: >
+  不要发消息、不要改会议、不要建工单、不要邀请人。草稿留在本对话里，直到主人要求发布。
+missing_source: >
+  如果优先事项文档缺失，报告失败后停止。如果某个指定频道不可用，把它写进操作日志，其余继续。
+  绝不把昨天的摘要当作最新内容复用。
+test_first: true
+prompt: >
+  以 Bot 时区为准，对昨天 08:00 以来的窗口运行 daily-digest。只返回映射到钉住的优先事项的内容。
+  每条包含来源、为什么重要、建议下一步，以及是否需要我做决策。不要发消息或改会议。

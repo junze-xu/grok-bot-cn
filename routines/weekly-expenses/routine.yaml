@@ -1,0 +1,18 @@
+id: weekly-expenses
+name: 每周费用
+owner: expense-manager
+cadence: 每周一 09:00（机器人时区）
+skill: reconcile-expenses
+input_source: >
+  费用系统导出或连接器、财务收件箱收据，以及已签署的报销政策。
+expected_result: >
+  周汇总总额等于来源总额（或给出可解释的差额），例外表附政策引用，每位负责人一条未发送跟进草稿。
+  不发送，不改报销。
+approval_boundary: >
+  不要发送跟进，不要改报销，不要批准支出或给供应商付款。
+missing_source: >
+  如果已签署政策缺失，报告失败后停止。如果费用系统不可用，说明后停止，不要把上周的文件当作本周总额。
+test_first: true
+prompt: >
+  对本周运行 reconcile-expenses。先对来源系统求总额，再对收据，每条例外引用政策，
+  每位负责人起草一条未发送跟进。返回汇总和草稿。不要发消息或改报销。

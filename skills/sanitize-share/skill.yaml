@@ -1,0 +1,21 @@
+id: sanitize-share
+name: 分享消毒
+when_to_use: >
+  主人想把 Bot 作为公开模板分享，链接发出前需要把描述、技能和例行程序里的
+  密钥、客户数据和内部 URL 清掉。
+inputs:
+  - Bot 当前的描述、技能列表和例行程序文本
+  - 主人准备附加到资料上的额外文件（可选）
+sequence:
+  - 读描述和任何技能/例行程序文本。
+  - 标记 API key、token、邮箱、客户名、内部主机名和预发 URL。
+  - 提出脱敏后的描述；不要静默删除常驻安全规则。
+  - 确认 share-safe：身份、job、边界、首任务还在；密钥清除。
+validate: >
+  无密钥状字符串、无 @客户域名、无 .internal 主机；脱敏后审批边界仍在。
+returns: >
+  可安全分享的 PROFILE 和移除内容的 diff，附提醒：链接是公开的，且不复制电脑或登录状态。
+approval: >
+  不要自己创建公开分享链接；主人接受脱敏后，由他从 Bot 里复制。
+owners:
+  - sanitizer

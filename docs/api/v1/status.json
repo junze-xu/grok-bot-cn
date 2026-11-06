@@ -1,0 +1,20 @@
+{
+  "name": "grok-bot-cn",
+  "version": "1.1.0",
+  "api_version": "v1",
+  "schema_revision": "2026-08-29",
+  "start_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md",
+  "catalog_url": "https://junze-xu.github.io/grok-bot-cn/catalog.json",
+  "pages_url": "https://junze-xu.github.io/grok-bot-cn/",
+  "repo_url": "https://github.com/junze-xu/grok-bot-cn",
+  "capabilities": [
+    "list",
+    "teams",
+    "profiles",
+    "score",
+    "start"
+  ],
+  "install": "创建一个名为 Setup 的 Bot。粘贴 START.md。点击一个团队。停留在 L1。",
+  "notices": [],
+  "deprecations": []
+}

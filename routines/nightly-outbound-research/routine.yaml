@@ -1,0 +1,19 @@
+id: nightly-outbound-research
+name: 夜间外拓研究
+owner: sales-outbound
+cadence: 每周工作日 18:00（机器人时区）
+skill: research-accounts
+input_source: >
+  Bot 描述里指定的 CRM 视图、电子表格或粘贴的客户名单，外加附带的话术示例。
+expected_result: >
+  待审列表：含 ICP 评分、意向证据、最多三个联系人和未发送（DRAFT）的外拓草稿。
+  不发送任何内容，不拉任何人进入序列。
+approval_boundary: >
+  不要发送邮件或 LinkedIn 消息，不要拉任何人进入序列。除非主人之后明确点名，否则不要创建 CRM 记录。
+missing_source: >
+  如果没有客户名单，报告失败后停止。如果 ICP 未定义，不要自己发明——保持本次运行失败，直到主人给出答案。
+  不要把昨晚的评分当作实时意向复用。
+test_first: true
+prompt: >
+  对指定客户名单运行 research-accounts。按 ICP 和当前意向评分并附 URL，找出最多三个联系人，
+  按附带话术起草邮件和 LinkedIn 外拓，跳过活跃序列。返回待审列表，不发送、不拉任何人。

@@ -1,0 +1,12 @@
+id: one-job-per-bot
+name: 一个 Bot 只做一件事
+summary: >
+  工作的目标、工具、作风、审批边界或排期不同，就拆成独立的 Bot。
+  万金油助手只会产出弱记忆。
+rule: >
+  用一个陌生人也打得分的句子写出可重复的结果；写不出，就拆 Bot。
+anti_pattern: 「通用助手」型巨型 Bot——销售、支持、写代码全塞进一个描述。
+source: https://docs.x.ai/grok-bot/bots
+applies_to:
+  - templates
+  - teams

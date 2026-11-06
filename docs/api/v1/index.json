@@ -1,0 +1,11 @@
+{
+  "api_version": "v1",
+  "endpoints": {
+    "status": "https://junze-xu.github.io/grok-bot-cn/api/v1/status.json",
+    "catalog": "https://junze-xu.github.io/grok-bot-cn/api/v1/catalog.json",
+    "teams": "https://junze-xu.github.io/grok-bot-cn/api/v1/teams.json",
+    "catalog_alias": "https://junze-xu.github.io/grok-bot-cn/catalog.json",
+    "start": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md",
+    "agent": "https://junze-xu.github.io/grok-bot-cn/agent.html"
+  }
+}
