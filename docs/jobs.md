@@ -13,6 +13,6 @@
 | 设计一个能通过 CI 的 Bot | `roster` |
 | 在发布／阻断决策前先有证据 | `evidence-packager` |
 | 用一个超级 Bot 之外的方式分流工作 | `roster` |
-| 给我写的契约打分 | `npx --yes github:junze-xu/grok-bot-cn score <id>` |
+| 校验我写的模板 | `npx --yes github:junze-xu/grok-bot-cn validate` |
 
 完整目录：粘贴 START.md，或 [Pages 目录](https://junze-xu.github.io/grok-bot-cn/)（复制 PROFILE）。机器 API：[agent.md](./agent.md)。

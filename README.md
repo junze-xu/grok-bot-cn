@@ -21,7 +21,7 @@
 
 这是 Grok Bot 的 **任务 → 边界 → 技能 → 例行程序 → 团队** 工具包，与 [loop-engineering](https://github.com/junze-xu/loop-engineering)（内循环）和 [outerloop](https://github.com/junze-xu/outerloop)（证据 → 判定）理念互补。
 
-> 与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。这里的契约是你粘贴到**你的**账户的内容。
+> 与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。这里的模板和链接是你粘贴到**你的**账户的内容。
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -57,7 +57,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 核心概念
 
-**校验**：每个契约通过 JSON Schema 校验与分享安全检查（无密钥、无内部 URL），CI 会拦截任何不通过的模板。
+**校验**：每个模板通过 JSON Schema 校验与分享安全检查（无密钥、无内部 URL），CI 会拦截任何不通过的模板。
 
 **自主性等级**：
 

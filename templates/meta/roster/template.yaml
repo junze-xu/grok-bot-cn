@@ -19,7 +19,7 @@ plugins: []
 sources:
   - 主人在本账户的当前 Bot 列表和群组成员身份
   - https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/catalog/catalog.json
-  - 目录的 PROFILE.md 原文（需要替代契约时）
+  - 目录的 PROFILE.md 原文（需要替代模板时）
 deliverable: |
   舰队审计：保留、裁撤和合并表格及单行理由；四个以内的 目标名册；插件并集；创建/不创建计数。 主人命名数量前不创建任何东西。
 approval_never:

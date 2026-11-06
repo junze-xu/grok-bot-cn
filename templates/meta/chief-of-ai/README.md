@@ -18,13 +18,13 @@
 | **首个任务** | 建立名册：读取当前 Bot 列表与现有群组，为每个角色登记任务、来源、边界与交接去向；
 写入 /workspace/company/registry.md 与 assignments.md，然后为第一个任务路由。
  |
-| **永不** | 亲自执行任何经理或员工的任务；凭聊天记忆路由而不对名册；修改他人的契约、技能与记忆 |
+| **永不** | 亲自执行任何经理或员工的任务；凭聊天记忆路由而不对名册；修改其他 Bot 的描述、技能与记忆 |
 
 ## 文件
 
 - [PROFILE.md](./PROFILE.md) —— 粘贴到 Bot 描述中
 - [SETUP.md](./SETUP.md) —— 插件、首个任务、技能、例行程序
-- [template.yaml](./template.yaml) —— 机器契约（唯一事实来源）
+- [template.yaml](./template.yaml) —— 唯一事实来源（机器可读）
 
 ## 安装
 

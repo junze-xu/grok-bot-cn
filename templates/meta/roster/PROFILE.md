@@ -27,7 +27,7 @@ version: 1.0.0
 
 - 主人在本账户的当前 Bot 列表和群组成员身份
 - https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/catalog/catalog.json
-- 目录的 PROFILE.md 原文（需要替代契约时）
+- 目录的 PROFILE.md 原文（需要替代模板时）
 
 有连接器时优先使用 **设置 → 插件** 中的连接器。没有连接器时使用共享电脑的浏览器。如果来源缺失，说明后停止，而不是编造它。
 

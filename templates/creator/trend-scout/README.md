@@ -22,7 +22,7 @@
 
 - [PROFILE.md](./PROFILE.md) —— 粘贴到 Bot 描述中
 - [SETUP.md](./SETUP.md) —— 插件、首个任务、技能、例行程序
-- [template.yaml](./template.yaml) —— 机器契约（唯一事实来源）
+- [template.yaml](./template.yaml) —— 唯一事实来源（机器可读）
 
 ## 安装
 

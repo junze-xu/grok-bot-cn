@@ -9,7 +9,7 @@
 - 新增「总裁办」（AI 总管 + 安装器 + Bot 管理）：规则名册与任务路由中枢，防上下文腐化
 - 构造上即分享安全
 - 安装器优先的 README + Pages 复制按钮
-- 机器 API + Bot 契约（`docs/agent.md`）
+- 机器 API + Bot 加载指令（`docs/agent.md`）
 
 ## 下一步
 

@@ -21,7 +21,7 @@
 
 This is the Grok Bot **task → boundary → skill → routine → team** toolkit, conceptually complementary to [loop-engineering](https://github.com/junze-xu/loop-engineering) (inner loop) and [outerloop](https://github.com/junze-xu/outerloop) (evidence → verdict).
 
-> Not affiliated with xAI. Grok Bot is a product of xAI / Cursor. These contracts are what you paste into **your** account.
+> Not affiliated with xAI. Grok Bot is a product of xAI / Cursor. These templates and links are what you paste into **your** account.
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -57,7 +57,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## Core Concepts
 
-**Validation**: every contract passes JSON Schema validation and share-safety checks (no secrets, no internal URLs). CI blocks any template that fails.
+**Validation**: every template passes JSON Schema validation and share-safety checks (no secrets, no internal URLs). CI blocks any template that fails.
 
 **Autonomy levels**:
 

@@ -150,7 +150,7 @@ function cardHtml(t, opts = {}) {
     )}" data-copy="${esc(raw)}" data-i18n="card.copy_profile">复制 PROFILE</button>
     <button type="button" class="copy" data-copy="${esc(raw)}" data-i18n="card.copy_link">复制链接</button>
     <a href="${esc(raw)}" data-i18n="card.raw">原始文件</a>
-    <a href="${esc(treeUrl(t))}" data-i18n="card.contract">契约</a>
+    <a href="${esc(treeUrl(t))}" data-i18n="card.source">源文件</a>
     ${add}
   </div>
   <details class="how">
@@ -884,7 +884,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
     <p class="lede" data-i18n="teams.lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
     <div class="grid" id="teams">${teamCards}</div>
     <footer>
-      <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_contract">Bot 契约</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
+      <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_loader">Bot 加载指令</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
       <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a></p>
     </footer>
   </div>
@@ -912,7 +912,7 @@ const agentHtml = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bot 契约 · grok-bot-cn</title>
+  <title>Bot 加载指令 · grok-bot-cn</title>
   <meta name="description" content="将此粘贴到一个 Grok Bot 中，使其能够列出、获取和安装此目录中的模板。" />
   <link rel="canonical" href="${PAGES}/agent.html" />
   <style>
@@ -934,12 +934,12 @@ const agentHtml = `<!DOCTYPE html>
   <div class="wrap">
     <p class="mute"><a href="./">← 返回目录</a></p>
     <h1>让你的 Grok Bot 使用这个目录</h1>
-    <p>将下面的契约粘贴到一个 Bot 中。它将列出模板，获取 PROFILE.md，不会凭空编造提示词。</p>
+    <p>将下面的指令粘贴到一个 Bot 中。它将列出模板，获取 PROFILE.md，不会凭空编造提示词。</p>
     <div class="copyrow">
-      <button type="button" id="copy">复制契约</button>
+      <button type="button" id="copy">复制指令</button>
       <a href="${START_URL}">START.md（安装器）</a>
     </div>
-    <pre id="contract">${esc(`# grok-bot-cn — Bot 契约 v1
+      <pre id="contract">${esc(`# grok-bot-cn — Bot 加载指令 v1
 
 你是一个 Grok Bot。grok-bot-cn 是一个契约目录
 用于 Grok Bot（任务、永不做、L1 默认、CI）。公开，无需认证。

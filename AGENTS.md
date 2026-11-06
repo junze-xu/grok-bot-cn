@@ -20,7 +20,7 @@ There is no separate linter yet — `npm run ci` is validate + test + doctor + r
 ## Layout
 
 - `templates/<category>/<id>/template.yaml` — source of truth
-- `skills/`, `routines/`, `teams/`, `patterns/` — first-class contracts
+- `skills/`, `routines/`, `teams/`, `patterns/` — first-class assets
 - `bin/grokbot.mjs` — CLI
 - `SPEC.md` — binding schema in prose
 - `docs/index.html` + `docs/api/v1/` — generated Pages installer and machine API

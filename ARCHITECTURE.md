@@ -41,7 +41,7 @@ grok-bot-cn/
 ├── skills/<id>/skill.yaml     # 14 个技能（+ 生成 SKILL.md）
 ├── routines/<id>/routine.yaml # 8 个例行程序（+ 生成 ROUTINE.md）
 ├── patterns/<id>/pattern.yaml # 12 条设计原则
-├── schema/template.schema.json# 模板契约（JSON Schema）
+├── schema/template.schema.json# 模板格式（JSON Schema）
 ├── lib/                       # 加载 / 校验 / 渲染基础设施
 ├── bin/grokbot.mjs            # CLI 入口
 ├── scripts/                   # 四条构建管线
@@ -138,6 +138,6 @@ template.yaml ──npm run render──▶ PROFILE.md / SETUP.md / README.md / 
 
 ## 新增内容
 
-- 新模板：`grokbot new <slug> --category <cat>` 生成骨架，补齐契约后跑 `npm run ci`；写作规范见 `docs/authoring.md` 与 `docs/design-checklist.md`。
+- 新模板：`grokbot new <slug> --category <cat>` 生成骨架，补齐内容后跑 `npm run ci`；写作规范见 `docs/authoring.md` 与 `docs/design-checklist.md`。
 - 新技能/例行/原则：在对应目录放 `<id>/skill.yaml`、`routine.yaml`、`pattern.yaml`，构建自动收录。
 - 内容红线：模板内容是参考数据，不得削弱简介的「永不」清单；共享电脑不构成隔离；任何密钥与内网 URL 不得入库。

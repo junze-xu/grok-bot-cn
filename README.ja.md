@@ -21,7 +21,7 @@
 
 Grok Bot の **タスク → 境界 → スキル → ルーチン → チーム** ツールキット。[loop-engineering](https://github.com/junze-xu/loop-engineering)（内側ループ）と [outerloop](https://github.com/junze-xu/outerloop)（証拠 → 判定）と理念を補完。
 
-> xAI とは無関係です。Grok Bot は xAI / Cursor の製品。ここにある契約は**あなたの**アカウントに貼るものです。
+> xAI とは無関係です。Grok Bot は xAI / Cursor の製品。ここにあるテンプレートとリンクは**あなたの**アカウントに貼るものです。
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -57,7 +57,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 中核概念
 
-**検証**：各契約は JSON Schema 検証と共有安全チェック（secret なし、内部 URL なし）に合格。CI は不合格のテンプレートをブロック。
+**検証**：各テンプレートは JSON Schema 検証と共有安全チェック（secret なし、内部 URL なし）に合格。CI は不合格のテンプレートをブロック。
 
 **自律レベル**：
 

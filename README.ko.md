@@ -21,7 +21,7 @@
 
 Grok Bot의 **작업 → 경계 → 스킬 → 루틴 → 팀** 툴킷. [loop-engineering](https://github.com/junze-xu/loop-engineering)(내부 루프)과 [outerloop](https://github.com/junze-xu/outerloop)(증거 → 판정)과 이념상 보완 관계.
 
-> xAI와 제휴 관계 아님. Grok Bot은 xAI / Cursor의 제품. 여기 있는 계약은 **당신의** 계정에 붙여넣는 것입니다.
+> xAI와 제휴 관계 아님. Grok Bot은 xAI / Cursor의 제품. 여기 있는 템플릿과 링크는 **당신의** 계정에 붙여넣는 것입니다.
 
 [![CI](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/junze-xu/grok-bot-cn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -57,7 +57,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 핵심 개념
 
-**검증**: 각 계약은 JSON Schema 검증과 공유 안전 검사(secret 없음, 내부 URL 없음)를 통과. CI는 불합격 템플릿을 차단합니다.
+**검증**: 각 템플릿은 JSON Schema 검증과 공유 안전 검사(secret 없음, 내부 URL 없음)를 통과. CI는 불합격 템플릿을 차단합니다.
 
 **자율 수준**:
 

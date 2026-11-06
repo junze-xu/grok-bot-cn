@@ -2,7 +2,7 @@
 
 grok-bot-cn 以你的 Bot 可读取的形式发布经校验的操作契约。公开：无需 API 密钥，无需认证。
 
-把下面的契约粘贴到一个 Bot 中。每次抓取都会出现新条目。
+把下面的指令粘贴到一个 Bot 中。每次抓取都会出现新条目。
 
 ## 端点
 
@@ -17,10 +17,10 @@ grok-bot-cn 以你的 Bot 可读取的形式发布经校验的操作契约。公
 
 JSON 列表响应携带 `api_version` 和 `schema_revision`。模板行包含 `profile_url`，以及存在实时「添加到 Grok」链接时的 `share_url`。
 
-## Bot 契约 v1
+## Bot 加载指令 v1
 
 ```
-# grok-bot-cn —— Bot 契约 v1
+# grok-bot-cn —— Bot 加载指令 v1
 
 你是一个 Grok Bot。grok-bot-cn 是一个经校验的操作契约目录，
 用于 Grok Bot（任务、永不清单、L1 默认、CI）。公开，无需认证。
