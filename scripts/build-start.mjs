@@ -8,6 +8,20 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const loaded = loadAll(root);
 import { RAW } from "../lib/urls.mjs";
 
+// 团队选项的双语显示名。中文名取自 team.yaml，id 保持与链接一致。
+const TEAM_EN = {
+  eng: "Engineering",
+  loop: "Release Loop",
+  marketing: "Marketing",
+  meta: "Meta",
+  ops: "Operations",
+  personal: "Personal",
+  product: "Product",
+  research: "Research",
+  sales: "Sales",
+  success: "Customer Success",
+};
+
 const teamLines = loaded.teams
   .map((t) => {
     const names = t.bots
@@ -31,13 +45,23 @@ ${RAW}/START.md
 
 然后执行以下步骤。只做草稿和研究。不要发送、发布、支付、合并或联系任何人。不要倾倒本目录。
 
-1. 不要要求用户输入目标。如果他们在同一条消息里已发送团队 id 或 \`teams/*.yaml\` 链接，使用该选择并跳过组件。
-   否则显示一个 Grok Bot 提问组件并停止。等待点击。
-   prompt: 我应该设置哪个团队？
+0. 先确认用户语言。如果用户已说明语言，使用它并跳过本步；否则显示提问组件并停止。
+   prompt: 我应该用哪种语言与你交流？ / Which language should I use?
    allowCustom: true
    dismissOnMoveOn: true
    options:
-${loaded.teams.map((t) => `   - ${t.name}`).join("\n")}
+   - 中文 (Chinese)
+   - English
+   - 日本語 (Japanese)
+   - 한국어 (Korean)
+   之后所有回复、选项和说明都用所选语言。URL 与文件名保持原文。
+1. 不要要求用户输入目标。如果他们在同一条消息里已发送团队 id 或 \`teams/*.yaml\` 链接，使用该选择并跳过组件。
+   否则显示一个 Grok Bot 提问组件并停止。等待点击。
+   prompt: 我应该设置哪个团队？ / Which team should I set up?
+   allowCustom: true
+   dismissOnMoveOn: true
+   options:
+${loaded.teams.map((t) => `   - ${t.id} · ${t.name} / ${TEAM_EN[t.id] || t.id}`).join("\n")}
 2. 为所选团队创建 2–4 个 Grok Bot。绝不超过 4 个。
    描述 = 该 Bot 的 PROFILE.md 正文。
    从 ${RAW}/<folder>/PROFILE.md 抓取。不要编造提示词。

@@ -5,22 +5,32 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 
 然后执行以下步骤。只做草稿和研究。不要发送、发布、支付、合并或联系任何人。不要倾倒本目录。
 
-1. 不要要求用户输入目标。如果他们在同一条消息里已发送团队 id 或 `teams/*.yaml` 链接，使用该选择并跳过组件。
-   否则显示一个 Grok Bot 提问组件并停止。等待点击。
-   prompt: 我应该设置哪个团队？
+0. 先确认用户语言。如果用户已说明语言，使用它并跳过本步；否则显示提问组件并停止。
+   prompt: 我应该用哪种语言与你交流？ / Which language should I use?
    allowCustom: true
    dismissOnMoveOn: true
    options:
-   - 工程团队
-   - 发布循环
-   - 市场团队
-   - 元团队
-   - 运营团队
-   - 个人团队
-   - 产品团队
-   - 研究团队
-   - 销售团队
-   - 客户成功
+   - 中文 (Chinese)
+   - English
+   - 日本語 (Japanese)
+   - 한국어 (Korean)
+   之后所有回复、选项和说明都用所选语言。URL 与文件名保持原文。
+1. 不要要求用户输入目标。如果他们在同一条消息里已发送团队 id 或 `teams/*.yaml` 链接，使用该选择并跳过组件。
+   否则显示一个 Grok Bot 提问组件并停止。等待点击。
+   prompt: 我应该设置哪个团队？ / Which team should I set up?
+   allowCustom: true
+   dismissOnMoveOn: true
+   options:
+   - eng · 工程团队 / Engineering
+   - loop · 发布循环 / Release Loop
+   - marketing · 市场团队 / Marketing
+   - meta · 基础团队 / Meta
+   - ops · 运营团队 / Operations
+   - personal · 个人团队 / Personal
+   - product · 产品团队 / Product
+   - research · 研究团队 / Research
+   - sales · 销售团队 / Sales
+   - success · 客户成功 / Customer Success
 2. 为所选团队创建 2–4 个 Grok Bot。绝不超过 4 个。
    描述 = 该 Bot 的 PROFILE.md 正文。
    从 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/<folder>/PROFILE.md 抓取。不要编造提示词。
@@ -35,7 +45,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 - 工程团队 (Bug 复现 + PR 审查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml
 - 发布循环 (CI 扫描 + PR 审查 + 变更日志 + 证据汇总) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/loop/team.yaml
 - 市场团队 (竞品观察 + 内容改写 + 邮件简报) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml
-- 元团队 (安装器 + Bot 管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml
+- 基础团队 (安装器 + Bot 管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml
 - 运营团队 (执行助理 + 费用管理 + 供应商收件箱) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml
 - 个人团队 (收件箱分类 + 日程管理 + 订阅审计) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml
 - 产品团队 (产品性能 + 发布管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml

@@ -943,7 +943,7 @@
     },
     {
       "id": "meta",
-      "name": "元团队",
+      "name": "基础团队",
       "lead": "installer",
       "bots": [
         "installer",
