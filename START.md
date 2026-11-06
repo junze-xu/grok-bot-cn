@@ -24,7 +24,6 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
    - eng · 工程团队 / Engineering
    - loop · 发布循环 / Release Loop
    - marketing · 市场团队 / Marketing
-   - meta · 基础团队 / Meta
    - ops · 运营团队 / Operations
    - personal · 个人团队 / Personal
    - product · 产品团队 / Product
@@ -45,7 +44,6 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 - 工程团队 (Bug 复现 + PR 审查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml
 - 发布循环 (CI 扫描 + PR 审查 + 变更日志 + 证据汇总) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/loop/team.yaml
 - 市场团队 (竞品观察 + 内容改写 + 邮件简报) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml
-- 基础团队 (安装器 + Bot 管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml
 - 运营团队 (执行助理 + 费用管理 + 供应商收件箱) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml
 - 个人团队 (收件箱分类 + 日程管理 + 订阅审计) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml
 - 产品团队 (产品性能 + 发布管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml

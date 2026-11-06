@@ -22,7 +22,22 @@ const TEAM_EN = {
   success: "Customer Success",
 };
 
-const teamLines = loaded.teams
+// START.md 的安装流程只推荐业务团队。meta（管理 Bot 自身的工具集）不进单选列表，
+// 它走目录卡片单独安装；需要时仍可发送团队 id 或 teams/meta/team.yaml 链接。
+const SETUP_TEAM_IDS = [
+  "eng",
+  "loop",
+  "marketing",
+  "ops",
+  "personal",
+  "product",
+  "research",
+  "sales",
+  "success",
+];
+const setupTeams = loaded.teams.filter((t) => SETUP_TEAM_IDS.includes(t.id));
+
+const teamLines = setupTeams
   .map((t) => {
     const names = t.bots
       .map((id) => loaded.templates.find((x) => x.id === id)?.name || id)
@@ -61,7 +76,7 @@ ${RAW}/START.md
    allowCustom: true
    dismissOnMoveOn: true
    options:
-${loaded.teams.map((t) => `   - ${t.id} · ${t.name} / ${TEAM_EN[t.id] || t.id}`).join("\n")}
+${setupTeams.map((t) => `   - ${t.id} · ${t.name} / ${TEAM_EN[t.id] || t.id}`).join("\n")}
 2. 为所选团队创建 2–4 个 Grok Bot。绝不超过 4 个。
    描述 = 该 Bot 的 PROFILE.md 正文。
    从 ${RAW}/<folder>/PROFILE.md 抓取。不要编造提示词。
@@ -92,4 +107,6 @@ ${rows}
 `;
 
 fs.writeFileSync(path.join(root, "START.md"), md);
-console.log(`START.md  ${loaded.templates.length} 行，${loaded.teams.length} 个团队`);
+console.log(
+  `START.md  ${loaded.templates.length} 行，${setupTeams.length} 个可选团队（共 ${loaded.teams.length} 个）`
+);

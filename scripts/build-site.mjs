@@ -210,7 +210,11 @@ const teamCards = loaded.teams
   <p>${esc(flat(t.why))}</p>
   <p class="bots">${esc(botNames)}</p>
   <div class="pills">${pluginPills(t.plugins)}</div>
-  <p class="hint">${esc(`将 START.md 粘贴到 Setup，然后点击 ${t.name}。`)}</p>
+  <p class="hint">${esc(
+  t.id === "meta"
+    ? "管理 Bot 自身的工具集——不在 START.md 的选项里，通过目录卡片单独安装。"
+    : `将 START.md 粘贴到 Setup，然后点击 ${t.name}。`
+)}</p>
   <div class="actions">
     <button type="button" class="copy primary" data-copy="${esc(
       t.name
