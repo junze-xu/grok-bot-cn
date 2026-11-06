@@ -730,7 +730,7 @@ const html = `<!DOCTYPE html>
     <img src="header.jpg" alt="Grok Bot 模板库" />
   </header>
   <div class="wrap">
-    <h1>粘贴一个契约。获得一个可用的 Bot。</h1>
+    <h1>粘贴一个链接。获得一个可用的 Bot。</h1>
     <p class="lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务、Bot 就绪评分。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。v${esc(
       pkg.version
     )}。</p>
