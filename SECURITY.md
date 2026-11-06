@@ -1,35 +1,36 @@
-# Security Policy
+# 安全策略
 
-## Reporting
+## 报告漏洞
 
-**Do not open a public GitHub issue for security vulnerabilities.**
+**请勿为安全漏洞创建公开 Issue。**
 
-Email **cobus@greyling.me** with:
+使用 GitHub 的[私有漏洞报告](https://github.com/junze-xu/grok-bot-cn/security/advisories/new)直接提交。报告时请包含：
 
-- Description
-- Steps to reproduce
-- Impact
-- Suggested fix if you have one
+- 漏洞描述
+- 复现步骤
+- 影响范围
+- 建议的修复方式（如有）
 
-Acknowledgment within **48 hours**.
+将在 **48 小时内**确认。
 
-## Scope
+## 范围
 
-In scope:
+涵盖：
 
 - `@junze-xu/grokbot` CLI
-- Catalog YAML that could smuggle secrets into generated PROFILE.md
-- Share-sanitizer false negatives on obvious key shapes
+- 目录 YAML —— 防止机密被走私进生成的 PROFILE.md
+- 分享脱敏器对明显密钥形状的漏报
 
-Out of scope:
+不涵盖：
 
-- Grok Bot the product (xAI / Cursor)
-- Third-party `x.ai/bot/<id>` share links
-- Your cloud computer, connectors, and logins
+- Grok Bot 产品本身（xAI / Cursor）
+- 第三方 `x.ai/bot/<id>` 分享链接
+- 你的云电脑、连接器和登录凭证
 
-## Practices
+## 实践
 
-- Catalog templates MUST set `share_safe: true`
-- CI scans for key-shaped strings and internal URLs
-- Sharing a Bot copies configuration, not your computer. Still: never put secrets in a description
-- Shared computer is not a security boundary between Bots — see [docs/safety.md](./docs/safety.md)
+- 目录模板必须设置 `share_safe: true`
+- CI 扫描密钥形状的字符串和内部 URL
+- 分享一个 Bot 复制的是配置，不是你的电脑。即便如此：绝不要把机密写进描述
+- 共享电脑不是 Bot 之间的安全边界 —— 见 [docs/safety.md](./docs/safety.md)
+- 敏感操作（发布、支付、合并、上生产）始终需要人类明确批准

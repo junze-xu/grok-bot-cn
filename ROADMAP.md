@@ -1,9 +1,10 @@
 # 路线图
 
-## 当前（1.1）
+## 当前（v1.1.0）
 
 - 规格、评分、CLI、目录、团队、技能、例行程序、模式
-- 与官方文档对齐的金牌模板
+- 33 个模板 / 13 个技能 / 8 个例行程序 / 12 个模式（已精简重构）
+- 全中文化，面向国内用户；名称直白化（差旅审核、来源核查、执行助理等）
 - 构造上即分享安全
 - 安装器优先的 README + Pages 复制按钮
 - 机器 API + Bot 契约（`docs/agent.md`）
@@ -13,7 +14,7 @@
 
 - 发布 `@junze-xu/grokbot` 到 npm（`docs/publish-npm.md`；GitHub npx 今天已可用）
 - 从干净账户生成 Setup + Eng 的 `x.ai/bot/<id>` 实时分享 URL（`docs/publish-share-links.md`）
-- X 发布串（`docs/LAUNCH.md`），然后 grokbot.dev 用例 PR
+- 国内社区推广：V2EX、少数派、掘金、知乎、微信公众号
 - Hub 上架：RongleCat、ZeroPointRepo（`docs/listings/`）
 - 首个现场案例：Eng 团队在真实 PR 上跑一周（`docs/field-cases/`）
 - 转换器 CLI：`grokbot convert --from claude CLAUDE.md`
@@ -23,7 +24,9 @@
 ## 以后
 
 - 向 Grok Build 暴露目录的 MCP 服务器
-- 例行程序成本估算器（tokens/周），延续 `loop-cost` 的精神
+- 例行程序成本估算器（tokens/周）
+- 国内协同工具适配：飞书、企业微信、钉钉
+- 更多中文场景模板（技术支持、运营自动化、内容审核）
 - PROFILE.md 本地化（任务部分仍以英文优先）
 
 不做计划：抓取私有分享链接；无人值守的生产改动者；没有任务的人设包。

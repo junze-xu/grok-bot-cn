@@ -22,7 +22,9 @@
 
 > 与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。这里的契约是你粘贴到**你的**账户的内容。
 
-## 60 秒安装 — 无需 Node
+## 快速上手
+
+### 方案 A —— 安装器 Bot（无需 Node）
 
 1. 在 Grok Bot 中：**新建 → 创建新智能体**。命名为 **Setup**。
 2. 粘贴这个 URL 并发送：
@@ -31,37 +33,65 @@
 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 ```
 
-3. 点击一个团队。试试 **Eng**（Bug 复现 + Issue 起草 + PR 审查）。
+3. 点击一个团队。试试 **Eng**（Bug 复现 + PR 审查）。
 4. 连接所需的插件。第一周停留在 **L1** —— 只起草，不发送。
 
 Setup 会获取每个 Bot 的 `PROFILE.md`。它不会凭空编造提示词。
 
-→ [Pages 目录](https://junze-xu.github.io/grok-bot-cn/)（按卡片复制 PROFILE） · [快速入门](./QUICKSTART.md) · [你想做什么？](./docs/jobs.md)
+→ [Pages 目录](https://junze-xu.github.io/grok-bot-cn/)（按卡片复制 PROFILE） · [你想做什么？](./docs/jobs.md)
 
-## 或者只复制一个 PROFILE
+### 方案 B —— 单个 Bot，复制 PROFILE
 
-将原始的 `PROFILE.md` 粘贴到 **Bot 操作 → 编辑个人资料**。连接它指定的插件。发送第一个任务。在两次运行结果正常之前，不要启用例行程序。
+浏览 [Pages 目录](https://junze-xu.github.io/grok-bot-cn/) 并点击 **复制 PROFILE**，或者：
+
+```bash
+npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
+```
+
+1. 在 Grok Bot 中：**新建 → 创建新智能体**
+2. **Bot 操作 → 编辑个人资料**
+3. 命名为 `PR 审查`。把打印出的简介粘贴到描述中
+4. 如果有的话，在「设置 → 插件」下连接 **GitHub**
+5. 发送简介底部的首个任务
+6. 在两次运行看起来正常之前，不要启用例行程序
 
 | Bot | 推荐理由 | 原始 PROFILE |
 |-----|----------|--------------|
 | [PR 审查](templates/engineering/pr-reviewer/) | 审查从令人担忧的 diff 开始 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/pr-reviewer/PROFILE.md) |
 | [Bug 复现](templates/engineering/bug-reproduction/) | 预发布复现包 —— 绝不用生产数据 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/bug-reproduction/PROFILE.md) |
-| [参谋长](templates/ops/chief-of-staff/) | 仅包含与优先列表匹配的事项 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md) |
+| [执行助理](templates/ops/chief-of-staff/) | 仅包含与优先列表匹配的事项 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/chief-of-staff/PROFILE.md) |
 | [收件箱分类](templates/personal/inbox-triage/) | 分类与起草 —— 绝不发送 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/inbox-triage/PROFILE.md) |
-| [研究台](templates/research/research-desk/) | 主张、证据、分歧、未找到 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md) |
+| [研究助手](templates/research/research-desk/) | 主张、证据、分歧、未找到 | [PROFILE.md](https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/research/research-desk/PROFILE.md) |
 
 完整目录：**33 个模板 · 10 个团队 · 13 个技能 · 8 个例行程序**。所有稳定模板均达到 Bot 就绪标准（≥80/100）。
 
-## CLI（可选）
+### 方案 C —— 用 CLI 组建团队
 
 ```bash
 npx --yes github:junze-xu/grok-bot-cn list
-npx --yes github:junze-xu/grok-bot-cn init pr-reviewer --print
-npx --yes github:junze-xu/grok-bot-cn score pr-reviewer --badge
 npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 ```
 
+从 `./eng-bots/*/PROFILE.md` 创建 Bot，把它们放进一个群组，粘贴 `TEAM.md` 启动词。
+
 `npx @junze-xu/grokbot` 是限定名称，下次 npm 发布后即可使用。GitHub npx 今天就可使用。
+
+### 方案 D —— 给你写的契约打分
+
+```bash
+npx --yes github:junze-xu/grok-bot-cn new onboard-ledger --category ops
+# 编辑 templates/ops/onboard-ledger/template.yaml
+npx --yes github:junze-xu/grok-bot-cn score onboard-ledger
+npx --yes github:junze-xu/grok-bot-cn validate
+```
+
+「就绪」意味着 **≥ 80** 且声明了自主性级别。
+
+### 「第一周」指什么
+
+读取并准备。做草稿，不发送。官方顺序：描述里的任务 → 一个真实任务 → 修正它 → 保存一个技能 → 用第二个输入测试 → 然后也许才是例行程序。
+
+详情：[SPEC.md](./SPEC.md) · [docs/autonomy.md](./docs/autonomy.md) · [docs/safety.md](./docs/safety.md)
 
 ## 选择你的入口
 
