@@ -803,23 +803,9 @@
         "bug-reproduction",
         "pr-reviewer"
       ],
-      "why": "预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。",
+      "why": "在预发环境带证据复现 bug，把 PR 从 diff 审起——不合并、不评论、不碰生产数据。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml"
-    },
-    {
-      "id": "loop",
-      "name": "发布循环",
-      "lead": "evidence-packager",
-      "bots": [
-        "ci-sweeper",
-        "pr-reviewer",
-        "changelog",
-        "evidence-packager"
-      ],
-      "why": "在有人合并、打标签或写下发布理由之前，内环编码 Agent 仍需要外环的证据与结论把关。\n",
-      "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/loop/team.yaml"
     },
     {
       "id": "marketing",
@@ -830,7 +816,7 @@
         "content-remix",
         "newsletter-desk"
       ],
-      "why": "竞品噪音、渠道变体和每周一期的通讯混在一起，直到有人做差异对比、再创作，并且依然不发布。\n",
+      "why": "盯竞品变化、把认可的内容改写成渠道变体、组装下一期通讯——一律停在草稿，不发布。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml"
     },
@@ -842,7 +828,7 @@
         "installer",
         "roster"
       ],
-      "why": "搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 Setup 大倾倒。",
+      "why": "装团队、裁舰队、脱敏、修记忆——管 Bot 的 Bot，一次只做一件事。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml"
     },
@@ -855,7 +841,7 @@
         "expense-manager",
         "vendor-inbox"
       ],
-      "why": "一周的实情藏在 Slack、收据和供应商邮件里，直到有人把它映射到优先事项上，且不发任何催收。\n",
+      "why": "把 Slack、收据和供应商邮件映射到你的优先事项：只摘要要决策的、对账已签政策、发票列待审——不付款、不发催收。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml"
     },
@@ -868,7 +854,7 @@
         "calendar-defender",
         "subscription-audit"
       ],
-      "why": "当邮件、会议和闲置订阅挤在同一个 Bot 里，而它又想发送、拒绝、退订时，收件箱归零注定失败。\n",
+      "why": "邮件分桶、日历护盾、闲置订阅清单——不发送、不删除、不改动会议、不代你退订。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml"
     },
@@ -880,9 +866,23 @@
         "product-performance",
         "launch-coordinator"
       ],
-      "why": "延迟、产品证据和发布日互相撞击，除非一个 Bot 管性能数据、一个管发布清单。",
+      "why": "追性能热点、盯发布清单——只给证据，去/不去由人拍板——不改生产、不建 issue、不发布。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml"
+    },
+    {
+      "id": "release",
+      "name": "发布团队",
+      "lead": "evidence-packager",
+      "bots": [
+        "ci-sweeper",
+        "pr-reviewer",
+        "changelog",
+        "evidence-packager"
+      ],
+      "why": "发版前的一道关：扫 CI、审 PR、起草变更日志、打包发布证据——只出草稿和结论，发布键归你按。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/release/team.yaml"
     },
     {
       "id": "research",
@@ -892,7 +892,7 @@
         "research-desk",
         "source-interrogator"
       ],
-      "why": "深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。",
+      "why": "带引用的深度简报 + 承重主张核查——没找到就写没找到，绝不编造引用。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/research/team.yaml"
     },
@@ -904,21 +904,21 @@
         "sales-outbound",
         "call-followup"
       ],
-      "why": "如果复盘没在发出前写下来，外拓再多量也只是噪音。",
+      "why": "外联名单研究、通话后复盘草稿——停在待审列表——不发送、不拉序列、不代约会议。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/sales/team.yaml"
     },
     {
-      "id": "success",
-      "name": "客户成功",
+      "id": "service",
+      "name": "客户服务",
       "lead": "account-health",
       "bots": [
         "account-health",
         "support-replies"
       ],
-      "why": "当客户健康只是凭感觉、回复不带引用就发出时，续约就会溜走。",
+      "why": "客户组合健康排名 + 带政策引用的回复草稿——风险早发现——不联系客户、不改 CRM、不代退款。",
       "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/success/team.yaml"
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/service/team.yaml"
     }
   ]
 }

@@ -11,7 +11,7 @@ import { RAW } from "../lib/urls.mjs";
 // 团队选项的双语显示名。中文名取自 team.yaml，id 保持与链接一致。
 const TEAM_EN = {
   eng: "Engineering",
-  loop: "Release Loop",
+  release: "Release",
   marketing: "Marketing",
   meta: "Meta",
   ops: "Operations",
@@ -19,21 +19,21 @@ const TEAM_EN = {
   product: "Product",
   research: "Research",
   sales: "Sales",
-  success: "Customer Success",
+  service: "Customer Service",
 };
 
 // START.md 的安装流程只推荐业务团队。meta（管理 Bot 自身的工具集）不进单选列表，
 // 它走目录卡片单独安装；需要时仍可发送团队 id 或 teams/meta/team.yaml 链接。
 const SETUP_TEAM_IDS = [
   "eng",
-  "loop",
+  "release",
   "marketing",
   "ops",
   "personal",
   "product",
   "research",
   "sales",
-  "success",
+  "service",
 ];
 const setupTeams = loaded.teams.filter((t) => SETUP_TEAM_IDS.includes(t.id));
 

@@ -4,7 +4,7 @@ lead: product-performance
 bots:
   - product-performance
   - launch-coordinator
-why: 延迟、产品证据和发布日互相撞击，除非一个 Bot 管性能数据、一个管发布清单。
+why: 追性能热点、盯发布清单——只给证据，去/不去由人拍板——不改生产、不建 issue、不发布。
 group_kickoff: "@产品性能 用看板和追踪链路调查指定的延迟尖峰。 @发布管理
   让发布清单保持诚实，停在去/不去决策处。不要改动生产环境，不要建 issue，不要发布。"
 plugins:

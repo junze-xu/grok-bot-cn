@@ -59,7 +59,7 @@ const JOBS = [
 
 const TEAM_CAT = {
   eng: "engineering",
-  loop: "engineering",
+  release: "engineering",
   marketing: "marketing",
   meta: "meta",
   ops: "ops",
@@ -67,7 +67,7 @@ const TEAM_CAT = {
   product: "product",
   research: "research",
   sales: "sales",
-  success: "support",
+  service: "support",
 };
 
 function esc(s) {

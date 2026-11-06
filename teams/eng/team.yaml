@@ -4,7 +4,7 @@ lead: pr-reviewer
 bots:
   - bug-reproduction
   - pr-reviewer
-why: 预发环境的报告卡住时，复现和风险审查挤在同一个没有分化的聊天里。
+why: 在预发环境带证据复现 bug，把 PR 从 diff 审起——不合并、不评论、不碰生产数据。
 group_kickoff: "@Bug 复现 用一个全新测试账户复现最新的预发报告。@PR 审查 等有了 PR 再开始，从可怕的 diff 切入。 不要合并，不要在 GitHub 评论，不要用生产客户数据。"
 plugins:
   - GitHub

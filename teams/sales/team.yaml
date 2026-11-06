@@ -4,7 +4,7 @@ lead: sales-outbound
 bots:
   - sales-outbound
   - call-followup
-why: 如果复盘没在发出前写下来，外拓再多量也只是噪音。
+why: 外联名单研究、通话后复盘草稿——停在待审列表——不发送、不拉序列、不代约会议。
 group_kickoff: "@外部拓展 研究指定客户名单，停在待审列表处。@通话跟进
   等笔记齐了再起草未发送的复盘。不要发送，不要拉任何人进序列，不要预约下一次会议。"
 plugins:

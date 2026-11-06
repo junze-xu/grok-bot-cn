@@ -1,5 +1,5 @@
-id: loop
-name: 发布循环
+id: release
+name: 发布团队
 lead: evidence-packager
 bots:
   - ci-sweeper
@@ -7,7 +7,7 @@ bots:
   - changelog
   - evidence-packager
 why: >
-  在有人合并、打标签或写下发布理由之前，内环编码 Agent 仍需要外环的证据与结论把关。
+  发版前的一道关：扫 CI、审 PR、起草变更日志、打包发布证据——只出草稿和结论，发布键归你按。
 group_kickoff: >
   @CI 扫描 列出失败的检查项，不要为变绿而反复重跑。@PR 审查 对开放的 PR 做风险审查。
   @变更日志 起草上次标签以来的变更笔记。@证据汇总 把已验证与未验证的分开打包，

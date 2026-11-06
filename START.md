@@ -22,14 +22,14 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
    dismissOnMoveOn: true
    options:
    - eng · 工程团队 / Engineering
-   - loop · 发布循环 / Release Loop
    - marketing · 市场团队 / Marketing
    - ops · 运营团队 / Operations
    - personal · 个人团队 / Personal
    - product · 产品团队 / Product
+   - release · 发布团队 / Release
    - research · 研究团队 / Research
    - sales · 销售团队 / Sales
-   - success · 客户成功 / Customer Success
+   - service · 客户服务 / Customer Service
    选项必须照抄本清单原文（含中文名与英文名），不要缩写或改写。
    组件最多显示 6 个选项；显示不全时，把未显示的选项也照抄给用户，并说明可直接输入英文 key。
    「管家团队」是管理 Bot 自身的工具集（装团队、裁舰队），不在选项中——它走目录卡片或 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml 链接单独安装。
@@ -45,14 +45,14 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 团队文件：
 
 - 工程团队 (Bug 复现 + PR 审查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml
-- 发布循环 (CI 扫描 + PR 审查 + 变更日志 + 证据汇总) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/loop/team.yaml
 - 市场团队 (竞品观察 + 内容改写 + 邮件简报) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml
 - 运营团队 (执行助理 + 费用管理 + 供应商收件箱) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/ops/team.yaml
 - 个人团队 (收件箱分类 + 日程管理 + 订阅审计) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml
 - 产品团队 (产品性能 + 发布管理) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/product/team.yaml
+- 发布团队 (CI 扫描 + PR 审查 + 变更日志 + 证据汇总) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/release/team.yaml
 - 研究团队 (研究助手 + 来源核查) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/research/team.yaml
 - 销售团队 (外部拓展 + 通话跟进) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/sales/team.yaml
-- 客户成功 (客户健康 + 客服回复) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/success/team.yaml
+- 客户服务 (客户健康 + 客服回复) —— https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/service/team.yaml
 
 ## 索引
 

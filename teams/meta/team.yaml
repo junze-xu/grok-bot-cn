@@ -4,7 +4,7 @@ lead: installer
 bots:
   - installer
   - roster
-why: 搭一个目录团队、裁一支臃肿的舰队——是两份不同的事，不是一次 Setup 大倾倒。
+why: 装团队、裁舰队、脱敏、修记忆——管 Bot 的 Bot，一次只做一件事。
 group_kickoff: "@安装器 从目录安装指定的入门团队。@Bot 管理 砍掉所有不配占据名册的 Bot。 不要启用例行程序，不要创建超过四个 Bot，不要改写
   PROFILE.md。"
 plugins: []

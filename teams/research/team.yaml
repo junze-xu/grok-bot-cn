@@ -4,7 +4,7 @@ lead: research-desk
 bots:
   - research-desk
   - source-interrogator
-why: 深度简报和承重主张核查是不同的工作；混在一起会把未找到清单藏起来。
+why: 带引用的深度简报 + 承重主张核查——没找到就写没找到，绝不编造引用。
 group_kickoff: "@研究助手 针对聊天里的问题产出带引用的简报。@来源核查 列出被当成事实的假设。不要发布，不要编造引用，不要联系人员做访谈。"
 plugins: []
 max_bots: 4
