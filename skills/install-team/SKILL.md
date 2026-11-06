@@ -13,7 +13,7 @@
 
 ## 2. 所需输入与访问权限
 
-- 团队 id（eng、sales、success、ops、marketing、product、loop、research、personal、meta）
+- 团队 id（eng、loop、marketing、ops、personal、product、research、sales、success——共 9 个）
 - 「第一周是 L1」的确认
 
 ## 3. 操作顺序

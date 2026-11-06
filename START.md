@@ -30,6 +30,9 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
    - research · 研究团队 / Research
    - sales · 销售团队 / Sales
    - success · 客户成功 / Customer Success
+   选项必须照抄本清单原文（含中文名与英文名），不要缩写或改写。
+   组件最多显示 6 个选项；显示不全时，把未显示的选项也照抄给用户，并说明可直接输入英文 key。
+   「管家团队」是管理 Bot 自身的工具集（装团队、裁舰队），不在选项中——它走目录卡片或 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml 链接单独安装。
 2. 为所选团队创建 2–4 个 Grok Bot。绝不超过 4 个。
    描述 = 该 Bot 的 PROFILE.md 正文。
    从 https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/<folder>/PROFILE.md 抓取。不要编造提示词。

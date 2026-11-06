@@ -22,7 +22,7 @@ Grok Bot 是云电脑上的常驻队友。官方文档：[入门](https://docs.x
 
 发送：
 
-> 如果主人已指定团队或发送目标链接，使用它。否则 展示 Eng、Sales、Success、Ops、Marketing、Product、Loop、 Research、Personal、Meta 供选择——然后从目录安装该团队。
+> 如果主人已指定团队或发送目标链接，使用它。否则展示 9 个可选团队供选择——工程团队 (eng)、发布循环 (loop)、 市场团队 (marketing)、运营团队 (ops)、个人团队 (personal)、产品团队 (product)、研究团队 (research)、 销售团队 (sales)、客户成功 (success)——然后从目录安装该团队。 选项文字与 START.md 第 1 步的清单一致，不要缩写或改写。组件最多显示 6 个选项；显示不全时， 把未显示的选项也照抄出来，并说明可直接输入英文 key。
 
 自主性为 **L1**。第一周是读取并准备，除非你升级该 Bot。
 
