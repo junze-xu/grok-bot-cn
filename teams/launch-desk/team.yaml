@@ -1,0 +1,19 @@
+id: launch-desk
+name: 上新组（电商）
+lead: product-compare
+bots:
+  - product-compare
+  - launch-copy
+  - xiaohongshu-cards
+  - xianyu-lister
+  - cs-reply-draft
+why: >
+  从「这个值不值得卖」到「商品页、主图、文案都做好，就差你点发布」，一个群跑完上新全流程。
+group_kickoff: >
+  @选品比价 判断这个品值不值得卖，给出价格区间与拿货建议。@上新文案 写商品标题、卖点与详情页。
+  @小红书图文 出主图与展示图。@闲鱼哥 按店铺后台能力准备上架。@客服草稿 备好售后常见问题回复。
+  最后我点发布，Bot 不代点。
+plugins:
+  - GitHub
+max_bots: 6
+autonomy: L1

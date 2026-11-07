@@ -6,21 +6,23 @@
 //   docs/counts.json   静态站点内嵌种子 / 机器 API（bots / teams / start）
 //   worker/seed.json   Cloudflare KV 种子（含 known 白名单，见 worker/README.md）
 //
-// 映射规则（与 convert/import-bots.mjs 的 slug 一致）：
-//   M01 → md-m01（Bot）· C11 → md-c11 · T01 → md-t01（功能组）· guide → start（START.md）
+// 映射规则：快照代码（M01 / C11 / T01 …）→ 仓库语义化 ID，登记表见 lib/id-map.mjs；
+//   guide / start → start（START.md）。
 // 未在快照里出现的模板/团队以 0 补齐。站点计数只反映本站复制动作次数，不等于安装量。
 
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadAll } from "../lib/load.mjs";
+import { toId } from "../lib/id-map.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = "snapshots/imported-counts.json";
 const BLOB_KEY = "counts:v1";
 
+// 快照代码 → 仓库 ID（语义化命名，登记表见 lib/id-map.mjs）；未登记返回原值
 export function slug(code) {
-  return "md-" + String(code).toLowerCase().replace(/[^a-z0-9]/g, "");
+  return toId(code) || String(code);
 }
 
 export const COUNT_BLOB_KEY = BLOB_KEY;

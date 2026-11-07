@@ -41,6 +41,34 @@
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/eng/team.yaml"
     },
     {
+      "id": "job-hunt-desk",
+      "name": "求职组（通用办公）",
+      "lead": "deep-research",
+      "bots": [
+        "deep-research",
+        "resume-tailor",
+        "email-secretary"
+      ],
+      "why": "看中一个岗位丢进来：先查公司，再针对这个岗位改简历，最后写好投递邮件草稿。一岗一套，不海投。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/job-hunt-desk/team.yaml"
+    },
+    {
+      "id": "launch-desk",
+      "name": "上新组（电商）",
+      "lead": "product-compare",
+      "bots": [
+        "product-compare",
+        "launch-copy",
+        "xiaohongshu-cards",
+        "xianyu-lister",
+        "cs-reply-draft"
+      ],
+      "why": "从「这个值不值得卖」到「商品页、主图、文案都做好，就差你点发布」，一个群跑完上新全流程。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/launch-desk/team.yaml"
+    },
+    {
       "id": "marketing",
       "name": "市场团队",
       "lead": "competitor-watch",
@@ -54,65 +82,6 @@
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml"
     },
     {
-      "id": "md-t01",
-      "name": "口播编辑部（自媒体）",
-      "lead": "md-c11",
-      "bots": [
-        "md-c11",
-        "md-c12",
-        "md-c13",
-        "md-c14",
-        "md-c15",
-        "md-c16"
-      ],
-      "why": "五棒接力把「没题材」变成能直接录的定稿：选题、成稿、钩子、体检、去 AI 味，每棒停下来等主人说「过」。\n",
-      "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t01/team.yaml"
-    },
-    {
-      "id": "md-t02",
-      "name": "一稿多发组（自媒体 + 设计）",
-      "lead": "md-c06",
-      "bots": [
-        "md-c06",
-        "md-c18",
-        "md-s01",
-        "md-s02",
-        "md-c21"
-      ],
-      "why": "一份定稿或一条录好的视频丢进来，组长分派：同时出公众号草稿、小红书图文、封面和短视频切片，最后排进本周发布表。\n",
-      "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t02/team.yaml"
-    },
-    {
-      "id": "md-t03",
-      "name": "上新组（电商）",
-      "lead": "md-e06",
-      "bots": [
-        "md-e06",
-        "md-e05",
-        "md-s01",
-        "md-l01",
-        "md-e04"
-      ],
-      "why": "从「这个值不值得卖」到「商品页、主图、文案都做好，就差你点发布」，一个群跑完上新全流程。\n",
-      "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t03/team.yaml"
-    },
-    {
-      "id": "md-t04",
-      "name": "求职组（通用办公）",
-      "lead": "md-g07",
-      "bots": [
-        "md-g07",
-        "md-g08",
-        "md-g03"
-      ],
-      "why": "看中一个岗位丢进来：先查公司，再针对这个岗位改简历，最后写好投递邮件草稿。一岗一套，不海投。\n",
-      "autonomy": "L1",
-      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t04/team.yaml"
-    },
-    {
       "id": "meta",
       "name": "管家团队",
       "lead": "installer",
@@ -123,6 +92,21 @@
       "why": "装团队、裁舰队、脱敏、修记忆——管 Bot 的 Bot，一次只做一件事。",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/meta/team.yaml"
+    },
+    {
+      "id": "multi-channel-desk",
+      "name": "一稿多发组（自媒体 + 设计）",
+      "lead": "publish-scheduler",
+      "bots": [
+        "publish-scheduler",
+        "wechat-pipeline",
+        "xiaohongshu-cards",
+        "cover-designer",
+        "video-clipper"
+      ],
+      "why": "一份定稿或一条录好的视频丢进来，组长分派：同时出公众号草稿、小红书图文、封面和短视频切片，最后排进本周发布表。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/multi-channel-desk/team.yaml"
     },
     {
       "id": "ops",
@@ -149,6 +133,22 @@
       "why": "邮件分桶、日历护盾、闲置订阅清单——不发送、不删除、不改动会议、不代你退订。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/personal/team.yaml"
+    },
+    {
+      "id": "podcast-desk",
+      "name": "口播编辑部（自媒体）",
+      "lead": "topic-miner",
+      "bots": [
+        "topic-miner",
+        "tutorial-scriptwriter",
+        "spark-to-script",
+        "hook-rewriter",
+        "script-doctor",
+        "de-ai-polish"
+      ],
+      "why": "五棒接力把「没题材」变成能直接录的定稿：选题、成稿、钩子、体检、去 AI 味，每棒停下来等主人说「过」。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/podcast-desk/team.yaml"
     },
     {
       "id": "product",

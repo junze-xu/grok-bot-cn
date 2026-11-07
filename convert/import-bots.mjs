@@ -5,11 +5,12 @@
 // 输出：templates/<category>/<id>/template.yaml（唯一事实来源），随后 npm run render 生成 PROFILE 等。
 //
 // 用法：
-//   node convert/import-bots.mjs --ids M01,C11       # 指定条目
+//   node convert/import-bots.mjs --ids task-dispatcher,topic-miner   # 指定条目（仓库 ID）
 //   node convert/import-bots.mjs --group base        # 指定分组
 //   node convert/import-bots.mjs --coding            # 代码附录 D01–D08
 //   node convert/import-bots.mjs --dry               # 只看计划不写文件
 //
+// ID 映射：快照代码（M01 / C11 / T01 …）→ 仓库语义化 ID，登记表见 lib/id-map.mjs。
 // 字段策略：OVERRIDES 里逐条转写的字段优先；其余用 rule* 函数从快照结构化字段生成。
 // 导入的 Bot 一律 L1（本仓库第一周规则）；原设定的定时频率写进 schedule 与工作风格。
 
@@ -17,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { stringify as stringifyYaml } from "yaml";
+import { toId } from "../lib/id-map.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const snapshot = JSON.parse(
@@ -38,8 +40,11 @@ const CODING_CAT = "engineering";
 
 const DERIVED = "原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）";
 
+// 快照代码 → 仓库 ID（语义化命名，登记表见 lib/id-map.mjs）
 function slug(code) {
-  return "md-" + code.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const id = toId(code);
+  if (!id) throw new Error(`未登记的快照代码：${code}（先在 lib/id-map.mjs 登记）`);
+  return id;
 }
 function parseName(name) {
   return String(name)
@@ -354,7 +359,7 @@ const OVERRIDES = {
       "绝不在涉及发送、花钱、删除前不确认",
       "绝不让群里所有 Bot 陪读一条派活消息",
     ],
-    handoffs: [{ to: "md-m03", when: "团队里没有合适的 Bot、建议新建一个时" }],
+    handoffs: [{ to: "bot-recruiter", when: "团队里没有合适的 Bot、建议新建一个时" }],
     team_role: "router",
   },
   M02: {
@@ -398,7 +403,7 @@ const OVERRIDES = {
       "新设定里必带三条铁律：凭据接管、发送前确认、没新消息不打扰",
     ],
     never: ["绝不重复造已有的 Bot", "绝不在新 Bot 设定里省略审批边界"],
-    handoffs: [{ to: "md-m04", when: "新 Bot 建好、需要登记名册时" }],
+    handoffs: [{ to: "roster-report", when: "新 Bot 建好、需要登记名册时" }],
   },
   M04: {
     title: "Bot 团队名册周报",
@@ -419,7 +424,7 @@ const OVERRIDES = {
       "第一周按 L1 由主人手动触发；跑顺两次后再建定时任务（原设定：每周一 9:00）",
     ],
     never: ["绝不泄露凭据", "绝不新建多份花名册"],
-    handoffs: [{ to: "md-m07", when: "名册出现长期闲置的 Bot 时" }],
+    handoffs: [{ to: "bot-scorecard", when: "名册出现长期闲置的 Bot 时" }],
   },
   M05: {
     title: "团队额度监控与预警",
@@ -440,7 +445,7 @@ const OVERRIDES = {
       "第一周按 L1 由主人手动触发；跑顺两次后再建定时任务（原设定：每晚 23:00）",
     ],
     never: ["绝不自行暂停或删除任何任务", "绝不在消息里显示凭据"],
-    handoffs: [{ to: "md-m07", when: "某个 Bot 因额度被列为高消耗时" }],
+    handoffs: [{ to: "bot-scorecard", when: "某个 Bot 因额度被列为高消耗时" }],
   },
   M06: {
     title: "定时任务健康巡检",
@@ -474,7 +479,7 @@ const OVERRIDES = {
       "第一周按 L1 由主人手动触发；跑顺两次后再建定时任务（原设定：每周五 18:00）",
     ],
     never: ["绝不自行删除任何 Bot", "绝不按印象打分"],
-    handoffs: [{ to: "md-m02", when: "主人同意裁撤、需要先备份该 Bot 时" }],
+    handoffs: [{ to: "settings-memory-backup", when: "主人同意裁撤、需要先备份该 Bot 时" }],
   },
   M08: {
     title: "外部授权与登录状态月审",
@@ -512,7 +517,7 @@ const OVERRIDES = {
       "内容发布后读数据复盘，写进 lessons.md",
     ],
     never: ["绝不替主人编经历", "绝不不确认就交接"],
-    handoffs: [{ to: "md-c12", when: "主人选定选题后（备用：md-c13）" }],
+    handoffs: [{ to: "tutorial-scriptwriter", when: "主人选定选题后（备用：spark-to-script）" }],
   },
   C12: {
     title: "录屏教程编剧（第 2 棒）",
@@ -529,7 +534,7 @@ const OVERRIDES = {
       "不确定处标【⚠️ 待确认】",
     ],
     never: ["绝不编数据或案例", "绝不写不准的步骤不标注"],
-    handoffs: [{ to: "md-c14", when: "主人说「过」之后" }],
+    handoffs: [{ to: "hook-rewriter", when: "主人说「过」之后" }],
   },
   C13: {
     title: "灵感成稿（第 2 棒备选）",
@@ -545,7 +550,7 @@ const OVERRIDES = {
       "长文观点先归类再改写",
     ],
     never: ["绝不把长文原句当自己的观点"],
-    handoffs: [{ to: "md-c14", when: "主人说「过」之后" }],
+    handoffs: [{ to: "hook-rewriter", when: "主人说「过」之后" }],
   },
   C14: {
     title: "开头钩子改写（第 3 棒）",
@@ -561,7 +566,7 @@ const OVERRIDES = {
       "选定后人话改写再替换",
     ],
     never: ["绝不做标题党", "绝不承诺正文兑现不了的东西"],
-    handoffs: [{ to: "md-c15", when: "替换完成之后" }],
+    handoffs: [{ to: "script-doctor", when: "替换完成之后" }],
   },
   C15: {
     title: "口播稿体检（第 4 棒）",
@@ -577,7 +582,7 @@ const OVERRIDES = {
       "等主人勾选后再动手",
     ],
     never: ["绝不改观点和事实", "绝不跳过确认直接改稿"],
-    handoffs: [{ to: "md-c16", when: "改稿完成之后" }],
+    handoffs: [{ to: "de-ai-polish", when: "改稿完成之后" }],
   },
   C16: {
     title: "去 AI 味定稿（最后一棒）",

@@ -22,6 +22,10 @@ const TEAM_EN = {
   research: "Research",
   sales: "Sales",
   service: "Customer Service",
+  "podcast-desk": "Podcast Desk",
+  "multi-channel-desk": "Multi-Channel Desk",
+  "launch-desk": "Launch Desk",
+  "job-hunt-desk": "Job Hunt Desk",
 };
 
 // START.md 的安装流程只推荐业务团队。meta（管理 Bot 自身的工具集）不进单选列表，
@@ -40,15 +44,22 @@ const SETUP_TEAM_IDS = [
   "service",
 ];
 const setupTeams = loaded.teams.filter((t) => SETUP_TEAM_IDS.includes(t.id));
+// 专项组（口播编辑部等）：不进 START.md 的选项组件；用户点名、给出 id 或发来组装指令时按同样的方式处理。
+const DESK_IDS = [
+  "podcast-desk",
+  "multi-channel-desk",
+  "launch-desk",
+  "job-hunt-desk",
+];
+const deskTeams = loaded.teams.filter((t) => DESK_IDS.includes(t.id));
 
-const teamLines = setupTeams
-  .map((t) => {
-    const names = t.bots
-      .map((id) => loaded.templates.find((x) => x.id === id)?.name || id)
-      .join(" + ");
-    return `- ${t.name} (${names}) —— ${RAW}/teams/${t.id}/team.yaml`;
-  })
-  .join("\n");
+const teamLine = (t) => {
+  const names = t.bots
+    .map((id) => loaded.templates.find((x) => x.id === id)?.name || id)
+    .join(" + ");
+  return `- ${t.name} (${names}) —— ${RAW}/teams/${t.id}/team.yaml`;
+};
+const teamLines = [...setupTeams, ...deskTeams].map(teamLine).join("\n");
 
 const rows = loaded.templates
   .map((t) => {
@@ -84,6 +95,9 @@ ${setupTeams.map((t) => `   - ${t.id} · ${t.name} / ${TEAM_EN[t.id] || t.id}`).
    选项必须照抄本清单原文（含中文名与英文名），不要缩写或改写。
    组件最多显示 6 个选项；显示不全时，把未显示的选项也照抄给用户，并说明可直接输入英文 key。
    「管家团队」是管理 Bot 自身的工具集（装团队、裁舰队），不在选项中——它走目录卡片或 ${RAW}/teams/meta/team.yaml 链接单独安装。
+   以下专项组不在组件里——用户点名、给出 id，或发来组装指令时，按同样的方式处理：
+${deskTeams.map((t) => `   - ${t.id} · ${t.name} / ${TEAM_EN[t.id] || t.id}`).join("\n")}
+   如果用户发来的是组装指令（形如「按这个清单创建 N 个 Bot，全部放进「X」群组：」加成员名单），按该清单创建 Bot，忽略上面的团队选项；群组名与成员以指令为准。
 2. 为所选团队创建 2–4 个 Grok Bot。绝不超过 4 个。
    描述 = 该 Bot 的 PROFILE.md 正文。
    从 ${RAW}/<folder>/PROFILE.md 抓取。不要编造提示词。
@@ -115,5 +129,5 @@ ${rows}
 
 fs.writeFileSync(path.join(root, "START.md"), md);
 console.log(
-  `START.md  ${loaded.templates.length} 行，${setupTeams.length} 个可选团队（共 ${loaded.teams.length} 个）`
+  `START.md  ${loaded.templates.length} 行，${setupTeams.length} 个可选团队 + ${deskTeams.length} 个专项组（共 ${loaded.teams.length} 个）`
 );

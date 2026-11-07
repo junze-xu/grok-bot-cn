@@ -34,8 +34,8 @@ function harness(seed) {
 const seeded = {
   version: 1,
   updated: "2026-11-07T00:00:00.000Z",
-  known: { bot: ["known-bot", "md-m01"], team: ["md-t01"] },
-  counts: { bot: { "known-bot": 5, "md-m01": 365 }, team: { "md-t01": 34 }, start: 24 },
+  known: { bot: ["known-bot", "task-dispatcher"], team: ["podcast-desk"] },
+  counts: { bot: { "known-bot": 5, "task-dispatcher": 365 }, team: { "podcast-desk": 34 }, start: 24 },
 };
 
 test("未种子时开放计数：health / count / counts / rank / start", { skip: !hasWorker }, async () => {
@@ -44,31 +44,31 @@ test("未种子时开放计数：health / count / counts / rank / start", { skip
   assert.equal(r.status, 200);
   assert.equal(r.body.seeded, false);
 
-  r = await call("POST", "/api/v1/count", { id: "md-c11", kind: "bot" });
+  r = await call("POST", "/api/v1/count", { id: "topic-miner", kind: "bot" });
   assert.equal(r.status, 200);
   assert.equal(r.body.count, 1);
-  r = await call("POST", "/api/v1/count", { id: "md-c11", kind: "bot" });
+  r = await call("POST", "/api/v1/count", { id: "topic-miner", kind: "bot" });
   assert.equal(r.body.count, 2);
   r = await call("POST", "/api/v1/count", { id: "start", kind: "start" });
   assert.equal(r.body.count, 1);
 
   r = await call("GET", "/api/v1/counts");
-  assert.equal(r.body.counts.bot["md-c11"], 2);
+  assert.equal(r.body.counts.bot["topic-miner"], 2);
   assert.equal(r.body.counts.start, 1);
 
   r = await call("GET", "/api/v1/rank?kind=bot&limit=5");
-  assert.equal(r.body.items[0].id, "md-c11");
+  assert.equal(r.body.items[0].id, "topic-miner");
   assert.equal(r.body.items[0].count, 2);
 });
 
 test("种子后仅白名单计数，未知 id 被拒", { skip: !hasWorker }, async () => {
   const { call } = harness(seeded);
-  let r = await call("POST", "/api/v1/count", { id: "md-c11", kind: "bot" });
+  let r = await call("POST", "/api/v1/count", { id: "topic-miner", kind: "bot" });
   assert.equal(r.status, 404);
   r = await call("POST", "/api/v1/count", { id: "known-bot", kind: "bot" });
   assert.equal(r.status, 200);
   assert.equal(r.body.count, 6);
-  r = await call("POST", "/api/v1/count", { id: "md-t01", kind: "team" });
+  r = await call("POST", "/api/v1/count", { id: "podcast-desk", kind: "team" });
   assert.equal(r.body.count, 35);
   r = await call("GET", "/api/v1/health");
   assert.equal(r.body.seeded, true);
@@ -80,7 +80,7 @@ test("批量 ingest 与非法入参", { skip: !hasWorker }, async () => {
     items: [
       { id: "known-bot", kind: "bot" },
       { id: "nope", kind: "bot" },
-      { id: "md-t01", kind: "team" },
+      { id: "podcast-desk", kind: "team" },
     ],
   });
   assert.equal(r.body.counted, 2);
@@ -117,9 +117,9 @@ test("飞书/Lark 适配：URL 校验与文本计数", { skip: !hasWorker }, asy
   const { call } = harness(seeded);
   let r = await call("POST", "/api/v1/feishu", { type: "url_verification", challenge: "abc123" });
   assert.equal(r.body.challenge, "abc123");
-  r = await call("POST", "/api/v1/feishu", { text: "我复制了 md-m01 和 md-c11" });
+  r = await call("POST", "/api/v1/feishu", { text: "我复制了 task-dispatcher 和 topic-miner" });
   assert.equal(r.body.counted, 1);
-  assert.equal(r.body.hits[0].id, "md-m01");
+  assert.equal(r.body.hits[0].id, "task-dispatcher");
   assert.equal(r.body.hits[0].count, 366);
   const get = await call("GET", "/api/v1/feishu");
   assert.equal(get.status, 200);

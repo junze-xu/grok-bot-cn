@@ -24,6 +24,9 @@ const i18n = JSON.parse(
 const LANGS = ["zh", "en", "ja", "ko"];
 const langName = (l) => i18n[l]?.["lang.name"] || l;
 
+// 预设组卡片的「复制 START.md」按钮把全文注入前端，随页面构建固化。
+const START_MD_TEXT = fs.readFileSync(path.join(root, "START.md"), "utf8");
+
 const cats = [
   "meta",
   "engineering",
@@ -74,11 +77,19 @@ const TEAM_CAT = {
   research: "research",
   sales: "sales",
   service: "support",
-  "md-t01": "creator",
-  "md-t02": "creator",
-  "md-t03": "marketing",
-  "md-t04": "ops",
+  "podcast-desk": "creator",
+  "multi-channel-desk": "creator",
+  "launch-desk": "marketing",
+  "job-hunt-desk": "ops",
 };
+
+// 预设组标签：部门 / 专项（一键生成的功能组）/ 管家。
+const DESK_IDS = ["podcast-desk", "multi-channel-desk", "launch-desk", "job-hunt-desk"];
+function teamKind(id) {
+  if (DESK_IDS.includes(id)) return "desk";
+  if (id === "meta") return "meta";
+  return "dept";
+}
 
 function esc(s) {
   return String(s)
@@ -203,39 +214,53 @@ const plugins = [
   ),
 ].sort((a, b) => a.localeCompare(b));
 
-const teamCards = loaded.teams
+// 预设组 = 部门 + 专项（一键生成 Bot 组）：卡片含成员勾选，动作为复制组装指令 / 复制 START.md
+const packCards = loaded.teams
   .map((t) => {
-    const cat = TEAM_CAT[t.id] || "meta";
-    const botNames = (t.bots || [])
-      .map((id) => byId[id]?.name || id)
-      .join(" · ");
-    const q = [t.id, t.name, t.why, botNames, ...(t.plugins || []), ...(t.bots || [])]
-      .join(" ")
-      .toLowerCase();
-  return `<article class="card team" id="team-${esc(t.id)}" data-cat="${esc(
-    cat
-  )}" data-q="${esc(q)}">
-  <div class="row"><span class="cat">${esc(cat)}</span><span class="lvl">${esc(
-    t.autonomy || "L1"
-  )}</span><span class="bots-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span><span class="copies" data-count-for="${esc(
-    t.id
-  )}" data-kind="team"><span class="n">${counts.teams[t.id] || 0}</span></span></div>
-  <h3>${esc(t.name)}</h3>
-  <p>${esc(flat(t.why))}</p>
+    const cats = new Set([TEAM_CAT[t.id]].filter(Boolean));
+    t.bots.forEach((id) => { if (byId[id]?.category) cats.add(byId[id].category); });
+    const kind = teamKind(t.id);
+    const botNames = (t.bots || []).map((id) => byId[id]?.name || id).join(" · ");
+    return `<article class="tile card pack-card" id="pack-${esc(t.id)}" data-cat="${esc(
+      [...cats].join(" ")
+    )}" data-name="${escAttr(t.name)}">
+  <div class="pack-top">
+    <span class="label ${kind}" data-i18n="label.${kind}">${esc(
+      i18n.zh["label." + kind] || kind
+    )}</span>
+    <h3>${esc(t.name)}</h3>
+    <span class="count" data-team-counts="${esc(t.id)}">${counts.teams[t.id] || 0} <span data-i18n="card.copies">次复制</span></span>
+  </div>
+  <p class="why">${esc(flat(t.why))}</p>
   <p class="bots">${esc(botNames)}</p>
   <div class="pills">${pluginPills(t.plugins)}</div>
-  <p class="hint">${esc(
-  t.id === "meta"
-    ? "管理 Bot 自身的工具集——不在 START.md 的选项里，通过目录卡片单独安装。"
-    : `将 START.md 粘贴到 Setup，然后点击 ${t.name}。`
-)}</p>
+  <ul class="members">${t.bots
+    .map(
+      (id) => `<li><label><input type="checkbox" data-member="${esc(
+        id
+      )}" data-name="${escAttr(byId[id]?.name || id)}" checked /> <span>${esc(
+        byId[id]?.name || id
+      )}</span><code>${esc(id)}</code></label></li>`
+    )
+    .join("")}</ul>
+  ${
+    kind === "meta"
+      ? `<p class="hint">${esc(
+          "管理 Bot 自身的工具集——不在 START.md 的选项里，通过目录卡片或 yaml 链接单独安装。"
+        )}</p>`
+      : ""
+  }
   <div class="actions">
-    <button type="button" class="copy primary" data-copy="${esc(
-      t.name
-    )}" data-count-id="${esc(t.id)}" data-count-kind="team" data-i18n="team.copy_name">复制团队名称</button>
-    <button type="button" class="copy" data-copy="${esc(
-      START_URL
-    )}" data-count-id="start" data-count-kind="start" data-i18n="team.copy_start">复制 START.md</button>
+    <button type="button" class="copy" data-crew="${esc(
+      t.id
+    )}" data-count-id="${esc(t.id)}" data-team-name="${escAttr(t.name)}" data-i18n="packs.copy_crew">${esc(
+      i18n.zh["packs.copy_crew"] || "复制组装指令"
+    )}</button>
+    <button type="button" class="copy" data-start="${esc(
+      t.id
+    )}" data-count-id="${esc(t.id)}" data-count-kind="team" data-i18n="team.copy_start">${esc(
+      i18n.zh["team.copy_start"] || "复制 START.md"
+    )}</button>
     <a href="${esc(teamUrl(t))}">yaml</a>
   </div>
 </article>`;
@@ -253,31 +278,6 @@ const catTiles = cats
       <span class="t-count">${inCat.length} <span data-i18n="categories.templates">个模板</span></span>
       <span class="t-copies" data-cat-counts="${c}">${copies} <span data-i18n="categories.copies">次复制</span></span>
     </button>`;
-  })
-  .join("\n");
-
-// 功能组 = md-t0x（一键生成 Bot 群组），点击复制团队名并计数
-const groupTeams = loaded.teams.filter((t) => /^md-t\d+$/.test(t.id));
-const groupTiles = groupTeams
-  .map((t) => {
-    const names = (t.bots || []).map((id) => byId[id]?.name || id).join(" · ");
-    const why = flat(t.why);
-    const copies = counts.teams[t.id] || 0;
-    return `<article class="tile group-tile" id="group-${esc(t.id)}">
-      <span class="t-cat">${esc(t.id)}</span>
-      <span class="t-team">${esc(names)}</span>
-      <p class="t-why">${esc(why.slice(0, 72))}${why.length > 72 ? "…" : ""}</p>
-      <div class="t-meta">
-        <span class="t-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span>
-        <span class="t-copies" data-team-counts="${esc(t.id)}">${copies} <span data-i18n="card.copies">次复制</span></span>
-      </div>
-      <div class="t-actions">
-        <button type="button" class="copy" data-copy="${esc(t.name)}" data-count-id="${esc(
-          t.id
-        )}" data-count-kind="team" data-i18n="team.copy_name">复制团队名称</button>
-        <a href="#team-${esc(t.id)}" data-i18n="groups.view">查看团队卡</a>
-      </div>
-    </article>`;
   })
   .join("\n");
 
@@ -627,14 +627,24 @@ const CSS = `
     .t-cat { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tile, var(--accent)); }
     .t-count, .t-copies { font-size: 0.82rem; color: var(--mute); }
     .cat-tile .t-copies { color: var(--ink); font-weight: 650; }
-    .groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 0 0 8px; }
-    .group-tile { cursor: default; }
-    .group-tile:hover { border-color: var(--tile, var(--line)); }
-    .group-tile .t-team { font-size: 0.78rem; color: var(--ink); overflow-wrap: anywhere; }
-    .group-tile .t-why { font-size: 0.82rem; color: var(--mute); margin: 6px 0 0; }
-    .group-tile .t-meta { display: flex; gap: 10px; align-items: center; margin-top: 8px; font-size: 0.82rem; color: var(--mute); }
-    .group-tile .t-copies { color: var(--ink); font-weight: 650; }
-    .group-tile .t-actions { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+/* 预设组（一键生成 Bot 组） */
+.packs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; margin: 0 0 12px; }
+.pack-card { display: flex; flex-direction: column; cursor: default; padding: 12px 14px; }
+.pack-card:hover { border-color: var(--tile, var(--line)); }
+.pack-card .pack-top { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pack-card .pack-top h3 { font-size: 1.02rem; margin: 0; }
+.pack-card .label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--mute); }
+.pack-card .label.desk { color: var(--accent); border-color: var(--accent); }
+.pack-card .count { margin-left: auto; font-size: 0.78rem; color: var(--mute); }
+.pack-card .why { font-size: 0.84rem; color: var(--mute); margin: 8px 0 0; }
+.pack-card .bots { font-size: 0.82rem; color: var(--ink); margin: 8px 0 0; }
+.pack-card .pills { margin-top: 8px; }
+.pack-card .members { display: flex; flex-wrap: wrap; gap: 6px 12px; list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.8rem; color: var(--mute); }
+.pack-card .members label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.pack-card .members input[type="checkbox"] { accent-color: var(--accent); }
+.pack-card .members code { color: var(--mute); font-size: 0.72rem; }
+.pack-card .members, .pack-card .actions { margin-top: 8px; }
+.pack-card .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
     /* 提交入口 */
     .submit-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 4px 0 8px; }
@@ -690,7 +700,8 @@ const CSS = `
 `;
 
 const CLIENT = `
-    const I18N = ${JSON.stringify(i18n)};
+const START_MD = ${JSON.stringify(START_MD_TEXT)};
+const I18N = ${JSON.stringify(i18n)};
     const LANGS = ${JSON.stringify(LANGS)};
     let lang = localStorage.getItem("gbt-lang") || "zh";
 
@@ -780,13 +791,6 @@ const CLIENT = `
       });
       var featVisible = featuredSec.querySelectorAll('#featured .card:not(.hidden)').length;
       featuredSec.classList.toggle('hidden', featVisible === 0);
-      document.querySelectorAll('#teams .card').forEach(function (el) {
-        var okCat = !cat || el.dataset.cat === cat;
-        var okQ = !needle || (el.dataset.q || '').indexOf(needle) !== -1;
-        var plugs = (el.dataset.q || '');
-        var okPlug = !plugin || plugs.indexOf(plugin.toLowerCase()) !== -1;
-        el.classList.toggle('hidden', !(okCat && okQ && okPlug));
-      });
       countEl.textContent = t('catalog.showing') + ' ' + shown + ' / ' + n;
       emptyEl.classList.toggle('show', shown === 0);
       syncUrl();
@@ -847,6 +851,44 @@ const CLIENT = `
       var btn = e.target.closest('button.copy');
       if (!btn) return;
       var prev = btn.textContent;
+      if (btn.hasAttribute('data-crew')) {
+        var card = btn.closest('.pack-card');
+        var teamName = btn.getAttribute('data-team-name') || '';
+        var checked = card ? card.querySelectorAll('input[data-member]:checked') : [];
+        var members = [];
+        checked.forEach(function (c) {
+          members.push({ id: c.getAttribute('data-member'), name: c.getAttribute('data-name') || c.getAttribute('data-member') });
+        });
+        if (!members.length) {
+          toast(t('toast.crew_empty'));
+          return;
+        }
+        var crewLines = [t('crew.prefix').replace('{n}', members.length).replace('{team}', teamName)];
+        members.forEach(function (m) { crewLines.push('- ' + m.name + '（' + m.id + '）'); });
+        crewLines.push('', t('crew.suffix'));
+        try {
+          await copyText(crewLines.join('\n'));
+          btn.textContent = t('toast.crew_copied');
+          toast(t('toast.crew_copied'));
+        } catch (err) {
+          toast(t('toast.copy_failed'));
+        }
+        if (btn.getAttribute('data-count-id')) postCount(btn.getAttribute('data-count-id'), 'team');
+        setTimeout(function () { btn.textContent = prev; }, 1400);
+        return;
+      }
+      if (btn.hasAttribute('data-start')) {
+        try {
+          await copyText(START_MD);
+          btn.textContent = t('toast.start_copied');
+          toast(t('toast.start_copied'));
+        } catch (err) {
+          toast(t('toast.copy_failed'));
+        }
+        if (btn.getAttribute('data-count-id')) postCount(btn.getAttribute('data-count-id'), btn.getAttribute('data-count-kind') || 'team');
+        setTimeout(function () { btn.textContent = prev; }, 1400);
+        return;
+      }
       var id = btn.getAttribute('data-profile');
       var countId = btn.getAttribute('data-count-id');
       var countKind = btn.getAttribute('data-count-kind') || 'bot';
@@ -1168,7 +1210,7 @@ const html = `<!DOCTYPE html>
       <a href="#install" data-i18n="nav.install">获取团队</a>
       <a href="#start-here" data-i18n="nav.start">从这里开始</a>
       <a href="#catalog" data-i18n="nav.catalog">目录</a>
-      <a href="#teams" data-i18n="nav.teams">团队</a>
+      <a href="#packs" data-i18n="nav.packs">预设组</a>
       <a href="#trending" data-i18n="nav.trending">热门榜</a>
       <a href="#submit" data-i18n="nav.submit">提交</a>
       <a href="${GH}" data-i18n="nav.github">GitHub</a>
@@ -1182,7 +1224,7 @@ const html = `<!DOCTYPE html>
   </header>
   <div class="wrap">
     <h1 data-i18n="hero.title">粘贴一个链接。获得一个可用的 Bot。</h1>
-    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或粘贴一个 URL 到 Setup 并点击团队。</span><span class="ver">v${esc(pkg.version)}</span></p>
+    <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或复制组装指令连同 START.md 发给 Setup。</span><span class="ver">v${esc(pkg.version)}</span></p>
     <ul class="stats">
       <li><strong>${loaded.templates.length}</strong> <span data-i18n="stats.templates">个模板</span></li>
       <li><strong>${loaded.teams.length}</strong> <span data-i18n="stats.teams">个团队</span></li>
@@ -1204,7 +1246,7 @@ const html = `<!DOCTYPE html>
               )}" data-i18n="start.copy">复制 START.md</button>
             </div>
           </li>
-          <li data-i18n="door1.step3">点击一个团队。试试 Eng（Bug 复现 + PR 审查）。</li>
+          <li><span data-i18n="door1.step3">到下方「一键生成 Bot 组」选一个预设（或勾选成员），复制组装指令，连同 START.md 一起发给 Setup。</span></li>
           <li data-i18n="door1.step4">连接所需的插件。第一周停留在 L1 — 只起草，不发送。</li>
         </ol>
         <p class="hint" data-i18n="door1.hint">Setup 会获取每个 Bot 的 PROFILE.md。它不会凭空编造提示词。</p>
@@ -1235,10 +1277,11 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
       <div class="cats">${catTiles}</div>
     </section>
 
-    <section id="groups">
-      <h2 data-i18n="groups.title">一键生成 Bot 群组</h2>
-      <p class="lede" data-i18n="groups.lede">整组生成：复制团队名称，把 START.md 发给 Setup，一次生成整组 Bot。</p>
-      <div class="groups">${groupTiles}</div>
+    <section id="packs">
+      <h2 data-i18n="packs.title">一键生成 Bot 组</h2>
+      <p class="lede" data-i18n="packs.lede">选一个预设（默认整套），或勾选成员自选；复制组装指令，连同 START.md 一起发给 Setup。</p>
+      <div class="packs" id="packs-grid">${packCards}</div>
+      <p class="hint" data-i18n="packs.hint">预设组 = 2–4 个 Bot 一个群组、可见交接。组装指令列出成员名单；Setup 按名单逐个创建，忽略团队选项。</p>
     </section>
 
     <h2 data-i18n="jobs.title">我想……</h2>
@@ -1287,10 +1330,6 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
     <p class="lede" data-i18n="catalog.lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
     <p class="empty" id="empty" data-i18n="catalog.empty">没有匹配的模板。清空搜索，选择「全部」，或试试 GitHub / Gmail。</p>
     <div class="grid" id="grid">${cards}</div>
-    <h2 id="teams" data-i18n="teams.title">团队</h2>
-    <p class="lede" data-i18n="teams.lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
-    <div class="grid" id="teams">${teamCards}</div>
-
     <section id="submit">
       <h2 data-i18n="submit.title">提交一个 Bot</h2>
       <p class="lede" data-i18n="submit.lede">按 SPEC 契约填写。提交后由维护者审核，转写为 templates/**/template.yaml 并走 PR。</p>

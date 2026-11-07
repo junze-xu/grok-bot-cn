@@ -1,0 +1,16 @@
+id: job-hunt-desk
+name: 求职组（通用办公）
+lead: deep-research
+bots:
+  - deep-research
+  - resume-tailor
+  - email-secretary
+why: >
+  看中一个岗位丢进来：先查公司，再针对这个岗位改简历，最后写好投递邮件草稿。一岗一套，不海投。
+group_kickoff: >
+  @深度调研 查公司背景、业务与近期动态，给出值不值得投的判断。@简历 按这个岗位重写简历。
+  @邮箱秘书写 好投递邮件草稿。等我说「投」再发送。
+plugins:
+  - 飞书
+max_bots: 4
+autonomy: L1
