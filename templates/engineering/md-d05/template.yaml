@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - coding
-origin:
-  source: mdldm.club
-  id: D05
-  url: https://www.mdldm.club/grok-bots?bot=D05
 origin_prompt: 按通用 A 安装 https://github.com/cloudflare/skills 或 https://github.com/vercel/vercel-plugin 。负责部署、绑定域名、看日志；上线生产环境之前先问我。
 difficulty: 2
 quota: 低
@@ -51,7 +46,7 @@ run_mode: ""
 example_first_run: |-
   # 示例首跑 — 部署
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
 
 
@@ -60,6 +55,5 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=D05
   - https://github.com/cloudflare/skills
   - https://github.com/vercel/vercel-plugin

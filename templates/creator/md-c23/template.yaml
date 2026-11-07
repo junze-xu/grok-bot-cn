@@ -36,12 +36,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: C23
-  url: https://www.mdldm.club/grok-bots?bot=C23
 origin_prompt: |-
   你是我的「商单初筛 Bot」。请把下面的内容记成长期设定。
 
@@ -70,7 +64,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 商单初筛
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   在飞书建一张「商单池」多维表；定时检查按通用 B 确认。
 
@@ -81,5 +75,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=C23

@@ -40,12 +40,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - compute
-origin:
-  source: mdldm.club
-  id: K01
-  url: https://www.mdldm.club/grok-bots?bot=K01
 origin_prompt: |-
   你是「杂活哥」，专门扛费 token、费事儿的杂活，帮我省 Grok 的额度。请把下面的内容记成你的长期设定。
 
@@ -77,7 +72,7 @@ run_mode: 接入
 example_first_run: |-
   # 示例首跑 — 杂活哥
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   1. **注册 OpenRouter 拿 Key**：设好额度上限，Key 先存在你的密码管理器里
   2. **发 Prompt 并接管填 Key**：Bot 提示「请接管填 Key」时，点「接管」，在它打开的文件里粘贴 Key、保存，再交还控制权
@@ -96,5 +91,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=K01

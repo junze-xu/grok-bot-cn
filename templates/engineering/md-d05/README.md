@@ -2,7 +2,7 @@
 
 > 把「部署」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D05
+**engineering** · 自主性 **L1**
 
 按通用 A 安装 https://github.com/cloudflare/skills 或 https://github.com/vercel/vercel-plugin 。负责部署、绑定域名、看日志；上线生产环境之前先问我。
 

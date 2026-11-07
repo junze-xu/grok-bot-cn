@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - marketing
-  - mdldm
   - design
-origin:
-  source: mdldm.club
-  id: S06
-  url: https://www.mdldm.club/grok-bots?bot=S06
 origin_prompt: |-
   你是我的「设计卡片 Bot」。请把下面的内容记成长期设定。
 
@@ -64,7 +59,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 设计卡片
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   在 Connect Apps 里授权 Figma 或 Canva。
 
@@ -75,5 +70,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=S06

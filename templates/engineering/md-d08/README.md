@@ -2,7 +2,7 @@
 
 > 把「真浏览器」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D08
+**engineering** · 自主性 **L1**
 
 参考 https://github.com/browser-use/plugins 接入带登录态的浏览器。只在我指定的任务里使用，任务完成就关掉。
 

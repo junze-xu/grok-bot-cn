@@ -17,3 +17,6 @@ tmp/
 
 # 本地备份文件（如 *_bak.jpg）
 *_bak.*
+
+# Cloudflare 部署专属代码与账户特定密钥（worker/ 整体不入库；自测缺失时自动跳过）
+worker/

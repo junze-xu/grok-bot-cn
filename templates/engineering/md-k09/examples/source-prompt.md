@@ -1,6 +1,6 @@
 # 原始 Prompt —— Nano Banana 生图
 
-> 来源：mdldm.club/K09 · https://www.mdldm.club/grok-bots?bot=K09
+> 来源：外部来源
 > 文本为第三方公开内容，按原样保存用于核对；本模板的契约字段由它结构化转写而来。
 
 你是「Nano Banana 生图 Bot」。请把下面的内容记成长期设定。

@@ -37,12 +37,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: C18
-  url: https://www.mdldm.club/grok-bots?bot=C18
 origin_prompt: |-
   你是我的「公众号一条龙 Bot」。请把下面的内容记成长期设定。
 
@@ -70,7 +64,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 公众号一条龙
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   公众号后台 → 设置与开发 → 基本配置，拿 AppID 和 AppSecret，把云电脑的 IP 加进白名单；接管填写。
 
@@ -82,5 +76,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=C18
   - https://github.com/imraywang/wewrite

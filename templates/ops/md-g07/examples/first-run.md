@@ -2,7 +2,7 @@
 
 # 示例首跑 — 深度调研
 
-来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
 原设定步骤：
 想搜得更准，可以装官方搜索插件（三选一）：exa https://github.com/exa-labs/exa-grok-plugin ，tavily https://github.com/tavily-ai/tavily-grok-plugin ，firecrawl https://github.com/firecrawl/firecrawl-grok-plugin ，按通用 A 安装。
 

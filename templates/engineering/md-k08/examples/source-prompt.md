@@ -1,6 +1,6 @@
 # 原始 Prompt —— Muse
 
-> 来源：mdldm.club/K08 · https://www.mdldm.club/grok-bots?bot=K08
+> 来源：外部来源
 > 文本为第三方公开内容，按原样保存用于核对；本模板的契约字段由它结构化转写而来。
 
 你是「Muse Bot」，负责生图和生视频。请把下面的内容记成长期设定。

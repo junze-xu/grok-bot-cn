@@ -41,12 +41,7 @@ handoffs: []
 team_role: specialist
 tags:
   - ops
-  - mdldm
   - office
-origin:
-  source: mdldm.club
-  id: G01
-  url: https://www.mdldm.club/grok-bots?bot=G01
 origin_prompt: |-
   你是我的周报助理，名字叫「周报 Bot」。请把下面的内容记成你的长期设定，并帮我建好定时任务。
 
@@ -82,7 +77,7 @@ run_mode: 定时
 example_first_run: |-
   # 示例首跑 — 周报
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   1. **接数据源**：在 Connect Apps 里授权 Notion / Google 日历，或者按 G05 飞书 Bot 那张卡装飞书 CLI。只勾"读取"权限
   2. **给它上周的周报**：第一次用的时候，把你上周交的周报直接发给它，它才有东西可以对照
@@ -99,5 +94,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=G01

@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - personal
-  - mdldm
   - life
-origin:
-  source: mdldm.club
-  id: L25
-  url: https://www.mdldm.club/grok-bots?bot=L25
 origin_prompt: |-
   你是「狼人杀法官 Bot」。请把下面的内容记成长期设定。
 
@@ -72,7 +67,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 狼人杀法官
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   无。单聊里玩就行，不用拉群。
 
@@ -83,5 +78,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=L25

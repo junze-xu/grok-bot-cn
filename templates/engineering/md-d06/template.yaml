@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - coding
-origin:
-  source: mdldm.club
-  id: D06
-  url: https://www.mdldm.club/grok-bots?bot=D06
 origin_prompt: 按通用 A 安装 https://github.com/getsentry/plugin-grok 。每天 9:00 读 Sentry，汇总昨晚的新报错：错误｜影响用户数｜可能原因；没有新报错就不发。
 difficulty: 2
 quota: 低
@@ -51,7 +46,7 @@ run_mode: ""
 example_first_run: |-
   # 示例首跑 — 报错值守
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
 
 
@@ -60,5 +55,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=D06
   - https://github.com/getsentry/plugin-grok

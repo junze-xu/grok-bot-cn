@@ -34,13 +34,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: U002
-  author: 折新
-  url: https://www.mdldm.club/grok-bots?bot=U002
 difficulty: 1
 quota: 低
 prep: 无需准备任何 API Key、无需扫码登录微信。收到第一条抓取任务时会自动检查并准备本地解析依赖（BeautifulSoup / ffmpeg / faster-whisper）
@@ -49,11 +42,9 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 微信全能捕手(铁柱老师微信BOT优化版)
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
 
   > 验收话术：随便发一条微信公众号文章链接（mp.weixin.qq.com/s/...）或视频号分享链接（weixin.qq.com/sph/...），能收到原样 Markdown+本地图片压缩包，或通过 ffprobe 校验的 mp4 视频文件，即搭建成功。
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=U002

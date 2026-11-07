@@ -2,7 +2,7 @@
 
 > 用 Connect Apps 接上 Figma、Canva、Notion，直接在聊天里的实时卡片上改图。
 
-**marketing** · 自主性 **L1** · 运行方式：技能 · 来源：mdldm.club/S06
+**marketing** · 自主性 **L1** · 运行方式：技能
 
 ：用 Connect Apps 接上 Figma、Canva、Notion，直接在聊天里的实时卡片上改图。（完成后把这一步的真实产物交给对应负责人。）
 

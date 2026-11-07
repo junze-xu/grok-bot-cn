@@ -3,10 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadAll } from "../lib/load.mjs";
-import { PAGES, GH, START_URL, profileUrl, treeUrl, teamUrl } from "../lib/urls.mjs";
+import { PAGES, GH, START_URL, COUNTS_API, profileUrl, treeUrl, teamUrl } from "../lib/urls.mjs";
+import { buildCounts, writeCounts } from "./build-counts.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const loaded = loadAll(root);
+const countsResult = buildCounts(root);
+writeCounts(root, countsResult);
+const counts = countsResult.payload;
 const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 const shareFile = path.join(root, "catalog", "share-links.json");
 const shareLinks = fs.existsSync(shareFile)
@@ -70,6 +74,10 @@ const TEAM_CAT = {
   research: "research",
   sales: "sales",
   service: "support",
+  "md-t01": "creator",
+  "md-t02": "creator",
+  "md-t03": "marketing",
+  "md-t04": "ops",
 };
 
 function esc(s) {
@@ -128,6 +136,7 @@ function cardHtml(t, opts = {}) {
   const featured = t.featured
     ? '<span class="feat" data-i18n="card.featured">精选</span>'
     : "";
+  const copies = opts.count || 0;
   const idAttr = opts.id ? ` id="${esc(opts.id)}"` : "";
   return `<article class="card"${idAttr} data-cat="${esc(t.category)}" data-id="${esc(
     t.id
@@ -140,6 +149,7 @@ function cardHtml(t, opts = {}) {
     <span class="cat">${esc(t.category)}</span>
     <span class="lvl">${esc(t.autonomy)}</span>
     ${featured}
+    <span class="copies" data-count-for="${esc(t.id)}" data-kind="bot" title="${copies}"><span class="n">${copies}</span></span>
   </div>
   <h3>${esc(t.name)}</h3>
   <p>${esc(t.tagline)}</p>
@@ -147,7 +157,7 @@ function cardHtml(t, opts = {}) {
   <div class="actions">
     <button type="button" class="copy primary" data-profile="${esc(
       t.id
-    )}" data-copy="${esc(raw)}" data-i18n="card.copy_profile">复制 PROFILE</button>
+    )}" data-count-id="${esc(t.id)}" data-count-kind="bot" data-copy="${esc(raw)}" data-i18n="card.copy_profile">复制 PROFILE</button>
     <button type="button" class="copy" data-copy="${esc(raw)}" data-i18n="card.copy_link">复制链接</button>
     <a href="${esc(raw)}" data-i18n="card.raw">原始文件</a>
     <a href="${esc(treeUrl(t))}" data-i18n="card.source">源文件</a>
@@ -178,11 +188,11 @@ function cardHtml(t, opts = {}) {
 const byId = Object.fromEntries(loaded.templates.map((t) => [t.id, t]));
 
 const featuredCards = START_HERE.filter((id) => byId[id])
-  .map((id) => cardHtml(byId[id]))
+  .map((id) => cardHtml(byId[id], { count: counts.bots[id] || 0 }))
   .join("\n");
 
 const cards = loaded.templates
-  .map((t) => cardHtml(t, { id: `bot-${t.id}` }))
+  .map((t) => cardHtml(t, { id: `bot-${t.id}`, count: counts.bots[t.id] || 0 }))
   .join("\n");
 
 const plugins = [
@@ -202,12 +212,14 @@ const teamCards = loaded.teams
     const q = [t.id, t.name, t.why, botNames, ...(t.plugins || []), ...(t.bots || [])]
       .join(" ")
       .toLowerCase();
-    return `<article class="card team" id="team-${esc(t.id)}" data-cat="${esc(
-      cat
-    )}" data-q="${esc(q)}">
+  return `<article class="card team" id="team-${esc(t.id)}" data-cat="${esc(
+    cat
+  )}" data-q="${esc(q)}">
   <div class="row"><span class="cat">${esc(cat)}</span><span class="lvl">${esc(
-      t.autonomy || "L1"
-    )}</span><span class="bots-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span></div>
+    t.autonomy || "L1"
+  )}</span><span class="bots-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span><span class="copies" data-count-for="${esc(
+    t.id
+  )}" data-kind="team"><span class="n">${counts.teams[t.id] || 0}</span></span></div>
   <h3>${esc(t.name)}</h3>
   <p>${esc(flat(t.why))}</p>
   <p class="bots">${esc(botNames)}</p>
@@ -220,15 +232,75 @@ const teamCards = loaded.teams
   <div class="actions">
     <button type="button" class="copy primary" data-copy="${esc(
       t.name
-    )}" data-i18n="team.copy_name">复制团队名称</button>
+    )}" data-count-id="${esc(t.id)}" data-count-kind="team" data-i18n="team.copy_name">复制团队名称</button>
     <button type="button" class="copy" data-copy="${esc(
       START_URL
-    )}" data-i18n="team.copy_start">复制 START.md</button>
+    )}" data-count-id="start" data-count-kind="start" data-i18n="team.copy_start">复制 START.md</button>
     <a href="${esc(teamUrl(t))}">yaml</a>
   </div>
 </article>`;
   })
   .join("\n");
+
+// ---------- 分类面板 / 功能组 / 热门榜 ----------
+
+const catTiles = cats
+  .map((c) => {
+    const inCat = loaded.templates.filter((t) => t.category === c);
+    const copies = inCat.reduce((a, t) => a + (counts.bots[t.id] || 0), 0);
+    return `<button type="button" class="tile cat-tile" data-cat="${c}" style="--tile:var(--c-${c}, var(--accent))">
+      <span class="t-cat">${c}</span>
+      <span class="t-count">${inCat.length} <span data-i18n="categories.templates">个模板</span></span>
+      <span class="t-copies" data-cat-counts="${c}">${copies} <span data-i18n="categories.copies">次复制</span></span>
+    </button>`;
+  })
+  .join("\n");
+
+// 功能组 = md-t0x（一键生成 Bot 群组），点击复制团队名并计数
+const groupTeams = loaded.teams.filter((t) => /^md-t\d+$/.test(t.id));
+const groupTiles = groupTeams
+  .map((t) => {
+    const names = (t.bots || []).map((id) => byId[id]?.name || id).join(" · ");
+    const why = flat(t.why);
+    const copies = counts.teams[t.id] || 0;
+    return `<article class="tile group-tile" id="group-${esc(t.id)}">
+      <span class="t-cat">${esc(t.id)}</span>
+      <span class="t-team">${esc(names)}</span>
+      <p class="t-why">${esc(why.slice(0, 72))}${why.length > 72 ? "…" : ""}</p>
+      <div class="t-meta">
+        <span class="t-count">${(t.bots || []).length} <span data-i18n="card.bots_count">个 Bot</span></span>
+        <span class="t-copies" data-team-counts="${esc(t.id)}">${copies} <span data-i18n="card.copies">次复制</span></span>
+      </div>
+      <div class="t-actions">
+        <button type="button" class="copy" data-copy="${esc(t.name)}" data-count-id="${esc(
+          t.id
+        )}" data-count-kind="team" data-i18n="team.copy_name">复制团队名称</button>
+        <a href="#team-${esc(t.id)}" data-i18n="groups.view">查看团队卡</a>
+      </div>
+    </article>`;
+  })
+  .join("\n");
+
+// 热门榜：初版静态渲染（无 JS / 种子），运行时由 CLIENT 用远端计数重排
+const trendingInitial = Object.entries(counts.bots)
+  .filter(([id, n]) => byId[id] && n > 0)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 12)
+  .map(([id, n], i) => {
+    const t = byId[id];
+    return `<a class="rank-row${i < 3 ? " top" : ""}" href="#bot-${esc(id)}"><span class="rank-no">${
+      i + 1
+    }</span><span class="rank-name">${esc(t.name)}</span><span class="cat chip">${esc(
+      t.category
+    )}</span><span class="rank-n">${n}</span></a>`;
+  })
+  .join("\n");
+
+const EMBED_COUNTS = JSON.stringify({
+  bots: counts.bots,
+  teams: counts.teams,
+  start: counts.start,
+});
 
 const CSS = `
     :root {
@@ -533,6 +605,70 @@ const CSS = `
     footer { margin-top: 56px; color: var(--mute); font-size: 0.9rem; }
     footer a { color: var(--accent); }
     .api { font-size: 0.85rem; }
+
+    /* 复制计数徽标 */
+    .copies {
+      margin-left: auto; color: var(--ink); font-weight: 650;
+      font-size: 11.5px; font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .copies::before { content: "↻ "; color: var(--mute); font-weight: 400; }
+
+    /* 分类面板 */
+    .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 0 0 18px; }
+    .tile {
+      display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.01)), var(--card);
+      border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; min-width: 0;
+      color: var(--ink); font-family: inherit; text-align: left; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tile, var(--accent)); }
+    .cat-tile:hover { border-color: var(--tile); }
+    .t-cat { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tile, var(--accent)); }
+    .t-count, .t-copies { font-size: 0.82rem; color: var(--mute); }
+    .cat-tile .t-copies { color: var(--ink); font-weight: 650; }
+    .groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 0 0 8px; }
+    .group-tile { cursor: default; }
+    .group-tile:hover { border-color: var(--tile, var(--line)); }
+    .group-tile .t-team { font-size: 0.78rem; color: var(--ink); overflow-wrap: anywhere; }
+    .group-tile .t-why { font-size: 0.82rem; color: var(--mute); margin: 6px 0 0; }
+    .group-tile .t-meta { display: flex; gap: 10px; align-items: center; margin-top: 8px; font-size: 0.82rem; color: var(--mute); }
+    .group-tile .t-copies { color: var(--ink); font-weight: 650; }
+    .group-tile .t-actions { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+
+    /* 提交入口 */
+    .submit-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 4px 0 8px; }
+    .submit-note { color: var(--mute); font-size: 0.86rem; }
+    .submit-form { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 6px 0 8px; }
+    .sf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .sf-full { grid-column: 1 / -1; }
+    .submit-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; color: var(--mute); }
+    .submit-form input, .submit-form select, .submit-form textarea {
+      background: #07080f; color: var(--ink); border: 1px solid var(--line);
+      border-radius: 10px; padding: 10px 12px; font-size: 14px; font-family: inherit;
+    }
+    .submit-form input:focus, .submit-form select:focus, .submit-form textarea:focus {
+      outline: 2px solid var(--accent); border-color: transparent;
+    }
+    .submit-form textarea { min-height: 68px; resize: vertical; }
+    .sf-check { flex-direction: row; align-items: flex-start; gap: 8px; }
+    .sf-check input { width: auto; margin-top: 3px; }
+    #submit-state a { color: var(--ok); margin-left: 6px; }
+
+    /* 热门榜 */
+    .rank-wrap { margin: 0 0 8px; }
+    .rank-row {
+      display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto 4.5rem; gap: 8px; align-items: center;
+      padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; margin: 6px 0;
+      color: var(--ink); text-decoration: none; background: rgba(255,255,255,.02);
+    }
+    .rank-row:hover { border-color: var(--accent); }
+    .rank-no { color: var(--mute); font-weight: 750; font-variant-numeric: tabular-nums; }
+    .rank-row.top .rank-no { color: var(--accent); }
+    .rank-name { overflow-wrap: anywhere; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; font-size: 11px; color: var(--mute); white-space: nowrap; }
+    .rank-n { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+    .rank-empty { color: var(--mute); font-size: 0.9rem; }
     @media (max-width: 800px) {
       .doors { grid-template-columns: 1fr; }
       .nav { gap: 8px; padding: 10px 12px; }
@@ -712,6 +848,8 @@ const CLIENT = `
       if (!btn) return;
       var prev = btn.textContent;
       var id = btn.getAttribute('data-profile');
+      var countId = btn.getAttribute('data-count-id');
+      var countKind = btn.getAttribute('data-count-kind') || 'bot';
       try {
         if (id) {
           var map = await loadProfiles();
@@ -735,6 +873,7 @@ const CLIENT = `
           toast(t('toast.copy_failed'));
         }
       }
+      if (countId) postCount(countId, countKind);
       setTimeout(function () { btn.textContent = prev; }, 1400);
     });
     document.addEventListener('keydown', function (e) {
@@ -750,6 +889,254 @@ const CLIENT = `
       }
     });
     apply();
+
+    // ---------- 分类磁贴：点击 -> 目录筛选 ----------
+    document.querySelectorAll('.cat-tile').forEach(function (b) {
+      b.addEventListener('click', function () {
+        cat = b.getAttribute('data-cat') || '';
+        markChips(chips, 'data-cat', cat);
+        apply();
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ---------- 复制计数 / 热门榜（未配置 COUNTS_API 时静默跳过） ----------
+    var COUNTS_API = ${JSON.stringify(COUNTS_API)};
+    var GH = ${JSON.stringify(GH)};
+    var BOTS = ${JSON.stringify(loaded.templates.map((t) => ({ id: t.id, name: t.name, category: t.category })))};
+
+    function escH(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function countBadge(id, kind) {
+      var list = document.querySelectorAll('[data-count-for="' + id + '"]');
+      for (var i = 0; i < list.length; i++) {
+        if ((list[i].getAttribute('data-kind') || 'bot') === kind) return list[i];
+      }
+      return null;
+    }
+
+    function setCount(id, kind, n) {
+      var el = countBadge(id, kind);
+      if (el) {
+        var span = el.querySelector('.n');
+        if (span) span.textContent = n; else el.textContent = n;
+        el.title = n;
+      }
+      if (kind === 'team') {
+        document.querySelectorAll('[data-team-counts="' + id + '"]').forEach(function (x) {
+          x.textContent = n + ' ' + t('card.copies');
+        });
+      }
+    }
+
+    function postCount(id, kind) {
+      if (!COUNTS_API) return Promise.resolve(null);
+      return fetch(COUNTS_API + '/api/v1/count', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id, kind: kind || 'bot' })
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        if (data && data.ok && typeof data.count === 'number') setCount(id, kind, data.count);
+        return data;
+      }).catch(function () { return null; });
+    }
+
+    function renderRank(botCounts) {
+      var box = document.getElementById('rank');
+      if (!box) return;
+      var items = [];
+      BOTS.forEach(function (b) {
+        var n = botCounts[b.id] || 0;
+        if (n > 0) items.push({ id: b.id, name: b.name, category: b.category, count: n });
+      });
+      items.sort(function (a, b) { return b.count - a.count; });
+      items = items.slice(0, 12);
+      if (!items.length) {
+        box.innerHTML = '<p class="rank-empty">' + escH(t('trending.empty')) + '</p>';
+        return;
+      }
+      box.innerHTML = items.map(function (it, i) {
+        return '<a class="rank-row' + (i < 3 ? ' top' : '') + '" href="#bot-' + escH(it.id) + '">' +
+          '<span class="rank-no">' + (i + 1) + '</span>' +
+          '<span class="rank-name">' + escH(it.name) + '</span>' +
+          '<span class="cat chip">' + escH(it.category) + '</span>' +
+          '<span class="rank-n">' + it.count + '</span></a>';
+      }).join('');
+    }
+
+    function refreshCounts() {
+      if (!COUNTS_API) return;
+      fetch(COUNTS_API + '/api/v1/counts')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data || !data.counts) return;
+          var c = data.counts;
+          Object.keys(c.bot || {}).forEach(function (id) { setCount(id, 'bot', c.bot[id]); });
+          Object.keys(c.team || {}).forEach(function (id) { setCount(id, 'team', c.team[id]); });
+          renderRank(c.bot || {});
+        })
+        .catch(function () {});
+    }
+
+    // ---------- 提交入口（GitHub 登录 / Issue 草稿 / 服务端直投） ----------
+    var authBtn = document.getElementById('gh-login');
+    var authState = document.getElementById('auth-state');
+    var submitState = document.getElementById('submit-state');
+    var submitForm = document.getElementById('submit-form');
+    var sessionUser = null;
+
+    function renderAuth() {
+      if (!authBtn) return;
+      if (sessionUser) {
+        authBtn.textContent = t('submit.logout');
+        if (authState) authState.textContent = t('submit.logged_in_as') + ' @' + sessionUser.login;
+      } else {
+        authBtn.textContent = t('submit.login');
+        if (authState) authState.textContent = t('submit.login_hint');
+      }
+    }
+
+    async function checkAuth() {
+      if (!COUNTS_API || !authBtn) return;
+      try {
+        var r = await fetch(COUNTS_API + '/api/v1/auth/status', { credentials: 'include' });
+        var data = await r.json();
+        sessionUser = data && data.login && data.user ? data.user : null;
+      } catch (e) {
+        sessionUser = null;
+      }
+      renderAuth();
+    }
+
+    function readSubmitForm() {
+      var fd = new FormData(submitForm);
+      return {
+        name: String(fd.get('name') || '').trim(),
+        title: String(fd.get('title') || '').trim(),
+        category: fd.get('category') || 'ops',
+        autonomy: fd.get('autonomy') || 'L1',
+        job: String(fd.get('job') || '').trim(),
+        tagline: String(fd.get('tagline') || '').trim(),
+        why: String(fd.get('why') || '').trim(),
+        first_task: String(fd.get('first_task') || '').trim(),
+        approval_never: String(fd.get('never') || '').split('\\n'),
+        plugins: String(fd.get('plugins') || '').split(','),
+        author: String(fd.get('author') || '').trim(),
+        share_safe: !!fd.get('share_safe')
+      };
+    }
+
+    function localDraftUrl(body) {
+      var lines = [
+        '### 名称 / 标题',
+        '',
+        '- name: ' + body.name,
+        '- title: ' + body.title,
+        '- category: ' + body.category,
+        '- autonomy: ' + body.autonomy,
+        '',
+        '### One-sentence job',
+        '',
+        body.job,
+        '',
+        '### First task',
+        '',
+        body.first_task,
+        '',
+        '### Standing never-list',
+        ''
+      ];
+      body.approval_never.forEach(function (x) {
+        var v = String(x || '').trim();
+        if (v) lines.push('- ' + v);
+      });
+      lines.push('', '### 提交人', '', body.author || '（匿名）');
+      var p = new URLSearchParams();
+      p.set('template', 'new-template.yml');
+      p.set('title', 'template: ' + body.name);
+      p.set('body', lines.join('\\n'));
+      return GH + '/issues/new?' + p.toString();
+    }
+
+    async function sendSubmit(body) {
+      if (submitState) submitState.textContent = t('submit.sending');
+      if (!COUNTS_API) {
+        window.open(localDraftUrl(body), '_blank');
+        if (submitState) submitState.textContent = t('submit.draft_opened');
+        return;
+      }
+      try {
+        var r = await fetch(COUNTS_API + '/api/v1/submit', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        var data = await r.json().catch(function () { return {}; });
+        if (r.ok && data && data.ok) {
+          toast(t('submit.success'));
+          submitState.textContent = t('submit.success');
+          if (data.url) {
+            var a = document.createElement('a');
+            a.href = data.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = data.url;
+            submitState.appendChild(document.createTextNode(' '));
+            submitState.appendChild(a);
+          }
+          submitForm.reset();
+          return;
+        }
+        if (data && data.draft_url) {
+          window.open(data.draft_url, '_blank');
+          if (submitState) submitState.textContent = t('submit.draft_opened');
+          return;
+        }
+        if (data && data.errors && data.errors.length) {
+          submitState.textContent = data.errors.map(function (x) {
+            return (x.field || '') + ': ' + (x.msg || '');
+          }).join('；');
+          toast(t('submit.error'));
+          return;
+        }
+        submitState.textContent = (data && data.error) || t('submit.error');
+        toast(t('submit.error'));
+      } catch (e) {
+        if (submitState) submitState.textContent = t('submit.network_error');
+        toast(t('submit.network_error'));
+      }
+    }
+
+    if (authBtn) {
+      authBtn.addEventListener('click', function () {
+        if (!COUNTS_API) return;
+        var next = encodeURIComponent(location.href);
+        location.href = sessionUser
+          ? COUNTS_API + '/auth/logout?next=' + next
+          : COUNTS_API + '/auth/github?next=' + next;
+      });
+    }
+
+    if (submitForm) {
+      submitForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        await sendSubmit(readSubmitForm());
+      });
+      var draftBtn = document.getElementById('gh-draft');
+      if (draftBtn) {
+        draftBtn.addEventListener('click', function () {
+          sendSubmit(readSubmitForm());
+        });
+      }
+    }
+
+    refreshCounts();
+    checkAuth();
 `;
 
 const html = `<!DOCTYPE html>
@@ -782,6 +1169,8 @@ const html = `<!DOCTYPE html>
       <a href="#start-here" data-i18n="nav.start">从这里开始</a>
       <a href="#catalog" data-i18n="nav.catalog">目录</a>
       <a href="#teams" data-i18n="nav.teams">团队</a>
+      <a href="#trending" data-i18n="nav.trending">热门榜</a>
+      <a href="#submit" data-i18n="nav.submit">提交</a>
       <a href="${GH}" data-i18n="nav.github">GitHub</a>
       <div class="lang" id="lang">
         ${LANGS.map((l) => `<button type="button" data-lang="${l}">${esc(langName(l))}</button>`).join("")}
@@ -840,6 +1229,18 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
       </section>
     </div>
 
+    <section id="categories">
+      <h2 data-i18n="categories.title">按分类浏览</h2>
+      <p class="lede" data-i18n="categories.lede">点击分类进入目录并自动应用筛选。数字为该分类的模板数与站内累计复制次数。</p>
+      <div class="cats">${catTiles}</div>
+    </section>
+
+    <section id="groups">
+      <h2 data-i18n="groups.title">一键生成 Bot 群组</h2>
+      <p class="lede" data-i18n="groups.lede">整组生成：复制团队名称，把 START.md 发给 Setup，一次生成整组 Bot。</p>
+      <div class="groups">${groupTiles}</div>
+    </section>
+
     <h2 data-i18n="jobs.title">我想……</h2>
     <p class="lede" data-i18n="jobs.lede">跳转到目录中的任务。然后复制 PROFILE。</p>
     <div class="jobs" id="jobs">
@@ -853,6 +1254,12 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
       <h2 data-i18n="start.title">从这里开始</h2>
       <p class="lede" data-i18n="start.lede">八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。</p>
       <div class="grid" id="featured">${featuredCards}</div>
+    </section>
+
+    <section id="trending">
+      <h2 data-i18n="trending.title">热门榜</h2>
+      <p class="lede" data-i18n="trending.lede">按站内复制次数排序（种子 + 实时）。部署计数服务后运行时自动刷新；计数只反映本站复制动作，不等于安装量。</p>
+      <div class="rank-wrap" id="rank">${trendingInitial || `<p class="rank-empty" data-i18n="trending.empty">暂无复制数据</p>`}</div>
     </section>
 
     <div class="filters" id="catalog">
@@ -883,9 +1290,43 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
     <h2 id="teams" data-i18n="teams.title">团队</h2>
     <p class="lede" data-i18n="teams.lede">2–4 个 Bot，一个群组，可见交接。复制团队名称，将 START.md 粘贴到 Setup，点击名称。</p>
     <div class="grid" id="teams">${teamCards}</div>
+
+    <section id="submit">
+      <h2 data-i18n="submit.title">提交一个 Bot</h2>
+      <p class="lede" data-i18n="submit.lede">按 SPEC 契约填写。提交后由维护者审核，转写为 templates/**/template.yaml 并走 PR。</p>
+      <div class="submit-row">
+        <button type="button" class="btn primary" id="gh-login" data-i18n="submit.login">用 GitHub 登录</button>
+        <span class="submit-note" id="auth-state"></span>
+      </div>
+      <form id="submit-form" class="submit-form">
+        <div class="sf-grid">
+          <label><span data-i18n="submit.name">Bot 名称（2–48 字符）</span><input name="name" required minlength="2" maxlength="48" /></label>
+          <label><span data-i18n="submit.title_field">标题 / 职位（2–60 字符）</span><input name="title" required minlength="2" maxlength="60" /></label>
+          <label><span data-i18n="submit.category">分类</span>
+            <select name="category">${cats.map((c) => `<option value="${c}">${c}</option>`).join("")}</select>
+          </label>
+          <label><span data-i18n="submit.autonomy">第一周自主性</span>
+            <select name="autonomy">${["L0", "L1", "L2", "L3"].map((l) => `<option value="${l}"${l === "L1" ? " selected" : ""}>${l}</option>`).join("")}</select>
+          </label>
+          <label class="sf-full"><span data-i18n="submit.job">一句话任务（job）</span><textarea name="job" required minlength="60" placeholder="可重复产出，不是部门名称。≥60 字符" data-i18n-placeholder="submit.job_ph"></textarea></label>
+          <label class="sf-full"><span data-i18n="submit.tagline">简介（tagline）</span><input name="tagline" required minlength="12" /></label>
+          <label class="sf-full"><span data-i18n="submit.why">为什么需要它（why）</span><input name="why" required minlength="12" /></label>
+          <label class="sf-full"><span data-i18n="submit.first_task">首个任务（first_task）</span><textarea name="first_task" required minlength="12"></textarea></label>
+          <label class="sf-full"><span data-i18n="submit.never">永不清单（每行一条，至少 3 条）</span><textarea name="never" required></textarea></label>
+          <label><span data-i18n="submit.plugins">插件（逗号分隔，可留空）</span><input name="plugins" /></label>
+          <label><span data-i18n="submit.author">署名（可选）</span><input name="author" /></label>
+          <label class="sf-full sf-check"><input type="checkbox" name="share_safe" required /> <span data-i18n="submit.share_safe">已脱敏：不含密钥、内网地址或他人隐私。</span></label>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn primary" data-i18n="submit.send">提交到 GitHub Issue</button>
+          <button type="button" class="btn" id="gh-draft" data-i18n="submit.draft">生成 Issue 草稿链接</button>
+          <span class="submit-note" id="submit-state"></span>
+        </div>
+      </form>
+    </section>
     <footer>
       <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_loader">Bot 加载指令</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
-      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a></p>
+      <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a> · <a href="counts.json">counts.json</a></p>
     </footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

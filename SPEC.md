@@ -99,6 +99,16 @@ Grok Bot 可以使用浏览器、连接器、文件和共享云计算机。共�
 
 主导 Bot 列在 `bots` 中。群组启动使用 `@Name` 提及并命名共享产出。交接在群组中可见；不要将额外的 Bot 作为安全边界。所有 Bot 共享一台计算机。
 
+## 功能组（md-t0x）
+
+`teams/md-t01` … `md-t04` 是转写的「一键生成 Bot 群组」：一个口令让 Setup 生成整组 Bot（口播编辑部、一稿多发组、上新组、求职组）。结构与常规团队相同（`team.yaml`），但作为站点「一键生成」入口的推荐组，并带种子复制计数。
+
+## 复制计数与提交
+
+站点展示「复制次数」与热门榜。计数种子来自 `snapshots/imported-counts.json`（公开快照，仅用于排序，不代表安装量），构建时写入 `docs/counts.json`；Cloudflare Worker 部署专属、代码不入库，其 KV 种子由本地 `npm run counts` 生成后灌入，未部署时站点只显示种子。
+
+新 Bot 的提交走「提交入口」：站点表单 → GitHub Issue（`new-template.yml` 模板预填），维护者按本 SPEC 校验后转写为 `template.yaml` 并开 PR。不允许绕过校验直接入库。
+
 ## 校验
 
 每个模板必须通过 JSON Schema 校验（`schema/template.schema.json`）：字段齐全、长度下限、永不清单至少三条、技能引用存在。分享安全检查不得包含密钥形状或内部 URL，且 `share_safe` 必须为 `true`。目录 CI 会在任何模板校验失败时失败。

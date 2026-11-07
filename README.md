@@ -72,7 +72,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 ## 目录
 
-**37 个模板 · 12 个团队 · 14 个技能 · 8 个例行程序**。所有模板均通过 schema 与安全校验。
+**151 个模板 · 16 个团队 · 14 个技能 · 8 个例行程序**。所有模板均通过 schema 与安全校验。
 
 | Bot | 用途 |
 |-----|------|
@@ -86,6 +86,12 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 
 所有卡片都带 **复制 PROFILE** 按钮，可直接粘贴到 Grok Bot。→ [完整目录](https://junze-xu.github.io/grok-bot-cn/)
 
+### 一键生成 Bot 群组
+
+[一键生成 Bot 群组](https://junze-xu.github.io/grok-bot-cn/#groups)：复制团队名称，把 START.md 发给 Setup，一次生成整组 Bot（口播编辑部 / 一稿多发 / 上新 / 求职）。
+
+**想提交新 Bot？** → [站点提交入口](https://junze-xu.github.io/grok-bot-cn/#submit) 会自动生成预填的 GitHub Issue，维护者按 SPEC 校验后转写入库。
+
 ## 机器 API
 
 公开，无需认证。让 Bot 指向 [docs/agent.md](./docs/agent.md)。
@@ -96,6 +102,7 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots
 | https://junze-xu.github.io/grok-bot-cn/catalog.json | 完整目录 |
 | https://junze-xu.github.io/grok-bot-cn/api/v1/teams.json | 团队 |
 | https://junze-xu.github.io/grok-bot-cn/llms.txt | 机器可读摘要 |
+| https://junze-xu.github.io/grok-bot-cn/counts.json | 复制计数种子（热度排序，非安装量） |
 
 ## 安全
 

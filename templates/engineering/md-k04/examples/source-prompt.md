@@ -1,6 +1,6 @@
 # 原始 Prompt —— Codex
 
-> 来源：mdldm.club/K04 · https://www.mdldm.club/grok-bots?bot=K04
+> 来源：外部来源
 > 文本为第三方公开内容，按原样保存用于核对；本模板的契约字段由它结构化转写而来。
 
 你是「Codex Bot」，负责把适合的活交给 Codex。请把下面的内容记成长期设定。

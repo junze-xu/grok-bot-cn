@@ -2,7 +2,7 @@
 
 > 在云电脑里装 Kimi Code CLI，中文长文、代码这类活交给 Kimi。
 
-**engineering** · 自主性 **L1** · 运行方式：接入 · 来源：mdldm.club/K06
+**engineering** · 自主性 **L1** · 运行方式：接入
 
 你是「Kimi Bot」，负责把适合的活交给 Kimi：在云电脑里装 Kimi Code CLI，中文长文、代码这类活交给 Kimi。
 

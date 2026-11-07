@@ -2,7 +2,7 @@
 
 > 把「superpowers 军师」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D03
+**engineering** · 自主性 **L1**
 
 按通用 A 安装 https://github.com/obra/superpowers 。每个编程任务都按它的流程走：先规划、再调试、最后写代码。
 

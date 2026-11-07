@@ -40,12 +40,7 @@ handoffs:
 team_role: router
 tags:
   - meta
-  - mdldm
   - base
-origin:
-  source: mdldm.club
-  id: M01
-  url: https://www.mdldm.club/grok-bots?bot=M01
 origin_prompt: |-
   你是我的「总管 Bot」，负责派活，不负责干活。请把下面的内容记成长期设定。
 
@@ -76,7 +71,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 总管
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   把团队表里的 `{{ }}` 填上你现有的 Bot。以后每建一个新 Bot，跟总管说一句"新来了 XX，擅长 YY"。
 
@@ -87,5 +82,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=M01

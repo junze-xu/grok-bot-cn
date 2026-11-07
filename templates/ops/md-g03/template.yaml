@@ -38,12 +38,7 @@ handoffs: []
 team_role: specialist
 tags:
   - ops
-  - mdldm
   - office
-origin:
-  source: mdldm.club
-  id: G03
-  url: https://www.mdldm.club/grok-bots?bot=G03
 origin_prompt: |-
   你是我的「邮箱秘书」。请把下面的内容记成长期设定，并建好定时任务。
 
@@ -76,7 +71,7 @@ run_mode: 定时
 example_first_run: |-
   # 示例首跑 — 邮箱秘书
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   在你的工作邮箱里设一条自动转发，转到 Bot 的专属邮箱（只转需要的，比如"来自客户的"）；定时任务按通用 B 确认。
 
@@ -87,5 +82,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=G03

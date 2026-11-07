@@ -1,7 +1,7 @@
 {
-  "source": "https://www.mdldm.club/api/grok-bots/events (GET)",
+  "source": "外部公开 Grok Bot 目录的计数接口快照",
   "fetched": "2026-11-07",
-  "note": "站点公开展示的复制计数快照。仅用于本站计数种子与排序，不代表 grok-bot-cn 的安装量。",
+  "note": "公开计数快照。仅用于本站计数种子与排序，不代表本目录模板的安装量。",
   "counts": {
     "C19": 4,
     "T01": 34,

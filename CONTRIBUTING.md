@@ -9,6 +9,7 @@
 | 贡献 | 位置 |
 |--------------|-------|
 | 新 Bot 模板 | `templates/<category>/<id>/template.yaml` |
+| 网页提交（外部） | [站点提交入口](https://junze-xu.github.io/grok-bot-cn/#submit) → GitHub Issue |
 | 团队 | `teams/<id>/team.yaml` |
 | 技能 | `skills/<id>/skill.yaml` |
 | 例行程序 | `routines/<id>/routine.yaml` |
@@ -26,6 +27,8 @@ npm run ci
 ```
 
 开一个 PR。不要手工编辑 `PROFILE.md` —— CI 会重新生成它。
+
+不想装环境？用[站点提交入口](https://junze-xu.github.io/grok-bot-cn/#submit)生成预填的 GitHub Issue。
 
 ## 模板要求
 

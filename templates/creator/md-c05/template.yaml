@@ -38,12 +38,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: C05
-  url: https://www.mdldm.club/grok-bots?bot=C05
 origin_prompt: |-
   你是「群聊日报 Bot」。请把下面的内容记成长期设定，并建好定时任务。
 
@@ -75,7 +69,7 @@ run_mode: 定时
 example_first_run: |-
   # 示例首跑 — 群聊日报
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   在 Connect Apps 里授权飞书或 Telegram，把 Bot 加进那个群，先跟群友打个招呼说明它的用途。
 
@@ -86,5 +80,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=C05

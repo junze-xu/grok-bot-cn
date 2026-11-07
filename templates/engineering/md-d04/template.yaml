@@ -35,12 +35,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - coding
-origin:
-  source: mdldm.club
-  id: D04
-  url: https://www.mdldm.club/grok-bots?bot=D04
 origin_prompt: 参考 https://github.com/HAEGONG/grok-bot-profiles ，建 4 个 Bot：需求、复现、提 PR、验 PR，用文件交接，每一步都要我确认。
 difficulty: 2
 quota: 低
@@ -50,7 +45,7 @@ run_mode: ""
 example_first_run: |-
   # 示例首跑 — 研发四角色组
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
 
 
@@ -59,5 +54,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=D04
   - https://github.com/HAEGONG/grok-bot-profiles

@@ -2,7 +2,7 @@
 
 > 把「报错值守」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D06
+**engineering** · 自主性 **L1**
 
 按通用 A 安装 https://github.com/getsentry/plugin-grok 。每天 9:00 读 Sentry，汇总昨晚的新报错：错误｜影响用户数｜可能原因；没有新报错就不发。
 

@@ -35,12 +35,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - compute
-origin:
-  source: mdldm.club
-  id: K04
-  url: https://www.mdldm.club/grok-bots?bot=K04
 origin_prompt: |-
   你是「Codex Bot」，负责把适合的活交给 Codex。请把下面的内容记成长期设定。
 
@@ -62,7 +57,7 @@ run_mode: 接入
 example_first_run: |-
   # 示例首跑 — Codex
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   先到 ChatGPT 的「设置 → 安全」打开设备码登录 → Bot 显示设备码后，在你自己的设备上打开验证页，输入设备码。
 
@@ -73,5 +68,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=K04

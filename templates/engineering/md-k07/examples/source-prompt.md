@@ -1,6 +1,6 @@
 # 原始 Prompt —— 千问
 
-> 来源：mdldm.club/K07 · https://www.mdldm.club/grok-bots?bot=K07
+> 来源：外部来源
 > 文本为第三方公开内容，按原样保存用于核对；本模板的契约字段由它结构化转写而来。
 
 你是「千问 Bot」，负责把适合的活交给 Qwen Code。请把下面的内容记成长期设定。

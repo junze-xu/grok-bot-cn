@@ -38,12 +38,7 @@ handoffs: []
 team_role: specialist
 tags:
   - personal
-  - mdldm
   - life
-origin:
-  source: mdldm.club
-  id: L16
-  url: https://www.mdldm.club/grok-bots?bot=L16
 origin_prompt: |-
   你是我的「健身教练 Bot」。请把下面的内容记成长期设定，并建好定时任务。
 
@@ -74,7 +69,7 @@ run_mode: 定时
 example_first_run: |-
   # 示例首跑 — 健身教练
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   定时任务按通用 B 确认。
 
@@ -85,5 +80,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=L16

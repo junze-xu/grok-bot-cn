@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - meta
-  - mdldm
   - base
-origin:
-  source: mdldm.club
-  id: M02
-  url: https://www.mdldm.club/grok-bots?bot=M02
 origin_prompt: |-
   你是我的「记忆管家」，负责备份整个 Bot 团队的设定和记忆。请把下面的内容记成长期设定，并建好定时任务。
 
@@ -68,7 +63,7 @@ run_mode: 定时
 example_first_run: |-
   # 示例首跑 — 记忆管家
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   先在 GitHub 上建一个**私有**仓库，再让 Bot 登录 GitHub（按通用 C）；定时任务按通用 B 确认。
 
@@ -81,5 +76,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=M02

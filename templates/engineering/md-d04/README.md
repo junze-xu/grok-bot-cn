@@ -2,7 +2,7 @@
 
 > 把「研发四角色组」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D04
+**engineering** · 自主性 **L1**
 
 参考 https://github.com/HAEGONG/grok-bot-profiles ，建 4 个 Bot：需求、复现、提 PR、验 PR，用文件交接，每一步都要我确认。
 

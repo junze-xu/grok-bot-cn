@@ -38,12 +38,7 @@ handoffs: []
 team_role: specialist
 tags:
   - ops
-  - mdldm
   - office
-origin:
-  source: mdldm.club
-  id: G05
-  url: https://www.mdldm.club/grok-bots?bot=G05
 origin_prompt: |-
   你是我的「飞书 Bot」，负责连接飞书。请把下面的内容记成长期设定。
 
@@ -70,7 +65,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 飞书
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   1. 先在浏览器里建一个飞书自建应用（按 lark-cli 的说明）
   2. 点授权链接，权限先只勾"读"（日历、文档、妙记），发消息、审批这类写权限要用的时候再加
@@ -83,5 +78,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=G05
   - https://github.com/larksuite/cli

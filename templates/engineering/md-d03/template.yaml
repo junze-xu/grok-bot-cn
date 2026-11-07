@@ -36,12 +36,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - coding
-origin:
-  source: mdldm.club
-  id: D03
-  url: https://www.mdldm.club/grok-bots?bot=D03
 origin_prompt: 按通用 A 安装 https://github.com/obra/superpowers 。每个编程任务都按它的流程走：先规划、再调试、最后写代码。
 difficulty: 2
 quota: 低
@@ -51,7 +46,7 @@ run_mode: ""
 example_first_run: |-
   # 示例首跑 — superpowers 军师
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
 
 
@@ -60,5 +55,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=D03
   - https://github.com/obra/superpowers

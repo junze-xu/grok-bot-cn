@@ -38,12 +38,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: C17
-  url: https://www.mdldm.club/grok-bots?bot=C17
 origin_prompt: |-
   你是我的「长文写手 Bot」。请把下面的内容记成长期设定。
 
@@ -70,7 +64,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 长文写手
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   发 2～3 篇历史文章给它。
 
@@ -82,5 +76,4 @@ example_first_run: |-
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
 docs:
-  - https://www.mdldm.club/grok-bots?bot=C17
   - https://github.com/KKKKhazix/human-writing

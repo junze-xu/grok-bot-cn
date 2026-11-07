@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-// mdldm.club → grok-bot-cn 契约模板导入器。
+// 外部公开 Bot 目录 → 契约模板导入器。
 //
-// 数据源：snapshots/mdldm-bots.json（站点公开数据快照，含一键 Prompt 全文）。
+// 数据源：snapshots/imported-bots.json（公开数据快照，含一键 Prompt 全文）。
 // 输出：templates/<category>/<id>/template.yaml（唯一事实来源），随后 npm run render 生成 PROFILE 等。
 //
 // 用法：
-//   node convert/mdldm-import.mjs --ids M01,C11       # 指定条目
-//   node convert/mdldm-import.mjs --group base        # 指定分组
-//   node convert/mdldm-import.mjs --coding            # 代码附录 D01–D08
-//   node convert/mdldm-import.mjs --dry               # 只看计划不写文件
+//   node convert/import-bots.mjs --ids M01,C11       # 指定条目
+//   node convert/import-bots.mjs --group base        # 指定分组
+//   node convert/import-bots.mjs --coding            # 代码附录 D01–D08
+//   node convert/import-bots.mjs --dry               # 只看计划不写文件
 //
 // 字段策略：OVERRIDES 里逐条转写的字段优先；其余用 rule* 函数从快照结构化字段生成。
 // 导入的 Bot 一律 L1（本仓库第一周规则）；原设定的定时频率写进 schedule 与工作风格。
@@ -20,7 +20,7 @@ import { stringify as stringifyYaml } from "yaml";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const snapshot = JSON.parse(
-  fs.readFileSync(path.join(root, "snapshots", "mdldm-bots.json"), "utf8")
+  fs.readFileSync(path.join(root, "snapshots", "imported-bots.json"), "utf8")
 );
 
 const CAT = {
@@ -36,7 +36,7 @@ const CAT = {
 };
 const CODING_CAT = "engineering";
 
-const DERIVED = "来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）";
+const DERIVED = "原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）";
 
 function slug(code) {
   return "md-" + code.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -619,7 +619,7 @@ function buildTemplate(raw) {
   const group = snapshot.groups.find((g) => g.key === b.group) || {};
   const name = firstUndef(ov.name, parseName(b.name));
   const prompt = b.prompt && b.prompt.length >= 40 ? b.prompt : "";
-  const docs = new Set([`https://www.mdldm.club/grok-bots?bot=${b.id}`]);
+  const docs = new Set();
   for (const m of prompt.matchAll(/https?:\/\/github\.com\/[\w.-]+\/[\w.-]+/g)) docs.add(m[0]);
   const provenance = [
     prompt ? `原设定步骤：\n${String(b.steps || "").trim()}` : "",
@@ -650,13 +650,7 @@ function buildTemplate(raw) {
     never: firstUndef(ov.never, ruleNever(b)),
     handoffs: firstUndef(ov.handoffs, ruleHandoffs(b)),
     team_role: firstUndef(ov.team_role, ruleTeamRole(b)),
-    tags: firstUndef(ov.tags, [cat, "mdldm", b.group]),
-    origin: {
-      source: "mdldm.club",
-      id: b.id,
-      ...(b.author?.name ? { author: b.author.name } : {}),
-      url: `https://www.mdldm.club/grok-bots?bot=${b.id}`,
-    },
+    tags: firstUndef(ov.tags, [...new Set([cat, b.group])]),
     ...(prompt ? { origin_prompt: prompt } : {}),
     difficulty: b.difficulty,
     quota: b.cost,

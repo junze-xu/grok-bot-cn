@@ -2,7 +2,7 @@
 
 > 把「GitHub」的重复动作固化成可重复执行的流程
 
-**engineering** · 自主性 **L1** · 来源：mdldm.club/D01
+**engineering** · 自主性 **L1**
 
 在云电脑上安装 gh CLI，运行 gh auth login，出现设备码时提示我接管。以后管理仓库、PR、Issue 都通过 gh 来做；删除仓库、强制推送之前必须先问我。
 

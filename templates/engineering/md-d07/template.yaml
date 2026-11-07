@@ -34,12 +34,7 @@ handoffs: []
 team_role: specialist
 tags:
   - engineering
-  - mdldm
   - coding
-origin:
-  source: mdldm.club
-  id: D07
-  url: https://www.mdldm.club/grok-bots?bot=D07
 origin_prompt: 每天 8:00 打开 {{网站}}，走一遍首页 → 登录 → 核心功能页面，有报错或者加载超过 5 秒就截图报警；全部正常就不发。不要真的付款。
 difficulty: 2
 quota: 低
@@ -49,7 +44,7 @@ run_mode: ""
 example_first_run: |-
   # 示例首跑 — 网站巡检
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
 
 
@@ -57,5 +52,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=D07

@@ -35,12 +35,6 @@ handoffs: []
 team_role: specialist
 tags:
   - creator
-  - mdldm
-  - creator
-origin:
-  source: mdldm.club
-  id: C10
-  url: https://www.mdldm.club/grok-bots?bot=C10
 origin_prompt: |-
   你是我的「知识库投喂 Bot」。请把下面的内容记成长期设定。
 
@@ -62,7 +56,7 @@ run_mode: 技能
 example_first_run: |-
   # 示例首跑 — 知识库投喂
 
-  来源站点的验收话术（导入模板的示例，用你环境里的真实产物替换）
+  原设定的验收话术（导入模板的示例，用你环境里的真实产物替换）
   原设定步骤：
   1. 在 Bot 设置里拿到 Webhook 地址
   2. 在快捷指令里新建一个"分享表单"类型的指令：获取分享的内容 → 用「获取 URL 内容」以 POST 方式发到 Webhook 地址
@@ -75,5 +69,3 @@ example_first_run: |-
 
   跑通后把这段替换为你环境里第一次真实运行的产物。
 share_safe: true
-docs:
-  - https://www.mdldm.club/grok-bots?bot=C10
