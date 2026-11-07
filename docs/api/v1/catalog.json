@@ -3,9 +3,581 @@
   "api_version": "v1",
   "schema_revision": "2026-08-29",
   "status_url": "https://junze-xu.github.io/grok-bot-cn/api/v1/status.json",
-  "count": 37,
+  "count": 151,
   "start_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md",
   "items": [
+    {
+      "id": "md-c01",
+      "name": "X 热点雷达",
+      "title": "X 热点雷达（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "不用连 X 账号，每天搜一遍公开帖，按你的领域过滤，有真信号才推给你，没有就不打扰。",
+      "why": "不用连 X 账号，每天搜一遍公开帖，按你的领域过滤，有真信号才推给你，没有就不打扰。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c01",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c02",
+      "name": "同行周报",
+      "title": "同行周报（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "每周扒一遍你关注的博主本周发的新内容，按\"值不值得跟着做\"排序。",
+      "why": "每周扒一遍你关注的博主本周发的新内容，按\"值不值得跟着做\"排序。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c02",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c03",
+      "name": "自媒体数据日报",
+      "title": "自媒体数据日报（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "每天统计各平台的粉丝和播放，标出异常爆的和扑街的。",
+      "why": "每天统计各平台的粉丝和播放，标出异常爆的和扑街的。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c03",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c04",
+      "name": "评论 FAQ",
+      "title": "评论 FAQ（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "每周汇总各平台评论区的高频问题，出一份 FAQ，再给几条下期选题建议。",
+      "why": "每周汇总各平台评论区的高频问题，出一份 FAQ，再给几条下期选题建议。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c04",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c05",
+      "name": "群聊日报",
+      "title": "群聊日报（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "每天把群消息整理成一份精华日报。平时只响应 @，不插嘴。",
+      "why": "每天把群消息整理成一份精华日报。平时只响应 @，不插嘴。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c05",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c06",
+      "name": "发布排期",
+      "title": "发布排期（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "盯着\"已录待发布\"的积压，按平台排好本周的发布表。",
+      "why": "盯着\"已录待发布\"的积压，按平台排好本周的发布表。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c06",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c07",
+      "name": "公众号捕手",
+      "title": "公众号捕手（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "发公众号、小红书、头条链接给它，它抓下全文存成 Markdown，其他 Bot 可以直接拿来用。",
+      "why": "发公众号、小红书、头条链接给它，它抓下全文存成 Markdown，其他 Bot 可以直接拿来用。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c07",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c08",
+      "name": "小红书收藏夹",
+      "title": "小红书收藏夹（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "发小红书笔记链接给它，存成一条 Obsidian 笔记；如果是视频，附上转写文字。",
+      "why": "发小红书笔记链接给它，存成一条 Obsidian 笔记；如果是视频，附上转写文字。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c08",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c09",
+      "name": "网页剪藏",
+      "title": "网页剪藏（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "配合浏览器的 Clipper 插件，网页选区或截图一键发给 Bot 入库。",
+      "why": "配合浏览器的 Clipper 插件，网页选区或截图一键发给 Bot 入库。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c09",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c09/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c09",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c10",
+      "name": "知识库投喂",
+      "title": "知识库投喂（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "用 iOS 快捷指令 + Webhook，在手机上一键把任何内容丢进你的知识库。",
+      "why": "用 iOS 快捷指令 + Webhook，在手机上一键把任何内容丢进你的知识库。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c10",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c10/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c10",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c11",
+      "name": "个人选题",
+      "title": "口播选题挖掘（第 1 棒）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "不让你空想选题，而是先跟你聊你的经历和想法，从里面把选题挖出来；内容发布后还能喂数据复盘。",
+      "why": "选题空想没有说服力，讲自己的经历才有。先聊再写，把「没题材」变成「挖过的经历里挑 3 个」。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c11",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c11/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c11",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c12",
+      "name": "录屏教程编剧",
+      "title": "录屏教程编剧（第 2 棒）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "选题定了，它出正文、口播台词，连分镜都给你排好。最适合工具介绍和录屏教程。",
+      "why": "教程类内容的门槛不是观点，而是「怎么讲得像人话、怎么录」。结构化出稿把分镜和台词一次备齐，省去反复改结构的时间。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c12",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c12/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c12",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c13",
+      "name": "灵感成稿",
+      "title": "灵感成稿（第 2 棒备选）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "一个灵感或一篇长文丢给它，出一份完整的口播稿；还会对照你实际录出来的稿子，调整成你的说话方式。",
+      "why": "同一流水线需要两种「第 2 棒」：一种适合教程录屏，一种适合灵感长文。备选让风格差异有地方安放。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c13",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c13/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c13",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c14",
+      "name": "开头钩子",
+      "title": "开头钩子改写（第 3 棒）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "给你 3 个开头让你挑，挑完再帮你改得更像人话。",
+      "why": "前 15 秒决定一条口播的去留。先给 3 个开头挑选，比反复改一稿的开头高效得多。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c14",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c14/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c14",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c15",
+      "name": "口播体检",
+      "title": "口播稿体检（第 4 棒）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "专门查稿子哪里啰嗦、哪里接不上、哪句念出来别扭。",
+      "why": "写得好不等于念得顺。体检把「读起来累」的地方逐条摆出来、改法随附，是定稿前最省返工的一道关。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c15",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c15/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c15",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c16",
+      "name": "去 AI 味",
+      "title": "去 AI 味定稿（最后一棒）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "把 AI 腔去掉，按发布场景分级改写。流水线最后一棒，出来的就是能直接录的稿子。",
+      "why": "AI 稿的通病是「都对，但没人味」。定稿前按发布场景去掉 AI 腔，留下的是能直接录、能直接发的稿子。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c16",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c16/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c16",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c17",
+      "name": "长文写手",
+      "title": "长文写手（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "给它素材，按你的账号风格写公众号或知乎长文。",
+      "why": "给它素材，按你的账号风格写公众号或知乎长文。。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c17",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c17/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c17",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c18",
+      "name": "公众号一条龙",
+      "title": "公众号一条龙（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "选题打分 → 调研 → 写 → 配图 → 排版 → 推到公众号草稿箱。发不发，你说了算。",
+      "why": "选题打分 → 调研 → 写 → 配图 → 排版 → 推到公众号草稿箱。发不发，你说了算。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c18",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c18/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c18",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c19",
+      "name": "公众号排版",
+      "title": "公众号排版（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "把 Markdown 转成公众号排版，再上传到草稿箱（走官方 API）。",
+      "why": "把 Markdown 转成公众号排版，再上传到草稿箱（走官方 API）。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c19",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c19/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c19",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c20",
+      "name": "爆款拆解",
+      "title": "爆款拆解（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "丢一条爆款给它，拆开它的开头为什么有效，更新进\"钩子公式\"文件。写稿 Bot 动笔前会先读这个文件。",
+      "why": "丢一条爆款给它，拆开它的开头为什么有效，更新进\"钩子公式\"文件。写稿 Bot 动笔前会先读这个文件。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c20",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c20/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c20",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c21",
+      "name": "切片",
+      "title": "切片 Bot（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "长视频丢给它，按章节切成竖屏短切片，配好字幕。",
+      "why": "长视频丢给它，按章节切成竖屏短切片，配好字幕。。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c21",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c21/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c21",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c22",
+      "name": "视频解说",
+      "title": "视频解说（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "把一个视频做成中文解说视频。",
+      "why": "把一个视频做成中文解说视频。。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c22",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c22/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c22",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c23",
+      "name": "商单初筛",
+      "title": "商单初筛（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "商务询价邮件一进来，它按模板问清品牌、产品、预算、档期，写进飞书表。回复之前先给你看。",
+      "why": "商务询价邮件一进来，它按模板问清品牌、产品、预算、档期，写进飞书表。回复之前先给你看。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c23",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c23/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c23",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-c24",
+      "name": "课程答疑",
+      "title": "课程答疑（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "用你的课程稿当知识库回答学员问题，答不了的转给你。",
+      "why": "用你的课程稿当知识库回答学员问题，答不了的转给你。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-c24",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-c24/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-c24",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-u001",
+      "name": "X 运营首席营销官CMO",
+      "title": "X 运营首席营销官CMO（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "替你管 X 账号的营销：定周目标、排内容日历、盯对标、给帖子打分、每周出复盘",
+      "why": "替你管 X 账号的营销：定周目标、排内容日历、盯对标、给帖子打分、每周出复盘把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-u001",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-u001/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-u001",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
+    {
+      "id": "md-u002",
+      "name": "微信全能捕手(铁柱老师微信BOT优化版)",
+      "title": "微信全能捕手(铁柱老师微信BOT优化版)（自媒体）",
+      "category": "creator",
+      "autonomy": "L1",
+      "tagline": "把微信公众号文章和视频号分享链接原样抓成 Markdown、图片、原视频与逐字稿，也能给其他 Bot 供稿。",
+      "why": "把微信公众号文章和视频号分享链接原样抓成 Markdown、图片、原视频与逐字稿，也能给其他 Bot 供稿。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/creator/md-u002",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/creator/md-u002/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/creator/md-u002",
+      "share_url": null,
+      "tags": [
+        "creator",
+        "mdldm",
+        "creator"
+      ]
+    },
     {
       "id": "post-draft",
       "name": "内容成稿",
@@ -145,6 +717,387 @@
       ]
     },
     {
+      "id": "md-d01",
+      "name": "GitHub",
+      "title": "代码附录：GitHub",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「GitHub」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d01",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d02",
+      "name": "代码洁癖",
+      "title": "代码附录：代码洁癖",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「代码洁癖」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d02",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d03",
+      "name": "superpowers 军师",
+      "title": "代码附录：superpowers 军师",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「superpowers 军师」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d03",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d04",
+      "name": "研发四角色组",
+      "title": "代码附录：研发四角色组",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「研发四角色组」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d04",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d05",
+      "name": "部署",
+      "title": "代码附录：部署 Bot",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「部署」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d05",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d06",
+      "name": "报错值守",
+      "title": "代码附录：报错值守",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「报错值守」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d06",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d07",
+      "name": "网站巡检",
+      "title": "代码附录：网站巡检",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「网站巡检」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d07",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-d08",
+      "name": "真浏览器",
+      "title": "代码附录：真浏览器",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把「真浏览器」的重复动作固化成可重复执行的流程",
+      "why": "。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-d08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-d08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-d08",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "coding"
+      ]
+    },
+    {
+      "id": "md-k01",
+      "name": "杂活哥",
+      "title": "杂活哥（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "把摘要、翻译、写初稿这类费 token 的杂活交给 OpenRouter 上的免费模型，Grok 的额度留给派活和重活。",
+      "why": "把摘要、翻译、写初稿这类费 token 的杂活交给 OpenRouter 上的免费模型，Grok 的额度留给派活和重活。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "OpenRouter"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k01",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k02",
+      "name": "DeepSeek",
+      "title": "DeepSeek（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "在云电脑里装好 DeepSeek，写代码、处理长文本这类活交给它，用 DeepSeek 自己的便宜额度。",
+      "why": "在云电脑里装好 DeepSeek，写代码、处理长文本这类活交给它，用 DeepSeek 自己的便宜额度。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "DeepSeek"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k02",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k03",
+      "name": "Claude Code",
+      "title": "Claude Code（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "在云电脑里登录 Claude Code，编程、剪辑脚本这类重活走 Claude 的订阅额度。",
+      "why": "在云电脑里登录 Claude Code，编程、剪辑脚本这类重活走 Claude 的订阅额度。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Claude"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k03",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k04",
+      "name": "Codex",
+      "title": "Codex（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "在云电脑里登录 Codex，生图、调研、编程走 ChatGPT 订阅的额度。",
+      "why": "在云电脑里登录 Codex，生图、调研、编程走 ChatGPT 订阅的额度。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Codex"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k04",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k05",
+      "name": "Gemini",
+      "title": "Gemini（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "接上 Gemini，长文档、看图、看视频这类活交给它。",
+      "why": "接上 Gemini，长文档、看图、看视频这类活交给它。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Gemini"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k05",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k06",
+      "name": "Kimi",
+      "title": "Kimi（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "在云电脑里装 Kimi Code CLI，中文长文、代码这类活交给 Kimi。",
+      "why": "在云电脑里装 Kimi Code CLI，中文长文、代码这类活交给 Kimi。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Kimi"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k06",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k07",
+      "name": "千问",
+      "title": "千问（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "在云电脑里装 Qwen Code，写代码、处理中文资料走千问的额度。",
+      "why": "在云电脑里装 Qwen Code，写代码、处理中文资料走千问的额度。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Qwen"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k07",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k08",
+      "name": "Muse",
+      "title": "Muse（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "接上 Muse，生图、生视频走 Muse 的额度，供封面、卡片类 Bot 调用。",
+      "why": "接上 Muse，生图、生视频走 Muse 的额度，供封面、卡片类 Bot 调用。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Nano Banana"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k08",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
+      "id": "md-k09",
+      "name": "Nano Banana 生图",
+      "title": "Nano Banana 生图（算力接入）",
+      "category": "engineering",
+      "autonomy": "L1",
+      "tagline": "用 Gemini 的生图模型（Nano Banana）出图、改图，供封面、卡片类 Bot 调用。",
+      "why": "用 Gemini 的生图模型（Nano Banana）出图、改图，供封面、卡片类 Bot 调用。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "Gemini"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/engineering/md-k09",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/engineering/md-k09/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/engineering/md-k09",
+      "share_url": null,
+      "tags": [
+        "engineering",
+        "mdldm",
+        "compute"
+      ]
+    },
+    {
       "id": "pr-reviewer",
       "name": "PR 审查",
       "title": "风险优先的拉取请求审查者",
@@ -190,6 +1143,111 @@
         "sql",
         "schema",
         "l1"
+      ]
+    },
+    {
+      "id": "md-f01",
+      "name": "报销发票",
+      "title": "报销发票（财务）",
+      "category": "finance",
+      "autonomy": "L1",
+      "tagline": "你说一句\"把这个月驻场的发票换了\"，它就去京东筛订单、批量申请换成公司抬头，把发票收齐打包给你。",
+      "why": "你说一句\"把这个月驻场的发票换了\"，它就去京东筛订单、批量申请换成公司抬头，把发票收齐打包给你。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/finance/md-f01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/finance/md-f01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/finance/md-f01",
+      "share_url": null,
+      "tags": [
+        "finance",
+        "mdldm",
+        "finance"
+      ]
+    },
+    {
+      "id": "md-f02",
+      "name": "发票收集",
+      "title": "发票收集（财务）",
+      "category": "finance",
+      "autonomy": "L1",
+      "tagline": "每天扫一遍专属邮箱里的电子发票，下载、重命名，登记到表格里。月底报销不用翻邮箱。",
+      "why": "每天扫一遍专属邮箱里的电子发票，下载、重命名，登记到表格里。月底报销不用翻邮箱。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/finance/md-f02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/finance/md-f02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/finance/md-f02",
+      "share_url": null,
+      "tags": [
+        "finance",
+        "mdldm",
+        "finance"
+      ]
+    },
+    {
+      "id": "md-f03",
+      "name": "报销单",
+      "title": "报销单 Bot（财务）",
+      "category": "finance",
+      "autonomy": "L1",
+      "tagline": "你说一句\"这个月的报销\"，它按公司模板把发票填进报销单 Excel，附件打包好给你。",
+      "why": "你说一句\"这个月的报销\"，它按公司模板把发票填进报销单 Excel，附件打包好给你。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/finance/md-f03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/finance/md-f03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/finance/md-f03",
+      "share_url": null,
+      "tags": [
+        "finance",
+        "mdldm",
+        "finance"
+      ]
+    },
+    {
+      "id": "md-f04",
+      "name": "订阅哨兵",
+      "title": "订阅哨兵（财务）",
+      "category": "finance",
+      "autonomy": "L1",
+      "tagline": "扫邮箱里的账单，列出你所有的订阅和下次扣费日，提前 3 天问你还续不续。",
+      "why": "扫邮箱里的账单，列出你所有的订阅和下次扣费日，提前 3 天问你还续不续。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/finance/md-f04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/finance/md-f04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/finance/md-f04",
+      "share_url": null,
+      "tags": [
+        "finance",
+        "mdldm",
+        "finance"
+      ]
+    },
+    {
+      "id": "md-f05",
+      "name": "对账",
+      "title": "对账 Bot（财务）",
+      "category": "finance",
+      "autonomy": "L1",
+      "tagline": "导入支付宝、微信、银行的账单，自动分类，标出异常和重复扣费。",
+      "why": "导入支付宝、微信、银行的账单，自动分类，标出异常和重复扣费。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/finance/md-f05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/finance/md-f05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/finance/md-f05",
+      "share_url": null,
+      "tags": [
+        "finance",
+        "mdldm",
+        "finance"
       ]
     },
     {
@@ -261,6 +1319,304 @@
         "marketing",
         "content",
         "l1"
+      ]
+    },
+    {
+      "id": "md-e01",
+      "name": "店铺数据日报",
+      "title": "店铺数据日报（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "每天拉昨天的销量、转化、退款，和上周同期对比，推一条。",
+      "why": "每天拉昨天的销量、转化、退款，和上周同期对比，推一条。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e01",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e02",
+      "name": "竞品监控",
+      "title": "竞品监控（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "每天盯着竞品的价格、上新、页面变化，只报真正有意义的变化，不给你刷屏。",
+      "why": "每天盯着竞品的价格、上新、页面变化，只报真正有意义的变化，不给你刷屏。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e02",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e03",
+      "name": "差评预警",
+      "title": "差评预警（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "每 4 小时扫一遍新评价，有差评马上推给你，附上建议的回复草稿。",
+      "why": "每 4 小时扫一遍新评价，有差评马上推给你，附上建议的回复草稿。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e03",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e04",
+      "name": "客服草稿",
+      "title": "客服草稿（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "收到客户问题，它先脱敏、分类，再出回复草稿；付款、安全、法律问题直接转人工，不直接发。",
+      "why": "收到客户问题，它先脱敏、分类，再出回复草稿；付款、安全、法律问题直接转人工，不直接发。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e04",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e05",
+      "name": "上新文案",
+      "title": "上新文案（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "发商品图和卖点，它出三版文案：电商标题、详情页、小红书种草文。",
+      "why": "发商品图和卖点，它出三版文案：电商标题、详情页、小红书种草文。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e05",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e06",
+      "name": "选品比价",
+      "title": "选品比价（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "给它一个商品，它去查同款在各平台的价格、评分、评论里的高频词，告诉你值不值得做。",
+      "why": "给它一个商品，它去查同款在各平台的价格、评分、评论里的高频词，告诉你值不值得做。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e06",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-e07",
+      "name": "直播复盘",
+      "title": "直播复盘（电商）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "把直播数据和录屏发给它，它找出掉人的时间点和原因，出一份下场改进清单。",
+      "why": "把直播数据和录屏发给它，它找出掉人的时间点和原因，出一份下场改进清单。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-e07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-e07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-e07",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "ecom"
+      ]
+    },
+    {
+      "id": "md-s01",
+      "name": "小红书图文",
+      "title": "小红书图文（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "一篇文章丢给它，直接出一套 6～9 张的小红书信息图卡片，或者封面轮播。",
+      "why": "一篇文章丢给它，直接出一套 6～9 张的小红书信息图卡片，或者封面轮播。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s01",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s02",
+      "name": "封面",
+      "title": "封面 Bot（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "给它标题和人像参考，调用 Muse 或 Nano Banana，出 3:4 和 4:3 两版封面。",
+      "why": "给它标题和人像参考，调用 Muse 或 Nano Banana，出 3:4 和 4:3 两版封面。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s02",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s03",
+      "name": "品牌素材管家",
+      "title": "品牌素材管家（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "存好你的品牌色、字体、Logo、头像。所有设计 Bot 动手前先读它，风格就统一了。",
+      "why": "存好你的品牌色、字体、Logo、头像。所有设计 Bot 动手前先读它，风格就统一了。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s03",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s04",
+      "name": "网页原型",
+      "title": "网页原型（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "描述你要什么，它出 HTML 原型、设计系统，还能做动效。",
+      "why": "描述你要什么，它出 HTML 原型、设计系统，还能做动效。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s04",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s05",
+      "name": "落地页",
+      "title": "落地页 Bot（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "一句话描述，生成一个 Pages 落地页，直接分享链接。",
+      "why": "一句话描述，生成一个 Pages 落地页，直接分享链接。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s05",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s06",
+      "name": "设计卡片",
+      "title": "设计卡片（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "用 Connect Apps 接上 Figma、Canva、Notion，直接在聊天里的实时卡片上改图。",
+      "why": "用 Connect Apps 接上 Figma、Canva、Notion，直接在聊天里的实时卡片上改图。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s06",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
+      ]
+    },
+    {
+      "id": "md-s07",
+      "name": "头像 / Logo",
+      "title": "头像 / Logo（设计）",
+      "category": "marketing",
+      "autonomy": "L1",
+      "tagline": "给几个风格关键词，出 4 版；选一版，再出各平台需要的尺寸。",
+      "why": "给几个风格关键词，出 4 版；选一版，再出各平台需要的尺寸。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/marketing/md-s07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/marketing/md-s07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/marketing/md-s07",
+      "share_url": null,
+      "tags": [
+        "marketing",
+        "mdldm",
+        "design"
       ]
     },
     {
@@ -374,6 +1730,174 @@
         "meta",
         "install",
         "start"
+      ]
+    },
+    {
+      "id": "md-m01",
+      "name": "总管",
+      "title": "Bot 团队任务分流与派单",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "不知道该找哪个 Bot，就找它。它判断活该给谁，转过去，自己不干重活。",
+      "why": "Bot 一多，「这活该找谁」就成了新问题。统一入口让任务不会半路被做错的人接走，也不会在群里被所有 Bot 陪读。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m01",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m02",
+      "name": "记忆管家",
+      "title": "Bot 设定与记忆的定时备份",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每周日让所有 Bot 把自己的设定和记忆写成 md 文件，备份到你的私有 Git 仓库。Bot 删了、坏了，都能一键恢复。",
+      "why": "Bot 的上下文一删就没了，重写一份完整设定要花一小时。每周自动备份到私有仓库，等于给整支团队买了保险。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m02",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m03",
+      "name": "招聘官",
+      "title": "新 Bot 的需求澄清与创建",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "你说\"我要一个盯降价的 Bot\"，它负责写设定、选运行方式、建好 Bot、登记到花名册。",
+      "why": "没有模板就建新 Bot，做出来的东西往往名不对题。先问清、再确认设定，避免舰队里堆满重复和闲置的 Bot。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/meta/md-m03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m03",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m04",
+      "name": "花名册",
+      "title": "Bot 团队名册周报",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每周一把所有 Bot 的岗位、运行方式、上次干活时间汇总成一页 Pages，一眼看清你的 Bot 团队。",
+      "why": "Bot 多了以后，谁还在干活、谁白占额度没人知道。一周一次的名册，是裁撤和合并决策的唯一依据。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m04",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m05",
+      "name": "额度管家",
+      "title": "团队额度监控与预警",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每晚统计各家额度用了多少。快见底时，先暂停不重要的定时任务，等你确认再恢复。",
+      "why": "额度是整支团队共同的钱包，单人无感、月底吓人。提前预警并分清优先级，能避免关键时刻被低价值任务拖垮。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m05",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m06",
+      "name": "每日巡检",
+      "title": "定时任务健康巡检",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每天检查一遍所有 Bot 的定时任务有没有跑失败，失败的推给你，没问题就不吭声。",
+      "why": "定时任务最怕偷偷死掉——不报错、不产出，主人以为还在跑。每天一次静默巡检，失败才出声，是定时体系唯一的健康检查。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m06",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m07",
+      "name": "绩效考核",
+      "title": "Bot 周度考核与精简建议",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每周统计每个 Bot 干了几件事、烧了多少额度，建议裁掉或合并哪些。",
+      "why": "额度按 Bot 头数消耗，产出却按价值计算。定期用数据考核，把省下的额度留给真正干活的角色。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m07",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
+      ]
+    },
+    {
+      "id": "md-m08",
+      "name": "安全审计",
+      "title": "外部授权与登录状态月审",
+      "category": "meta",
+      "autonomy": "L1",
+      "tagline": "每月列出还开着的外部授权、登录状态和闲置的 Bot，提醒你该撤的撤掉。",
+      "why": "删掉 Bot 不等于撤销授权。遗留的登录态和 Key 是最容易被忽视的风险面，一次月度审计能赶在出事之前。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/meta/md-m08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/meta/md-m08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/meta/md-m08",
+      "share_url": null,
+      "tags": [
+        "meta",
+        "mdldm",
+        "base"
       ]
     },
     {
@@ -498,6 +2022,375 @@
       ]
     },
     {
+      "id": "md-g01",
+      "name": "周报",
+      "title": "周报 Bot（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "每周五自己翻你这周的文档和日历，对照上周计划写好周报初稿，你花 10 分钟改完就能交。",
+      "why": "每周五自己翻你这周的文档和日历，对照上周计划写好周报初稿，你花 10 分钟改完就能交。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/ops/md-g01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g01",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g02",
+      "name": "学徒",
+      "title": "学徒 Bot（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "你演示一遍怎么干，它写成一张 Skill 卡片，先演练一次给你看，没问题再交给它自动干。",
+      "why": "你演示一遍怎么干，它写成一张 Skill 卡片，先演练一次给你看，没问题再交给它自动干。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g02",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g03",
+      "name": "邮箱秘书",
+      "title": "邮箱秘书（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "认领一个 Bot 专属邮箱，每早汇总未读邮件，重要的起草好回复，你确认了才发。",
+      "why": "认领一个 Bot 专属邮箱，每早汇总未读邮件，重要的起草好回复，你确认了才发。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g03",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g04",
+      "name": "会议纪要派活",
+      "title": "会议纪要派活（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "每天下班前读今天的飞书妙记，拆出行动项，派给对应的 Bot 或者提醒你。",
+      "why": "每天下班前读今天的飞书妙记，拆出行动项，派给对应的 Bot 或者提醒你。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g04",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g05",
+      "name": "飞书",
+      "title": "飞书 Bot（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "装好飞书 CLI，Bot 就能读写你的飞书文档、表格、日历；还能在飞书里给整个 Bot 团队派活。",
+      "why": "装好飞书 CLI，Bot 就能读写你的飞书文档、表格、日历；还能在飞书里给整个 Bot 团队派活。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "飞书"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g05",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g06",
+      "name": "PPT",
+      "title": "PPT（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "给它大纲或文档，它套主题出 PPT；你改完之后，它再按你的修改精修。",
+      "why": "给它大纲或文档，它套主题出 PPT；你改完之后，它再按你的修改精修。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g06",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g07",
+      "name": "深度调研",
+      "title": "深度调研（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "给它一个题目，它去搜索、读全文、标注来源，最后出一份带引用的调研报告。",
+      "why": "给它一个题目，它去搜索、读全文、标注来源，最后出一份带引用的调研报告。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g07",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g08",
+      "name": "简历",
+      "title": "简历 Bot（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "贴上岗位 JD 和你的简历，它逐条对齐改写，再出 3 个面试官可能追问的问题，陪你模拟面试。",
+      "why": "贴上岗位 JD 和你的简历，它逐条对齐改写，再出 3 个面试官可能追问的问题，陪你模拟面试。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g08",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g09",
+      "name": "岗位雷达",
+      "title": "岗位雷达（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "每天按你的目标公司、城市、关键词扫一遍新岗位，只推匹配度高的。",
+      "why": "每天按你的目标公司、城市、关键词扫一遍新岗位，只推匹配度高的。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g09",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g09/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g09",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g10",
+      "name": "合同审阅",
+      "title": "合同审阅（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "发一份合同给它，它标出风险条款和签之前要问清楚的点。",
+      "why": "发一份合同给它，它标出风险条款和签之前要问清楚的点。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g10",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g10/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g10",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g11",
+      "name": "到期提醒",
+      "title": "到期提醒（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "域名、证书、证件、会员，到期前 30 天和 7 天各提醒一次。",
+      "why": "域名、证书、证件、会员，到期前 30 天和 7 天各提醒一次。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g11",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g11/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g11",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g12",
+      "name": "活动报名",
+      "title": "活动报名（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "发一个活动链接，它按流程填表报名，最后截图回执给你。",
+      "why": "发一个活动链接，它按流程填表报名，最后截图回执给你。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g12",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g12/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g12",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g13",
+      "name": "密码管家",
+      "title": "密码管家（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "连上你的密码管理器，帮你查哪个账号用的是哪个邮箱、哪些密码该换了。它只读，不替你输密码。",
+      "why": "连上你的密码管理器，帮你查哪个账号用的是哪个邮箱、哪些密码该换了。它只读，不替你输密码。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g13",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g13/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g13",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g14",
+      "name": "腾讯会议",
+      "title": "腾讯会议（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "装好腾讯会议官方 CLI，Bot 能查你的会议、拉录制和纪要；约会、改会、取消都要你点头。",
+      "why": "装好腾讯会议官方 CLI，Bot 能查你的会议、拉录制和纪要；约会、改会、取消都要你点头。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "腾讯会议"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g14",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g14/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g14",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g15",
+      "name": "钉钉",
+      "title": "钉钉 Bot（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "接上钉钉官方 MCP，Bot 能查通讯录、读写你的待办和日程，还能用机器人发消息。",
+      "why": "接上钉钉官方 MCP，Bot 能查通讯录、读写你的待办和日程，还能用机器人发消息。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "钉钉"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g15",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g15/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g15",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g16",
+      "name": "企业微信",
+      "title": "企业微信（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "装好企业微信官方 CLI，Bot 能收发消息和邮件、改文档和表格、管日程会议。能写的东西最多，权限要收得最紧。",
+      "why": "装好企业微信官方 CLI，Bot 能收发消息和邮件、改文档和表格、管日程会议。能写的东西最多，权限要收得最紧。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "企业微信"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g16",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g16/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g16",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
+      "id": "md-g17",
+      "name": "腾讯文档",
+      "title": "腾讯文档（打工人）",
+      "category": "ops",
+      "autonomy": "L1",
+      "tagline": "接上腾讯文档官方 MCP，Bot 能建文档、读内容、改表格。",
+      "why": "接上腾讯文档官方 MCP，Bot 能建文档、读内容、改表格。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "腾讯文档"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/ops/md-g17",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/ops/md-g17/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/ops/md-g17",
+      "share_url": null,
+      "tags": [
+        "ops",
+        "mdldm",
+        "office"
+      ]
+    },
+    {
       "id": "new-hire-ramp",
       "name": "入职引导",
       "title": "第一周计划，附未发送的占用",
@@ -592,6 +2485,587 @@
         "personal",
         "gmail",
         "l1"
+      ]
+    },
+    {
+      "id": "md-l01",
+      "name": "闲鱼哥",
+      "title": "闲鱼哥 Bot（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "手机上给闲置拍一段视频发给它，它自己写标题、描述、参考同款定价，然后在电脑上发布到闲鱼。你最后看一眼就行。",
+      "why": "手机上给闲置拍一段视频发给它，它自己写标题、描述、参考同款定价，然后在电脑上发布到闲鱼。你最后看一眼就行。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/personal/md-l01",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l01/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l01",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l02",
+      "name": "冰箱菜谱",
+      "title": "冰箱菜谱（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "打开冰箱拍一张照片，它告诉你今晚能做哪三道菜、还缺什么，顺便列好购物清单。",
+      "why": "打开冰箱拍一张照片，它告诉你今晚能做哪三道菜、还缺什么，顺便列好购物清单。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/personal/md-l02",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l02/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l02",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l03",
+      "name": "长辈防骗",
+      "title": "长辈防骗（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "爸妈转来的链接、谣言、\"中奖短信\"，直接转给它，它一句话告诉你是真是假、为什么。",
+      "why": "爸妈转来的链接、谣言、\"中奖短信\"，直接转给它，它一句话告诉你是真是假、为什么。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/personal/md-l03",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l03/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l03",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l04",
+      "name": "天气穿搭",
+      "title": "天气穿搭（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "每天早上七点半，看完天气、翻完你的衣橱照片，告诉你今天穿什么。",
+      "why": "每天早上七点半，看完天气、翻完你的衣橱照片，告诉你今天穿什么。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": true,
+      "official_use_case": false,
+      "path": "templates/personal/md-l04",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l04/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l04",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l05",
+      "name": "晨报管家",
+      "title": "晨报管家（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "每早一条推送：今天的日程、天气、待办，还有\"昨晚各个 Bot 干了啥\"。",
+      "why": "每早一条推送：今天的日程、天气、待办，还有\"昨晚各个 Bot 干了啥\"。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l05",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l05/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l05",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l06",
+      "name": "睡前复盘",
+      "title": "睡前复盘（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "每晚问你 3 个问题，整理成日记 md，交给记忆管家保存。",
+      "why": "每晚问你 3 个问题，整理成日记 md，交给记忆管家保存。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l06",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l06/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l06",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l07",
+      "name": "降价盯梢",
+      "title": "降价盯梢（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "盯着你想买的东西，降到你的心理价才提醒你。只提醒，不下单。",
+      "why": "盯着你想买的东西，降到你的心理价才提醒你。只提醒，不下单。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l07",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l07/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l07",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l08",
+      "name": "快递追踪",
+      "title": "快递追踪（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "从邮箱和订单里抓物流信息，快递到了就提醒你取件。",
+      "why": "从邮箱和订单里抓物流信息，快递到了就提醒你取件。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l08",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l08/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l08",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l09",
+      "name": "租房雷达",
+      "title": "租房雷达（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "按区域、预算、户型扫新房源，只推符合条件的。",
+      "why": "按区域、预算、户型扫新房源，只推符合条件的。。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l09",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l09/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l09",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l10",
+      "name": "演出上新提醒",
+      "title": "演出上新提醒（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "你关注的歌手、剧目、展览一上新就提醒你。只提醒，不抢票。",
+      "why": "你关注的歌手、剧目、展览一上新就提醒你。只提醒，不抢票。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l10",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l10/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l10",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l11",
+      "name": "纪念日提醒",
+      "title": "纪念日提醒（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "生日、纪念日前 7 天提醒你，还附上礼物建议。",
+      "why": "生日、纪念日前 7 天提醒你，还附上礼物建议。。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l11",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l11/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l11",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l12",
+      "name": "家庭账本",
+      "title": "家庭账本（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "账单截图丢进来就记一笔账，月底出一页 Pages 账本。",
+      "why": "账单截图丢进来就记一笔账，月底出一页 Pages 账本。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l12",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l12/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l12",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l13",
+      "name": "出行管家",
+      "title": "出行管家（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "把机票、酒店的确认邮件转给它，它生成一页 Pages 行程单：航班、地址、天气、待办都在上面。",
+      "why": "把机票、酒店的确认邮件转给它，它生成一页 Pages 行程单：航班、地址、天气、待办都在上面。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l13",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l13/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l13",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l14",
+      "name": "英语对练",
+      "title": "英语对练（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "发一段英语录音给它，它改成地道的表达，再生成一个 Pages 点读对练页。",
+      "why": "发一段英语录音给它，它改成地道的表达，再生成一个 Pages 点读对练页。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l14",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l14/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l14",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l15",
+      "name": "算命",
+      "title": "算命 Bot（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "给它生辰，它排八字或紫微斗数，出一张解读海报。娱乐用。",
+      "why": "给它生辰，它排八字或紫微斗数，出一张解读海报。娱乐用。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l15",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l15/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l15",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l16",
+      "name": "健身教练",
+      "title": "健身教练（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "按你的目标和器械出训练计划，训练日提醒你，练完打卡，它根据打卡调整计划。",
+      "why": "按你的目标和器械出训练计划，训练日提醒你，练完打卡，它根据打卡调整计划。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l16",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l16/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l16",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l17",
+      "name": "作业辅导",
+      "title": "作业辅导（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "拍题发给它，它一步步引导孩子思考，不直接给答案；做错的题自动进错题本。",
+      "why": "拍题发给它，它一步步引导孩子思考，不直接给答案；做错的题自动进错题本。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l17",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l17/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l17",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l18",
+      "name": "自学课程",
+      "title": "自学课程（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "把任何资料变成一门自学课，再按间隔复习的节奏提醒你复习。",
+      "why": "把任何资料变成一门自学课，再按间隔复习的节奏提醒你复习。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l18",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l18/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l18",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l19",
+      "name": "读书",
+      "title": "读书 Bot（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "书、文章、视频字幕丢给它，它出一份读书笔记，还能按章节回答你的问题。",
+      "why": "书、文章、视频字幕丢给它，它出一份读书笔记，还能按章节回答你的问题。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l19",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l19/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l19",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l20",
+      "name": "体检报告翻译官",
+      "title": "体检报告翻译官（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "拍下体检报告，它翻译成人话，再列出该问医生的问题。",
+      "why": "拍下体检报告，它翻译成人话，再列出该问医生的问题。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l20",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l20/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l20",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l21",
+      "name": "财报排雷",
+      "title": "财报排雷（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "给一个股票代码，它按 28 条规则扫一遍 A 股财报，标出风险点。只做研究，不是投资建议。",
+      "why": "给一个股票代码，它按 28 条规则扫一遍 A 股财报，标出风险点。只做研究，不是投资建议。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l21",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l21/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l21",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l22",
+      "name": "副业诊断",
+      "title": "副业诊断（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "说说你的副业想法，它做一次商业诊断，再给一个 7 天小成本验证计划。不保证收益。",
+      "why": "说说你的副业想法，它做一次商业诊断，再给一个 7 天小成本验证计划。不保证收益。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l22",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l22/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l22",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l23",
+      "name": "运动报告",
+      "title": "运动报告（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "跑步、骑行、徒步的轨迹文件丢给它，出一张好看的运动报告图。",
+      "why": "跑步、骑行、徒步的轨迹文件丢给它，出一张好看的运动报告图。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [
+        "GitHub"
+      ],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l23",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l23/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l23",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l24",
+      "name": "分身回信",
+      "title": "分身回信（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "读你以前写的文字，学会你的语气，帮你起草私信和邮件回复。你点头了才发。",
+      "why": "读你以前写的文字，学会你的语气，帮你起草私信和邮件回复。你点头了才发。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l24",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l24/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l24",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l25",
+      "name": "狼人杀法官",
+      "title": "狼人杀法官（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "一个人也能玩一局：它当法官，同时扮演其他 8 个性格各异的 AI 玩家，你是第 9 个。",
+      "why": "一个人也能玩一局：它当法官，同时扮演其他 8 个性格各异的 AI 玩家，你是第 9 个。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l25",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l25/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l25",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l26",
+      "name": "说明书管家",
+      "title": "说明书管家（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "家电说明书、保修卡拍照发给它存档；东西坏了问它怎么修，保修到哪天也帮你记着。",
+      "why": "家电说明书、保修卡拍照发给它存档；东西坏了问它怎么修，保修到哪天也帮你记着。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l26",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l26/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l26",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
+      ]
+    },
+    {
+      "id": "md-l27",
+      "name": "穿搭顾问",
+      "title": "穿搭顾问（生活）",
+      "category": "personal",
+      "autonomy": "L1",
+      "tagline": "发照片、说场合，它给搭配建议，还告诉你缺什么单品。和 L04 天气穿搭搭配着用。",
+      "why": "发照片、说场合，它给搭配建议，还告诉你缺什么单品。和 L04 天气穿搭搭配着用。把这一步做成可重复、可审查的产出，代替每次手搓。",
+      "plugins": [],
+      "featured": false,
+      "official_use_case": false,
+      "path": "templates/personal/md-l27",
+      "profile_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/templates/personal/md-l27/PROFILE.md",
+      "tree_url": "https://github.com/junze-xu/grok-bot-cn/tree/main/templates/personal/md-l27",
+      "share_url": null,
+      "tags": [
+        "personal",
+        "mdldm",
+        "life"
       ]
     },
     {
@@ -931,6 +3405,65 @@
       "why": "盯竞品变化、把认可的内容改写成渠道变体、组装下一期通讯——一律停在草稿，不发布。\n",
       "autonomy": "L1",
       "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/marketing/team.yaml"
+    },
+    {
+      "id": "md-t01",
+      "name": "口播编辑部（自媒体）",
+      "lead": "md-c11",
+      "bots": [
+        "md-c11",
+        "md-c12",
+        "md-c13",
+        "md-c14",
+        "md-c15",
+        "md-c16"
+      ],
+      "why": "五棒接力把「没题材」变成能直接录的定稿：选题、成稿、钩子、体检、去 AI 味，每棒停下来等主人说「过」。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t01/team.yaml"
+    },
+    {
+      "id": "md-t02",
+      "name": "一稿多发组（自媒体 + 设计）",
+      "lead": "md-c06",
+      "bots": [
+        "md-c06",
+        "md-c18",
+        "md-s01",
+        "md-s02",
+        "md-c21"
+      ],
+      "why": "一份定稿或一条录好的视频丢进来，组长分派：同时出公众号草稿、小红书图文、封面和短视频切片，最后排进本周发布表。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t02/team.yaml"
+    },
+    {
+      "id": "md-t03",
+      "name": "上新组（电商）",
+      "lead": "md-e06",
+      "bots": [
+        "md-e06",
+        "md-e05",
+        "md-s01",
+        "md-l01",
+        "md-e04"
+      ],
+      "why": "从「这个值不值得卖」到「商品页、主图、文案都做好，就差你点发布」，一个群跑完上新全流程。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t03/team.yaml"
+    },
+    {
+      "id": "md-t04",
+      "name": "求职组（通用办公）",
+      "lead": "md-g07",
+      "bots": [
+        "md-g07",
+        "md-g08",
+        "md-g03"
+      ],
+      "why": "看中一个岗位丢进来：先查公司，再针对这个岗位改简历，最后写好投递邮件草稿。一岗一套，不海投。\n",
+      "autonomy": "L1",
+      "yaml_url": "https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/teams/md-t04/team.yaml"
     },
     {
       "id": "meta",

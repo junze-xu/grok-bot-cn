@@ -1,0 +1,6 @@
+# 原始 Prompt —— GitHub
+
+> 来源：mdldm.club/D01 · https://www.mdldm.club/grok-bots?bot=D01
+> 文本为第三方公开内容，按原样保存用于核对；本模板的契约字段由它结构化转写而来。
+
+在云电脑上安装 gh CLI，运行 gh auth login，出现设备码时提示我接管。以后管理仓库、PR、Issue 都通过 gh 来做；删除仓库、强制推送之前必须先问我。
