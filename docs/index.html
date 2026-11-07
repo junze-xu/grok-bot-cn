@@ -6190,8 +6190,7 @@ const I18N = {"zh":{"lang.name":"中文","title":"Grok Bot 模板库","nav.insta
         members.forEach(function (m) { crewLines.push('- ' + m.name + '（' + m.id + '）'); });
         crewLines.push('', t('crew.suffix'));
         try {
-          await copyText(crewLines.join('
-'));
+          await copyText(crewLines.join('\n'));
           btn.textContent = t('toast.crew_copied');
           toast(t('toast.crew_copied'));
         } catch (err) {

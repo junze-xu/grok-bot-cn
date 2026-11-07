@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import { resolveRoot } from "../lib/paths.mjs";
 
 const root = resolveRoot();
@@ -37,4 +38,25 @@ test("every catalog card has plugins and a first task", () => {
   assert.match(html, /data-plugins="GitHub"/);
   assert.match(html, /复制首个任务/);
   assert.match(html, /id="bot-pr-reviewer"/);
+});
+
+test("pack cards offer member pick + crew command + START.md copy", () => {
+  assert.match(html, /pack-card/);
+  assert.match(html, /data-crew="eng"/);
+  assert.match(html, /data-start="eng"/);
+  assert.match(html, /data-member="bug-reproduction"/);
+  assert.match(html, /data-i18n="packs\.copy_crew"/);
+});
+
+test("inline client script compiles (template-literal escapes not broken)", () => {
+  const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+  assert.ok(scripts.length >= 1, "index.html 应至少包含一个内联脚本");
+  for (const [, code] of scripts) {
+    assert.doesNotThrow(() => new vm.Script(code), "内联客户端脚本语法必须可编译");
+  }
+});
+
+test("pack card START.md button carries the full START.md text", () => {
+  assert.match(html, /const START_MD = "# 开始/);
+  assert.match(html, /专项组/);
 });

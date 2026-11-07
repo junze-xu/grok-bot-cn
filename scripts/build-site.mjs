@@ -867,7 +867,7 @@ const I18N = ${JSON.stringify(i18n)};
         members.forEach(function (m) { crewLines.push('- ' + m.name + '（' + m.id + '）'); });
         crewLines.push('', t('crew.suffix'));
         try {
-          await copyText(crewLines.join('\n'));
+          await copyText(crewLines.join('\\n'));
           btn.textContent = t('toast.crew_copied');
           toast(t('toast.crew_copied'));
         } catch (err) {
