@@ -19,6 +19,13 @@ test("catalog copies PROFILE body and START.md", () => {
   assert.match(html, /START\.md/);
 });
 
+test("hero banner prefers hero.jpg, keeps og:image and adds view-switch feedback", () => {
+  assert.match(html, /<img src="(?:hero|header)\.jpg" alt="Grok Bot 模板库" \/>/);
+  assert.match(html, /property="og:image" content="[^"]*\/header\.jpg"/);
+  assert.match(html, /@keyframes viewIn/);
+  assert.match(html, /\.nav-links a\.on::after/);
+});
+
 test("catalog is color-coded by category", () => {
   assert.match(html, /--c-engineering/);
   assert.match(html, /--c-sales/);

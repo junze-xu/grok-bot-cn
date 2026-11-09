@@ -20,7 +20,7 @@
     "SPEC.md",
     "catalog/catalog.json",
     "catalog/share-links.json",
-    "assets/header.jpg",
+    "assets/*.jpg",
     "README.md",
     "LICENSE"
   ],

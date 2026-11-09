@@ -27,6 +27,11 @@ const langName = (l) => i18n[l]?.["lang.name"] || l;
 // 预设组卡片的「复制 START.md」按钮把全文注入前端，随页面构建固化。
 const START_MD_TEXT = fs.readFileSync(path.join(root, "START.md"), "utf8");
 
+// 头图：优先 assets/hero.jpg（宽幅短图，首屏不遮挡内容），缺省回退 header.jpg（完整场景）。
+const HERO_FILE = fs.existsSync(path.join(root, "assets", "hero.jpg"))
+  ? "hero.jpg"
+  : "header.jpg";
+
 const cats = [
   "meta",
   "engineering",
@@ -438,7 +443,13 @@ const CSS = `
     .card, .tile, .door, .submit-form {
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)), var(--card);
     }
-    .nav-links a.on { color: var(--ink); }
+    .nav-links a { position: relative; }
+    .nav-links a.on { color: var(--ink); font-weight: 650; }
+    .nav-links a.on::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: 1px;
+      height: 2px; border-radius: 2px; background: var(--accent);
+    }
     /* 视图：默认（无 JS）全部展开，与旧单页一致 */
     html.js-views .view { display: none; }
     html[data-view="start"] .view[data-view="start"],
@@ -446,6 +457,16 @@ const CSS = `
     html[data-view="packs"] .view[data-view="packs"],
     html[data-view="trending"] .view[data-view="trending"],
     html[data-view="submit"] .view[data-view="submit"] { display: block; }
+    /* 视图切换反馈：淡入 + 轻微上移，避免「没刷新」的错觉 */
+    @keyframes viewIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+    html.js-views[data-view="start"] .view[data-view="start"],
+    html.js-views[data-view="catalog"] .view[data-view="catalog"],
+    html.js-views[data-view="packs"] .view[data-view="packs"],
+    html.js-views[data-view="trending"] .view[data-view="trending"],
+    html.js-views[data-view="submit"] .view[data-view="submit"] { animation: viewIn .18s ease-out; }
     .rank-title { margin: 28px 0 4px; font-size: 1rem; color: var(--ink); }
     .quick { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
     /* 锚点滚动避开 sticky 导航与筛选条 */
@@ -728,6 +749,7 @@ const CSS = `
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .toast { transition: none; }
+      .view { animation: none !important; }
     }
 `;
 
@@ -1343,7 +1365,7 @@ const html = `<!DOCTYPE html>
     </div>
   </nav>
   <header class="banner">
-    <img src="header.jpg" alt="Grok Bot 模板库" />
+    <img src="${HERO_FILE}" alt="Grok Bot 模板库" />
   </header>
   <div class="wrap">
     <section class="view" data-view="start" id="view-start">
@@ -1514,6 +1536,9 @@ const docs = path.join(root, "docs");
 fs.mkdirSync(docs, { recursive: true });
 fs.writeFileSync(path.join(docs, "index.html"), html);
 fs.copyFileSync(path.join(root, "assets", "header.jpg"), path.join(docs, "header.jpg"));
+if (HERO_FILE === "hero.jpg") {
+  fs.copyFileSync(path.join(root, "assets", "hero.jpg"), path.join(docs, "hero.jpg"));
+}
 
 const profiles = {};
 for (const t of loaded.templates) {
@@ -1591,5 +1616,5 @@ const agentHtml = `<!DOCTYPE html>
 `;
 fs.writeFileSync(path.join(docs, "agent.html"), agentHtml);
 console.log(
-  "docs/index.html  docs/agent.html  docs/profiles.json  docs/header.jpg"
+  `docs/index.html  docs/agent.html  docs/profiles.json  docs/${HERO_FILE}`
 );
