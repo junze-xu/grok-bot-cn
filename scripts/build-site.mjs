@@ -296,6 +296,23 @@ const trendingInitial = Object.entries(counts.bots)
   })
   .join("\n");
 
+// 预设组热门榜初版静态渲染（与 Bot 榜一致，运行时由 CLIENT 用远端计数重排）
+const trendingTeamsInitial = Object.entries(counts.teams)
+  .filter(([, n]) => n > 0)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10)
+  .map(([id, n], i) => {
+    const team = loaded.teams.find((x) => x.id === id);
+    const name = team ? team.name : id;
+    const kind = teamKind(id);
+    return `<a class="rank-row${i < 3 ? " top" : ""}" href="#pack-${esc(id)}"><span class="rank-no">${
+      i + 1
+    }</span><span class="rank-name">${esc(name)}</span><span class="cat chip">${esc(
+      i18n.zh["label." + kind] || kind
+    )}</span><span class="rank-n">${n}</span></a>`;
+  })
+  .join("\n");
+
 const EMBED_COUNTS = JSON.stringify({
   bots: counts.bots,
   teams: counts.teams,
@@ -324,7 +341,9 @@ const CSS = `
       --c-legal: #818cf8;
       --c-finance: #facc15;
       --c-creator: #fb7185;
-      --radius: 16px;
+      --r-pill: 999px;
+      --r-card: 16px;
+      --r-ctl: 8px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -349,7 +368,7 @@ const CSS = `
     .skip:focus {
       left: 12px; top: 12px; z-index: 20;
       background: var(--accent); color: #07080f;
-      padding: 8px 12px; border-radius: 999px;
+      padding: 8px 12px; border-radius: var(--r-pill);
     }
     html, body { overflow-x: hidden; }
     .nav {
@@ -379,8 +398,8 @@ const CSS = `
     }
     .lang button {
       background: transparent; color: var(--mute);
-      border: 1px solid var(--line); border-radius: 999px;
-      padding: 4px 10px; font-size: 0.8rem; cursor: pointer;
+      border: 1px solid var(--line); border-radius: var(--r-pill);
+      padding: 4px 10px; font-size: 0.75rem; cursor: pointer;
       font-family: inherit; line-height: 1.2;
     }
     .lang button.on {
@@ -415,8 +434,25 @@ const CSS = `
       pointer-events: none;
     }
     .wrap { max-width: 1160px; margin: 0 auto; padding: 8px 20px 96px; min-width: 0; }
-    h1 { font-size: clamp(1.45rem, 3vw, 2.2rem); font-weight: 750; letter-spacing: -0.03em; margin: 8px 0 8px; overflow-wrap: anywhere; }
-    h2 { font-size: 1.28rem; margin: 40px 0 10px; letter-spacing: -0.02em; }
+    /* 统一表面：卡片 / 门卡 / 磁贴 / 表单共用同一套底、边框、圆角 */
+    .card, .tile, .door, .submit-form {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)), var(--card);
+    }
+    .nav-links a.on { color: var(--ink); }
+    /* 视图：默认（无 JS）全部展开，与旧单页一致 */
+    html.js-views .view { display: none; }
+    html[data-view="start"] .view[data-view="start"],
+    html[data-view="catalog"] .view[data-view="catalog"],
+    html[data-view="packs"] .view[data-view="packs"],
+    html[data-view="trending"] .view[data-view="trending"],
+    html[data-view="submit"] .view[data-view="submit"] { display: block; }
+    .rank-title { margin: 28px 0 4px; font-size: 1rem; color: var(--ink); }
+    .quick { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    /* 锚点滚动避开 sticky 导航与筛选条 */
+    .card, .pack-card { scroll-margin-top: 128px; }
+    #install, #one-bot, #start-here, #packs, #trending, #submit { scroll-margin-top: 76px; }
+    h1 { font-size: clamp(1.45rem, 3vw, 1.75rem); font-weight: 750; letter-spacing: -0.03em; margin: 8px 0 8px; overflow-wrap: anywhere; }
+    h2 { font-size: 1.25rem; margin: 40px 0 10px; letter-spacing: -0.02em; }
     .lede { color: var(--mute); max-width: 46rem; margin: 0 0 18px; overflow-wrap: anywhere; }
 .ver { color: var(--accent); font-weight: 700; margin-left: 6px; }
     .stats {
@@ -426,9 +462,9 @@ const CSS = `
     .stats li {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: var(--r-pill);
       padding: 6px 12px;
-      font-size: 0.88rem;
+      font-size: 0.875rem;
       color: var(--mute);
     }
     .stats strong { color: var(--ink); font-weight: 700; }
@@ -444,16 +480,19 @@ const CSS = `
       margin: 8px 0 28px;
     }
     .door {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%), var(--card);
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: var(--r-card);
       padding: 20px 22px 18px;
       position: relative;
       overflow: hidden;
       min-width: 0;
     }
-    .door:first-child { box-shadow: inset 3px 0 0 var(--c-engineering); }
-    .door:last-child { box-shadow: inset 3px 0 0 var(--c-marketing); }
+    .door:first-child { --cat: var(--c-engineering); }
+    .door:last-child { --cat: var(--c-marketing); }
+    .door::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--cat, var(--accent));
+    }
     .kicker {
       margin: 0 0 6px;
       font-size: 0.75rem;
@@ -467,17 +506,17 @@ const CSS = `
     .copyrow {
       display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
       margin-top: 6px; background: #07080f; border: 1px solid var(--line);
-      border-radius: 10px; padding: 8px 10px;
+      border-radius: var(--r-ctl); padding: 8px 10px;
       max-width: 100%;
     }
     .copyrow code {
-      font-size: 12.5px; color: var(--accent);
+      font-size: 0.75rem; color: var(--accent);
       overflow-wrap: anywhere; word-break: break-all;
       min-width: 0; flex: 1 1 12rem;
     }
     button.copy, .actions a, a.add, .btn {
       background: transparent; color: var(--ink); border: 1px solid var(--line);
-      border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px;
+      border-radius: var(--r-pill); padding: 6px 12px; cursor: pointer; font-size: 0.875rem;
       text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
       min-height: 36px; font-family: inherit;
     }
@@ -492,17 +531,15 @@ const CSS = `
     a.add { border-color: var(--ok); color: var(--ok); }
     details.cli { margin: 12px 0 0; color: var(--mute); }
     details.cli pre, details.how blockquote {
-      background: #07080f; border: 1px solid var(--line); border-radius: 8px;
+      background: #07080f; border: 1px solid var(--line); border-radius: var(--r-ctl);
       padding: 10px 12px; overflow-x: auto; color: var(--ink);
     }
-    .jobs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
+    .jobs { display: flex; gap: 8px; flex-wrap: wrap; }
     .jobs button {
-      background: color-mix(in srgb, var(--c-sales) 12%, transparent);
-      color: var(--ink); border: 1px solid color-mix(in srgb, var(--c-sales) 40%, var(--line));
-      border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px;
-      font-family: inherit;
+      background: transparent; color: var(--mute); border: 1px solid var(--line);
+      border-radius: var(--r-pill); padding: 5px 11px; cursor: pointer; font-family: inherit;
     }
-    .jobs button:hover { border-color: var(--c-sales); }
+    .jobs button:hover { border-color: var(--c-sales); color: var(--ink); }
     .filters {
       position: sticky; top: 48px; z-index: 8;
       background: color-mix(in srgb, var(--bg) 88%, transparent);
@@ -513,20 +550,20 @@ const CSS = `
     .bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 0 0 10px; }
     input[type=search] {
       flex: 1; min-width: 200px; background: var(--card); color: var(--ink);
-      border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 15px;
+      border: 1px solid var(--line); border-radius: var(--r-ctl); padding: 12px 14px; font-size: 1rem;
     }
     input[type=search]:focus { outline: 2px solid var(--accent); border-color: transparent; }
-    .count { color: var(--mute); font-size: 0.9rem; white-space: nowrap; }
+    .count { color: var(--mute); font-size: 0.875rem; white-space: nowrap; }
     .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
     .chips button {
       background: transparent; color: var(--mute); border: 1px solid var(--line);
-      border-radius: 999px; padding: 5px 11px; cursor: pointer; font-family: inherit;
+      border-radius: var(--r-pill); padding: 5px 11px; cursor: pointer; font-family: inherit;
       --chip: var(--accent);
     }
     .chips button.on, .chips button:hover { color: #07080f; background: var(--chip); border-color: transparent; }
     .chips[data-kind="plugin"] button {
       --chip: var(--c-ops);
-      font-size: 12px;
+      font-size: 0.75rem;
     }
     .chips button[data-cat="meta"] { --chip: var(--c-meta); }
     .chips button[data-cat="engineering"] { --chip: var(--c-engineering); }
@@ -544,17 +581,15 @@ const CSS = `
     .card {
       --cat: var(--accent);
       display: flex; flex-direction: column;
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)), var(--card);
-      border: 1px solid var(--line); border-radius: var(--radius); padding: 16px;
+      border: 1px solid var(--line); border-radius: var(--r-card); padding: 16px;
       color: inherit; position: relative; overflow: hidden; min-height: 100%;
     }
     .card::before {
-      content: ""; position: absolute; left: 0; top: 0; right: 0; height: 3px;
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
       background: var(--cat);
     }
-    .card:hover {
-      border-color: color-mix(in srgb, var(--cat) 55%, var(--line));
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    .card:hover, .tile:hover {
+      border-color: color-mix(in srgb, var(--cat, var(--tile, var(--accent))) 55%, var(--line));
     }
     .card:target { outline: 2px solid var(--cat); }
     .card[data-cat="meta"] { --cat: var(--c-meta); }
@@ -569,93 +604,90 @@ const CSS = `
     .card[data-cat="legal"] { --cat: var(--c-legal); }
     .card[data-cat="finance"] { --cat: var(--c-finance); }
     .card[data-cat="creator"] { --cat: var(--c-creator); }
-    .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--mute); flex-wrap: wrap; }
+    .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 0.75rem; color: var(--mute); flex-wrap: wrap; }
     .cat, .lvl, .feat, .pill, .bots-count {
-      border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px;
+      border: 1px solid var(--line); border-radius: var(--r-pill); padding: 1px 8px;
     }
     .cat { color: var(--cat); border-color: color-mix(in srgb, var(--cat) 45%, var(--line)); }
     .feat { color: #07080f; background: var(--ok); border-color: transparent; font-weight: 700; }
     .bots-count { margin-left: auto; }
-    h3 { margin: 0 0 6px; font-size: 1.08rem; letter-spacing: -0.02em; }
-    .card p { margin: 0; color: var(--mute); font-size: 0.92rem; flex: 1; }
+    h3 { margin: 0 0 6px; font-size: 1rem; letter-spacing: -0.02em; }
+    .card p { margin: 0; color: var(--mute); font-size: 0.875rem; flex: 1; }
     .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .pill.plugin { font-size: 11px; color: var(--ink); background: rgba(255,255,255,0.04); }
-    .bots { margin-top: 8px !important; font-size: 0.8rem !important; color: var(--ink) !important; }
-    .hint { margin-top: 8px !important; font-size: 0.8rem !important; }
+    .pill.plugin { font-size: 0.75rem; color: var(--ink); background: rgba(255,255,255,0.04); }
+    .bots { margin-top: 8px !important; font-size: 0.875rem !important; color: var(--ink) !important; }
+    .hint { margin-top: 8px !important; font-size: 0.75rem !important; }
     .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-    .how { margin-top: 12px; color: var(--mute); font-size: 0.86rem; }
+    .how { margin-top: 12px; color: var(--mute); font-size: 0.875rem; }
     .how summary { cursor: pointer; color: var(--ink); }
     .how ol { padding-left: 1.15rem; }
-    .how blockquote { margin: 8px 0; font-size: 0.84rem; }
+    .how blockquote { margin: 8px 0; font-size: 0.875rem; }
     .never { margin: 8px 0 0; }
     .hidden { display: none !important; }
     .empty {
       display: none; margin: 12px 0 24px; padding: 18px; border: 1px dashed var(--line);
-      border-radius: 12px; color: var(--mute);
+      border-radius: var(--r-ctl); color: var(--mute);
     }
     .empty.show { display: block; }
     .toast {
       position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(80px);
-      background: var(--ok); color: #07080f; padding: 10px 16px; border-radius: 999px;
+      background: var(--ok); color: #07080f; padding: 10px 16px; border-radius: var(--r-pill);
       font-weight: 700; font-size: 0.9rem; opacity: 0; pointer-events: none;
       transition: transform .2s ease, opacity .2s ease; z-index: 30; max-width: 90vw;
       text-align: center;
     }
     .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
-    footer { margin-top: 56px; color: var(--mute); font-size: 0.9rem; }
+    footer { margin-top: 56px; color: var(--mute); font-size: 0.875rem; }
     footer a { color: var(--accent); }
-    .api { font-size: 0.85rem; }
+    .api { font-size: 0.875rem; }
 
     /* 复制计数徽标 */
     .copies {
       margin-left: auto; color: var(--ink); font-weight: 650;
-      font-size: 11.5px; font-variant-numeric: tabular-nums; white-space: nowrap;
+      font-size: 0.75rem; font-variant-numeric: tabular-nums; white-space: nowrap;
     }
     .copies::before { content: "↻ "; color: var(--mute); font-weight: 400; }
 
     /* 分类面板 */
-    .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 0 0 18px; }
+    .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 0 0 18px; }
     .tile {
       display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.01)), var(--card);
-      border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; min-width: 0;
+      border: 1px solid var(--line); border-radius: var(--r-card); padding: 12px 14px; min-width: 0;
       color: var(--ink); font-family: inherit; text-align: left; cursor: pointer;
       position: relative; overflow: hidden;
     }
     .tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tile, var(--accent)); }
-    .cat-tile:hover { border-color: var(--tile); }
-    .t-cat { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tile, var(--accent)); }
-    .t-count, .t-copies { font-size: 0.82rem; color: var(--mute); }
+    .t-cat { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tile, var(--accent)); }
+    .t-count, .t-copies { font-size: 0.75rem; color: var(--mute); }
     .cat-tile .t-copies { color: var(--ink); font-weight: 650; }
 /* 预设组（一键生成 Bot 组） */
 .packs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; margin: 0 0 12px; }
 .pack-card { display: flex; flex-direction: column; cursor: default; padding: 12px 14px; }
-.pack-card:hover { border-color: var(--tile, var(--line)); }
 .pack-card .pack-top { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.pack-card .pack-top h3 { font-size: 1.02rem; margin: 0; }
-.pack-card .label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--mute); }
+.pack-card .pack-top h3 { font-size: 1rem; margin: 0; }
+.pack-card .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: var(--r-pill); border: 1px solid var(--line); color: var(--mute); }
 .pack-card .label.desk { color: var(--accent); border-color: var(--accent); }
-.pack-card .count { margin-left: auto; font-size: 0.78rem; color: var(--mute); }
-.pack-card .why { font-size: 0.84rem; color: var(--mute); margin: 8px 0 0; }
-.pack-card .bots { font-size: 0.82rem; color: var(--ink); margin: 8px 0 0; }
+.pack-card .count { margin-left: auto; font-size: 0.75rem; color: var(--mute); }
+.pack-card .why { font-size: 0.875rem; color: var(--mute); margin: 8px 0 0; }
+.pack-card .bots { font-size: 0.875rem; color: var(--ink); margin: 8px 0 0; }
 .pack-card .pills { margin-top: 8px; }
-.pack-card .members { display: flex; flex-wrap: wrap; gap: 6px 12px; list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.8rem; color: var(--mute); }
+.pack-card .members { display: flex; flex-wrap: wrap; gap: 6px 12px; list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.875rem; color: var(--mute); }
 .pack-card .members label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .pack-card .members input[type="checkbox"] { accent-color: var(--accent); }
-.pack-card .members code { color: var(--mute); font-size: 0.72rem; }
+.pack-card .members code { color: var(--mute); font-size: 0.75rem; }
 .pack-card .members, .pack-card .actions { margin-top: 8px; }
 .pack-card .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
     /* 提交入口 */
     .submit-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 4px 0 8px; }
-    .submit-note { color: var(--mute); font-size: 0.86rem; }
-    .submit-form { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 6px 0 8px; }
+    .submit-note { color: var(--mute); font-size: 0.875rem; }
+    .submit-form { border: 1px solid var(--line); border-radius: var(--r-card); padding: 18px; margin: 6px 0 8px; }
     .sf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
     .sf-full { grid-column: 1 / -1; }
-    .submit-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; color: var(--mute); }
+    .submit-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.875rem; color: var(--mute); }
     .submit-form input, .submit-form select, .submit-form textarea {
       background: #07080f; color: var(--ink); border: 1px solid var(--line);
-      border-radius: 10px; padding: 10px 12px; font-size: 14px; font-family: inherit;
+      border-radius: var(--r-ctl); padding: 10px 12px; font-size: 0.875rem; font-family: inherit;
     }
     .submit-form input:focus, .submit-form select:focus, .submit-form textarea:focus {
       outline: 2px solid var(--accent); border-color: transparent;
@@ -669,25 +701,25 @@ const CSS = `
     .rank-wrap { margin: 0 0 8px; }
     .rank-row {
       display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto 4.5rem; gap: 8px; align-items: center;
-      padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; margin: 6px 0;
+      padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--r-ctl); margin: 6px 0;
       color: var(--ink); text-decoration: none; background: rgba(255,255,255,.02);
     }
     .rank-row:hover { border-color: var(--accent); }
     .rank-no { color: var(--mute); font-weight: 750; font-variant-numeric: tabular-nums; }
     .rank-row.top .rank-no { color: var(--accent); }
     .rank-name { overflow-wrap: anywhere; }
-    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; font-size: 11px; color: var(--mute); white-space: nowrap; }
+    .chip { border: 1px solid var(--line); border-radius: var(--r-pill); padding: 1px 8px; font-size: 0.75rem; color: var(--mute); white-space: nowrap; }
     .rank-n { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
-    .rank-empty { color: var(--mute); font-size: 0.9rem; }
+    .rank-empty { color: var(--mute); font-size: 0.875rem; }
     @media (max-width: 800px) {
       .doors { grid-template-columns: 1fr; }
       .nav { gap: 8px; padding: 10px 12px; }
       .nav-links { gap: 10px; }
       .wordmark span { display: none; }
-      .nav a { font-size: 0.82rem; }
+      .nav a { font-size: 0.875rem; }
       .filters { position: static; }
       .copyrow { flex-direction: column; align-items: stretch; }
-      .copyrow code { font-size: 11.5px; flex: 0 1 auto; }
+      .copyrow code { font-size: 0.75rem; flex: 0 1 auto; }
       .copyrow .copy { align-self: flex-start; }
       button.copy, .actions a { width: auto; }
       .card .actions .primary { width: 100%; justify-content: center; }
@@ -736,6 +768,61 @@ const I18N = ${JSON.stringify(i18n)};
       });
       setLang(lang);
     }
+
+    // ---------- 视图路由：#start / #catalog / #packs / #trending / #submit ----------
+    var VIEWS = ['start', 'catalog', 'packs', 'trending', 'submit'];
+    var VIEW_ALIAS = { 'install': 'start', 'start-here': 'start', 'one-bot': 'start' };
+    var currentView = 'start';
+
+    function routeFromHash() {
+      var raw = (location.hash || '').replace(/^#/, '');
+      if (!raw) return { view: 'start', target: null };
+      if (raw.indexOf('bot-') === 0) return { view: 'catalog', target: raw };
+      if (raw.indexOf('pack-') === 0) return { view: 'packs', target: raw };
+      if (VIEW_ALIAS[raw]) return { view: VIEW_ALIAS[raw], target: document.getElementById(raw) ? raw : null };
+      if (VIEWS.indexOf(raw) !== -1) return { view: raw, target: null };
+      return { view: currentView, target: null };
+    }
+
+    function goView(name) {
+      if (VIEWS.indexOf(name) === -1) return;
+      if (location.hash === '#' + name) applyView(true);
+      else location.hash = name;
+    }
+
+    function goCatalog() {
+      goView('catalog');
+    }
+
+    function applyView(force) {
+      var r = routeFromHash();
+      var prev = currentView;
+      var next = VIEWS.indexOf(r.view) !== -1 ? r.view : 'start';
+      var changed = next !== prev;
+      currentView = next;
+      document.documentElement.setAttribute('data-view', next);
+      document.querySelectorAll('.nav-links a[data-view-link]').forEach(function (a) {
+        a.classList.toggle('on', a.getAttribute('data-view-link') === next);
+      });
+      if (!changed && !force) return;
+      if (r.target) {
+        requestAnimationFrame(function () {
+          var el = document.getElementById(r.target);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      if (next === 'trending' && changed) refreshCounts();
+    }
+
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        goView(a.getAttribute('href').replace(/^#/, ''));
+      });
+    });
+    window.addEventListener('hashchange', function () { applyView(false); });
 
     const q = document.getElementById('q');
     const chips = document.getElementById('chips');
@@ -845,7 +932,7 @@ const I18N = ${JSON.stringify(i18n)};
       markChips(chips, 'data-cat', '');
       markChips(plugChips, 'data-plugin', '');
       apply();
-      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      goCatalog();
     });
     document.addEventListener('click', async function (e) {
       var btn = e.target.closest('button.copy');
@@ -922,6 +1009,7 @@ const I18N = ${JSON.stringify(i18n)};
       var tag = (e.target && e.target.tagName) || '';
       if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && !e.metaKey && !e.ctrlKey && !e.altKey) {
         e.preventDefault();
+        if (currentView !== 'catalog') goView('catalog');
         q.focus();
         q.select();
       }
@@ -938,7 +1026,7 @@ const I18N = ${JSON.stringify(i18n)};
         cat = b.getAttribute('data-cat') || '';
         markChips(chips, 'data-cat', cat);
         apply();
-        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        goCatalog();
       });
     });
 
@@ -946,6 +1034,7 @@ const I18N = ${JSON.stringify(i18n)};
     var COUNTS_API = ${JSON.stringify(COUNTS_API)};
     var GH = ${JSON.stringify(GH)};
     var BOTS = ${JSON.stringify(loaded.templates.map((t) => ({ id: t.id, name: t.name, category: t.category })))};
+    var TEAMS = ${JSON.stringify(loaded.teams.map((t) => ({ id: t.id, name: t.name, kind: teamKind(t.id) })))};
 
     function escH(s) {
       return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -1010,6 +1099,27 @@ const I18N = ${JSON.stringify(i18n)};
       }).join('');
     }
 
+    function renderTeamRank(teamCounts) {
+      var box = document.getElementById('rank-teams');
+      if (!box) return;
+      var items = TEAMS.map(function (tm) {
+        return { id: tm.id, name: tm.name, kind: tm.kind, count: teamCounts[tm.id] || 0 };
+      }).filter(function (x) { return x.count > 0; })
+        .sort(function (a, b) { return b.count - a.count || a.id.localeCompare(b.id); })
+        .slice(0, 10);
+      if (!items.length) {
+        box.innerHTML = '<p class="rank-empty">' + escH(t('trending.teams_empty')) + '</p>';
+        return;
+      }
+      box.innerHTML = items.map(function (it, i) {
+        return '<a class="rank-row' + (i < 3 ? ' top' : '') + '" href="#pack-' + escH(it.id) + '">' +
+          '<span class="rank-no">' + (i + 1) + '</span>' +
+          '<span class="rank-name">' + escH(it.name) + '</span>' +
+          '<span class="cat chip">' + escH(it.kind) + '</span>' +
+          '<span class="rank-n">' + it.count + '</span></a>';
+      }).join('');
+    }
+
     function refreshCounts() {
       if (!COUNTS_API) return;
       fetch(COUNTS_API + '/api/v1/counts')
@@ -1020,6 +1130,7 @@ const I18N = ${JSON.stringify(i18n)};
           Object.keys(c.bot || {}).forEach(function (id) { setCount(id, 'bot', c.bot[id]); });
           Object.keys(c.team || {}).forEach(function (id) { setCount(id, 'team', c.team[id]); });
           renderRank(c.bot || {});
+          renderTeamRank(c.team || {});
         })
         .catch(function () {});
     }
@@ -1177,7 +1288,8 @@ const I18N = ${JSON.stringify(i18n)};
       }
     }
 
-    refreshCounts();
+    applyView(true);
+    if (currentView !== 'trending') refreshCounts();
     checkAuth();
 `;
 
@@ -1186,8 +1298,20 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+  (function () {
+    var raw = (location.hash || "").replace(/^#/, "");
+    var v = "start";
+    if (raw.indexOf("bot-") === 0) v = "catalog";
+    else if (raw.indexOf("pack-") === 0) v = "packs";
+    else if (raw === "install" || raw === "start-here" || raw === "one-bot") v = "start";
+    else if (["catalog", "packs", "trending", "submit"].indexOf(raw) !== -1) v = raw;
+    document.documentElement.setAttribute("data-view", v);
+    document.documentElement.classList.add("js-views");
+  })();
+  </script>
   <title>Grok Bot 模板库</title>
-  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。${loaded.templates.length} 个 Grok Bot 操作契约 — 粘贴 START.md，点击一个团队，或复制一个 PROFILE。" />
+  <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。${loaded.templates.length} 个 Grok Bot 操作契约 — 粘贴 START.md 生成整个 Bot 组，或复制一个 PROFILE。" />
   <link rel="canonical" href="${PAGES}/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Grok Bot 模板库" />
@@ -1196,7 +1320,7 @@ const html = `<!DOCTYPE html>
   <meta property="og:image" content="${PAGES}/header.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Grok Bot 模板库" />
-  <meta name="twitter:description" content="粘贴 START.md。点击一个团队。或复制一个 PROFILE。停留在 L1。" />
+  <meta name="twitter:description" content="粘贴 START.md 生成 Bot 组，或复制一个 PROFILE。停留在 L1。" />
   <meta name="twitter:image" content="${PAGES}/header.jpg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2307080f'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='%235ce1e6'%3EG%3C/text%3E%3C/svg%3E" />
   <style>${CSS}
@@ -1207,12 +1331,11 @@ const html = `<!DOCTYPE html>
   <nav class="nav">
     <a class="wordmark" href="./">Templates <span>for Grok Bot</span></a>
     <div class="nav-links">
-      <a href="#install" data-i18n="nav.install">获取团队</a>
-      <a href="#start-here" data-i18n="nav.start">从这里开始</a>
-      <a href="#catalog" data-i18n="nav.catalog">目录</a>
-      <a href="#packs" data-i18n="nav.packs">预设组</a>
-      <a href="#trending" data-i18n="nav.trending">热门榜</a>
-      <a href="#submit" data-i18n="nav.submit">提交</a>
+      <a href="#start" data-i18n="nav.home" data-view-link="start">开始</a>
+      <a href="#catalog" data-i18n="nav.catalog" data-view-link="catalog">目录</a>
+      <a href="#packs" data-i18n="nav.packs" data-view-link="packs">预设组</a>
+      <a href="#trending" data-i18n="nav.trending" data-view-link="trending">热门榜</a>
+      <a href="#submit" data-i18n="nav.submit" data-view-link="submit">提交</a>
       <a href="${GH}" data-i18n="nav.github">GitHub</a>
       <div class="lang" id="lang">
         ${LANGS.map((l) => `<button type="button" data-lang="${l}">${esc(langName(l))}</button>`).join("")}
@@ -1223,6 +1346,7 @@ const html = `<!DOCTYPE html>
     <img src="header.jpg" alt="Grok Bot 模板库" />
   </header>
   <div class="wrap">
+    <section class="view" data-view="start" id="view-start">
     <h1 data-i18n="hero.title">粘贴一个链接。获得一个可用的 Bot。</h1>
     <p class="lede"><span data-i18n="hero.lede">告别凭感觉粘贴。每张卡片都是一份 L1 操作契约 — 任务、永不做、首个任务。复制 PROFILE 到编辑个人资料，或复制组装指令连同 START.md 发给 Setup。</span><span class="ver">v${esc(pkg.version)}</span></p>
     <ul class="stats">
@@ -1271,41 +1395,29 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
       </section>
     </div>
 
-    <section id="categories">
-      <h2 data-i18n="categories.title">按分类浏览</h2>
-      <p class="lede" data-i18n="categories.lede">点击分类进入目录并自动应用筛选。数字为该分类的模板数与站内累计复制次数。</p>
-      <div class="cats">${catTiles}</div>
-    </section>
-
-    <section id="packs">
-      <h2 data-i18n="packs.title">一键生成 Bot 组</h2>
-      <p class="lede" data-i18n="packs.lede">选一个预设（默认整套），或勾选成员自选；复制组装指令，连同 START.md 一起发给 Setup。</p>
-      <div class="packs" id="packs-grid">${packCards}</div>
-      <p class="hint" data-i18n="packs.hint">预设组 = 2–4 个 Bot 一个群组、可见交接。组装指令列出成员名单；Setup 按名单逐个创建，忽略团队选项。</p>
-    </section>
-
-    <h2 data-i18n="jobs.title">我想……</h2>
-    <p class="lede" data-i18n="jobs.lede">跳转到目录中的任务。然后复制 PROFILE。</p>
-    <div class="jobs" id="jobs">
-      ${JOBS.map(
-        (j) =>
-          `<button type="button" data-q="${esc(j.q)}">${esc(j.label)}</button>`
-      ).join("\n      ")}
-    </div>
-
     <section id="start-here">
       <h2 data-i18n="start.title">从这里开始</h2>
       <p class="lede" data-i18n="start.lede">八个第一周真正能运行的起始模板。与完整目录相同的复制按钮。</p>
       <div class="grid" id="featured">${featuredCards}</div>
     </section>
-
-    <section id="trending">
-      <h2 data-i18n="trending.title">热门榜</h2>
-      <p class="lede" data-i18n="trending.lede">按站内复制次数排序（种子 + 实时）。部署计数服务后运行时自动刷新；计数只反映本站复制动作，不等于安装量。</p>
-      <div class="rank-wrap" id="rank">${trendingInitial || `<p class="rank-empty" data-i18n="trending.empty">暂无复制数据</p>`}</div>
     </section>
 
-    <div class="filters" id="catalog">
+    <section class="view" data-view="catalog" id="view-catalog">
+    <h2 data-i18n="catalog.title">目录</h2>
+    <p class="lede" data-i18n="catalog.lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
+      <div class="cats" id="cats">${catTiles}</div>
+
+      <div class="quick">
+        <span class="kicker" data-i18n="jobs.title">我想……</span>
+        <div class="jobs" id="jobs">
+          ${JOBS.map(
+            (j) =>
+              `<button type="button" data-q="${esc(j.q)}">${esc(j.label)}</button>`
+          ).join("\n          ")}
+        </div>
+      </div>
+
+      <div class="filters" id="filters">
       <div class="bar">
         <input id="q" type="search" placeholder="搜索任务、插件、简介……（按 / 聚焦）" data-i18n-placeholder="catalog.search_placeholder" />
         <span class="count" id="count"></span>
@@ -1326,10 +1438,31 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
           .join("\n        ")}
       </div>
     </div>
-    <h2 data-i18n="catalog.title">目录</h2>
-    <p class="lede" data-i18n="catalog.lede">每张卡片复制 PROFILE 正文用于编辑个人资料，或原始链接用于 Setup。展开卡片查看首个任务和永不做列表。</p>
     <p class="empty" id="empty" data-i18n="catalog.empty">没有匹配的模板。清空搜索，选择「全部」，或试试 GitHub / Gmail。</p>
     <div class="grid" id="grid">${cards}</div>
+    </section>
+
+    <section class="view" data-view="packs" id="view-packs">
+    <section id="packs">
+      <h2 data-i18n="packs.title">一键生成 Bot 组</h2>
+      <p class="lede" data-i18n="packs.lede">选一个预设（默认整套），或勾选成员自选；复制组装指令，连同 START.md 一起发给 Setup。</p>
+      <div class="packs" id="packs-grid">${packCards}</div>
+      <p class="hint" data-i18n="packs.hint">预设组 = 2–4 个 Bot 一个群组、可见交接。组装指令列出成员名单；Setup 按名单逐个创建，忽略团队选项。</p>
+    </section>
+    </section>
+
+    <section class="view" data-view="trending" id="view-trending">
+    <section id="trending">
+      <h2 data-i18n="trending.title">热门榜</h2>
+      <p class="lede" data-i18n="trending.lede">按站内复制次数排序（种子 + 实时）。计数只反映本站复制动作，不等于安装量。</p>
+      <h3 class="rank-title" data-i18n="trending.bots_title">最常被复制的 Bot</h3>
+      <div class="rank-wrap" id="rank">${trendingInitial || `<p class="rank-empty" data-i18n="trending.empty">暂无复制数据</p>`}</div>
+      <h3 class="rank-title" data-i18n="trending.teams_title">最常被复制的预设组</h3>
+      <div class="rank-wrap" id="rank-teams">${trendingTeamsInitial || `<p class="rank-empty" data-i18n="trending.teams_empty">暂无预设组复制数据</p>`}</div>
+    </section>
+    </section>
+
+    <section class="view" data-view="submit" id="view-submit">
     <section id="submit">
       <h2 data-i18n="submit.title">提交一个 Bot</h2>
       <p class="lede" data-i18n="submit.lede">按 SPEC 契约填写。提交后由维护者审核，转写为 templates/**/template.yaml 并走 PR。</p>
@@ -1363,7 +1496,9 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
         </div>
       </form>
     </section>
-    <footer>
+    </section>
+
+<footer>
       <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_loader">Bot 加载指令</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
       <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a> · <a href="counts.json">counts.json</a></p>
     </footer>

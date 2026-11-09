@@ -60,3 +60,23 @@ test("pack card START.md button carries the full START.md text", () => {
   assert.match(html, /const START_MD = "# 开始/);
   assert.match(html, /专项组/);
 });
+
+test("site is split into 5 views with hash routing and legacy anchors", () => {
+  for (const v of ["start", "catalog", "packs", "trending", "submit"]) {
+    assert.match(html, new RegExp(`<section class="view" data-view="${v}"`));
+  }
+  assert.match(html, /data-view-link="trending"/);
+  assert.match(html, /function routeFromHash/);
+  assert.match(html, /'install': 'start'/);
+  assert.match(html, /indexOf\('bot-'\) === 0/);
+  // no-JS fallback keeps everything expanded
+  assert.match(html, /html\.js-views \.view \{ display: none; \}/);
+});
+
+test("trending view shows bot and team leaderboards", () => {
+  assert.match(html, /id="rank"/);
+  assert.match(html, /id="rank-teams"/);
+  assert.match(html, /data-i18n="trending\.bots_title"/);
+  assert.match(html, /data-i18n="trending\.teams_title"/);
+  assert.match(html, /function renderTeamRank/);
+});
