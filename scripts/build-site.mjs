@@ -660,6 +660,10 @@ const CSS = `
     .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
     footer { margin-top: 56px; color: var(--mute); font-size: 0.875rem; }
     footer a { color: var(--accent); }
+    .qr-row { display: flex; justify-content: center; gap: 32px; margin: 0 0 16px; flex-wrap: wrap; }
+    .qr-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--mute); font-size: 0.8rem; }
+    .qr-item img { width: 108px; height: 108px; object-fit: contain; background: #fff; border-radius: 12px; padding: 4px; }
+    .qr-item b { color: var(--ink); }
     .api { font-size: 0.875rem; }
 
     /* 复制计数徽标 */
@@ -1335,15 +1339,18 @@ const html = `<!DOCTYPE html>
   <title>Grok Bot 模板库</title>
   <meta name="description" content="告别凭感觉粘贴。精心设计 Bot。${loaded.templates.length} 个 Grok Bot 操作契约 — 粘贴 START.md 生成整个 Bot 组，或复制一个 PROFILE。" />
   <link rel="canonical" href="${PAGES}/" />
+  <meta name="keywords" content="Grok Bot, 模板库, PROFILE, START.md, 智能体, Agent, Grok, AI 助手" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Grok Bot 模板库" />
   <meta property="og:description" content="告别凭感觉粘贴。精心设计 Bot。粘贴 START.md 到名为 Setup 的 Bot，或从卡片复制 PROFILE。" />
   <meta property="og:url" content="${PAGES}/" />
   <meta property="og:image" content="${PAGES}/header.jpg" />
+ <meta property="og:image:alt" content="Grok Bot 模板库" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Grok Bot 模板库" />
   <meta name="twitter:description" content="粘贴 START.md 生成 Bot 组，或复制一个 PROFILE。停留在 L1。" />
   <meta name="twitter:image" content="${PAGES}/header.jpg" />
+ <meta name="twitter:image:alt" content="Grok Bot 模板库" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2307080f'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='%235ce1e6'%3EG%3C/text%3E%3C/svg%3E" />
   <style>${CSS}
   </style>
@@ -1521,7 +1528,11 @@ npx --yes github:junze-xu/grok-bot-cn init --team eng --out ./eng-bots</pre>
     </section>
 
 <footer>
-      <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="agent.html" data-i18n="footer.bot_loader">Bot 加载指令</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
+      <div class="qr-row">
+        <div class="qr-item"><img src="qrcode-official-account.jpg" alt="公众号 JunzeXuInfra 二维码" width="108" height="108"><span>公众号 <b>JunzeXuInfra</b> · 关注获取更新</span></div>
+        <div class="qr-item"><img src="wechat-junze.jpg" alt="个人微信 JunzeXu 二维码" width="108" height="108"><span>个人微信 <b>JunzeXu</b> · 交流合作</span></div>
+      </div>
+      <p>MIT · <a href="${GH}" data-i18n="nav.github">GitHub</a> · <a href="https://junze-xu.github.io/">作者博客</a> · <a href="agent.html" data-i18n="footer.bot_loader">Bot 加载指令</a> · <a href="${GH}/blob/main/SPEC.md">SPEC</a> · <span data-i18n="footer.disclaimer">与 xAI 无隶属关系。Grok Bot 是 xAI / Cursor 的产品。模板是粘贴到你账户的操作契约。</span></p>
       <p class="api"><span data-i18n="footer.api">机器 API：</span><a href="catalog.json">catalog.json</a> · <a href="api/v1/index.json">api/v1</a> · <a href="llms.txt">llms.txt</a> · <a href="profiles.json">profiles.json</a> · <a href="counts.json">counts.json</a></p>
     </footer>
   </div>
@@ -1539,6 +1550,11 @@ fs.copyFileSync(path.join(root, "assets", "header.jpg"), path.join(docs, "header
 if (HERO_FILE === "hero.jpg") {
   fs.copyFileSync(path.join(root, "assets", "hero.jpg"), path.join(docs, "hero.jpg"));
 }
+fs.copyFileSync(path.join(root, "assets", "qrcode-official-account.jpg"), path.join(docs, "qrcode-official-account.jpg"));
+fs.copyFileSync(path.join(root, "assets", "wechat-junze.jpg"), path.join(docs, "wechat-junze.jpg"));
+
+fs.writeFileSync(path.join(docs, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>${PAGES}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>${PAGES}/agent.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n</urlset>\n`);
+fs.writeFileSync(path.join(docs, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${PAGES}/sitemap.xml\n`);
 
 const profiles = {};
 for (const t of loaded.templates) {
@@ -1616,5 +1632,5 @@ const agentHtml = `<!DOCTYPE html>
 `;
 fs.writeFileSync(path.join(docs, "agent.html"), agentHtml);
 console.log(
-  `docs/index.html  docs/agent.html  docs/profiles.json  docs/${HERO_FILE}`
+  `docs/index.html  docs/agent.html  docs/profiles.json  docs/${HERO_FILE}  docs/qrcode-official-account.jpg  docs/wechat-junze.jpg  docs/sitemap.xml  docs/robots.txt`
 );
