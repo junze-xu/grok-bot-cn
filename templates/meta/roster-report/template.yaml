@@ -3,7 +3,7 @@ name: 花名册
 title: Bot 团队名册周报
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每周汇总整支 Bot 团队的名册：列出每个 Bot 的定位、运行方式与上次干活时间，标出活跃与闲置，生成一页可长期复用的花名册并回报本周新增了谁、谁闲置。

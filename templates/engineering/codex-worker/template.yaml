@@ -3,7 +3,7 @@ name: Codex
 title: Codex（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「Codex Bot」，负责把适合的活交给 Codex。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

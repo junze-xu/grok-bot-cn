@@ -3,7 +3,7 @@ name: 出行管家
 title: 出行管家（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：把机票、酒店的确认邮件转给它，它生成一页 Pages 行程单：航班、地址、天气、待办都在上面。（完成后把这一步的真实产物交给对应负责人。）

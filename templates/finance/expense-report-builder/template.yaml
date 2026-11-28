@@ -3,7 +3,7 @@ name: 报销单
 title: 报销单 Bot（财务）
 category: finance
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：你说一句"这个月的报销"，它按公司模板把发票填进报销单 Excel，附件打包好给你。（完成后把这一步的真实产物交给对应负责人。）

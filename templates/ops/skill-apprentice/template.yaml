@@ -3,7 +3,7 @@ name: 学徒
 title: 学徒 Bot（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 专门把我会做的事学成可以重复执行的技能：你演示一遍怎么干，它写成一张 Skill 卡片，先演练一次给你看，没问题再交给它自动干。

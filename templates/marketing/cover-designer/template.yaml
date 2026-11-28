@@ -3,7 +3,7 @@ name: 封面
 title: 封面 Bot（设计）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：给它标题和人像参考，调用 Muse 或 Nano Banana，出 3:4 和 4:3 两版封面。（完成后把这一步的真实产物交给对应负责人。）

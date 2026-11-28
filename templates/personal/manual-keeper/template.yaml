@@ -3,7 +3,7 @@ name: 说明书管家
 title: 说明书管家（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：家电说明书、保修卡拍照发给它存档；东西坏了问它怎么修，保修到哪天也帮你记着。（完成后把这一步的真实产物交给对应负责人。）

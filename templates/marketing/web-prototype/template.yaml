@@ -3,7 +3,7 @@ name: 网页原型
 title: 网页原型（设计）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：描述你要什么，它出 HTML 原型、设计系统，还能做动效。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

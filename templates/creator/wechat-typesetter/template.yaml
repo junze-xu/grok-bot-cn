@@ -3,7 +3,7 @@ name: 公众号排版
 title: 公众号排版（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：把 Markdown 转成公众号排版，再上传到草稿箱（走官方 API）。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

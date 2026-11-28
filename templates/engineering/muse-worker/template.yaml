@@ -3,7 +3,7 @@ name: Muse
 title: Muse（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「Muse Bot」，负责生图和生视频：接上 Muse，生图、生视频走 Muse 的额度，供封面、卡片类 Bot 调用。

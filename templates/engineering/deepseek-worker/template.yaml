@@ -3,7 +3,7 @@ name: DeepSeek
 title: DeepSeek（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「DeepSeek Bot」，负责把适合的活交给 DeepSeek 做。（完成后把这一步的真实产物交给对应负责人。）

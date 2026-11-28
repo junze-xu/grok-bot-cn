@@ -3,7 +3,7 @@ name: 直播复盘
 title: 直播复盘（电商）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：把直播数据和录屏发给它，它找出掉人的时间点和原因，出一份下场改进清单。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

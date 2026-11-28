@@ -3,7 +3,7 @@ name: 小红书收藏夹
 title: 小红书收藏夹（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：发小红书笔记链接给它，存成一条 Obsidian 笔记；如果是视频，附上转写文字。（完成后把这一步的真实产物交给对应负责人。）

@@ -3,7 +3,7 @@ name: 腾讯会议
 title: 腾讯会议（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责连接腾讯会议：装好腾讯会议官方 CLI，Bot 能查你的会议、拉录制和纪要；约会、改会、取消都要你点头。（完成后把这一步的真实产物交给对应负责人。）

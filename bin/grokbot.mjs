@@ -2,13 +2,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import { stringify as stringifyYaml } from "yaml";
-import { resolveRoot, packageRoot } from "../lib/paths.mjs";
+import { resolveRoot } from "../lib/paths.mjs";
 import { loadAll, findTemplate } from "../lib/load.mjs";
 import { validateLoaded } from "../lib/validate.mjs";
+import { buildCatalog, loadShareLinks } from "../lib/catalog.mjs";
 import { START_URL, GH, PAGES, NPX, profileUrl } from "../lib/urls.mjs";
 import { renderProfile, writeTemplateDocs } from "../lib/render.mjs";
 import { writeSkillDocs } from "../lib/render-skill.mjs";
 import { writeRoutineDocs } from "../lib/render-routine.mjs";
+import { writePatternDocs } from "../lib/render-pattern.mjs";
 
 const VERSION = JSON.parse(
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")
@@ -305,16 +307,17 @@ function cmdDoctor(a, loaded) {
   const start = path.join(loaded.dirs.root, "START.md");
   const startOk = fs.existsSync(start);
   const header = path.join(loaded.dirs.root, "assets", "header.jpg");
+  const headerOk = fs.existsSync(header);
   console.log("grokbot doctor");
   console.log(`  目录       ${result.errors.length ? "失败" : "通过"}  (${result.counts.templates} 个模板)`);
   console.log(`  start.md   ${startOk ? "通过" : "缺失"}`);
-  console.log(`  头图       ${fs.existsSync(header) ? "通过" : "缺失"}`);
+  console.log(`  头图       ${headerOk ? "通过" : "缺失"}`);
   console.log(`  分享安全   ${loaded.templates.every((t) => t.share_safe) ? "通过" : "失败"}`);
   if (result.errors.length) {
     console.log("\n错误：");
     for (const e of result.errors.slice(0, 20)) console.log(`  ${e.msg}  (${e.file})`);
   }
-  const fail = result.errors.length > 0 || !startOk;
+  const fail = result.errors.length > 0 || !startOk || !headerOk;
   console.log(fail ? "\n失败" : "\n通过 —— 目录校验全部通过");
   return fail ? 1 : 0;
 }
@@ -404,26 +407,11 @@ function cmdNew(a) {
 }
 
 function cmdCatalog(loaded) {
-  const payload = {
+  const { api } = buildCatalog(loaded, {
     version: VERSION,
-    api_version: "v1",
-    start_url: START_URL,
-    count: loaded.templates.length,
-    items: loaded.templates.map((t) => ({
-      id: t.id,
-      name: t.name,
-      category: t.category,
-      autonomy: t.autonomy,
-      tagline: t.tagline,
-      plugins: t.plugins,
-      featured: !!t.featured,
-      path: t._rel,
-      profile_url: profileUrl(t),
-      share_url: t.share_url || null,
-    })),
-    teams: loaded.teams.map((t) => ({ id: t.id, name: t.name, bots: t.bots })),
-  };
-  console.log(JSON.stringify(payload, null, 2));
+    shareLinks: loadShareLinks(loaded.dirs.root),
+  });
+  console.log(JSON.stringify(api, null, 2));
   return 0;
 }
 
@@ -464,8 +452,9 @@ function main(argv) {
       for (const t of loaded.templates) writeTemplateDocs(t);
       for (const s of loaded.skills) writeSkillDocs(s);
       for (const r of loaded.routines) writeRoutineDocs(r);
+      for (const p of loaded.patterns) writePatternDocs(p);
       console.log(
-        `已渲染 ${loaded.templates.length} 个模板，${loaded.skills.length} 个技能，${loaded.routines.length} 个例行程序`
+        `已渲染 ${loaded.templates.length} 个模板，${loaded.skills.length} 个技能，${loaded.routines.length} 个例行程序，${loaded.patterns.length} 个模式`
       );
       return 0;
     }
@@ -477,4 +466,3 @@ function main(argv) {
 }
 
 process.exitCode = main(process.argv.slice(2));
-void packageRoot;

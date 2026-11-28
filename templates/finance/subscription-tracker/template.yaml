@@ -3,7 +3,7 @@ name: 订阅哨兵
 title: 订阅哨兵（财务）
 category: finance
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 。请把下面的内容记成长期设定，并建好定时任务：扫邮箱里的账单，列出你所有的订阅和下次扣费日，提前 3 天问你还续不续。（完成后把这一步的真实产物交给对应负责人。）

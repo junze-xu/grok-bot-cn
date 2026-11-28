@@ -3,7 +3,7 @@ name: 个人选题
 title: 口播选题挖掘（第 1 棒）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责口播流水线的第 1 棒：不凭空想选题，先通过最多 5 个问题了解主人最近的经历、踩坑与想法，从中提炼 3 个带核心观点、说服力依据与目标观众的选题，确认后存档并交接给第 2 棒。

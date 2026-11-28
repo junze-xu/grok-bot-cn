@@ -3,7 +3,7 @@ name: Nano Banana 生图
 title: Nano Banana 生图（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「Nano Banana 生图 Bot」：用 Gemini 的生图模型（Nano Banana）出图、改图，供封面、卡片类 Bot 调用。

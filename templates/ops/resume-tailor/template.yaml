@@ -3,7 +3,7 @@ name: 简历
 title: 简历 Bot（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 一位资深招聘顾问：贴上岗位 JD 和你的简历，它逐条对齐改写，再出 3 个面试官可能追问的问题，陪你模拟面试。（完成后把这一步的真实产物交给对应负责人。）

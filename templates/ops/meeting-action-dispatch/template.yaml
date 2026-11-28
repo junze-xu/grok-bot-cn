@@ -3,7 +3,7 @@ name: 会议纪要派活
 title: 会议纪要派活（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 。请把下面的内容记成长期设定，并建好定时任务：每天下班前读今天的飞书妙记，拆出行动项，派给对应的 Bot 或者提醒你。每次收到任务：用飞书 CLI 读取我今天参加的会议的妙记 / 纪要；每场会提取：结论（最多 3 条）、行动项（谁｜做什么｜截止时间）；行动项分 3 类：。

@@ -9,7 +9,8 @@ import { findSecrets } from "../lib/secrets.mjs";
 const loaded = loadAll(resolveRoot());
 
 test("catalog loads templates", () => {
-  assert.ok(loaded.templates.length >= 6, "expected at least the gold templates");
+  assert.ok(loaded.templates.length >= 151, "catalog shrank below the current template set");
+  assert.ok(loaded.teams.length >= 16);
 });
 
 test("validate has no errors", () => {
@@ -19,6 +20,22 @@ test("validate has no errors", () => {
     0,
     r.errors.map((e) => `${e.file}: ${e.msg}`).join("\n")
   );
+});
+
+test("validateLoaded can run twice in one process", () => {
+  const again = validateLoaded(loaded);
+  assert.equal(again.errors.length, 0);
+});
+
+test("stable and featured templates have no import filler", () => {
+  for (const t of loaded.templates) {
+    if (t.status !== "stable" && t.featured !== true) continue;
+    const blob = [t.job, t.why, t.deliverable, t.example_first_run].join("\n");
+    assert.doesNotMatch(blob, /原设定的验收话术/);
+    assert.doesNotMatch(blob, /把这一步做成可重复、可审查的产出，代替每次手搓/);
+    assert.doesNotMatch(blob, /一份可交付给主人的成果与一句回执/);
+    assert.doesNotMatch(t.job, /^[。：，、]/);
+  }
 });
 
 test("ids unique and folder-aligned", () => {

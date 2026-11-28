@@ -3,7 +3,7 @@ name: 代码洁癖
 title: 代码附录：代码洁癖
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 按通用 A 安装 ub-mode Skill。每次写代码之前先读它的规则，按规则写；写完自查一遍再交付。（完成后把这一步的真实产物交给对应负责人。）

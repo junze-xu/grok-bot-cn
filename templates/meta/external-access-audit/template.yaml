@@ -3,7 +3,7 @@ name: 安全审计
 title: 外部授权与登录状态月审
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每月盘点仍然开着的外部授权、保存了登录状态的网站与云电脑里的 Key 文件位置，对照已删除/闲置 Bot 找出遗留授权，逐项给出保留/撤销建议与撤销入口。

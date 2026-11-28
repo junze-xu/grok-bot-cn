@@ -3,7 +3,7 @@ name: 公众号一条龙
 title: 公众号一条龙（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：选题打分 → 调研 → 写 → 配图 → 排版 → 推到公众号草稿箱。发不发，你说了算。（完成后把这一步的真实产物交给对应负责人。）

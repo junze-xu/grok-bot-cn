@@ -3,7 +3,7 @@ name: Kimi
 title: Kimi（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「Kimi Bot」，负责把适合的活交给 Kimi：在云电脑里装 Kimi Code CLI，中文长文、代码这类活交给 Kimi。

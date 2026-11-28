@@ -214,7 +214,7 @@ https://raw.githubusercontent.com/junze-xu/grok-bot-cn/main/START.md
 | 天气穿搭 | 每天早上七点半，看完天气、翻完你的衣橱照片，告诉你今天穿什么。 | personal | L1 | — | [templates/personal/weather-outfit/](templates/personal/weather-outfit/) |
 | 狼人杀法官 | 一个人也能玩一局：它当法官，同时扮演其他 8 个性格各异的 AI 玩家，你是第 9 个。 | personal | L1 | — | [templates/personal/werewolf-judge/](templates/personal/werewolf-judge/) |
 | 运动报告 | 跑步、骑行、徒步的轨迹文件丢给它，出一张好看的运动报告图。 | personal | L1 | GitHub | [templates/personal/workout-report/](templates/personal/workout-report/) |
-| 闲鱼哥 | 手机上给闲置拍一段视频发给它，它自己写标题、描述、参考同款定价，然后在电脑上发布到闲鱼。你最后看一眼就行。 | personal | L1 | — | [templates/personal/xianyu-lister/](templates/personal/xianyu-lister/) |
+| 闲鱼哥 | 拍一段闲置视频，它写出标题、描述和三个参考价；你回复「发」之前不会上架。 | personal | L1 | — | [templates/personal/xianyu-lister/](templates/personal/xianyu-lister/) |
 | 证据汇总 | 打包已验证的内容——绝不发布发版或拦截指令。 | product | L1 | GitHub | [templates/product/evidence-packager/](templates/product/evidence-packager/) |
 | 发布管理 | 每个角色一位负责人。人类发出发版裁决。 | product | L1 | Slack, GitHub | [templates/product/launch-coordinator/](templates/product/launch-coordinator/) |
 | 产品性能 | 热点、链接、事实 vs 绝对不碰生产。 | product | L1 | GitHub, Slack | [templates/product/product-performance/](templates/product/product-performance/) |

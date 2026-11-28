@@ -3,7 +3,7 @@ name: 网页剪藏
 title: 网页剪藏（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：配合浏览器的 Clipper 插件，网页选区或截图一键发给 Bot 入库。每次收到任务：识别内容：是什么、来自哪个网页；存到 clips/日期-标题.md：来源链接｜剪藏时间｜原文（截图的话写识别出来的文字）｜一句话总结｜自动打 3 个标签；回复：「已存：标题」。

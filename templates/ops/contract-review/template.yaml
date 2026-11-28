@@ -3,7 +3,7 @@ name: 合同审阅
 title: 合同审阅（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：发一份合同给它，它标出风险条款和签之前要问清楚的点。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

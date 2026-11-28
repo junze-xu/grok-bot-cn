@@ -3,7 +3,7 @@ name: superpowers 军师
 title: 代码附录：superpowers 军师
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 按通用 A 安装 https://github.com/obra/superpowers 。每个编程任务都按它的流程走：先规划、再调试、最后写代码。

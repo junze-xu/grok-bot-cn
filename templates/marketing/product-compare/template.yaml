@@ -3,7 +3,7 @@ name: 选品比价
 title: 选品比价（电商）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：给它一个商品，它去查同款在各平台的价格、评分、评论里的高频词，告诉你值不值得做。（完成后把这一步的真实产物交给对应负责人。）

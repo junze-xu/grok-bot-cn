@@ -3,7 +3,7 @@ name: 视频解说
 title: 视频解说（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：把一个视频做成中文解说视频。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

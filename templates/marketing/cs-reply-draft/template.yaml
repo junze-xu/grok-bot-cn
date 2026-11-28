@@ -3,7 +3,7 @@ name: 客服草稿
 title: 客服草稿（电商）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：收到客户问题，它先脱敏、分类，再出回复草稿；付款、安全、法律问题直接转人工，不直接发。（完成后把这一步的真实产物交给对应负责人。）

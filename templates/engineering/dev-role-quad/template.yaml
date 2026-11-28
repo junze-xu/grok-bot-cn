@@ -3,7 +3,7 @@ name: 研发四角色组
 title: 代码附录：研发四角色组
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 参考 https://github.com/HAEGONG/grok-bot-profiles ，建 4 个 Bot：需求、复现、提 PR、验 PR，用文件交接，每一步都要我确认。

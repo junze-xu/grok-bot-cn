@@ -3,7 +3,7 @@ name: 真浏览器
 title: 代码附录：真浏览器
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 参考 https://github.com/browser-use/plugins 接入带登录态的浏览器。只在我指定的任务里使用，任务完成就关掉。

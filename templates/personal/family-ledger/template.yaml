@@ -3,7 +3,7 @@ name: 家庭账本
 title: 家庭账本（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 。请把下面的内容记成长期设定，并建好定时任务：账单截图丢进来就记一笔账，月底出一页 Pages 账本。（完成后把这一步的真实产物交给对应负责人。）

@@ -3,7 +3,7 @@ name: 网站巡检
 title: 代码附录：网站巡检
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每天 8:00 打开 {{网站}}，走一遍首页 → 登录 → 核心功能页面，有报错或者加载超过 5 秒就截图报警；全部正常就不发。不要真的付款。

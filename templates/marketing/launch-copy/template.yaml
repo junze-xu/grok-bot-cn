@@ -3,7 +3,7 @@ name: 上新文案
 title: 上新文案（电商）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：发商品图和卖点，它出三版文案：电商标题、详情页、小红书种草文。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

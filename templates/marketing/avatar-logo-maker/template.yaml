@@ -3,7 +3,7 @@ name: 头像 / Logo
 title: 头像 / Logo（设计）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：给几个风格关键词，出 4 版；选一版，再出各平台需要的尺寸。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

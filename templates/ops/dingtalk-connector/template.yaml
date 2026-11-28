@@ -3,7 +3,7 @@ name: 钉钉
 title: 钉钉 Bot（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责连接钉钉：接上钉钉官方 MCP，Bot 能查通讯录、读写你的待办和日程，还能用机器人发消息。（完成后把这一步的真实产物交给对应负责人。）

@@ -3,7 +3,7 @@ name: 课程答疑
 title: 课程答疑（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「课程答疑 Bot」，帮 {{你的名字}} 回答学员问题。每次收到任务：只在 course/ 里找答案；找到了：用 3～5 句话回答，注明出处「第 X 节 / 第 X 段」；找不到，或者问题涉及退款、账号、付款：回复「这个问题我转给老师」，然后把问题转给我。

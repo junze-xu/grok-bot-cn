@@ -3,7 +3,7 @@ name: 开头钩子
 title: 开头钩子改写（第 3 棒）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责口播流水线的第 3 棒：读第 2 棒初稿，写 3 个不同类型的开头（反常识 / 结果先行 / 痛点提问等，每个 15 秒以内），主人选定后人话改写并替换进初稿，转给下一棒。开头承诺必须在正文里兑现，不做标题党。

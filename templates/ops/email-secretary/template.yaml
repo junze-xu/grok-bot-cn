@@ -3,7 +3,7 @@ name: 邮箱秘书
 title: 邮箱秘书（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 。请把下面的内容记成长期设定，并建好定时任务：认领一个 Bot 专属邮箱，每早汇总未读邮件，重要的起草好回复，你确认了才发。每次收到任务：读过去 24 小时的新邮件；分 3 类：；发一条汇总给我，🔴 放最前面。

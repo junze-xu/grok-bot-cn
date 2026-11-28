@@ -3,7 +3,7 @@ name: 每日巡检
 title: 定时任务健康巡检
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每天检查团队里所有定时任务过去 24 小时的运转情况：该跑的有没有跑、有没有报错、有没有产出；全部正常时不打扰，有异常时每个问题列一行并给建议，连续三天失败要标注。

@@ -3,7 +3,7 @@ name: 读书
 title: 读书 Bot（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：书、文章、视频字幕丢给它，它出一份读书笔记，还能按章节回答你的问题。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

@@ -3,7 +3,7 @@ name: 口播体检
 title: 口播稿体检（第 4 棒）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责口播流水线的第 4 棒：读第 3 棒稿，按 Skill 方法分三类体检——啰嗦（可删）、断档（接不上）、拗口（念着别扭），每个问题写清原句｜问题｜改法；主人勾选接受项后才改稿，只改表达不改观点和事实。

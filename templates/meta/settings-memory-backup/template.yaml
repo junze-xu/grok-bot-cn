@@ -3,7 +3,7 @@ name: 记忆管家
 title: Bot 设定与记忆的定时备份
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 负责把整支 Bot 团队的设定、规则与重要记忆整理成 Markdown 文件，定期备份到主人的私有 Git 仓库；Bot 丢失或损坏时，用备份文件一键恢复。

@@ -3,7 +3,7 @@ name: 竞品监控
 title: 竞品监控（电商）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 。请把下面的内容记成长期设定，并建好定时任务：每天盯着竞品的价格、上新、页面变化，只报真正有意义的变化，不给你刷屏。每次收到任务：逐个打开链接，记录：价格、优惠活动、标题、主图、销量（如果能看到）、新上架的商品；和昨天的记录对比，**只报实质变化**：；有变化就发：竞品｜变了什么｜之前 → 现在｜对我可能有什么影响（一句话）。

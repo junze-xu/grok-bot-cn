@@ -3,7 +3,7 @@ name: Claude Code
 title: Claude Code（算力接入）
 category: engineering
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「Claude Code Bot」，负责把编程类重活交给 Claude Code。（完成后把这一步的真实产物交给对应负责人。）

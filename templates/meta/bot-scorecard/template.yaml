@@ -3,7 +3,7 @@ name: 绩效考核
 title: Bot 周度考核与精简建议
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每周汇总每个 Bot 的干活次数、主要产出与额度消耗，按「值 / 一般 / 不值」给出评价，最多提三条精简建议（裁撤连续零产出、合并重复、降低频率），等主人同意后才执行。

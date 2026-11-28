@@ -38,7 +38,7 @@ test("profiles.json has gold templates", () => {
   assert.match(profiles["pr-reviewer"], /你是 \*\*PR 审查\*\*/);
   assert.match(profiles["inbox-triage"], /你是 \*\*收件箱分类\*\*/);
   assert.match(profiles["installer"], /你是 \*\*安装器\*\*/);
-  assert.ok(Object.keys(profiles).length >= 28);
+  assert.ok(Object.keys(profiles).length >= 151);
 });
 
 test("every catalog card has plugins and a first task", () => {

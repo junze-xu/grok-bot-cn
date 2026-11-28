@@ -3,7 +3,7 @@ name: 知识库投喂
 title: 知识库投喂（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：用 iOS 快捷指令 + Webhook，在手机上一键把任何内容丢进你的知识库。（完成后把这一步的真实产物交给对应负责人。）

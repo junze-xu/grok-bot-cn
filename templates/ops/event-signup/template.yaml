@@ -3,7 +3,7 @@ name: 活动报名
 title: 活动报名（打工人）
 category: ops
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：发一个活动链接，它按流程填表报名，最后截图回执给你。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

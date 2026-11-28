@@ -3,7 +3,7 @@ name: 微信全能捕手(铁柱老师微信BOT优化版)
 title: 微信全能捕手(铁柱老师微信BOT优化版)（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: $18：把微信公众号文章和视频号分享链接原样抓成 Markdown、图片、原视频与逐字稿，也能给其他 Bot 供稿。（完成后把这一步的真实产物交给对应负责人。）

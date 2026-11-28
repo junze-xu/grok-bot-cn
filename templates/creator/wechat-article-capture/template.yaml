@@ -3,7 +3,7 @@ name: 公众号捕手
 title: 公众号捕手（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 你是「公众号捕手」：发公众号、小红书、头条链接给它，它抓下全文存成 Markdown，其他 Bot 可以直接拿来用。（完成后把这一步的真实产物交给对应负责人。）

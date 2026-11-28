@@ -3,7 +3,7 @@ name: 额度管家
 title: 团队额度监控与预警
 category: meta
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 每天检查 Grok Bot 本周期额度与各接入算力的用量，估算按当前速度还能撑几天；快见底时列出最费额度的三个 Bot/定时任务并建议暂停，等主人确认后再执行暂停或恢复。

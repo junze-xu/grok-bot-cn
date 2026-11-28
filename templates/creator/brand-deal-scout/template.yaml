@@ -3,7 +3,7 @@ name: 商单初筛
 title: 商单初筛（自媒体）
 category: creator
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：商务询价邮件一进来，它按模板问清品牌、产品、预算、档期，写进飞书表。回复之前先给你看。（完成后把这一步的真实产物交给对应负责人。）

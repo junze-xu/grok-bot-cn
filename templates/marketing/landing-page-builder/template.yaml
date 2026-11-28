@@ -3,7 +3,7 @@ name: 落地页
 title: 落地页 Bot（设计）
 category: marketing
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：一句话描述，生成一个 Pages 落地页，直接分享链接。（完成后把这一步的真实产物交给对应负责人。）（事实与推断分开写，过程文件存进 /workspace 对应目录。）

@@ -3,7 +3,7 @@ name: 英语对练
 title: 英语对练（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: 一位耐心的英语口语教练：发一段英语录音给它，它改成地道的表达，再生成一个 Pages 点读对练页。（完成后把这一步的真实产物交给对应负责人。）

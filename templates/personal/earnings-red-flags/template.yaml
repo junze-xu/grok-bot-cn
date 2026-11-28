@@ -3,7 +3,7 @@ name: 财报排雷
 title: 财报排雷（生活）
 category: personal
 version: 1.0.0
-status: stable
+status: draft
 featured: false
 official_use_case: false
 job: ：给一个股票代码，它按 28 条规则扫一遍 A 股财报，标出风险点。只做研究，不是投资建议。（完成后把这一步的真实产物交给对应负责人。）
